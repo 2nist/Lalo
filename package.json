@@ -27,7 +27,10 @@
     "electron:build": "npm run build && electron-builder",
     "preview": "vite preview",
     "lint": "eslint .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "verify:sections": "node scripts/verifySections.js",
+    "dataset:fetch:salami": "node scripts/datasets/fetchSalami.js",
+    "dataset:build:salami-refs": "node scripts/datasets/buildSalamiReferences.js"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

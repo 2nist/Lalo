@@ -238,6 +238,66 @@ Edit `electron/main.js`:
 mainWindow = new BrowserWindow({
   width: 1200,
   height: 800,
+
+## Section Verification (MIR)
+
+You can validate section boundary quality of imported songs with a local CLI:
+
+```bash
+npm run verify:sections -- --song datasets/mcgill/mcgill_jcrd_salami_Billboard/school_s_out_alice_cooper.json --strategy auto-json
+```
+
+With an external reference file:
+
+```bash
+npm run verify:sections -- --song datasets/mcgill/mcgill_jcrd_salami_Billboard/school_s_out_alice_cooper.json --strategy auto-json --reference path/to/reference.json --tolerance 0.5
+```
+
+Generate a reference template from dataset timestamps:
+
+```bash
+npm run verify:sections -- --mode template --song datasets/mcgill/mcgill_jcrd_salami_Billboard/school_s_out_alice_cooper.json
+```
+
+Reference format:
+
+```json
+{
+  "sections": [
+    { "label": "Verse", "start_s": 12.0, "end_s": 35.4 },
+    { "label": "Chorus", "start_ms": 35400, "end_ms": 58200 }
+  ]
+}
+```
+
+The script reports:
+- Boundary precision / recall / F1 with a tolerance window.
+- Duration-weighted label agreement (exact label match).
+
+### SALAMI-first workflow
+
+Fetch/update the SALAMI public annotations:
+
+```bash
+npm run dataset:fetch:salami
+```
+
+Build normalized SALAMI references and McGill->SALAMI title/artist matches:
+
+```bash
+npm run dataset:build:salami-refs
+```
+
+Outputs:
+- `data/normalized/salami/salami_song_index.json`
+- `data/normalized/salami/salami_references.json`
+- `data/normalized/salami/mcgill_to_salami_matches.json`
+
+Verify against a specific SALAMI song id/annotator:
+
+```bash
+npm run verify:sections -- --song datasets/mcgill/mcgill_jcrd_salami_Billboard/school_s_out_alice_cooper.json --strategy auto-json --salami-refs data/normalized/salami/salami_references.json --salami-song-id 20 --salami-annotator primary
+```
   minWidth: 800,
   minHeight: 600,
   frame: true,          // Show window frame

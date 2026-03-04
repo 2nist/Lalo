@@ -1,6 +1,7 @@
-import { useState, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { parseLabelToContext } from '../utils/chordUtils';
 import { INITIAL_SONG, beatMap } from '../utils/harmonyEngine';
+import { importMcGillJson } from '../utils/mirImport';
 import Drawer, { DockPicker, DEFAULT_SIZES } from '../components/Drawer';
 import ChordCanvas from '../components/Canvas';
 import RadialChordMenu from '../components/RadialMenu';
@@ -18,7 +19,7 @@ let evId = 1;
 // CANVAS AREA — the main "song" content behind the drawer
 // ═══════════════════════════════════════════════════════════════════════════════
 
-function MockCanvas() {
+function MockCanvas({ importMeta, dragActive }) {
   return (
     <div style={{
       width:"100%", height:"100%",
@@ -28,14 +29,35 @@ function MockCanvas() {
       `,
       backgroundSize:"32px 32px",
       display:"flex", alignItems:"center", justifyContent:"center",
-      flexDirection:"column", gap:8,
+      flexDirection:"column", gap:8, position:"relative",
+      border:"1px solid rgba(90,60,30,0.2)",
+      boxShadow: dragActive
+        ? "inset 0 0 0 1px rgba(190,130,55,0.7), 0 0 22px rgba(190,130,55,0.35)"
+        : "inset 0 0 0 1px rgba(90,60,30,0.12)",
+      transition:"box-shadow 120ms ease, border-color 120ms ease",
     }}>
-      <div style={{fontSize:11,letterSpacing:"0.2em",color:"rgba(90,60,30,0.35)",fontFamily:"'DM Mono',monospace"}}>
-        LALO / CANVAS
-      </div>
-      <div style={{fontSize:9,color:"rgba(90,60,30,0.22)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}>
-        your arrangement lives here
-      </div>
+      {importMeta ? (
+        <div style={{
+          position:"absolute", top:12, left:14,
+          fontSize:10, letterSpacing:"0.06em",
+          color:"rgba(52,30,10,0.82)",
+          background:"rgba(232,212,184,0.7)",
+          border:"1px solid rgba(100,65,25,0.2)",
+          borderRadius:4, padding:"6px 8px",
+          fontFamily:"'DM Mono',monospace",
+        }}>
+          {importMeta.title} {"\u2014"} {importMeta.artist}
+        </div>
+      ) : (
+        <>
+          <div style={{fontSize:11,letterSpacing:"0.2em",color:"rgba(90,60,30,0.35)",fontFamily:"'DM Mono',monospace"}}>
+            LALO / CANVAS
+          </div>
+          <div style={{fontSize:9,color:"rgba(90,60,30,0.22)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}>
+            your arrangement lives here
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -46,12 +68,102 @@ function MockCanvas() {
 
 export default function LALOApp() {
   const [song,      setSong]      = useState(INITIAL_SONG);
+  const [importMeta,setImportMeta]= useState(null);
+  const [importStrategy, setImportStrategy] = useState("auto-json");
   const [menu,      setMenu]      = useState(null);
+  const [toast,     setToast]     = useState(null);
+  const [dragOver,  setDragOver]  = useState(false);
+  const [dragDepth, setDragDepth] = useState(0);
   const [dock,      setDock]      = useState("bottom");
   const [open,      setOpen]      = useState(true);
   const [sizes,     setSizes]     = useState({...DEFAULT_SIZES});
   const [panel,     setPanel]     = useState("canvas"); // "canvas" | "harmony"
   const [drawerPos, setDrawerPos] = useState(null);    // null=docked, {x,y}=floating
+  const toastTimerRef             = useRef(null);
+
+  const showImportToast = useCallback((message, tone = "ok") => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setToast({ message, tone });
+    toastTimerRef.current = setTimeout(() => setToast(null), 3000);
+  }, []);
+
+  const handleDropJson = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragOver(false);
+    setDragDepth(0);
+
+    const files = Array.from(e.dataTransfer?.files ?? []);
+    const file = files.find(f => f.name.toLowerCase().endsWith(".json"));
+    if (!file) {
+      showImportToast("Import failed: drop a .json file.", "error");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(String(reader.result ?? ""));
+        const imported = importMcGillJson(parsed, { sectionStrategy: importStrategy });
+        setSong(imported);
+        const meta = imported?.[0]?.meta ?? null;
+        setImportMeta(meta ? { title: meta.title, artist: meta.artist } : null);
+        showImportToast(`Imported (${importStrategy}): ${(meta?.title ?? "Untitled")} \u2014 ${(meta?.artist ?? "Unknown Artist")}`, "ok");
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        showImportToast(`Import failed: ${msg}`, "error");
+      }
+    };
+    reader.onerror = () => showImportToast("Import failed: could not read file.", "error");
+    reader.readAsText(file);
+  }, [importStrategy, showImportToast]);
+
+  const handleDragOverCanvas = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!dragOver) setDragOver(true);
+  }, [dragOver]);
+
+  const handleDragEnterCanvas = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragDepth((d) => d + 1);
+    setDragOver(true);
+  }, []);
+
+  const handleDragLeaveCanvas = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragDepth((d) => {
+      const next = Math.max(0, d - 1);
+      if (next === 0) setDragOver(false);
+      return next;
+    });
+  }, []);
+
+  const handleCopyDebugJson = useCallback(async () => {
+    try {
+      const payload = JSON.stringify(song, null, 2);
+      await navigator.clipboard.writeText(payload);
+      showImportToast("Copied song debug JSON to clipboard.", "ok");
+    } catch {
+      try {
+        const blob = new Blob([JSON.stringify(song, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "lalo-import-debug.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showImportToast("Downloaded song debug JSON file.", "ok");
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        showImportToast(`Debug export failed: ${msg}`, "error");
+      }
+    }
+  }, [song, showImportToast]);
 
   // When dock side changes reset open state
   const handleDockChange = useCallback(side=>{
@@ -154,13 +266,22 @@ export default function LALOApp() {
   };
 
   return (
-    <div className="paper-bg" style={{width:"100vw",height:"100vh",overflow:"hidden",
+    <div
+      onDragEnter={handleDragEnterCanvas}
+      onDragOver={handleDragOverCanvas}
+      onDragLeave={handleDragLeaveCanvas}
+      onDrop={handleDropJson}
+      className="paper-bg" style={{width:"100vw",height:"100vh",overflow:"hidden",
       position:"relative",fontFamily:"'DM Mono',monospace"}}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0;}
         @keyframes rcm-pop{from{opacity:0;transform:scale(0.82);}to{opacity:1;transform:scale(1);}}
         @keyframes rcm-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+        @keyframes lalo-toast-fade{
+          0%,78%{opacity:1;transform:translateY(0);}
+          100%{opacity:0;transform:translateY(5px);}
+        }
         button:focus{outline:none;}
 
         .paper-bg {
@@ -181,7 +302,7 @@ export default function LALOApp() {
 
       {/* Main canvas area */}
       <div style={{width:"100%",height:"100%",...canvasInset,transition:"padding 0.22s cubic-bezier(0.4,0,0.2,1)"}}>
-        <MockCanvas/>
+        <MockCanvas importMeta={importMeta} dragActive={dragOver}/>
       </div>
 
       {/* Chord canvas drawer */}
@@ -222,11 +343,76 @@ export default function LALOApp() {
       {/* Dock side picker */}
       <DockPicker current={dock} onChange={handleDockChange}/>
 
+      <button
+        onClick={handleCopyDebugJson}
+        style={{
+          position:"fixed",
+          top:14,
+          right:14,
+          border:"1px solid rgba(100,65,25,0.35)",
+          background:"rgba(232,212,184,0.78)",
+          color:"rgba(60,35,10,0.9)",
+          borderRadius:5,
+          padding:"6px 8px",
+          fontSize:9,
+          letterSpacing:"0.08em",
+          fontFamily:"'DM Mono',monospace",
+          cursor:"pointer",
+          zIndex:50,
+          boxShadow:"0 3px 10px rgba(0,0,0,0.15)",
+        }}>
+        COPY DEBUG JSON
+      </button>
+
+      <button
+        onClick={() => setImportStrategy((s) => (s === "auto-json" ? "dataset" : "auto-json"))}
+        style={{
+          position:"fixed",
+          top:14,
+          right:152,
+          border:"1px solid rgba(100,65,25,0.35)",
+          background:"rgba(232,212,184,0.78)",
+          color:"rgba(60,35,10,0.9)",
+          borderRadius:5,
+          padding:"6px 8px",
+          fontSize:9,
+          letterSpacing:"0.08em",
+          fontFamily:"'DM Mono',monospace",
+          cursor:"pointer",
+          zIndex:50,
+          boxShadow:"0 3px 10px rgba(0,0,0,0.15)",
+        }}>
+        STRATEGY: {importStrategy.toUpperCase()}
+      </button>
+
       {/* Radial chord menu */}
       {menu&&(
         <RadialChordMenu position={menu} onCommit={handleCommit} onClose={()=>setMenu(null)}
           prevChord={menu.prevChord??null}
           sectionKey={menu.sectionKey??"C"} sectionMode={menu.sectionMode??"major"}/>
+      )}
+
+      {toast && (
+        <div style={{
+          position:"fixed",
+          left:18,
+          bottom:18,
+          maxWidth:420,
+          padding:"8px 10px",
+          borderRadius:6,
+          border:`1px solid ${toast.tone === "error" ? "rgba(184,72,48,0.7)" : "rgba(188,135,58,0.6)"}`,
+          background:"rgba(21,18,14,0.9)",
+          color: toast.tone === "error" ? "#b84830" : "#d3a24b",
+          fontSize:10,
+          letterSpacing:"0.04em",
+          fontFamily:"'DM Mono',monospace",
+          boxShadow:"0 6px 20px rgba(0,0,0,0.35)",
+          pointerEvents:"none",
+          zIndex:60,
+          animation:"lalo-toast-fade 3s ease forwards",
+        }}>
+          {toast.message}
+        </div>
       )}
     </div>
   );
