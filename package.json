@@ -1,5 +1,5 @@
 {
-  "name": "electron-react-vite-boilerplate",
+  "name": "lalo-app",
   "version": "1.0.0",
   "description": "Production-ready Electron + React + Vite + Tailwind CSS boilerplate with TypeScript support",
   "main": "electron/main.js",
@@ -22,9 +22,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:electron && npm run build:renderer",
-    "build:electron": "vite build --config vite.config.electron.js",
-    "build:renderer": "vite build",
+    "build": "vite build",
     "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
     "electron:build": "npm run build && electron-builder",
     "preview": "vite preview",

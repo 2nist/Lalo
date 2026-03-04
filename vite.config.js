@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@lalo/core': path.resolve(__dirname, './src/core'),
     },
   },
   server: {
