@@ -190,6 +190,7 @@ function buildSectionFromSource(srcSection, i, bpm, name) {
     const extensionSymbol = EXTENSIONS[parsed.extensionIdx]?.symbol ?? ''
     section.events.push({
       id: mcgillEventId++,
+      sectionId: section.id,
       beat,
       beatFloat: beat,
       span,

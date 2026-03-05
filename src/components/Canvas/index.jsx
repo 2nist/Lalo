@@ -1,6 +1,8 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useMemo } from 'react'
 import { BEAT_W, BEAT_GAP, ROW_H, beatMap, freeRuns } from '../../utils/harmonyEngine'
 import { getChordAccent, hexToRgba } from '../../utils/chordUtils'
+import { useSongStore, selectInstancesForSection } from '../../store/useSongStore'
+import ProgressionInputBar from '../ProgressionInputBar'
 
 function ChordEvent({ ev, section, onResize, onContextMenu }) {
   const accent  = getChordAccent(ev.label);
@@ -29,7 +31,10 @@ function ChordEvent({ ev, section, onResize, onContextMenu }) {
       const dx=me.clientX-dragRef.current.startX;
       const delta=Math.round(dx/(BEAT_W+BEAT_GAP));
       setDragging(false);
-      onResize(ev,Math.max(1,Math.min(dragRef.current.startSpan+delta,maxSpan)));
+      onResize(
+        { ...ev, sectionId: ev.sectionId ?? section.id },
+        Math.max(1,Math.min(dragRef.current.startSpan+delta,maxSpan))
+      );
       window.removeEventListener("mousemove",onMove);
       window.removeEventListener("mouseup",onUp);
     };
@@ -55,7 +60,7 @@ function ChordEvent({ ev, section, onResize, onContextMenu }) {
       fontSize:10, fontFamily:"'DM Mono',monospace", fontWeight:700,
       userSelect:"none", overflow:"hidden",
       transition:dragging?"none":"width 0.12s,box-shadow 0.12s",
-      cursor:"default", zIndex:dragging?10:1,
+      cursor:"default", zIndex:dragging?10:3,
     }}>
       <span style={{flex:1,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis",
         letterSpacing:"-0.02em",
@@ -77,19 +82,180 @@ function ChordEvent({ ev, section, onResize, onContextMenu }) {
   );
 }
 
+function ProgressionBlock({ instance, type, sectionTotalBeats, onSelect, isSelected }) {
+  const [hovered, setHovered] = useState(false);
+  const color = type?.color ?? '#c4822a';
+  const start = Math.max(0, Math.min(sectionTotalBeats, instance?.beatStart ?? 0));
+  const end = Math.max(start, Math.min(sectionTotalBeats, instance?.beatEnd ?? start));
+  const beatSpan = Math.max(1, end - start);
+  const blockLeft = start * (BEAT_W + BEAT_GAP);
+  const blockWidth = beatSpan * BEAT_W + (beatSpan - 1) * BEAT_GAP;
+
+  const numerals = Array.isArray(type?.numerals) && type.numerals.length
+    ? type.numerals
+    : String(instance?.typeId ?? '').split('-').filter(Boolean);
+  const namedDisplay = type?.namedMatch?.name ?? type?.vampMatch?.name ?? null;
+  const keyBadge = `${instance?.key ?? 'C'} ${(instance?.mode ?? 'major').slice(0, 3)}`;
+  const showBreak = instance?.vampBreakBeat != null && instance.vampBreakBeat < end;
+
+  return (
+    <>
+      <div
+        style={{
+          position: 'absolute',
+          left: blockLeft,
+          top: 0,
+          width: blockWidth,
+          height: ROW_H,
+          borderRadius: 4,
+          background: hexToRgba(color, 0.08),
+          border: `1px solid ${hexToRgba(color, isSelected ? 0.7 : 0.35)}`,
+          borderTop: `3px solid ${hexToRgba(color, isSelected ? 0.9 : 0.55)}`,
+          boxShadow: isSelected
+            ? `0 0 0 1px ${hexToRgba(color, 0.3)}, inset 0 0 0 1px ${hexToRgba(color, 0.1)}`
+            : 'none',
+          pointerEvents: 'none',
+          zIndex: 0,
+          transition: 'border 0.15s, box-shadow 0.15s',
+          boxSizing: 'border-box',
+        }}
+      >
+        {showBreak && (
+          <div style={{
+            position: 'absolute',
+            left: (instance.vampBreakBeat * (BEAT_W + BEAT_GAP)) - blockLeft - 1,
+            top: 4,
+            width: 2,
+            height: ROW_H - 8,
+            background: hexToRgba(color, 0.45),
+            borderRadius: 1,
+            pointerEvents: 'none',
+            zIndex: 1,
+          }} />
+        )}
+        <div
+          style={{
+            position: 'absolute',
+            top: 2,
+            left: 6,
+            right: 6,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            pointerEvents: 'none',
+            userSelect: 'none',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 7,
+            fontWeight: 600,
+            color: hexToRgba(color, 0.75),
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}>
+            {numerals.join(' → ')}
+          </span>
+          {namedDisplay && (
+            <span style={{
+              fontSize: 6.5,
+              color: hexToRgba(color, 0.65),
+              background: hexToRgba(color, 0.1),
+              border: `1px solid ${hexToRgba(color, 0.2)}`,
+              borderRadius: 2,
+              padding: '0 4px',
+              fontFamily: 'var(--font-mono)',
+              flexShrink: 0,
+            }}>
+              {namedDisplay}
+            </span>
+          )}
+          {instance?.vampRunBars != null && (
+            <span style={{
+              fontSize: 6.5,
+              color: hexToRgba(color, 0.65),
+              fontFamily: 'var(--font-mono)',
+              flexShrink: 0,
+            }}>
+              {`🔁 ${instance.vampRunBars}b`}
+            </span>
+          )}
+          <span style={{
+            marginLeft: 'auto',
+            color: instance?.keyConfidence === false ? 'rgba(184,72,48,0.6)' : hexToRgba(color, 0.5),
+            fontSize: 6.5,
+            fontFamily: 'var(--font-mono)',
+            flexShrink: 0,
+          }}>
+            {`${instance?.keyConfidence === false ? '?' : ''}${keyBadge}`}
+          </span>
+        </div>
+      </div>
+
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={(e) => {
+          e.stopPropagation();
+          onSelect?.(instance.id);
+        }}
+        style={{
+          position: 'absolute',
+          left: blockLeft,
+          top: 0,
+          width: blockWidth,
+          height: 14,
+          pointerEvents: 'auto',
+          cursor: 'pointer',
+          zIndex: 2,
+          background: 'transparent',
+        }}
+      />
+
+      {hovered && (
+        <div style={{
+          position: 'absolute',
+          top: ROW_H + 4,
+          left: blockLeft,
+          background: 'rgba(28,22,16,0.92)',
+          border: '1px solid rgba(196,130,42,0.3)',
+          borderRadius: 4,
+          padding: '4px 8px',
+          fontSize: 9,
+          fontFamily: 'var(--font-mono)',
+          color: '#e8dcc8',
+          whiteSpace: 'nowrap',
+          zIndex: 100,
+          pointerEvents: 'none',
+        }}>
+          {(instance?.chordLabels ?? []).join('  ')}
+        </div>
+      )}
+    </>
+  );
+}
+
 // ─── Empty beat with + hint ──────────────────────────────────────────────────
-function EmptyBeat({ beat, sectionId, onAddChord }) {
+function EmptyBeat({ beat, sectionId, onAddChord, onActivate }) {
   const [hov, setHov] = useState(false);
   return (
     <div
+      onClick={(e) => {
+        if (e.button !== 0) return
+        e.preventDefault()
+        e.stopPropagation()
+        onActivate?.(beat)
+      }}
       onContextMenu={e=>onAddChord(e,sectionId,beat)}
       onMouseEnter={()=>setHov(true)}
       onMouseLeave={()=>setHov(false)}
-      title="Right-click to add chord"
+      title="Left-click progression input · Right-click add chord"
       style={{
         position:"absolute", left:beat*(BEAT_W+BEAT_GAP),
         top:0, width:BEAT_W, height:ROW_H,
-        cursor:"context-menu", borderRadius:3, zIndex:2,
+        cursor:"pointer", borderRadius:3, zIndex:2,
         display:"flex", alignItems:"center", justifyContent:"center",
         background: hov ? "rgba(100,65,25,0.1)" : "transparent",
         transition:"background 0.1s",
@@ -210,17 +376,77 @@ function ScrubField({ value, min, max, label, suffix, onChange }) {
   );
 }
 
-function SectionRow({ section, onAddChord, onResizeChord, onEditChord, onChangeMeter }) {
+function SectionRow({ section, onAddChord, onResizeChord, onEditChord, onChangeMeter, titleStyle, onDropTheory }) {
   const { timeSig, bars, totalBeats } = section;
   const rowWidth = totalBeats*BEAT_W+(totalBeats-1)*BEAT_GAP;
   const runs = freeRuns(section);
+  const [dropActive, setDropActive] = useState(false);
+  const [inputActive, setInputActive] = useState(false);
+  const [inputBeat, setInputBeat] = useState(0);
+  const allProgressionInstances = useSongStore(state => state.progressionInstances);
+  const progressionTypes = useSongStore(state => state.progressionTypes);
+  const selectedInstanceId = useSongStore(state => state.selectedInstanceId);
+  const setSelectedInstance = useSongStore(state => state.setSelectedInstance);
+  const progressionInstances = useMemo(
+    () => selectInstancesForSection({ progressionInstances: allProgressionInstances }, section.id),
+    [allProgressionInstances, section.id]
+  );
+  const typeMap = useMemo(
+    () => Object.fromEntries(progressionTypes.map(t => [t.id, t])),
+    [progressionTypes]
+  );
+
+  const handleDropTheory = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDropActive(false);
+    const raw = e.dataTransfer?.getData('application/x-lalo-theory') || e.dataTransfer?.getData('text/plain');
+    if (!raw) return;
+    try {
+      const payload = JSON.parse(raw);
+      onDropTheory?.(section.id, payload);
+    } catch {
+      // ignore invalid payloads
+    }
+  }, [onDropTheory, section.id]);
 
   return (
-    <div style={{display:"flex",alignItems:"flex-start",gap:10,paddingBottom:4}}>
+    <div
+      onDragOver={(e) => {
+        if (!onDropTheory) return;
+        e.preventDefault();
+      }}
+      onDragEnter={(e) => {
+        if (!onDropTheory) return;
+        e.preventDefault();
+        setDropActive(true);
+      }}
+      onDragLeave={(e) => {
+        if (!onDropTheory) return;
+        e.preventDefault();
+        if (!e.currentTarget.contains(e.relatedTarget)) setDropActive(false);
+      }}
+      onDrop={handleDropTheory}
+      style={{
+        display:"flex",alignItems:"flex-start",gap:10,paddingBottom:4,
+        background: dropActive ? "rgba(120,86,24,0.08)" : "transparent",
+        outline: dropActive ? "1px dashed rgba(120,86,24,0.45)" : "none",
+        borderRadius: 6,
+        transition: "background 0.1s, outline 0.1s",
+      }}>
       {/* Label + scrub meter */}
       <div style={{width:64,flexShrink:0,paddingTop:14,cursor:"default"}}>
-        <div style={{fontSize:9,letterSpacing:"0.08em",color:"rgba(60,35,10,0.85)",textAlign:"right",marginBottom:6,fontWeight:"600"}}>
-          {section.name.toUpperCase()}
+        <div style={{
+          fontSize:titleStyle?.size ?? 9,
+          letterSpacing:`${titleStyle?.letterSpacing ?? 0.08}em`,
+          color:"rgba(60,35,10,0.85)",
+          textAlign:"right",
+          marginBottom:6,
+          fontWeight:titleStyle?.weight ?? 600,
+          textTransform:(titleStyle?.uppercase ?? true) ? "uppercase" : "none",
+          lineHeight:1.2,
+        }}>
+          {section.name}
         </div>
         {/* Two scrub fields side by side with a × separator */}
         <div style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:5}}>
@@ -294,14 +520,35 @@ function SectionRow({ section, onAddChord, onResizeChord, onEditChord, onChangeM
           })}
 
           {/* Empty beat targets */}
-          {runs.map(run=>
+          {!inputActive && runs.map(run=>
             Array.from({length:run.span}).map((_,i)=>{
               const beat=run.beat+i;
               return (
-                <EmptyBeat key={beat} beat={beat} sectionId={section.id} onAddChord={onAddChord}/>
+                <EmptyBeat
+                  key={beat}
+                  beat={beat}
+                  sectionId={section.id}
+                  onAddChord={onAddChord}
+                  onActivate={(clickedBeat) => {
+                    setInputBeat(clickedBeat);
+                    setInputActive(true);
+                  }}
+                />
               );
             })
           )}
+
+          {/* Progression blocks — behind chord events */}
+          {progressionInstances.map(instance => (
+            <ProgressionBlock
+              key={instance.id}
+              instance={instance}
+              type={typeMap[instance.typeId] ?? null}
+              sectionTotalBeats={section.totalBeats}
+              onSelect={setSelectedInstance}
+              isSelected={selectedInstanceId === instance.id}
+            />
+          ))}
 
           {/* Chord events */}
           {section.events.map(ev=>(
@@ -310,14 +557,46 @@ function SectionRow({ section, onAddChord, onResizeChord, onEditChord, onChangeM
               onContextMenu={(e,ev)=>onEditChord(e,section.id,ev)}/>
           ))}
         </div>
+        {inputActive && (
+          <ProgressionInputBar
+            sectionId={section.id}
+            sectionKey={section.key ?? 'C'}
+            sectionMode={section.mode ?? 'major'}
+            beatStart={inputBeat}
+            onPlace={(instance) => {
+              useSongStore.getState().placeInstance(instance);
+              setInputActive(false);
+            }}
+            onClose={() => setInputActive(false)}
+          />
+        )}
       </div>
     </div>
   );
 }
 
-export default function ChordCanvas({ song, onAddChord, onResizeChord, onEditChord, onChangeMeter }) {
+export default function ChordCanvas({ song: songProp, onAddChord, onResizeChord, onEditChord, onChangeMeter, titleStyle, onDropTheory }) {
+  const storeSong = useSongStore(state => state.song)
+  const song = songProp ?? storeSong
   return (
     <div style={{padding:"16px 16px 24px",overflowY:"auto",height:"100%",boxSizing:"border-box"}}>
+      <div style={{
+        display:"inline-flex",
+        alignItems:"center",
+        gap:8,
+        padding:"4px 8px",
+        marginBottom:10,
+        border:"1px solid rgba(184,72,48,0.65)",
+        borderRadius:4,
+        background:"rgba(184,72,48,0.14)",
+        color:"rgba(120,28,20,0.96)",
+        fontFamily:"'DM Mono',monospace",
+        fontSize:10,
+        fontWeight:700,
+        letterSpacing:"0.08em",
+      }}>
+        NEW BUILD ACTIVE
+      </div>
       <div style={{fontSize:8,letterSpacing:"0.18em",color:"rgba(100,65,25,0.45)",marginBottom:14}}>
         CHORD CANVAS
       </div>
@@ -325,11 +604,13 @@ export default function ChordCanvas({ song, onAddChord, onResizeChord, onEditCho
         {song.map(section=>(
           <SectionRow key={section.id} section={section}
             onAddChord={onAddChord} onResizeChord={onResizeChord}
-            onEditChord={onEditChord} onChangeMeter={onChangeMeter}/>
+            onEditChord={onEditChord} onChangeMeter={onChangeMeter}
+            titleStyle={titleStyle}
+            onDropTheory={onDropTheory}/>
         ))}
       </div>
       <div style={{marginTop:20,fontSize:8,color:"rgba(100,65,25,0.35)",letterSpacing:"0.06em",lineHeight:1.8}}>
-        HOVER LABEL → SET BARS · RIGHT-CLICK BEAT → ADD CHORD · DRAG EDGE → RESIZE
+        HOVER LABEL → SET BARS · RIGHT-CLICK BEAT → ADD CHORD · DRAG EDGE → RESIZE · DROP THEORY PILL → APPLY PROGRESSION
       </div>
     </div>
   );

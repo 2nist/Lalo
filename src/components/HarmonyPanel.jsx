@@ -20,6 +20,7 @@ import {
   analyzeChord as coreAnalyzeChord,
   buildMotionSummary as coreMotionSummary,
 } from "@lalo/core";
+import { useSongStore, selectSongSummary } from "../store/useSongStore";
 
 // ── UI colour tokens — maps HarmonicStrength → visual theme ─────────────────
 // ROOTS, DIATONIC_SCALE, DEGREE_QUALITY are now centralised in @lalo/core.
@@ -411,7 +412,10 @@ function SectionPanel({ section, isExpanded, onToggle }) {
  *
  * Future: replace `song` prop with `const { song } = useSongStore()`
  */
-export default function HarmonyPanel({ song = [], style = {} }) {
+export default function HarmonyPanel({ song: songProp, style = {} }) {
+  const storeSong = useSongStore(state => state.song);
+  const summary = useSongStore(selectSongSummary);
+  const song = songProp ?? storeSong;
   const [expanded, setExpanded] = useState(() =>
     Object.fromEntries(song.map(s => [s.id, true]))
   );
@@ -450,6 +454,18 @@ export default function HarmonyPanel({ song = [], style = {} }) {
               </span>
               <span style={{ fontSize:8, color:"rgba(100,65,25,0.4)" }}>
                 {uniqueLabels} unique
+              </span>
+              <span style={{ fontSize:8, color:"rgba(100,65,25,0.4)" }}>
+                {summary.typeCount} types
+              </span>
+              <span style={{ fontSize:8, color:"rgba(100,65,25,0.4)" }}>
+                {summary.instanceCount} instances
+              </span>
+              <span style={{ fontSize:8, color:"rgba(100,65,25,0.4)" }}>
+                {summary.vampCount} vamps
+              </span>
+              <span style={{ fontSize:8, color:"rgba(100,65,25,0.4)" }}>
+                {summary.namedCount} named
               </span>
             </>
           )}
