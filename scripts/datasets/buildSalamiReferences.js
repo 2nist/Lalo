@@ -30,6 +30,22 @@ function normalizeText(v) {
     .replace(/\s+/g, ' ')
 }
 
+function tokenSet(str) {
+  return new Set(normalizeText(str).split(' ').filter(Boolean))
+}
+
+function tokenJaccard(a, b) {
+  const aSet = tokenSet(a)
+  const bSet = tokenSet(b)
+  if (!aSet.size || !bSet.size) return 0
+  let inter = 0
+  for (const t of aSet) {
+    if (bSet.has(t)) inter += 1
+  }
+  const union = aSet.size + bSet.size - inter
+  return inter / union
+}
+
 function splitCsvLine(line) {
   const out = []
   let cur = ''
@@ -138,6 +154,7 @@ function main() {
   const metadataRows = parseCsv(metadataPath)
   const index = []
   const references = []
+  const byId = new Map()
 
   for (const row of metadataRows) {
     const songId = String(row.SONG_ID ?? '').trim()
@@ -160,11 +177,18 @@ function main() {
       artist,
       norm_title: normalizeText(title),
       norm_artist: normalizeText(artist),
+      norm_full: normalizeText(`${title} ${artist}`),
       source: String(row.SOURCE ?? ''),
       genre: String(row.GENRE ?? ''),
       class: String(row.CLASS ?? ''),
       song_duration_s: Number(row.SONG_DURATION || 0),
       annotator_count: annotators.length,
+    })
+    byId.set(songId, {
+      title,
+      artist,
+      norm_full: normalizeText(`${title} ${artist}`),
+      song_duration_s: Number(row.SONG_DURATION || 0),
     })
 
     references.push({
@@ -193,6 +217,7 @@ function main() {
     const titleOnly = both.length ? [] : (byTitle.get(m.normTitle) ?? [])
     let confidence = 'none'
     let matched = []
+    let score = 0
     if (both.length === 1) {
       confidence = 'exact_title_artist'
       matched = both
@@ -205,6 +230,29 @@ function main() {
     } else if (titleOnly.length > 1) {
       confidence = 'ambiguous_title'
       matched = titleOnly
+    } else {
+      // fuzzy token-set Jaccard on title+artist
+      let bestScore = 0
+      let bestIds = []
+      const needle = normalizeText(`${m.title} ${m.artist}`)
+      for (const row of index) {
+        const sim = tokenJaccard(needle, row.norm_full)
+        if (sim > bestScore + 1e-6) {
+          bestScore = sim
+          bestIds = [row.song_id]
+        } else if (Math.abs(sim - bestScore) < 1e-6 && sim > 0) {
+          bestIds.push(row.song_id)
+        }
+      }
+      if (bestScore >= 0.7 && bestIds.length === 1) {
+        confidence = bestScore >= 0.85 ? 'strong_fuzzy' : 'fuzzy'
+        matched = bestIds
+        score = Number(bestScore.toFixed(3))
+      } else if (bestScore >= 0.7 && bestIds.length > 1) {
+        confidence = 'ambiguous_fuzzy'
+        matched = bestIds
+        score = Number(bestScore.toFixed(3))
+      }
     }
     return {
       filename: m.filename,
@@ -212,6 +260,7 @@ function main() {
       artist: m.artist,
       confidence,
       salami_song_ids: matched,
+      fuzzy_score: score,
     }
   })
 
@@ -221,10 +270,12 @@ function main() {
   fs.writeFileSync(path.join(outDir, 'mcgill_to_salami_matches.json'), JSON.stringify(matches, null, 2))
 
   const exact = matches.filter((m) => m.confidence === 'exact_title_artist').length
+  const strongFuzzy = matches.filter((m) => m.confidence === 'strong_fuzzy').length
+  const fuzzy = matches.filter((m) => m.confidence === 'fuzzy').length
   const any = matches.filter((m) => m.confidence !== 'none').length
   console.log(`SALAMI indexed songs: ${index.length}`)
   console.log(`SALAMI refs with parsed annotators: ${references.filter((r) => r.annotators.length > 0).length}`)
-  console.log(`McGill matches: ${exact} exact, ${any} with any candidate, ${matches.length - any} unmatched`)
+  console.log(`McGill matches: ${exact} exact, ${strongFuzzy} strong fuzzy, ${fuzzy} fuzzy, ${any} with any candidate, ${matches.length - any} unmatched`)
   console.log(`Wrote: ${path.join(outDir, 'salami_song_index.json')}`)
   console.log(`Wrote: ${path.join(outDir, 'salami_references.json')}`)
   console.log(`Wrote: ${path.join(outDir, 'mcgill_to_salami_matches.json')}`)

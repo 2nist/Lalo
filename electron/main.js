@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
+import { spawn } from 'child_process'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import Store from 'electron-store'
@@ -95,6 +96,50 @@ function registerIpcHandlers() {
       electronVersion: process.versions.electron,
       chromeVersion: process.versions.chrome,
     }
+  })
+
+  // Audio fetch via yt-dlp wrapper
+  ipcMain.handle('audio:fetch', async (event, payload) => {
+    const { url, slug, outDir, format } = payload || {}
+    if (!url || !slug) {
+      throw new Error('audio:fetch requires url and slug')
+    }
+    const scriptPath = path.join(__dirname, '../scripts/experiments/downloadAudio.js')
+    const args = [scriptPath, '--url', url, '--slug', slug]
+    if (outDir) args.push('--out-dir', outDir)
+    if (format) args.push('--format', format)
+
+    const nodeBin =
+      process.env.NPM_NODE_EXEC_PATH ||
+      process.env.npm_node_execpath ||
+      process.env.NODE_BINARY ||
+      'node'
+
+    return await new Promise((resolve, reject) => {
+      let stdout = ''
+      let stderr = ''
+      let proc
+      try {
+        proc = spawn(nodeBin, args, {
+          cwd: path.join(__dirname, '..'),
+          stdio: ['ignore', 'pipe', 'pipe'],
+          shell: false,
+        })
+      } catch (err) {
+        reject(new Error(`audio:fetch spawn failed: ${err instanceof Error ? err.message : String(err)}`))
+        return
+      }
+
+      proc.stdout.on('data', (d) => { stdout += d.toString() })
+      proc.stderr.on('data', (d) => { stderr += d.toString() })
+      proc.on('error', (err) => {
+        reject(new Error(`audio:fetch error: ${err instanceof Error ? err.message : String(err)}`))
+      })
+      proc.on('close', (code, signal) => {
+        if (code === 0) resolve({ ok: true, stdout })
+        else reject(new Error(stderr || `audio:fetch failed (code ${code}${signal ? `, signal ${signal}` : ''}) using ${nodeBin}`))
+      })
+    })
   })
 }
 

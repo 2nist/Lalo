@@ -52,3 +52,7 @@ temp/
 data/raw/
 data/normalized/salami/*.json
 .cache_probe/
+
+# Audio/beat artifacts
+data/audio/
+data/beats/

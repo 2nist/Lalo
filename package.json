@@ -30,7 +30,18 @@
     "type-check": "tsc --noEmit",
     "verify:sections": "node scripts/verifySections.js",
     "dataset:fetch:salami": "node scripts/datasets/fetchSalami.js",
-    "dataset:build:salami-refs": "node scripts/datasets/buildSalamiReferences.js"
+    "dataset:build:salami-refs": "node scripts/datasets/buildSalamiReferences.js",
+    "audio:fetch": "node scripts/experiments/downloadAudio.js"
+    ,"bench:sections:list": "node scripts/bench/makeBenchmarkList.js"
+    ,"bench:sections": "node scripts/bench/runBenchmark.js"
+    ,"bench:pairings:filter": "node scripts/bench/filterPairings.js"
+    ,"bench:pairings:fetch": "node scripts/bench/fetchPairingAudio.js"
+    ,"bench:pairings:beats": "node scripts/bench/computeBeatsForAudio.js"
+    ,"bench:pairings:subset": "node scripts/bench/fetchPairingsSubset.js"
+    ,"bench:pairings:fingerprint": "node scripts/bench/fingerprintPairings.js"
+    ,"bench:sections:all": "node scripts/bench/runAllSections.js"
+    ,"api": "python -m uvicorn scripts.api.app:app --reload --port 8001"
+    ,"dev:full": "concurrently \"npm run api\" \"npm run electron:dev\""
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

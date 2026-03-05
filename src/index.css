@@ -79,14 +79,15 @@
 @layer components {
   /* Warm kraft card */
   .panel {
-    @apply rounded-card border border-surface-edge shadow-card;
+    @apply rounded-xl border shadow-lg;
+    border-color: var(--surface-edge);
     background: var(--surface-2);
     color: var(--ink-primary);
   }
 
   /* Paper feel for lighter sections */
   .panel-paper {
-    @apply rounded-card border shadow-paper;
+    @apply rounded-xl border shadow-md;
     background: var(--paper-1);
     border-color: var(--paper-edge);
     color: var(--ink-dark);
@@ -112,7 +113,7 @@
 
   /* Small pill / label */
   .pill {
-    @apply inline-flex items-center gap-1 px-2 py-[3px] rounded-pill text-[11px] font-semibold;
+    @apply inline-flex items-center gap-1 px-2 py-[3px] rounded-full text-[11px] font-semibold;
     border: 1px solid rgba(196,130,42,0.35);
     background: rgba(196,130,42,0.15);
     color: var(--accent);
@@ -120,7 +121,7 @@
 
   /* Buttons matching the ochre accent */
   .btn-amber {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-card font-semibold transition;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-semibold transition;
     background: linear-gradient(135deg, #c4822a, #d4603a);
     color: #1c1610;
     box-shadow: 0 10px 24px -14px rgba(0,0,0,0.6);

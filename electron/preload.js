@@ -1,13 +1,7 @@
-import { contextBridge, ipcRenderer } from 'electron'
+const { contextBridge, ipcRenderer } = require('electron')
 
 /**
- * Expose protected methods that allow the renderer process to use
- * the ipcRenderer without exposing the entire object.
- * 
- * This follows Electron security best practices:
- * - contextIsolation: true
- * - nodeIntegration: false
- * - sandbox: true
+ * Preload bridge (CommonJS to avoid ESM preload issues).
  */
 
 contextBridge.exposeInMainWorld('electronAPI', {
@@ -28,15 +22,17 @@ contextBridge.exposeInMainWorld('electronAPI', {
   on: (channel, callback) => {
     const subscription = (event, ...args) => callback(...args)
     ipcRenderer.on(channel, subscription)
-    
-    // Return unsubscribe function
     return () => {
       ipcRenderer.removeListener(channel, subscription)
     }
   },
 
-  // Remove all listeners for a channel
   removeAllListeners: (channel) => {
     ipcRenderer.removeAllListeners(channel)
+  },
+
+  // Audio fetch (yt-dlp wrapper)
+  audio: {
+    fetch: (payload) => ipcRenderer.invoke('audio:fetch', payload),
   },
 })

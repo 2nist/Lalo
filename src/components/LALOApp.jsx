@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { parseLabelToContext } from '../utils/chordUtils';
 import { INITIAL_SONG, beatMap } from '../utils/harmonyEngine';
 import { importMcGillJson } from '../utils/mirImport';
@@ -80,6 +80,10 @@ export default function LALOApp() {
   const [panel,     setPanel]     = useState("canvas"); // "canvas" | "harmony"
   const [drawerPos, setDrawerPos] = useState(null);    // null=docked, {x,y}=floating
   const toastTimerRef             = useRef(null);
+  const [audioUrl, setAudioUrl]   = useState("");
+  const [audioSlug,setAudioSlug]  = useState("");
+  const [audioBusy,setAudioBusy]  = useState(false);
+  const [bridgeOk,setBridgeOk]    = useState(() => !!window.electronAPI?.audio?.fetch);
 
   const showImportToast = useCallback((message, tone = "ok") => {
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
@@ -93,29 +97,42 @@ export default function LALOApp() {
     setDragOver(false);
     setDragDepth(0);
 
+    // Prefer file import if a .json is dropped
     const files = Array.from(e.dataTransfer?.files ?? []);
     const file = files.find(f => f.name.toLowerCase().endsWith(".json"));
-    if (!file) {
-      showImportToast("Import failed: drop a .json file.", "error");
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(String(reader.result ?? ""));
+          const imported = importMcGillJson(parsed, { sectionStrategy: importStrategy });
+          setSong(imported);
+          const meta = imported?.[0]?.meta ?? null;
+          setImportMeta(meta ? { title: meta.title, artist: meta.artist } : null);
+          if (meta?.title || meta?.artist) {
+            const slug = makeSlug(`${meta.title ?? "untitled"}_${meta.artist ?? "unknown"}`);
+            setAudioSlug(slug);
+          }
+          showImportToast(`Imported (${importStrategy}): ${(meta?.title ?? "Untitled")} \u2014 ${(meta?.artist ?? "Unknown Artist")}`, "ok");
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : String(err);
+          showImportToast(`Import failed: ${msg}`, "error");
+        }
+      };
+      reader.onerror = () => showImportToast("Import failed: could not read file.", "error");
+      reader.readAsText(file);
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const parsed = JSON.parse(String(reader.result ?? ""));
-        const imported = importMcGillJson(parsed, { sectionStrategy: importStrategy });
-        setSong(imported);
-        const meta = imported?.[0]?.meta ?? null;
-        setImportMeta(meta ? { title: meta.title, artist: meta.artist } : null);
-        showImportToast(`Imported (${importStrategy}): ${(meta?.title ?? "Untitled")} \u2014 ${(meta?.artist ?? "Unknown Artist")}`, "ok");
-      } catch (err) {
-        const msg = err instanceof Error ? err.message : String(err);
-        showImportToast(`Import failed: ${msg}`, "error");
-      }
-    };
-    reader.onerror = () => showImportToast("Import failed: could not read file.", "error");
-    reader.readAsText(file);
+    // If no file, try to capture a dropped URL/text (for yt-dlp fetch)
+    const droppedUrl = extractUrlFromDataTransfer(e.dataTransfer);
+    if (droppedUrl) {
+      setAudioUrl(droppedUrl);
+      showImportToast("Captured URL for audio fetch.", "ok");
+      return;
+    }
+
+    showImportToast("Import failed: drop a .json file or a URL.", "error");
   }, [importStrategy, showImportToast]);
 
   const handleDragOverCanvas = useCallback((e) => {
@@ -265,6 +282,60 @@ export default function LALOApp() {
     paddingRight:  dock==="right" ?drawerSz:0,
   };
 
+  const handleFetchAudio = useCallback(async ()=>{
+    if (!audioUrl.trim() || !audioSlug.trim()) {
+      showImportToast("Audio fetch: provide URL and slug", "error");
+      return;
+    }
+    const audioApi = window.electronAPI?.audio?.fetch;
+    if (!audioApi) {
+      showImportToast("Audio fetch not available (electronAPI.audio missing). Run inside Electron.", "error");
+      return;
+    }
+    setAudioBusy(true);
+    try {
+      await audioApi({
+        url: audioUrl.trim(),
+        slug: audioSlug.trim(),
+        outDir: "data/audio",
+      });
+      showImportToast("Audio fetched to data/audio", "ok");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      showImportToast(`Audio fetch failed: ${msg}`, "error");
+    } finally {
+    setAudioBusy(false);
+    }
+  }, [audioUrl, audioSlug, showImportToast]);
+
+  function makeSlug(str){
+    return String(str ?? "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g,"_")
+      .replace(/^_+|_+$/g,"")
+      .replace(/_+/g,"_");
+  }
+
+  function extractUrlFromDataTransfer(dt){
+    if (!dt) return "";
+    if (dt.types?.includes("text/uri-list")) {
+      const uri = dt.getData("text/uri-list").split(/\r?\n/).find(Boolean);
+      if (uri) return uri.trim();
+    }
+    if (dt.types?.includes("text/plain")) {
+      const txt = dt.getData("text/plain").trim();
+      const m = txt.match(/https?:\/\/\S+/);
+      if (m) return m[0];
+    }
+    return "";
+  }
+
+  // Detect bridge availability (in case Electron preload didn't load)
+  useEffect(()=>{
+    const ok = !!window.electronAPI?.audio?.fetch;
+    setBridgeOk(ok);
+  },[]);
+
   return (
     <div
       onDragEnter={handleDragEnterCanvas}
@@ -384,6 +455,63 @@ export default function LALOApp() {
         }}>
         STRATEGY: {importStrategy.toUpperCase()}
       </button>
+
+      {/* Audio fetch panel */}
+      <div style={{
+        position:"fixed",
+        right:16,
+        bottom:16,
+        width:260,
+        padding:"10px 12px",
+        background:"rgba(21,18,14,0.9)",
+        border:"1px solid rgba(188,135,58,0.6)",
+        borderRadius:8,
+        boxShadow:"0 8px 24px rgba(0,0,0,0.35)",
+        color:"#d3a24b",
+        fontFamily:"'DM Mono',monospace",
+        fontSize:10,
+        zIndex:55,
+        outline: "1px dashed rgba(188,135,58,0.25)"
+      }}>
+        <div style={{fontWeight:700, letterSpacing:"0.08em", marginBottom:6}}>AUDIO FETCH (yt-dlp)</div>
+        <div style={{fontSize:9, color: bridgeOk ? "#80e59f" : "#e07b7b", marginBottom:4}}>
+          Bridge: {bridgeOk ? "connected" : "missing (restart Electron?)"}
+        </div>
+        <div style={{display:"flex", flexDirection:"column", gap:6}}>
+          <input
+            value={audioUrl}
+            onChange={(e)=>setAudioUrl(e.target.value)}
+            placeholder="YouTube / URL"
+            style={{
+              width:"100%", padding:"6px 8px", borderRadius:4,
+              border:"1px solid rgba(188,135,58,0.35)", background:"rgba(255,255,255,0.04)",
+              color:"#f2d6a2", fontSize:10, fontFamily:"inherit",
+            }}
+          />
+          <input
+            value={audioSlug}
+            onChange={(e)=>setAudioSlug(makeSlug(e.target.value))}
+            placeholder="slug (matches annotation filename)"
+            style={{
+              width:"100%", padding:"6px 8px", borderRadius:4,
+              border:"1px solid rgba(188,135,58,0.35)", background:"rgba(255,255,255,0.04)",
+              color:"#f2d6a2", fontSize:10, fontFamily:"inherit",
+            }}
+          />
+          <button
+            onClick={handleFetchAudio}
+            disabled={audioBusy}
+            style={{
+              width:"100%", padding:"7px 8px",
+              background: audioBusy ? "rgba(188,135,58,0.25)" : "rgba(188,135,58,0.85)",
+              color:"#120d07",
+              border:"none", borderRadius:4, cursor: audioBusy ? "wait" : "pointer",
+              fontWeight:700, letterSpacing:"0.08em",
+            }}>
+            {audioBusy ? "FETCHING..." : "FETCH AUDIO"}
+          </button>
+        </div>
+      </div>
 
       {/* Radial chord menu */}
       {menu&&(

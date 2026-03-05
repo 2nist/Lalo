@@ -146,6 +146,9 @@ function parseArgs(argv) {
     strategy: 'auto-json',
     tolerance: 0.5,
     mode: 'compare',
+    beatsDir: '',
+    beatSnap: 0.25,
+    minSection: 4.0,
   }
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i]
@@ -157,6 +160,9 @@ function parseArgs(argv) {
     if (a === '--strategy') out.strategy = argv[i + 1] ?? 'auto-json'
     if (a === '--tolerance') out.tolerance = Number(argv[i + 1] ?? 0.5)
     if (a === '--mode') out.mode = argv[i + 1] ?? 'compare'
+    if (a === '--beats-dir') out.beatsDir = argv[i + 1] ?? ''
+    if (a === '--beat-snap') out.beatSnap = Number(argv[i + 1] ?? 0.25)
+    if (a === '--min-section') out.minSection = Number(argv[i + 1] ?? 4.0)
   }
   return out
 }
@@ -170,6 +176,11 @@ function printUsage() {
   console.log('Reference JSON format:')
   console.log('  { "sections": [ { "label":"Verse", "start_s":12.0, "end_s":35.4 } ] }')
   console.log('  or use start_ms/end_ms (or duration_*) fields.')
+  console.log('')
+  console.log('Optional beat assist:')
+  console.log('  --beats-dir <dir>   directory containing <slug>.beats.json (from compute_beats.py)')
+  console.log('  --beat-snap <sec>   snap predicted boundaries to nearest beat/downbeat within this tolerance (seconds)')
+  console.log('  --min-section <sec> enforce minimum section length via HSMM-like merge (default 4.0s)')
 }
 
 function referenceFromSalami(args) {
@@ -202,6 +213,125 @@ function referenceFromSalami(args) {
   }
 }
 
+function loadBeatTrack(beatsDir, songPath) {
+  if (!beatsDir) return null
+  const slug = path.basename(songPath).replace(/\.json$/i, '')
+  const beatPath = path.join(path.resolve(beatsDir), `${slug}.beats.json`)
+  if (!fs.existsSync(beatPath)) return null
+  try {
+    const json = readJson(beatPath)
+    const beats = Array.isArray(json.beats_ms) ? json.beats_ms.map((t) => Number(t) / 1000).filter(Number.isFinite) : []
+    const downs = Array.isArray(json.downbeats_ms) ? json.downbeats_ms.map((t) => Number(t) / 1000).filter(Number.isFinite) : []
+    return { beats, downs }
+  } catch {
+    return null
+  }
+}
+
+function snapTime(t, beats, downs, tol) {
+  let best = t
+  let bestDist = tol + 1
+  const candidates = [...(downs ?? []), ...(beats ?? [])]
+  for (const b of candidates) {
+    const d = Math.abs(t - b)
+    if (d <= tol && d < bestDist) {
+      best = b
+      bestDist = d
+    }
+  }
+  return best
+}
+
+function snapSectionsToBeats(sections, beatTrack, tolSec) {
+  if (!beatTrack) return sections
+  const { beats, downs } = beatTrack
+  if ((!beats || beats.length === 0) && (!downs || downs.length === 0)) return sections
+  return sections.map((s, i) => {
+    const snappedStart = i === 0 ? s.startSec : snapTime(s.startSec, beats, downs, tolSec)
+    const snappedEnd = snapTime(s.endSec, beats, downs, tolSec)
+    if (snappedEnd <= snappedStart) return s
+    return { ...s, startSec: snappedStart, endSec: snappedEnd }
+  })
+}
+
+function enforceMinSectionLength(sections, minSec) {
+  if (!Array.isArray(sections) || sections.length === 0) return sections
+  let out = [...sections]
+  let changed = true
+  while (changed) {
+    changed = false
+    for (let i = 0; i < out.length; i += 1) {
+      const cur = out[i]
+      const dur = cur.endSec - cur.startSec
+      if (dur >= minSec) continue
+      const prev = i > 0 ? out[i - 1] : null
+      const next = i < out.length - 1 ? out[i + 1] : null
+      if (prev && (!next || (prev.endSec - prev.startSec) >= (next.endSec - next.startSec))) {
+        // merge into previous
+        prev.endSec = Math.max(prev.endSec, cur.endSec)
+        out.splice(i, 1)
+        changed = true
+        break
+      } else if (next) {
+        // merge into next
+        next.startSec = Math.min(next.startSec, cur.startSec)
+        out.splice(i, 1)
+        changed = true
+        break
+      }
+    }
+  }
+  return out
+}
+
+function enforceMaxSectionLength(sections, maxSec) {
+  if (!maxSec || maxSec <= 0) return sections
+  const out = []
+  for (const s of sections) {
+    const dur = s.endSec - s.startSec
+    if (dur <= maxSec) {
+      out.push(s)
+      continue
+    }
+    const splits = Math.ceil(dur / maxSec)
+    const chunk = dur / splits
+    for (let i = 0; i < splits; i += 1) {
+      const start = s.startSec + i * chunk
+      const end = i === splits - 1 ? s.endSec : s.startSec + (i + 1) * chunk
+      out.push({ ...s, startSec: start, endSec: end })
+    }
+  }
+  return out
+}
+
+function labelRepeatSmoothing(sections) {
+  if (sections.length < 3) return sections
+  const out = [...sections]
+  for (let i = 1; i < out.length - 1; i += 1) {
+    const prev = out[i - 1]
+    const cur = out[i]
+    const next = out[i + 1]
+    if (prev.label === next.label && prev.label !== cur.label) {
+      const prevDur = prev.endSec - prev.startSec
+      const nextDur = next.endSec - next.startSec
+      const curDur = cur.endSec - cur.startSec
+      if (curDur < Math.min(prevDur, nextDur) * 0.6) {
+        // flip current label to repeat the pattern (ABA -> AAA)
+        out[i] = { ...cur, label: prev.label, sectionType: prev.label }
+      }
+    }
+  }
+  return out
+}
+
+function hsmmDecode(predicted, opts) {
+  let out = snapSectionsToBeats(predicted, opts.beatTrack, opts.beatSnap)
+  out = enforceMinSectionLength(out, opts.minSection || 4.0)
+  out = enforceMaxSectionLength(out, opts.maxSection || 0)
+  out = labelRepeatSmoothing(out)
+  return out
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2))
   if (!args.song) {
@@ -223,6 +353,13 @@ function main() {
 
   const imported = importMcGillJson(songJson, { sectionStrategy: args.strategy })
   const predicted = fromImportedSections(imported)
+  const beatTrack = loadBeatTrack(args.beatsDir, songPath)
+  const predictedProcessed = hsmmDecode(predicted, {
+    beatTrack,
+    beatSnap: args.beatSnap,
+    minSection: args.minSection,
+    maxSection: args.maxSection || 0,
+  })
   let reference = []
   let referenceName = 'dataset_sections'
   if (args.salamiRefs && args.salamiSongId) {
@@ -238,13 +375,16 @@ function main() {
     reference = fromMsSections(songJson.sections ?? [])
   }
 
-  const b = boundaryMetrics(reference, predicted, args.tolerance)
-  const l = labelAgreement(reference, predicted)
+  const b = boundaryMetrics(reference, predictedProcessed, args.tolerance)
+  const l = labelAgreement(reference, predictedProcessed)
 
   console.log(`Song: ${songJson.title ?? path.basename(songPath)} — ${songJson.artist ?? 'Unknown'}`)
   console.log(`Strategy: ${args.strategy}`)
   console.log(`Reference: ${referenceName}`)
   console.log(`Tolerance: ${args.tolerance}s`)
+  if (beatTrack) {
+    console.log(`Beat assist: beats=${beatTrack.beats?.length ?? 0}, snap=${args.beatSnap}s`)
+  }
   console.log('')
   console.log('Boundary metrics')
   console.log(`  TP=${b.tp} FP=${b.fp} FN=${b.fn}`)

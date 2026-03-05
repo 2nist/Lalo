@@ -105,12 +105,17 @@ function mapQualityExtension(baseToken, parentheticalToken) {
 }
 
 export function parseHarteChord(harte) {
+  if (!harte || typeof harte !== 'string') return null
+  const trimmed = harte.trim()
+  if (!trimmed) return null
+  const junkRe = /^(guitar|voice|harmonica|organ|piano|bass|drums|strings|percussion)$/i
+  if (junkRe.test(trimmed)) return null
   if (harte === 'N' || harte === 'X') return null
-  if (typeof harte !== 'string' || !harte.includes(':')) {
+  if (!trimmed.includes(':')) {
     throw new Error(`Invalid Harte chord "${String(harte)}"`)
   }
 
-  const [rootTokenRaw, descriptorRaw] = harte.split(':')
+  const [rootTokenRaw, descriptorRaw] = trimmed.split(':')
   const rootIdx = ROOT_INDEX_BY_TOKEN[rootTokenRaw]
   if (rootIdx === undefined) {
     throw new Error(`Unsupported Harte root "${rootTokenRaw}" in "${harte}"`)
