@@ -49,6 +49,8 @@ tmp/
 temp/
 
 # MIR dataset workspace
+data/
+datasets/
 data/raw/
 data/normalized/salami/*.json
 .cache_probe/
@@ -56,3 +58,11 @@ data/normalized/salami/*.json
 # Audio/beat artifacts
 data/audio/
 data/beats/
+
+# MIR pipeline data
+data/lalo.db
+data/audio/
+data/midi_cache/
+*.pyc
+__pycache__/
+.env
