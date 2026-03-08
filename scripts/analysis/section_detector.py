@@ -56,7 +56,7 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
     "rms_energy": 0.05,
 }
 
-MIN_SECTION_SEC = 8.0
+MIN_SECTION_SEC = 4.0
 MAX_SECTION_SEC = 90.0
 NMS_DISTANCE_SEC = 8.0
 SSM_BAR_BEATS = 2
@@ -847,6 +847,26 @@ def main() -> None:
         "--weight-duration", type=float,
         default=DEFAULT_WEIGHTS["duration_prior"],
     )
+    ap.add_argument(
+        "--weight-chroma", type=float,
+        default=DEFAULT_WEIGHTS.get("chroma_change", 0.0),
+        help="Weight for chroma_change feature",
+    )
+    ap.add_argument(
+        "--weight-spec-contrast", type=float,
+        default=DEFAULT_WEIGHTS.get("spec_contrast", 0.0),
+        help="Weight for spec_contrast feature",
+    )
+    ap.add_argument(
+        "--weight-onset-density", type=float,
+        default=DEFAULT_WEIGHTS.get("onset_density", 0.0),
+        help="Weight for onset_density feature",
+    )
+    ap.add_argument(
+        "--weight-rms", type=float,
+        default=DEFAULT_WEIGHTS.get("rms_energy", 0.0),
+        help="Weight for rms_energy feature",
+    )
     args = ap.parse_args()
 
     audio_path = Path(args.audio)
@@ -865,6 +885,10 @@ def main() -> None:
         "cadence_score": args.weight_cadence,
         "repetition_break": args.weight_repetition,
         "duration_prior": args.weight_duration,
+        "chroma_change": args.weight_chroma,
+        "spec_contrast": args.weight_spec_contrast,
+        "onset_density": args.weight_onset_density,
+        "rms_energy": args.weight_rms,
     }
 
     result = detect_sections(
