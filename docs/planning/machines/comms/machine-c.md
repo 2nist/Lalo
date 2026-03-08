@@ -127,3 +127,50 @@ notes: |
   3. label_accuracy=0.0 is a naming mismatch (generic labels vs verse/chorus)
      => requires post-hoc label classifier, not weight tuning
   Full hypothesis with supporting numbers sent to machine-b inbox.
+
+## MSG-20260308-0020
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 2 diagnostics-only lane complete.
+artifacts:
+- results/machine-c-failure-taxonomy.md
+- docs/planning/machines/comms/live/machine-c.md (MSG-20260308-0102)
+notes: |
+  WAVE 2 COMPLETE — analysis + hypothesis packaging (no audio dependency)
+  -----------------------------------------------------------------------
+  Analyzed: bench-machine-c.log (30 songs), sections-machine-c.json,
+            analysis5-machine-c.log, oracle-analysis-machine-c.log,
+            bench-machine-b.log (from origin/machine-b/worker-wave1)
+
+  Top 5 failure patterns + testable Machine B hypotheses:
+
+  H1 — CHUNK SIZE MISMATCH (HIGH)
+       32s chunks vs 19.9s median section → 23/30 songs score F1=0
+       Under-segmented by mean 2.23 boundaries/song (24/30 songs)
+       Hypothesis: CHUNK_SIZE=20s → F1@0.5s 0.0443→≥0.10
+
+  H2 — NMS OVER-SUPPRESSION (HIGH)
+       NMS=16s kills 30% of real adjacent boundaries
+       Oracle ceiling penalty: -0.1368 F1
+       Hypothesis: NMS=8s → oracle 0.8222→0.9590
+
+  H3 — MIN FILTER TOO AGGRESSIVE (MEDIUM)
+       MIN=8s structurally excludes 13% of true short sections
+       Hypothesis: MIN=4s → oracle +0.035
+
+  H4 — REF PARSER BROKEN (CRITICAL)
+       ref_boundaries=0 for all 30 machine-b songs (327 missing)
+       learned_weights.json trained on empty ref — values are invalid
+       Hypothesis: Fix parser → all metrics become non-zero and valid
+       Fix this before anything else
+
+  H5 — LABEL NAME MISMATCH (MEDIUM)
+       Detector: "Section 1/2/3..." vs GT: verse/chorus/intro/bridge
+       label_accuracy=0.0 is structural, not a signal failure
+       Hypothesis: position-based classifier → label_acc 0→0.25+
+
+  Priority: H4 → H2+H3 → H1 → H5
+  Posted: results/machine-c-failure-taxonomy.md (full evidence + per-song stats)
+  Also posted Analysis 5 findings to machine-b (MSG-20260308-0015, prior wave)

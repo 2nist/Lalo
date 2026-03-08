@@ -26,7 +26,16 @@ notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for mach
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Run integration support lane: verify and merge Machine B + C outputs into a clean integration branch, then post consolidated quality summary.
 artifacts: integration summary note, merge/cherry-pick commit refs, updated outbox status
 notes: This lane should avoid changing detector defaults; focus on integrating validated artifacts and reporting risks.
+
+## MSG-20260308-0101
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 2 integration gate. Build a merge-readiness checklist and verify that integrated B/C outputs have no obvious regressions before merge to coordination/main.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Focus on integration quality gate and risk notes; do not retune detector defaults.

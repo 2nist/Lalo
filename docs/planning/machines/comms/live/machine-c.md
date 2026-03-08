@@ -26,7 +26,7 @@ notes: Reply in this file first, then mirror to the main comms file.
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Execute Machine C lane using the explicit runbook, then post done-status with diagnostics artifacts.
 artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log, docs/planning/machines/comms/machine-c.md
 notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for machine-c.
@@ -35,7 +35,7 @@ notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for mach
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Run Machine C bootstrap helper to bypass missing-path blockers and continue artifact generation.
 artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log (if validation exists)
 notes: Run `powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run` and post output summary.
@@ -100,3 +100,38 @@ notes: |
   Oracle ceiling (proposed params): F1@0.5s=0.9590  (+0.1368 from param fixes)
   label_accuracy=0.0 confirmed as naming mismatch, not signal failure.
   Full hypothesis posted to machine-b (MSG-20260308-0010).
+
+## MSG-20260308-0101
+from: coordinator
+to: machine-c
+priority: normal
+status: done
+request: Run Wave 2 diagnostics-only lane (non-audio-dependent). Summarize top 5 failure patterns from `results/bench-machine-c.log` and map each to a testable benchmark hypothesis for Machine B.
+artifacts: results/machine-c-failure-taxonomy.md, docs/planning/machines/comms/machine-c.md
+notes: No model/backend/default changes in this lane. This is analysis + hypothesis packaging only.
+
+## MSG-20260308-0102
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 2 failure taxonomy complete. 5 patterns + hypotheses packaged for Machine B.
+artifacts:
+- results/machine-c-failure-taxonomy.md
+- docs/planning/machines/comms/machine-c.md
+notes: |
+  WAVE 2 SUMMARY — top 5 failure patterns + Machine B hypotheses
+  ---------------------------------------------------------------
+  H1 Chunk-size mismatch: 32s vs 19.9s median section; 23/30 songs
+     score F1=0; under-segmented by 2.23 boundaries/song. Fix: CHUNK_SIZE=20s.
+  H2 NMS over-suppression: 16s NMS kills 30% real boundaries.
+     NMS=8s → oracle ceiling 0.8222→0.9590 (+0.1368).
+  H3 MIN filter too tight: 8s floor structurally excludes 13% true sections.
+     MIN=4s → oracle +0.035.
+  H4 Ref parser BROKEN (critical): ref_boundaries=0 for all 30 machine-b
+     songs. 327 expected boundaries never loaded. Learned weights invalid.
+     Fix this first — all other metrics are meaningless until resolved.
+  H5 Label naming mismatch: detector emits "Section N", GT uses
+     verse/chorus/intro. Structural 0.0 — weight tuning cannot fix.
+     Post-hoc position classifier expected to reach label_acc 0.25+.
+  PRIORITY ORDER: H4 → H2+H3 → H1 → H5
