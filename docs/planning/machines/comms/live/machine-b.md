@@ -301,7 +301,7 @@ summary: Wave 12 artifacts landed in `origin/machine-b/worker-wave1` commit `85b
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 13 reproducibility-first pass. Reproduce Wave 9 parity exactly, then run one threshold-only ablation with full trace logs and monotonicity checks.
 artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13a.log, results/wave13b.log, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -318,3 +318,27 @@ notes: |
 	2) Monotonic threshold behavior check: FP_B >= FP_A and pred/song_B >= pred/song_A
 	3) Include `benchmark_date`, active weight keys/count, and explicit command lines for both runs
 	Do not tune geometry or model in Wave 13.
+
+status: done
+summary: Wave 13 artifacts landed in `origin/machine-b/worker-wave1` commits `75825299` and `00bcfdc0`. Machine C verification (`fd3e551b`) marked FAIL and identified probable inverted threshold filtering as root cause.
+
+## MSG-20260308-1601
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
+artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Single code fix scope:
+	- threshold filter must keep candidates with `score >= prob_threshold`
+	- no geometry/model tuning in this wave
+	Locked config for all runs:
+	- Wave 9 weights, nms_gap=8.0, min_section=4.0, beat_snap=2.0, same dev set
+	Run A: `prob_threshold=0.50` (parity)
+	Run B: `prob_threshold=0.25` (ablation)
+	Run C: `prob_threshold=0.15` (monotonic trend check)
+	Required validations in note:
+	1) Wave14a parity target vs Wave 9 (TP=3, FP=29, F1@0.5s=0.0383) with explanation for any mismatch
+	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
+	3) Include explicit command lines, benchmark timestamp, and active weight keys/count

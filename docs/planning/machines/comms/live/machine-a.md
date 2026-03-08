@@ -188,7 +188,19 @@ summary: Wave 12 gate closed from B/C evidence. Decision: `hold-for-more-data` b
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 13 integration gate. Track Machine B reproducibility-first reruns and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 13 evidence lands. Require monotonic threshold behavior checks and baseline reproducibility before accepting any metric movement.
+
+status: done
+summary: Wave 13 gate closed from B/C evidence. Decision: `hold-for-more-data` because parity remained non-reproducible, threshold monotonicity checks failed, and Machine C isolated an inverted `prob_threshold` filter bug as root cause.
+
+## MSG-20260308-1601
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 14 integration gate. Track Machine B threshold-direction bugfix reruns and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 14 evidence lands. Require parity reproduction and monotonic threshold behavior before accepting quality gains.

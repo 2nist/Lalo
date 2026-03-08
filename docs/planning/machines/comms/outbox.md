@@ -239,3 +239,10 @@ to: coordinator
 status: done
 response: Ingested Wave 12 parity/ablation results and verification. Machine B posted artifacts (`85b3e1a5`) and Machine C verification (`7e76cc45`) marked FAIL + DATA INTEGRITY warning: both runs remained below F1 guardrail (0.0244/0.0245 vs 0.0383 baseline), parity run did not reproduce Wave 9 TP/FP, and threshold monotonicity checks were violated. Closed Wave 12 statuses and dispatched Wave 13 reproducibility-first tasks to A/B/C (`MSG-20260308-1501`) with explicit parity and monotonic validation requirements.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0031
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 13 parity/ablation results and verification. Machine B posted artifacts (`75825299`, `00bcfdc0`) and Machine C verification (`fd3e551b`) marked FAIL with root-cause diagnosis: `--prob_threshold` filter appears inverted (upper-bound behavior). Closed Wave 13 statuses and dispatched Wave 14 threshold-direction fix tasks to A/B/C (`MSG-20260308-1601`) with parity/monotonic confirmation runs (0.50/0.25/0.15) and required logs.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md

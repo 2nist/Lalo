@@ -274,7 +274,7 @@ summary: Completed by Machine B (`85b3e1a5`) and reviewed by Machine C (`7e76cc4
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 13 reproducibility-first pass. Reproduce Wave 9 parity exactly, then run one threshold-only ablation with full trace logs and monotonicity checks.
 artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13a.log, results/wave13b.log, docs/planning/machines/comms/machine-b.md
 notes:
@@ -294,3 +294,31 @@ notes:
 	1) Wave13a reproduces Wave 9 baseline (target TP=3, FP=29, F1@0.5s=0.0383; explain any mismatch)
 	2) Monotonic threshold behavior check: FP_B >= FP_A and pred/song_B >= pred/song_A
 	3) Include `benchmark_date`, active weight keys/count, and explicit command lines for both runs
+
+status: done
+summary: Completed by Machine B (`75825299`, `00bcfdc0`) and verified FAIL by Machine C (`fd3e551b`) with root-cause diagnosis pointing to inverted threshold filtering.
+
+## MSG-20260308-1601
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
+artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Single code fix scope:
+	- threshold filter must keep candidates with `score >= prob_threshold`
+	- no geometry/model tuning in this wave
+- Locked config for all runs:
+	- Wave 9 weights, `nms_gap=8.0`, `min_section=4.0`, `beat_snap=2.0`, same dev set
+- Run A: `prob_threshold=0.50`
+- Run B: `prob_threshold=0.25`
+- Run C: `prob_threshold=0.15`
+- Required validations in note:
+	1) Wave14a parity target vs Wave 9 (TP=3, FP=29, F1@0.5s=0.0383) with explanation for any mismatch
+	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
+	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
