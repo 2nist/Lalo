@@ -92,3 +92,10 @@ to: coordinator
 status: done
 response: Checked Machine B results intake. New worker commits landed (`93aecd13`, `c45bfce6`, `eb5349dc`) with updated artifacts and comms mirror. Wave 3 result lane is now mirrored as done in coordination live channel. Remaining open item is guardrail traceability request `MSG-20260308-0401` (explicit parser-fix code-diff provenance note).
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0010
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine C push intake. New commit `27c7276a` delivered Wave 3 verification artifacts (`results/verify-machine-b-w3.log`, `tmp/verify_machine_b_w3.py`) and comm updates. Verification result is PASS: non-zero ref boundaries (0/30 ref=0), XGBoost CV mean F1=0.380, and H2/H3 confidence assessment posted. Mirrored Machine C `MSG-20260308-0301` and `MSG-20260308-0401` as done in coordination live channel.
+artifacts: docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md
