@@ -32,4 +32,7 @@ powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1
 
 # checks + fetch harmonix if missing + run commands
 powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -Run
+
+# checks + fetch harmonix + fetch audio (up to 30 songs) + run commands
+powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run
 ```
