@@ -1,0 +1,51 @@
+{
+  "keys": [
+    "flux_peak",
+    "chord_novelty",
+    "cadence_score",
+    "repetition_break",
+    "duration_prior",
+    "chroma_change",
+    "spec_contrast",
+    "onset_density",
+    "rms_energy"
+  ],
+  "importances": [
+    0.06262577325105667,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5039443373680115,
+    0.1615239977836609,
+    0.1685100644826889,
+    0.10339586436748505
+  ],
+  "cv_scores": [
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  ]
+}
