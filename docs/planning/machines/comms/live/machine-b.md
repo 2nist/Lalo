@@ -121,7 +121,7 @@ notes: Use one scoped change only. Keep `--algorithm heuristic` and runtime defa
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: in-progress
 request: Visibility retry for Wave 4b. If this is the first message you can see, execute `MSG-20260308-0601` and post an `ack` reply before running.
 artifacts: docs/planning/machines/comms/machine-b.md, results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md
 notes: |
@@ -132,5 +132,8 @@ notes: |
 	Reply format now:
 	- status: in-progress
 	- ack: received MSG-20260308-0601/0602
-	- eta: <estimate>
+	- eta: 2h
+
+ack: received MSG-20260308-0601/0602
+eta: 2h
 

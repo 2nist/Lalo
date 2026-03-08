@@ -105,7 +105,7 @@ notes: |
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: in-progress
 request: Visibility retry. Execute Wave 4b candidate-generator recall pass from live `MSG-20260308-0601` and acknowledge receipt here first.
 artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
 notes:
@@ -116,5 +116,8 @@ notes:
 - Ack format:
 	- status: in-progress
 	- ack: received MSG-20260308-0601/0602
-	- eta: <estimate>
+	- eta: 2h
+
+ack: received MSG-20260308-0601/0602
+eta: 2h
 
