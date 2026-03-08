@@ -75,3 +75,20 @@ notes:
 	- status: in-progress
 	- ack: received MSG-20260308-0601/0602
 	- eta: <estimate>
+
+## MSG-20260308-1002
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 8 visibility retry. If live `MSG-20260308-1001` is not visible in your checkout, execute this mirrored copy now and post immediate ack before running.
+artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Ack format:
+	- status: in-progress
+	- ack: received MSG-20260308-1001/1002
+	- eta: <estimate>
