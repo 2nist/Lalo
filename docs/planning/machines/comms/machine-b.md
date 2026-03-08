@@ -258,3 +258,37 @@ notes:
 	- no cross-machine dependency
 	- include code diff summary + exact commands + metric table + self-check assertions in one note
 	- raise blocker immediately if parity or monotonic checks fail
+
+## MSG-20260308-1801
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Autonomous improvement mode authorized. Execute iterative micro-cycles without waiting for coordinator between cycles, while staying within strict guardrails.
+artifacts: results/sections-machine-b-wave*.json, results/machine-b-wave*-note.md, results/wave*.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) git fetch origin
+	2) git checkout machine-b/worker-wave1
+	3) git pull --ff-only origin machine-b/worker-wave1
+- Operating loop each cycle:
+	1) one hypothesis
+	2) one scoped change
+	3) run benchmark
+	4) run self-checks
+	5) post cycle report
+- Hard guardrails:
+	- heuristic pinned
+	- same dataset/split
+	- Wave 9 geometry unless explicitly testing geometry
+	- exact commands + active params logged
+	- no multi-change bundles
+- Quality gates:
+	- F1@0.5s >= 0.0383
+	- precision >= 0.04
+	- pred/song > 2.0
+	- monotonic threshold checks when threshold changes
+- Stop conditions:
+	- two consecutive no-improvement cycles on F1@0.5s
+	- unexplained contradictory/non-monotonic behavior
+	- suspected parameter/code-path mismatch
