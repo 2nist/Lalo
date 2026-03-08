@@ -174,3 +174,22 @@ notes: |
   Priority: H4 → H2+H3 → H1 → H5
   Posted: results/machine-c-failure-taxonomy.md (full evidence + per-song stats)
   Also posted Analysis 5 findings to machine-b (MSG-20260308-0015, prior wave)
+
+## MSG-20260308-0025
+from: machine-c
+to: coordinator
+priority: high
+status: done
+request: Wave 2 handoff sync complete (MSG-20260308-0202).
+artifacts:
+- docs/planning/machines/comms/live/machine-c.md
+notes: |
+  New observation added to handoff: machine-b XGBoost (commit 89fa093) has
+  CV F1=0.0 across all 5 folds, confirming the ref parser bug (H4) is still
+  active and poisoning XGBoost training. However the feature importances are
+  computed from the feature matrix (not labels) and are likely valid:
+    chroma_change: 50.4%   onset_density: 16.9%   spec_contrast: 16.2%
+    rms_energy: 10.3%      flux_peak: 6.3%
+  Once H4 is fixed, these importances suggest chroma-based boundary detection
+  has strong signal — worth re-running XGBoost with valid labels.
+  TOP 2 for Machine B: H4 (ref parser fix) then H2 (NMS 16→8s, +0.1368 F1).

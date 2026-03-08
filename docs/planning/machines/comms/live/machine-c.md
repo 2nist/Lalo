@@ -135,3 +135,57 @@ notes: |
      verse/chorus/intro. Structural 0.0 — weight tuning cannot fix.
      Post-hoc position classifier expected to reach label_acc 0.25+.
   PRIORITY ORDER: H4 → H2+H3 → H1 → H5
+
+## MSG-20260308-0201
+from: coordinator
+to: machine-c
+priority: high
+status: done
+request: Finalize Wave 2 diagnostics handoff by syncing your completion commit into coordination-visible comms and highlighting the top 2 hypotheses Machine B should test first.
+artifacts: docs/planning/machines/comms/machine-c.md, docs/planning/machines/comms/live/machine-c.md, results/machine-c-failure-taxonomy.md
+notes: Your branch shows completion (`origin/machine-c` latest commit). This step is a sync + prioritization handoff.
+
+## MSG-20260308-0202
+from: machine-c
+to: coordinator
+priority: high
+status: done
+request: Wave 2 handoff finalized. Completion synced. Top 2 hypotheses for Machine B highlighted below.
+artifacts:
+- results/machine-c-failure-taxonomy.md
+- docs/planning/machines/comms/machine-c.md
+- docs/planning/machines/comms/machine-b.md (MSG-20260308-0015)
+notes: |
+  WAVE 2 HANDOFF — Sync + Prioritization
+  ---------------------------------------
+  Branch origin/machine-c @ 895c6fa contains:
+    results/machine-c-failure-taxonomy.md   — 5 failure patterns, full evidence
+    results/analysis5-machine-c.log         — ref parser bug proof
+    results/oracle-analysis-machine-c.log   — parameter ceiling analysis
+    results/bench-machine-c.log             — 30-song heuristic baseline
+
+  TOP 2 HYPOTHESES FOR MACHINE B (test in this order)
+  ----------------------------------------------------
+
+  #1 — H4: Fix the reference boundary parser (CRITICAL, blocks everything)
+       Evidence: ref_boundaries=0 for all 30 songs in false_pos_neg_per_song.csv;
+       327 expected boundaries missing. XGBoost CV F1=0.0 across all 5 folds
+       confirms training is also poisoned by this bug. All learned weights
+       (linear and XGBoost) are trained against empty reference — invalid.
+       New signal: XGBoost identifies chroma_change (50.4% importance) and
+       onset_density (16.9%) as strongest features. These importances are
+       computed from the feature matrix, not the labels — they are likely
+       valid and suggest chroma is the primary signal. But the weights cannot
+       be evaluated until ref_boundaries > 0.
+       Test: add debug print of section file path + first 3 lines for
+       song 0003_6foot7foot. File exists in our corpus with 11 boundaries.
+
+  #2 — H2: Reduce NMS_DISTANCE_SEC 16 → 8 (highest F1 gain, annotation-only)
+       Evidence: 30% of adjacent true boundaries in Harmonix < 16s apart.
+       Oracle ceiling with NMS=16s: F1@0.5s=0.8222 (−0.1368 vs proposed).
+       Oracle ceiling with NMS=8s:  F1@0.5s=0.9590.
+       This test requires zero audio dependency — run on annotation-only corpus.
+       Measurable the moment H4 is fixed.
+
+  SECONDARY: H3 (MIN=8→4s, +0.035 oracle) can be tested simultaneously with H2.
+  DEFERRED:  H1 (chunk size) and H5 (label classifier) are lower priority.

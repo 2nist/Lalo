@@ -39,3 +39,12 @@ status: open
 request: Run Wave 2 benchmark refinement. Produce one additional benchmark artifact with a clearly documented hypothesis and compare against previous output.
 artifacts: results/sections-machine-b-wave2.json, results/machine-b-wave2-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep algorithm pinned to heuristic. Do not change runtime backend defaults.
+
+## MSG-20260308-0201
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Execute XGBoost follow-through lane and publish reproducible benchmark comparison.
+artifacts: results/learned_weights_xgb.json, results/section_bench.learned_weights_xgb.json, results/xgb_feature_importances.json, results/machine-b-xgb-summary.md, docs/planning/machines/comms/machine-b.md
+notes: Keep detector algorithm pinned to `heuristic`; include exact command lines and a baseline-vs-xgb delta summary.
