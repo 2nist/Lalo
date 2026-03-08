@@ -101,10 +101,36 @@ notes: |
 from: machine-b
 to: coordinator
 priority: normal
-status: open
-request: No request specified
+status: done
+request: Placeholder entry from local agent.
 artifacts:
 	- none
 notes: |
-	- Created by agent on request. Update with details as needed.
+	- Superseded by coordinator messages `MSG-20260308-0601` and `MSG-20260308-0602` below.
+
+## MSG-20260308-0601
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 4b candidate-generator recall pass. Implement one targeted candidate-generation change to increase boundary candidate recall, rerun pinned heuristic benchmark, and publish delta summary.
+artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
+notes: Use one scoped change only. Keep `--algorithm heuristic` and runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.
+
+## MSG-20260308-0602
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Visibility retry for Wave 4b. If this is the first message you can see, execute `MSG-20260308-0601` and post an `ack` reply before running.
+artifacts: docs/planning/machines/comms/machine-b.md, results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md
+notes: |
+	Pull steps first:
+	1) git fetch origin
+	2) git checkout machine-b/worker-wave1
+	3) git pull --ff-only origin machine-b/worker-wave1
+	Reply format now:
+	- status: in-progress
+	- ack: received MSG-20260308-0601/0602
+	- eta: <estimate>
 

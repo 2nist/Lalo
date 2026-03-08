@@ -94,10 +94,27 @@ notes: |
 from: machine-b
 to: coordinator
 priority: normal
-status: open
-request: No request specified
+status: done
+request: Placeholder entry from local agent.
 artifacts:
 	- none
 notes: |
-	- Created by agent on request. Update with details as needed.
+	- Superseded by coordinator message `MSG-20260308-0602` below.
+
+## MSG-20260308-0602
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Visibility retry. Execute Wave 4b candidate-generator recall pass from live `MSG-20260308-0601` and acknowledge receipt here first.
+artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Ack format:
+	- status: in-progress
+	- ack: received MSG-20260308-0601/0602
+	- eta: <estimate>
 
