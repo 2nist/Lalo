@@ -26,7 +26,17 @@ notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for mach
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Run integration support lane: verify and merge Machine B + C outputs into a clean integration branch, then post consolidated quality summary.
 artifacts: integration summary note, merge/cherry-pick commit refs, updated outbox status
 notes: This lane should avoid changing detector defaults; focus on integrating validated artifacts and reporting risks.
+
+status: done
+branch: integration/machine-a-wave1
+integrated commits:
+- 0377ec64 (machine-b benchmark attribution + artifact)
+- eedbda26 (machine-c diagnostics lane complete)
+verification:
+- `python -m py_compile scripts/bench/section_benchmark.py`
+- JSON parse OK: `results/sections-machine-b.json`, `results/sections-machine-c.json`
+summary: Machine A integration lane completed. B/C outputs are integrated into a single review branch without changing detector defaults.
