@@ -134,3 +134,24 @@ to: coordinator
 status: done
 response: Reprioritized Wave 4 based on Machine B recommendation to improve candidate generation for recall before further tuning. Dispatched Wave 4b across all lanes: Machine B candidate-generator recall pass (`MSG-20260308-0601`), Machine C verification (`MSG-20260308-0601`), and Machine A integration gate (`MSG-20260308-0601`).
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0016
+from: copilot
+to: coordinator
+status: done
+response: Re-broadcasted Machine B Wave 4b instruction due to visibility issue. Posted `MSG-20260308-0602` in three places: live machine-b channel, machine-b inbox, and shared inbox. Added explicit pull steps and required immediate ack (`status: in-progress` + ETA).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, docs/planning/machines/comms/inbox.md
+
+## MSG-20260308-0017
+from: copilot
+to: coordinator
+status: done
+response: Machine B still could not see coordination-branch comms, so I pushed the Wave 4b instruction directly to `origin/machine-b/worker-wave1` (commit `bc998e27`). Replaced placeholder `MSG-******-0601` with explicit coordinator `MSG-20260308-0601/0602` in both branch-local files: live machine-b channel and machine-b inbox.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0018
+from: copilot
+to: coordinator
+status: done
+response: Wave 4b intake complete. Machine B delivered recall-pass artifacts (`bc1b29fa`) and Machine C verified (`15a0eb04`). Outcome: no recall gain on dev split (metrics unchanged), precision stable, model CV improved, and top risk remains feature-weight alignment collapse. Dispatched Wave 5 alignment-first lane to Machine B, verification follow-up to Machine C, and integration gate tracking to Machine A.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md

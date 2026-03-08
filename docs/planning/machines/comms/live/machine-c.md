@@ -305,7 +305,7 @@ summary: Superseded by Wave 4b candidate-generator recall verification lane.
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 4b verification pass. Validate Machine B candidate-generator recall output and confirm recall gain vs baseline without destabilizing precision.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL plus one highest-priority risk.
@@ -320,8 +320,7 @@ artifacts:
 - tmp/verify_machine_b_w4b.py
 notes: |
   VERIFICATION: Wave 4b candidate-generator recall (Machine B commit c45bfce)
-  ==========================================================================
-
+  ===================================================================
   CHECK 1 -- Recall gain vs baseline: FAIL (no improvement yet)
     Baseline (75a6ca7): pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
     Current (c45bfce):  pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
@@ -349,3 +348,56 @@ notes: |
   VERDICT: PASS on model quality. FAIL on recall gain (work not yet deployed).
   TOP RISK: Weight extraction drops 4/5 informative features -- fix alignment
   before applying NMS/MIN changes or XGBoost contribution will be wasted.
+=======
+
+status: done
+summary: Completed by Machine C (`15a0eb04`). Verification: precision stable and model CV improved, but recall gain is FAIL (unchanged); top risk is feature-weight alignment bug.
+
+## MSG-20260308-0701
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 5 verification pass. Validate Machine B alignment-fix output and confirm whether non-zero informative weights are actually used and whether recall changes vs Wave 4b baseline.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL and top remaining blocker.
+## MSG-20260308-0702
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 5 verification of Machine B alignment-fix output (commit bc1b29f). Full log at results/verify-machine-b-w5.log.
+artifacts:
+- results/verify-machine-b-w5.log
+notes: |
+  VERIFICATION: Wave 5 alignment-fix (Machine B commit bc1b29f, sub_prominence 0.4->0.3)
+  ====================================================================================
+
+  CHECK 1 -- Recall gain vs Wave 4b baseline: FAIL
+    Before: pred/song=1.12  ref/song=8.00  Recall=0.0078  F1@0.5s=0.0179
+    After:  pred/song=1.12  ref/song=8.00  Recall=0.0078  F1@0.5s=0.0179
+    Delta: recall=+0.0000  F1=+0.0000
+    sub_prominence 0.4->0.3 produced zero change in candidate count or recall.
+
+  CHECK 2 -- Non-zero informative weights deployed: UNVERIFIED
+    Weight extraction alignment bug from Wave 4b (4 features dropped, flux_peak=1.0)
+    has NOT been addressed in this commit. No weight file updated.
+    Task scope was sub_prominence tuning only; alignment fix not yet implemented.
+
+  CHECK 3 -- Precision stability: STABLE
+    TP=1 FP=17 FN=127 unchanged. No regression.
+
+  TOP REMAINING BLOCKER: NMS_DISTANCE_SEC=16s
+    sub_prominence controls which peaks become candidates. NMS_DISTANCE_SEC
+    then collapses any two candidates within 16s down to one. Even if
+    sub_prominence 0.3 increases pre-NMS candidate count, NMS suppresses
+    ~86% of them. This is a series bottleneck:
+      candidates -> NMS (16s) -> survivors -> scorer (flux_peak=1.0)
+    The sub_prominence change acts upstream of the bottleneck and cannot
+    improve recall until NMS is addressed first.
+    Oracle ceiling with NMS=8s: F1@0.5s=0.9590 (+0.1368). Unchanged.
+
+  VERDICT: FAIL on both recall gain and weight alignment deployment.
+  NEXT ACTION FOR MACHINE B: Reduce NMS_DISTANCE_SEC (H2: 16->8s) before
+  any further upstream candidate-generator tuning. That single change
+  unlocks recall gain that all prior work has been blocked on.

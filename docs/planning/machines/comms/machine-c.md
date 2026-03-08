@@ -252,3 +252,20 @@ details: |
 artifacts:
 - results/verify-machine-b-w4b.log
 - tmp/verify_machine_b_w4b.py
+## MSG-20260308-0045
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 5 (task MSG-20260308-0701)
+status: done
+summary: sub_prominence 0.4->0.3 had zero effect. Recall UNCHANGED. Weight alignment bug unaddressed. NMS=16s is root blocker.
+details: |
+  CHECK1 FAIL  recall=0.0078 unchanged (pred=1.12 vs ref=8.00), F1@0.5s=0.0179.
+  CHECK2 UNVF  Weight alignment bug not fixed in this commit. flux_peak=1.0 still.
+  CHECK3 STBL  TP=1 FP=17 FN=127 unchanged. No precision regression.
+  BLOCKER      NMS_DISTANCE_SEC=16s is upstream choke. sub_prominence acts before
+               NMS. Oracle ceiling NMS=8s: +0.1368 F1. Must fix NMS first.
+  NEXT ACTION  Reduce NMS_DISTANCE_SEC 16->8 (H2). No further upstream tuning
+               will matter until NMS is unblocked.
+artifacts:
+- results/verify-machine-b-w5.log

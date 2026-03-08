@@ -127,7 +127,39 @@ summary: Superseded by candidate-generator recall lane per Machine B recommendat
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 4b candidate-generator recall pass. Implement one targeted candidate-generation change to increase boundary candidate recall, rerun pinned heuristic benchmark, and publish delta summary.
 artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
 notes: Use one scoped change only. Keep `--algorithm heuristic` and runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.
+
+status: done
+summary: Completed in `origin/machine-b/worker-wave1` (`8a1765e4`, `bc1b29fa`). Scoped change (`sub_prominence` 0.4 -> 0.3) produced no dev-split delta (F1/recall unchanged).
+
+## MSG-20260308-0602
+from: coordinator
+to: machine-b
+priority: high
+status: done
+request: Rebroadcast of Wave 4b task (visibility retry). If this is the first message you can see, execute `MSG-20260308-0601` and post an `ack` reply before running.
+artifacts: docs/planning/machines/comms/machine-b.md, results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md
+notes: |
+	Pull steps first:
+	1) git fetch origin
+	2) git checkout coordination/wave-1
+	3) git pull --ff-only origin coordination/wave-1
+	Reply format now:
+	- status: in-progress
+	- ack: received MSG-20260308-0601/0602
+	- eta: <estimate>
+
+status: done
+summary: Acknowledged by Machine B (`58d1c4e4`) and executed with result artifact push (`bc1b29fa`).
+
+## MSG-20260308-0701
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 5 alignment-first pass. Fix the feature-weight extraction/alignment bug so informative XGBoost features are not collapsed to `flux_peak` only, then rerun pinned heuristic benchmark and publish delta summary.
+artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.md, docs/planning/machines/comms/machine-b.md
+notes: Keep runtime defaults unchanged. Before/after table must include non-zero weight count, F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.

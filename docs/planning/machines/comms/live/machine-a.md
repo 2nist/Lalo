@@ -80,7 +80,19 @@ summary: Superseded by Wave 4b candidate-generator recall lane.
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 4b integration gate. Track Machine B candidate-generator recall pass and publish merge recommendation after Machine C verification.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Decide one of `merge-now | merge-with-guardrail | hold-for-more-data` based on Wave 4b recall delta and risk notes.
+
+status: done
+summary: Wave 4b gate reviewed from B/C artifacts. Decision: `hold-for-more-data` because recall did not improve and C flagged feature-weight alignment as the top blocker.
+
+## MSG-20260308-0701
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 5 integration gate. Track Machine B alignment-fix lane and Machine C validation, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 5 evidence lands.
