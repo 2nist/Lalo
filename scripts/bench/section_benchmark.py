@@ -269,6 +269,7 @@ def _run_detector(
             beat_snap_sec=0,
             algorithm=algorithm,
         )
+        # Normalize sections into benchmark format but retain detector metadata
         sections = []
         for s in result.get("sections", []):
             start_s = s["start_ms"] / 1000.0
@@ -278,7 +279,12 @@ def _run_detector(
                 "end_s": start_s + dur_s,
                 "label": s.get("label", "Section"),
             })
-        return sections
+        # Return a dict containing sections plus any meta/candidates for attribution
+        return {
+            "sections": sections,
+            "meta": result.get("meta", {}),
+            "candidates": result.get("candidates", []),
+        }
     except Exception as exc:
         print(f"    detector error: {exc}")
         return None
@@ -439,22 +445,37 @@ def run_benchmark(
                 algorithm=algorithm,
             )
             if det_pred is not None:
+                # det_pred now may be a dict with sections and meta
+                if isinstance(det_pred, dict):
+                    det_sections = det_pred.get("sections", [])
+                    det_meta = det_pred.get("meta", {})
+                    det_candidates = det_pred.get("candidates", [])
+                else:
+                    det_sections = det_pred
+                    det_meta = {}
+                    det_candidates = []
+
                 entry["detector"] = {
-                    str(tol): _boundary_f1(ref_sections, det_pred, tol)
+                    str(tol): _boundary_f1(ref_sections, det_sections, tol)
                     for tol in tolerances
                 }
                 entry["detector"]["label_accuracy"] = (
-                    _label_accuracy(ref_sections, det_pred)
+                    _label_accuracy(ref_sections, det_sections)
                 )
-                entry["detector"]["pred_sections"] = len(det_pred)
-                entry["detector"]["algorithm"] = algorithm
+                entry["detector"]["pred_sections"] = len(det_sections)
+                entry["detector"]["algorithm"] = (
+                    det_meta.get("algorithm") or algorithm
+                )
+                # Attach detector metadata for attribution/reproducibility
+                entry["detector"]["meta"] = det_meta
+                entry["detector"]["candidates_recorded"] = bool(det_candidates)
 
                 # Oracle beat snap — diagnostic: replace madmom with ground-truth beats
                 if oracle_beats_dir is not None:
                     beats_file = oracle_beats_dir / f"{song_id}_beats.txt"
                     if beats_file.exists():
                         beat_times = _load_harmonix_beats(beats_file)
-                        snapped = _snap_boundaries_to_beats(det_pred, beat_times)
+                        snapped = _snap_boundaries_to_beats(det_sections, beat_times)
                         entry["detector_oracle"] = {
                             str(tol): _boundary_f1(ref_sections, snapped, tol)
                             for tol in tolerances
