@@ -479,7 +479,7 @@ def detect_sections(
     min_section_sec: float = MIN_SECTION_SEC,
     max_section_sec: float = MAX_SECTION_SEC,
     nms_gap_sec: float = NMS_DISTANCE_SEC,
-    beat_snap_sec: float = 2.0,
+    beat_snap_sec: float = 0.0,
     algorithm: str = "msaf_scluster",
     prob_threshold: float = 0.0,
     random_seed: Optional[int] = None,
@@ -846,7 +846,7 @@ def main() -> None:
         "--max-section-sec", type=float, default=MAX_SECTION_SEC
     )
     ap.add_argument(
-        "--beat-snap-sec", type=float, default=2.0,
+        "--beat-snap-sec", type=float, default=0.0,
         help="Snap boundaries to nearest beat within this window (0=off)",
     )
     ap.add_argument(
