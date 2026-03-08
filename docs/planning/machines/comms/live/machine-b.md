@@ -159,7 +159,19 @@ summary: Acknowledged by Machine B (`58d1c4e4`) and executed with result artifac
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 5 alignment-first pass. Fix the feature-weight extraction/alignment bug so informative XGBoost features are not collapsed to `flux_peak` only, then rerun pinned heuristic benchmark and publish delta summary.
 artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep runtime defaults unchanged. Before/after table must include non-zero weight count, F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.
+
+status: done
+summary: Wave 5 response received (`01b44ce6`) but acceptance criteria not met: reported change tuned `prominence` and did not deliver alignment-fix evidence; expected artifact `results/sections-machine-b-wave5.json` was not present in branch.
+
+## MSG-20260308-0801
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 6 NMS-first bottleneck pass. Reduce `NMS_DISTANCE_SEC` from 16 -> 8 (H2), rerun pinned heuristic benchmark, and publish full delta table. Do not mix in additional parameter changes.
+artifacts: results/sections-machine-b-wave6.json, results/machine-b-wave6-note.md, docs/planning/machines/comms/machine-b.md
+notes: Include before/after values for F1@0.5s, F1@3.0s, mean predicted boundaries/song, TP/FP/FN, precision, and recall.

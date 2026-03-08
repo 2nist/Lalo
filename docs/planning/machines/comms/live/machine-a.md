@@ -92,7 +92,19 @@ summary: Wave 4b gate reviewed from B/C artifacts. Decision: `hold-for-more-data
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 5 integration gate. Track Machine B alignment-fix lane and Machine C validation, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 5 evidence lands.
+
+status: done
+summary: Wave 5 gate reviewed from B/C artifacts. Decision: `hold-for-more-data` because recall remained unchanged and the requested alignment-fix evidence was not delivered.
+
+## MSG-20260308-0801
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 6 integration gate. Track Machine B NMS-first pass and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 6 evidence lands.

@@ -119,7 +119,19 @@ summary: Completed by Machine C (`15a0eb04`). Verification: precision stable and
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 5 verification pass. Validate Machine B alignment-fix output and confirm whether non-zero informative weights are actually used and whether recall changes vs Wave 4b baseline.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL and top remaining blocker.
+
+status: done
+summary: Completed by Machine C (`6e509cc2`). Result: FAIL for recall gain; top blocker remains NMS 16s bottleneck and alignment fix still unverified.
+
+## MSG-20260308-0801
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 6 verification pass. Validate Machine B NMS-first run (16 -> 8) and report whether recall improves without unacceptable precision collapse.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and single top remaining blocker.
