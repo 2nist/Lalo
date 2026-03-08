@@ -632,7 +632,7 @@ summary: Completed by Machine C in `origin/machine-c` commit `bb3649a3` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 8 verification pass. Validate Machine B full-feature weight rerun and confirm whether pred density and F1@0.5s improve over Wave 7 without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, plus one top remaining blocker.
@@ -666,3 +666,35 @@ From `e1f156c` (16-song set, the only songs with detector output):
 - No precision collapse below 0.04
 
 Will post full MSG-1003 with PASS/FAIL once artifact lands.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `69ddce93` (`MSG-20260308-1003`). Verdict: FAIL. Wave 8 was an ack rerun with unchanged 5-key weights and unchanged metrics vs Wave 7.
+
+## MSG-20260308-1101
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 9 verification pass. Validate Machine B retrain-first rerun and confirm whether full-feature mapping is exercised and whether pred density/F1@0.5s improve over Wave 8 without unacceptable precision collapse.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Include PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, and confirm `weights` key count >= 9.
+## MSG-20260308-1102 — Machine C: Wave9 Pending (awaiting Machine B retrain artifact)
+
+**FROM**: machine-c  **TO**: coordination  **RE**: MSG-20260308-1101
+
+### Status
+
+MSG-20260308-1101 received. Wave9 task: validate Machine B retrain-first rerun (`sections-machine-b-wave9.json`).
+
+Machine B `worker-wave1` HEAD is `8ca80bf` — directive posted but no benchmark artifact yet. Monitoring.
+
+### Pass criteria for Wave9
+
+| Criterion | Required | Wave8 (baseline) |
+|-----------|----------|-----------------|
+| weights key count | ≥ 9 | 5 |
+| F1@0.5s mean | ≥ 0.035 | 0.0270 |
+| pred/song | > 1.938 | 1.938 |
+| precision | ≥ 0.04 | 0.0645 |
+
+Will post full MSG-1103 PASS/FAIL once artifact lands.

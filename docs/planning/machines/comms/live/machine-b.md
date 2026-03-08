@@ -195,16 +195,19 @@ summary: Completed by Machine B in `origin/machine-b/worker-wave1` commit `e1f15
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 8 sparsity-first pass. Retrain/re-export weights with full feature mapping (all intended keys), run pinned heuristic benchmark with explicit non-default weight flags enabled, and publish delta vs Wave 7.
 artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep algorithm pinned to heuristic. Include: 1) non-zero weight key count, 2) full key list, 3) F1@0.5s/F1@3.0s, 4) pred/song, TP/FP/FN, precision, recall. If you also test one threshold setting, label it clearly as a separate sub-run.
+
+status: done
+summary: Wave 8 artifacts landed in `origin/machine-b/worker-wave1` commit `11fce239`, then comm status closed in `b9b718f4`. Result did not meet intent: run was visibility/ack benchmark with unchanged 5-key weights and unchanged metrics vs Wave 7.
 
 ## MSG-20260308-1002
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 8 visibility retry. If `MSG-20260308-1001` is not visible in your checkout, execute this mirrored copy now and post immediate ack before running.
 artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -216,3 +219,23 @@ notes: |
 	- status: in-progress
 	- ack: received MSG-20260308-1001/1002
 	- eta: <estimate>
+
+status: done
+summary: Visibility retry succeeded. Machine B acknowledged and posted artifacts in worker branch (`11fce239`, `b9b718f4`).
+
+## MSG-20260308-1101
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
+artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+	This replaces Wave 8 visibility retry as the active task.
+	Required evidence in note:
+	- commit_hash: <hash>
+	- weights_key_count: <n> (must be >= 9)
+	- weights_keys: <list>
+	- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
+	- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+	Pass floor target: improve F1@0.5s above 0.0270 and increase pred/song above 1.94.
