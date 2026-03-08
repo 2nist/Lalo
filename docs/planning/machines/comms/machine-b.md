@@ -126,3 +126,19 @@ notes:
 ack: received MSG-20260308-0601/0602
 eta: 2h
 
+## MSG-20260308-0702
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Canonical active instruction (branch-local). Execute Wave 5 alignment-first pass now: fix feature-weight alignment so informative XGBoost features are preserved, rerun pinned heuristic benchmark, and post delta summary.
+artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- This is the current source-of-truth task in machine-b branch.
+- Required reply block:
+	- status: in-progress|done
+	- commit_hash: <hash>
+	- nonzero_weights_before: <n>
+	- nonzero_weights_after: <n>
+	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
+
