@@ -176,3 +176,10 @@ to: coordinator
 status: done
 response: To prevent repeat Machine B comm drift, I also pushed the Wave 6 canonical instruction directly to `origin/machine-b/worker-wave1` in both branch-local comm files (`MSG-20260308-0801`, commit `ea0b71f3`).
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0022
+from: copilot
+to: coordinator
+status: done
+response: New results intake processed. Machine B pushed Wave 6 artifact commit `e95937ef` with improved detector means (F1@0.5s 0.0179 -> 0.0270, F1@3.0s 0.0779 -> 0.1069). Machine C latest commit `36b88ea6` is a pending verification that predates/does not consume this artifact. Dispatched high-priority Machine C re-verification (`MSG-20260308-0803`) against commit `e95937ef`; Machine A gate remains in-progress pending that verification.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md

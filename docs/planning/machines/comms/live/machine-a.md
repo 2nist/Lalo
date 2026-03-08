@@ -104,7 +104,10 @@ summary: Wave 5 gate reviewed from B/C artifacts. Decision: `hold-for-more-data`
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: in-progress
 request: Own Wave 6 integration gate. Track Machine B NMS-first pass and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 6 evidence lands.
+
+status: in-progress
+summary: Machine B Wave 6 artifact landed (`e95937ef`) with improved F1 means; awaiting refreshed Machine C verification against this exact commit before final gate decision.

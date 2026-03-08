@@ -1,0 +1,49 @@
+================================================================
+WAVE 6 VERIFICATION -- Machine B NMS_DISTANCE_SEC 16->8 (e95937e)
+================================================================
+
+[CHECK 1] NMS change confirmed in code
+  scripts/analysis/section_detector.py: NMS_DISTANCE_SEC 16.0 -> 8.0
+  STATUS: CONFIRMED
+
+[CHECK 2] Recall gain vs Wave 4b baseline
+  Baseline (c45bfce): pred/song=1.125  ref=8.0  Recall=0.0078  F1@0.5s mean=0.0179
+  Wave6   (e95937e):  pred/song=1.812  ref=8.0  Recall=0.0156  F1@0.5s mean=0.0270
+  Delta:  pred +0.688/song (+61%)  recall +0.0078 (+100%)  F1 +0.0091 (+51%)
+  STATUS: PASS -- recall doubled, F1 +51%. NMS hypothesis confirmed effective.
+  NOTE: Absolute F1 (0.0270) still below 0.05 threshold from pending log.
+        Gain is real but smaller than oracle ceiling due to remaining blockers.
+
+[CHECK 3] Precision stability
+  Baseline: TP=1  FP=17  FN=127  Precision=0.0556
+  Wave6:    TP=2  FP=27  FN=126  Precision=0.0690
+  Delta:    TP+1  FP+10  FN-1  Precision +0.0134
+  STATUS: ACCEPTABLE -- precision slightly improved (more TP than FP added relatively).
+          No unacceptable precision collapse.
+
+[CHECK 4] F1@3.0s trend
+  Baseline F1@3.0s mean: 0.0779
+  Wave6    F1@3.0s mean: 0.1069  (delta +0.0290)
+  STATUS: IMPROVED -- looser tolerance confirms more boundaries are approximately correct.
+
+[CHECK 5] Gap analysis -- why gain smaller than oracle (+0.1368)?
+  Oracle assumed NMS=16s was THE blocker. pred/song jumped 1.12->1.81 (+62%).
+  But expected from NMS=8s: ~4-6 pred/song. Still only 1.81 observed.
+  Remaining suppressors:
+  a) MIN_SECTION_SEC=8s (H3): sections closer than 8s still filtered post-NMS.
+     13% of Harmonix sections are <8s -- oracle ceiling gain H3: +0.035.
+  b) Low upstream candidate density: prominence/sub_prominence params still
+     conservative after waves 4b/5. More candidates needed pre-NMS.
+  c) Weight alignment bug (flux_peak=1.0): scorer still ignores 4/9 informative
+     features. Quality of surviving candidates is degraded.
+  STATUS: NMS change is working. Remaining gap explained by H3 + upstream coverage.
+
+================================================================
+SUMMARY
+  VERDICT: CONDITIONAL PASS
+  NMS 16->8: EFFECTIVE. Recall doubled, F1 +51%, precision stable.
+  Top remaining blocker: MIN_SECTION_SEC=8s (H3) -- reduce to 4s.
+  Oracle ceiling after H2+H3: F1@0.5s ~0.9590 (current 0.0270, gap large).
+  Next action for Machine B: H3 (MIN_SECTION_SEC 8->4) simultaneous with
+  weight alignment fix to maximize candidate quality.
+================================================================

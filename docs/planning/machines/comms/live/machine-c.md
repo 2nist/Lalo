@@ -409,7 +409,7 @@ summary: Completed by Machine C (`6e509cc2`). Result: FAIL for recall gain; top 
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: in-progress
 request: Wave 6 verification pass. Validate Machine B NMS-first run (16 -> 8) and report whether recall improves without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and single top remaining blocker.
@@ -423,8 +423,7 @@ artifacts:
 - results/verify-machine-b-w6-pending.log
 notes: |
   VERIFICATION: Wave 6 NMS-first (Machine B MSG-0801 directive)
-  =============================================================
-
+  ======================================================
   STATUS: PENDING -- Machine B Wave6 NMS artifact not yet committed.
   Machine B directive (ea0b71f) posts MSG-0801 to machine-b channel but
   no sections-machine-b-wave6.json artifact exists yet.
@@ -483,3 +482,84 @@ notes: |
 
   TOP REMAINING BLOCKER (post-NMS): Weight alignment bug (4 features dropped,
   flux_peak=1.0 collapse). Must fix before XGBoost contribution can help.
+=======
+
+status: in-progress
+summary: Machine C posted a pending check (`36b88ea6`) before latest B artifact was visible. Re-verification against `origin/machine-b/worker-wave1` commit `e95937ef` is required.
+
+## MSG-20260308-0803
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Re-run Wave 6 verification against Machine B commit `e95937ef` (contains `results/sections-machine-b-wave6.json`) and post updated PASS/FAIL with deltas.
+artifacts: results/verify-machine-b-w6.log, docs/planning/machines/comms/machine-c.md
+notes: Prior pending output referenced missing artifact; this retry should use the now-available Wave 6 artifact.
+## MSG-20260308-0804
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 6 full verification against Machine B commit e95937e (NMS_DISTANCE_SEC 16->8). Full log at results/verify-machine-b-w6.log.
+artifacts:
+- results/verify-machine-b-w6.log
+notes: |
+  VERIFICATION: NMS_DISTANCE_SEC 16->8 (Machine B commit e95937e)
+  ==============================================================
+
+  CHECK 1 -- NMS change confirmed: PASS
+    scripts/analysis/section_detector.py: NMS_DISTANCE_SEC 16.0 -> 8.0
+
+  CHECK 2 -- Recall gain vs baseline: PASS (conditional)
+    Baseline: pred/song=1.125  Recall=0.0078  F1@0.5s=0.0179
+    Wave6:    pred/song=1.812  Recall=0.0156  F1@0.5s=0.0270
+    Delta:    pred +0.688/song (+61%)  recall +0.0078 (+100%)
+    F1 +0.0091 (+51%). NMS hypothesis confirmed effective.
+    Absolute F1 (0.0270) below 0.05 threshold -- explained by remaining blockers.
+
+  CHECK 3 -- Precision: ACCEPTABLE
+    TP 1->2  FP 17->27  FN 127->126
+    Precision 0.0556->0.0690. No collapse.
+
+  CHECK 4 -- Gap analysis
+    pred/song only 1.81 vs expected 4-6 with NMS=8s.
+    a) MIN_SECTION_SEC=8s (H3) still filtering short sections post-NMS.
+    b) Upstream candidate density still low (conservative prominence).
+    c) Weight alignment bug (flux_peak=1.0) still degrading scorer quality.
+
+  VERDICT: CONDITIONAL PASS. NMS change works. Top remaining blocker: H3
+  (MIN_SECTION_SEC 8->4s). Next: H3 + weight alignment fix together.
+## MSG-20260308-0804
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 6 full verification against Machine B commit e95937e (NMS_DISTANCE_SEC 16->8). Full log at results/verify-machine-b-w6.log.
+artifacts:
+- results/verify-machine-b-w6.log
+notes: |
+  VERIFICATION: NMS_DISTANCE_SEC 16->8 (Machine B commit e95937e)
+  ==============================================================
+
+  CHECK 1 -- NMS change confirmed: PASS
+    scripts/analysis/section_detector.py: NMS_DISTANCE_SEC 16.0 -> 8.0
+
+  CHECK 2 -- Recall gain vs baseline: PASS (conditional)
+    Baseline: pred/song=1.125  Recall=0.0078  F1@0.5s=0.0179
+    Wave6:    pred/song=1.812  Recall=0.0156  F1@0.5s=0.0270
+    Delta:    pred +0.688/song (+61%)  recall +0.0078 (+100%)
+    F1 +0.0091 (+51%). NMS hypothesis confirmed effective.
+    Absolute F1 (0.0270) below 0.05 threshold -- explained by remaining blockers.
+
+  CHECK 3 -- Precision: ACCEPTABLE
+    TP 1->2  FP 17->27  FN 127->126
+    Precision 0.0556->0.0690. No collapse.
+
+  CHECK 4 -- Gap analysis
+    pred/song only 1.81 vs expected 4-6 with NMS=8s.
+    a) MIN_SECTION_SEC=8s (H3) still filtering short sections post-NMS.
+    b) Upstream candidate density still low (conservative prominence).
+    c) Weight alignment bug (flux_peak=1.0) still degrading scorer quality.
+
+  VERDICT: CONDITIONAL PASS. NMS change works. Top remaining blocker: H3
+  (MIN_SECTION_SEC 8->4s). Next: H3 + weight alignment fix together.

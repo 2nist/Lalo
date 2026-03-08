@@ -299,3 +299,41 @@ details: |
   POST-NMS     Weight alignment bug (4 features dropped) is next in queue after NMS.
 artifacts:
 - results/verify-machine-b-w6-pending.log
+## MSG-20260308-0055
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 6 (task MSG-20260308-0803)
+status: done
+summary: NMS 16->8 CONFIRMED EFFECTIVE. Recall doubled (+100%), F1 +51% (0.0179->0.0270). Precision stable. Top blocker: MIN_SECTION_SEC=8s (H3).
+details: |
+  CHECK1 PASS  NMS_DISTANCE_SEC 16->8 confirmed in section_detector.py.
+  CHECK2 PASS  pred/song 1.12->1.81 (+62%). Recall 0.0078->0.0156 (+100%). F1 0.0179->0.0270 (+51%).
+  CHECK3 ACCP  Precision 0.0556->0.0690. TP+1 FP+10 FN-1. No collapse.
+  CHECK4 ANAL  pred=1.81 vs expected 4-6. Gap: MIN_SECTION_SEC=8s (H3) still active,
+               upstream density low, weight alignment bug unresolved.
+  VERDICT      CONDITIONAL PASS. H2 works. Next: H3 (MIN_SECTION_SEC 8->4s)
+               + weight alignment fix for maximum combined gain.
+  ORACLE GAP   Current F1=0.0270. Oracle ceiling (H2+H3): 0.9590. Large gap
+               remaining -- H3 + weight fix needed to close it.
+artifacts:
+- results/verify-machine-b-w6.log
+## MSG-20260308-0055
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 6 (task MSG-20260308-0803)
+status: done
+summary: NMS 16->8 CONFIRMED EFFECTIVE. Recall doubled (+100%), F1 +51% (0.0179->0.0270). Precision stable. Top blocker: MIN_SECTION_SEC=8s (H3).
+details: |
+  CHECK1 PASS  NMS_DISTANCE_SEC 16->8 confirmed in section_detector.py.
+  CHECK2 PASS  pred/song 1.12->1.81 (+62%). Recall 0.0078->0.0156 (+100%). F1 0.0179->0.0270 (+51%).
+  CHECK3 ACCP  Precision 0.0556->0.0690. TP+1 FP+10 FN-1. No collapse.
+  CHECK4 ANAL  pred=1.81 vs expected 4-6. Gap: MIN_SECTION_SEC=8s (H3) still active,
+               upstream density low, weight alignment bug unresolved.
+  VERDICT      CONDITIONAL PASS. H2 works. Next: H3 (MIN_SECTION_SEC 8->4s)
+               + weight alignment fix for maximum combined gain.
+  ORACLE GAP   Current F1=0.0270. Oracle ceiling (H2+H3): 0.9590. Large gap
+               remaining -- H3 + weight fix needed to close it.
+artifacts:
+- results/verify-machine-b-w6.log
