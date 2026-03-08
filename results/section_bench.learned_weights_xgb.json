@@ -1,12 +1,12 @@
 {
-  "benchmark_date": "2026-03-07 21:43",
+  "benchmark_date": "2026-03-07 21:52",
   "songs_evaluated": 30,
   "algorithm": "heuristic",
   "weights": {
-    "flux_peak": 1.0,
+    "flux_peak": 0.736,
     "chord_novelty": 0.0,
     "cadence_score": 0.0,
-    "repetition_break": 0.0,
+    "repetition_break": 0.264,
     "duration_prior": 0.0
   },
   "summary": {
@@ -131,10 +131,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -144,7 +144,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 4.0
+      "time_s": 4.8
     },
     {
       "id": "0004_abc",
@@ -236,10 +236,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -370,10 +370,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -383,7 +383,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.4
     },
     {
       "id": "0010_andjusticeforall",
@@ -504,10 +504,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -609,10 +609,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -622,7 +622,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.4
     },
     {
       "id": "0015_babygotback",
@@ -714,10 +714,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -790,10 +790,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -803,7 +803,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.5
     },
     {
       "id": "0020_becauseofyou",
@@ -895,10 +895,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -908,7 +908,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.4
     },
     {
       "id": "0022_betteroffalone",
@@ -1058,10 +1058,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1134,10 +1134,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1268,10 +1268,10 @@
           "kept_count": 0,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1344,10 +1344,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1357,7 +1357,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.4
     },
     {
       "id": "0036_breakingthegirl",
@@ -1420,10 +1420,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1433,7 +1433,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.4
     },
     {
       "id": "0037_breakyourheart",
@@ -1496,10 +1496,10 @@
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1509,7 +1509,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.3
+      "time_s": 0.5
     },
     {
       "id": "0038_bringmetolife",
@@ -1572,10 +1572,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1648,10 +1648,10 @@
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 1.0,
+            "flux_peak": 0.736,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.0,
+            "repetition_break": 0.264,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
