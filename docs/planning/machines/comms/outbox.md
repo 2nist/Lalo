@@ -141,3 +141,10 @@ to: coordinator
 status: done
 response: Re-broadcasted Machine B Wave 4b instruction due to visibility issue. Posted `MSG-20260308-0602` in three places: live machine-b channel, machine-b inbox, and shared inbox. Added explicit pull steps and required immediate ack (`status: in-progress` + ETA).
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, docs/planning/machines/comms/inbox.md
+
+## MSG-20260308-0017
+from: copilot
+to: coordinator
+status: done
+response: Machine B still could not see coordination-branch comms, so I pushed the Wave 4b instruction directly to `origin/machine-b/worker-wave1` (commit `bc998e27`). Replaced placeholder `MSG-******-0601` with explicit coordinator `MSG-20260308-0601/0602` in both branch-local files: live machine-b channel and machine-b inbox.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
