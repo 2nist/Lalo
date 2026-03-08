@@ -95,7 +95,19 @@ summary: Verification posted by Machine C (`MSG-20260308-0402` on branch). Key o
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 4 verification pass. Validate Machine B H2/H3 tuning output once posted and confirm whether recall improves without breaking boundary sanity.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL with concise rationale and top risk note.
+
+status: done
+summary: Superseded by Wave 4b candidate-generator recall verification lane.
+
+## MSG-20260308-0601
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 4b verification pass. Validate Machine B candidate-generator recall output and confirm recall gain vs baseline without destabilizing precision.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL plus one highest-priority risk.

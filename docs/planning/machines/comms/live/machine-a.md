@@ -68,7 +68,19 @@ summary: Wave 3 gate closed. Machine B published a new worker commit (`75a6ca78`
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 4 integration gate. Track Machine B H2/H3 parameter experiment output and prepare merge recommendation for tuning pass.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Decide one of `merge-now | merge-with-guardrail | hold-for-more-data` after B posts Wave 4 artifact and C verification.
+
+status: done
+summary: Superseded by Wave 4b candidate-generator recall lane.
+
+## MSG-20260308-0601
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 4b integration gate. Track Machine B candidate-generator recall pass and publish merge recommendation after Machine C verification.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Decide one of `merge-now | merge-with-guardrail | hold-for-more-data` based on Wave 4b recall delta and risk notes.

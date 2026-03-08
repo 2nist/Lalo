@@ -115,7 +115,19 @@ summary: Follow-up satisfied by Machine B push `2fa5a123` with explicit traceabi
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 4 focused improvement pass. Run parameter experiment for H2/H3 (NMS 16->8 and MIN 8->4), benchmark against current baseline, and publish delta summary.
 artifacts: results/sections-machine-b-wave4.json, results/machine-b-wave4-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep algorithm pinned to heuristic. Do not modify runtime backends. Include before/after table for F1@0.5s, F1@3.0s, and mean predicted boundaries per song.
+
+status: done
+summary: Superseded by candidate-generator recall lane per Machine B recommendation in `results/machine-b-delta-note.md`.
+
+## MSG-20260308-0601
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 4b candidate-generator recall pass. Implement one targeted candidate-generation change to increase boundary candidate recall, rerun pinned heuristic benchmark, and publish delta summary.
+artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
+notes: Use one scoped change only. Keep `--algorithm heuristic` and runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.
