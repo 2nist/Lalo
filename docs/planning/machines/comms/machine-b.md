@@ -100,7 +100,7 @@ summary: Visibility retry acknowledged and executed by Machine B (`11fce239`, `b
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
 artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
 notes:
@@ -114,3 +114,25 @@ notes:
 	- weights_keys: <list>
 	- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
 	- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+
+status: done
+summary: Completed by Machine B with Wave 9 artifact and metrics package (`544e62ad`, `63d418be`).
+
+## MSG-20260308-1201
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
+artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Required metrics vs Wave 9:
+	- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+- Acceptance target:
+	- pred/song > 2.0
+	- precision >= 0.04
+	- F1@0.5s >= 0.0383

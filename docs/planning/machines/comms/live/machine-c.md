@@ -179,7 +179,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `69ddce93` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 9 verification pass. Validate Machine B retrain-first rerun and confirm whether full-feature mapping is exercised and whether pred density/F1@0.5s improve over Wave 8 without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, and confirm `weights` key count >= 9.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `40c1288a` (`MSG-20260308-1103`, final). Verdict: PASS. Verified Wave 9 artifact and reported F1@0.5s 0.0270 -> 0.0383 with 9-key mapping active.
+
+## MSG-20260308-1201
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 10 verification pass. Validate Machine B density-focused tuning run and confirm whether pred/song improves over 2.0 while precision remains >= 0.04 and F1@0.5s does not regress below 0.0383.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN, plus top remaining blocker.

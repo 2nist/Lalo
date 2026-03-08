@@ -211,3 +211,10 @@ to: coordinator
 status: done
 response: Ingested Wave 8 reports and closed the cycle. Machine B posted Wave 8 artifacts (`11fce239`) and completion comm (`b9b718f4`) but did not execute retrain/full-feature mapping; Machine C verification (`69ddce93`) marked Wave 8 FAIL with unchanged 5-key weights and unchanged metrics. Closed Wave 8 statuses in live channels and dispatched Wave 9 retrain-first corrective tasks to A/B/C (`MSG-20260308-1101`) with explicit evidence requirements.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0027
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 9 completion and verification. Machine B delivered the retrain-first artifacts (`544e62ad`, `63d418be`) and Machine C posted final PASS verification (`40c1288a`, `results/verify-machine-b-w9-final.log`) showing F1@0.5s improved to 0.0383 with 9-key weights active. Closed Wave 9 statuses and dispatched Wave 10 density-focused tasks to A/B/C (`MSG-20260308-1201`) with explicit pred/song and precision guardrails.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
