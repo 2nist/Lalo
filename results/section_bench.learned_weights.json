@@ -1,5 +1,5 @@
 {
-  "benchmark_date": "2026-03-07 21:16",
+  "benchmark_date": "2026-03-07 21:39",
   "songs_evaluated": 30,
   "algorithm": "heuristic",
   "weights": {
@@ -135,12 +135,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 3.8
+      "time_s": 3.9
     },
     {
       "id": "0004_abc",
@@ -236,12 +240,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0006_aint2proud2beg",
@@ -366,12 +374,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0010_andjusticeforall",
@@ -496,12 +508,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0013_athingaboutyou",
@@ -597,12 +613,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0015_babygotback",
@@ -698,12 +718,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0018_bassdownlow",
@@ -770,12 +794,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0020_becauseofyou",
@@ -871,12 +899,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0022_betteroffalone",
@@ -1030,12 +1062,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0027_blackened",
@@ -1102,12 +1138,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0028_blackmagic",
@@ -1232,12 +1272,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.0
+      "time_s": 0.1
     },
     {
       "id": "0035_boyfriend",
@@ -1304,12 +1348,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0036_breakingthegirl",
@@ -1376,12 +1424,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0037_breakyourheart",
@@ -1448,12 +1500,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0038_bringmetolife",
@@ -1520,12 +1576,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     },
     {
       "id": "0039_bulletproof",
@@ -1592,12 +1652,16 @@
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
             "repetition_break": 0.0,
-            "duration_prior": 0.0
+            "duration_prior": 0.0,
+            "chroma_change": 0.05,
+            "spec_contrast": 0.05,
+            "onset_density": 0.05,
+            "rms_energy": 0.05
           }
         },
         "candidates_recorded": true
       },
-      "time_s": 0.1
+      "time_s": 0.3
     }
   ]
 }
