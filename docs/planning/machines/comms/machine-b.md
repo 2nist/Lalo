@@ -44,3 +44,30 @@ artifacts:
 - results/section_bench.learned_weights.json
 - results/false_pos_neg_per_song.csv
 summary: Ran dev-only heuristic benchmark in `lalo311` Conda env. Section Detector mean F1@0.5 = 0.0179 (n=16 audio); Fixed 32s baseline F1@0.5 = 0.0443 (n=30). Added per-song error analysis and a supervised learned-weights experiment; no clear gain on dev split — decision: inconclusive.
+
+
+## MSG-20260308-0301
+from: machine-b
+to: coordinator
+priority: high
+status: done
+request: Post XGBoost hyperparameter search results, learned weights, benchmarks, and logs for Wave 2 experiments.
+artifacts:
+	- results/xgb_hyperparam_results.json
+	- results/learned_weights_xgb_hyperparam.json
+	- results/section_bench.best_weights.json
+	- results/xgb_feature_importances.json
+	- results/learned_weights_xgb.json
+	- results/section_bench.learned_weights_xgb.json
+	- results/train_xgb.labeltol3.log
+	- results/hyperparam_xgb.labeltol3.log
+	- results/sections-machine-b-wave2.json
+	- results/machine-b-wave2-note.md
+	- results/machine-b-xgb-summary.md
+notes: |
+	- Training label tolerance widened to ±3.0s to increase positive examples (95 examples, 34 positives).
+	- GridSearchCV (5-fold) over XGBoost params found best: {"n_estimators":50, "max_depth":3, "learning_rate":0.1}, best CV F1 ≈ 0.4505.
+	- Derived linear weights collapsed to flux-only for original signals (flux_peak=1.0).
+	- Benchmark outputs show limited gains on dev split; next recommended actions: improve candidate generator (increase recall) and run full-dataset evaluation.
+	- Branch: machine-b/worker-wave1
+
