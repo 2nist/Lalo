@@ -17,7 +17,7 @@ from typing import List
 import numpy as np
 
 
-def gather_candidates(pairs: List[dict]):
+def gather_candidates(pairs: List[dict], label_tol: float = 0.5):
     from scripts.analysis.section_detector import detect_sections
     from scripts.bench.section_benchmark import _parse_harmonix_sections
 
@@ -57,7 +57,7 @@ def gather_candidates(pairs: List[dict]):
             ]
             label = 0
             for r in ref_secs:
-                if abs(t - r) <= 0.5:
+                if abs(t - r) <= float(label_tol):
                     label = 1
                     break
             X.append(vec)
@@ -109,10 +109,15 @@ def normalize_importances_to_weights(importances, keys):
 
 def main():
     from scripts.bench.section_benchmark import _load_harmonix_pairs, HARMONIX_DIR, AUDIO_DIR
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--label-tol", type=float, default=0.5, help="label tolerance in seconds for positive examples")
+    args = parser.parse_args()
 
     pairs = _load_harmonix_pairs(Path(HARMONIX_DIR), Path(AUDIO_DIR), max_songs=30)
-    print("Gathering candidate features...")
-    X, y = gather_candidates(pairs)
+    print(f"Gathering candidate features with label tolerance={args.label_tol}s...")
+    X, y = gather_candidates(pairs, label_tol=args.label_tol)
     print("Examples:", len(X), "Positives:", int(y.sum()))
 
     clf, cv_scores = train_xgb(X, y)
