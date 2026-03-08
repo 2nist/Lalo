@@ -192,7 +192,7 @@ please check for wave 8 in
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: in-progress
 request: Wave 8 visibility retry. If live MSG-20260308-1001 is not visible in your checkout, execute this mirrored copy now and post immediate ack before running.
 artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
 notes:
@@ -203,4 +203,7 @@ notes:
 - Ack format:
 - status: in-progress
 - ack: received MSG-20260308-1001/1002
-- eta: <estimate>
+- eta: 1h
+
+ack: received MSG-20260308-1001/1002
+eta: 1h
