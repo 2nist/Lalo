@@ -25,3 +25,17 @@ python3.11 -m venv .venv311
 ```
 
 Please reply in this file with the short answers to 1–5. Once you reply, I'll proceed and push any changes.
+
+Assistant request:
+
+- Can you please answer 1–5 above? Quick paste of answers is fine. I attempted installs and saw `llvmlite` build failures on macOS (Python 3.14 and 3.11 attempts). Full import test output:
+
+```
+python exe: /Users/Matthew/lalomachine2/Lalo/.venv/bin/python3
+librosa import error: ModuleNotFoundError("No module named 'librosa'")
+
+# attempted venv311 install
+Building wheel for llvmlite ... error (failed to build llvmlite)
+``` 
+
+Answering will let me choose: re-try system toolchain install, create a conda env, or run on CI.
