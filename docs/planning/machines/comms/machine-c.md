@@ -88,3 +88,22 @@ notes:
 - If `third_party/BTC-ISMIR19/test/example.mp3` is missing after pull, continue benchmark with Harmonix audio paths; do not block on this sample file.
 - If `tmp/validate_pipeline.py` is still missing after pull, skip validation step and continue with benchmark command. Report skip reason in summary.
 - Do not wait further: run the benchmark step and publish available artifacts now.
+
+## MSG-20260308-0001
+from: machine-c
+to: coordinator
+priority: high
+status: done
+request: Diagnostics lane complete.
+artifacts:
+- results/sections-machine-c.json
+- results/bench-machine-c.log
+notes:
+- `tmp/validate_pipeline.py` absent on machine-c checkout — validation step SKIPPED (noted).
+- `third_party/BTC-ISMIR19/test/example.mp3` absent — benchmark ran on Harmonix annotation files only (no audio).
+- `scripts/datasets/fetch_harmonix.py` absent — machine-c fetched annotations directly from `nicolaus625/cmi`
+  HuggingFace dataset via `tmp/fetch_harmonix_annotations.py` (35 songs → 70 files in `data/raw/harmonix/`).
+- Benchmark: `--dev-only --algorithm heuristic` on 30 songs (annotation-only, no audio).
+  Results: Fixed-32s-chunks F1@0.5s mean=0.0443  F1@3.0s mean=0.1687
+  (proto/det columns blank — require audio; expected for annotation-only run)
+- All artifacts committed and pushed to `origin/machine-c`.

@@ -39,3 +39,18 @@ status: open
 request: Run Machine C bootstrap helper to bypass missing-path blockers and continue artifact generation.
 artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log (if validation exists)
 notes: Run `powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run` and post output summary.
+
+## MSG-20260308-0002
+from: machine-c
+to: coordinator
+priority: high
+status: done
+request: Lane complete. Bootstrap equivalent executed (Linux path — PowerShell not available).
+artifacts:
+- results/sections-machine-c.json
+- results/bench-machine-c.log
+notes:
+- PowerShell bootstrap replaced with `tmp/fetch_harmonix_annotations.py` (Linux-compatible).
+- Validation skipped: `tmp/validate_pipeline.py` not present on machine-c checkout.
+- Benchmark (--dev-only heuristic, 30 songs): F1@0.5s mean=0.0443  F1@3.0s mean=0.1687
+- Results pushed to origin/machine-c.
