@@ -49,6 +49,11 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
     "cadence_score":     0.0588,
     "repetition_break":  0.0588,
     "duration_prior":    0.4118,
+    # Additional candidate features (small defaults)
+    "chroma_change": 0.05,
+    "spec_contrast": 0.05,
+    "onset_density": 0.05,
+    "rms_energy": 0.05,
 }
 
 MIN_SECTION_SEC = 8.0
@@ -88,6 +93,43 @@ def _load_and_flux(
     flux = np.maximum(delta, 0.0).sum(axis=0)
     flux = np.concatenate([[0.0], flux])
     return y, flux, log_S, sr
+
+
+def _compute_additional_frame_features(y: np.ndarray, sr: int, hop: int, n_fft: int = 2048):
+    """Compute frame-level features used for richer candidate descriptors.
+
+    Returns a dict with keys: chroma (12 x T), spec_contrast (n_bands x T), onset_env (T,), rms (T,)
+    """
+    # chroma
+    try:
+        chroma = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=hop, n_fft=n_fft)
+    except Exception:
+        chroma = None
+
+    # spectral contrast
+    try:
+        spec_contrast = librosa.feature.spectral_contrast(y=y, sr=sr, hop_length=hop, n_fft=n_fft)
+    except Exception:
+        spec_contrast = None
+
+    # onset envelope
+    try:
+        onset_env = librosa.onset.onset_strength(y=y, sr=sr, hop_length=hop)
+    except Exception:
+        onset_env = None
+
+    # rms
+    try:
+        rms = librosa.feature.rms(y=y, hop_length=hop)[0]
+    except Exception:
+        rms = None
+
+    return {
+        "chroma": chroma,
+        "spec_contrast": spec_contrast,
+        "onset_env": onset_env,
+        "rms": rms,
+    }
 
 
 def _smooth(x: np.ndarray, win: int = 7) -> np.ndarray:
@@ -518,12 +560,81 @@ def detect_sections(
         min_sec=min_section_sec, max_sec=max_section_sec,
     )
 
+    # Additional frame-level derived features
+    frame_feats = _compute_additional_frame_features(y, sr, hop)
+    chroma = frame_feats.get("chroma")
+    spec_contrast = frame_feats.get("spec_contrast")
+    onset_env = frame_feats.get("onset_env")
+    rms = frame_feats.get("rms")
+
+    # Compute per-candidate derived features
+    n = len(times)
+    chroma_change = np.zeros(n)
+    spec_contrast_val = np.zeros(n)
+    onset_density = np.zeros(n)
+    rms_energy = np.zeros(n)
+
+    # helper to map time -> frame index
+    def _time_to_frame(t):
+        return int(librosa.time_to_frames(t, sr=sr, hop_length=hop))
+
+    for i, t in enumerate(times):
+        fidx = _time_to_frame(t)
+        # chroma change: L2 difference to 4 frames prior (approx 0.13s at hop=512 sr=16k)
+        if chroma is not None and fidx >= 4 and fidx < chroma.shape[1]:
+            cnow = chroma[:, fidx]
+            cprev = chroma[:, max(0, fidx - 4)]
+            chroma_change[i] = float(np.linalg.norm(cnow - cprev))
+        else:
+            chroma_change[i] = 0.0
+
+        # spectral contrast: mean across bands at frame
+        if spec_contrast is not None and fidx < spec_contrast.shape[1]:
+            spec_contrast_val[i] = float(np.mean(spec_contrast[:, fidx]))
+        else:
+            spec_contrast_val[i] = 0.0
+
+        # onset density: count onsets in +/- 2.0s window using onset_env peaks
+        if onset_env is not None:
+            # convert window to frames
+            w = int(round(2.0 * sr / hop))
+            lo = max(0, fidx - w)
+            hi = min(len(onset_env) - 1, fidx + w)
+            # simple density: sum onset_env in window normalized
+            onset_density[i] = float(np.sum(onset_env[lo:hi + 1]) / (hi - lo + 1 + 1e-8))
+        else:
+            onset_density[i] = 0.0
+
+        # rms energy at frame
+        if rms is not None and fidx < len(rms):
+            rms_energy[i] = float(rms[fidx])
+        else:
+            rms_energy[i] = 0.0
+
+    # normalize some derived features to 0-1 range for stability
+    def _norm(x):
+        if x.size == 0:
+            return x
+        mn, mx = float(x.min()), float(x.max())
+        if mx <= mn:
+            return np.zeros_like(x)
+        return (x - mn) / (mx - mn)
+
+    chroma_change = _norm(chroma_change)
+    spec_contrast_val = _norm(spec_contrast_val)
+    onset_density = _norm(onset_density)
+    rms_energy = _norm(rms_energy)
+
     scores = (
         weights["flux_peak"] * flux_scores
         + weights["chord_novelty"] * chord_novelty
         + weights["cadence_score"] * cadence
         + weights["repetition_break"] * rep_break
         + weights["duration_prior"] * dur_prior
+        + weights.get("chroma_change", 0.0) * chroma_change
+        + weights.get("spec_contrast", 0.0) * spec_contrast_val
+        + weights.get("onset_density", 0.0) * onset_density
+        + weights.get("rms_energy", 0.0) * rms_energy
     )
 
     kept_mask = _nms_by_score(times, scores, min_gap_sec=nms_gap_sec)
@@ -556,6 +667,10 @@ def detect_sections(
             "cadence_score": round(float(cadence[i]), 4),
             "repetition_break": round(float(rep_break[i]), 4),
             "duration_prior": round(float(dur_prior[i]), 4),
+            "chroma_change": round(float(chroma_change[i]), 4),
+            "spec_contrast": round(float(spec_contrast_val[i]), 4),
+            "onset_density": round(float(onset_density[i]), 4),
+            "rms_energy": round(float(rms_energy[i]), 4),
         }
         is_kept = round(float(t), 4) in final_set
         candidates.append({
