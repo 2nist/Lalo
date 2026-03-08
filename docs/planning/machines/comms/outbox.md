@@ -204,3 +204,10 @@ to: coordinator
 status: done
 response: Re-broadcasted Wave 8 instructions to Machine B due to branch visibility gap. Posted mirrored `MSG-20260308-1002` in both Machine B channels (live + inbox) with explicit pull steps and immediate ack format, and prepared direct branch-local sync to `machine-b/worker-wave1`.
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0026
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 8 reports and closed the cycle. Machine B posted Wave 8 artifacts (`11fce239`) and completion comm (`b9b718f4`) but did not execute retrain/full-feature mapping; Machine C verification (`69ddce93`) marked Wave 8 FAIL with unchanged 5-key weights and unchanged metrics. Closed Wave 8 statuses in live channels and dispatched Wave 9 retrain-first corrective tasks to A/B/C (`MSG-20260308-1101`) with explicit evidence requirements.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md

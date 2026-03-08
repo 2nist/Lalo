@@ -128,7 +128,19 @@ summary: Wave 7 gate closed from B/C evidence. Decision: `hold-for-more-data` be
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 8 integration gate. Track Machine B full-feature weight rerun and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 8 evidence lands. Call out whether prediction sparsity improved (pred/song) and whether F1@0.5s crosses 0.035.
+
+status: done
+summary: Wave 8 gate closed from B/C evidence. Decision: `hold-for-more-data` because Wave 8 was an ack rerun (no retrain), weights remained 5-key, and detector metrics were unchanged vs Wave 7.
+
+## MSG-20260308-1101
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 9 integration gate. Track Machine B retrain-first rerun and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 9 evidence lands. Explicitly check whether `weights` key count reaches >= 9 and whether F1@0.5s improves above 0.0270.

@@ -167,7 +167,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `bb3649a3` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 8 verification pass. Validate Machine B full-feature weight rerun and confirm whether pred density and F1@0.5s improve over Wave 7 without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, plus one top remaining blocker.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `69ddce93` (`MSG-20260308-1003`). Verdict: FAIL. Wave 8 was an ack rerun with unchanged 5-key weights and unchanged metrics vs Wave 7.
+
+## MSG-20260308-1101
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 9 verification pass. Validate Machine B retrain-first rerun and confirm whether full-feature mapping is exercised and whether pred density/F1@0.5s improve over Wave 8 without unacceptable precision collapse.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Include PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, and confirm `weights` key count >= 9.
