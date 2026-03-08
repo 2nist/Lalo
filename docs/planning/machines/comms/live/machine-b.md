@@ -343,6 +343,48 @@ notes: |
 	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
 	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
 
+## MSG-20260308-1801
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Autonomous improvement mode authorized. Execute iterative micro-cycles without waiting for coordinator between cycles, while staying within strict guardrails.
+artifacts: results/sections-machine-b-wave*.json, results/machine-b-wave*-note.md, results/wave*.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Operating loop (repeat until stop condition):
+	1) Propose one scoped hypothesis with expected metric effect.
+	2) Apply one small code/config change only.
+	3) Run pinned benchmark and write artifacts.
+	4) Run self-verification checks and post a concise cycle report.
+	5) Decide next cycle: continue, rollback, or stop.
+	
+	Hard guardrails:
+	- Keep algorithm pinned to heuristic.
+	- Keep dataset/split constant.
+	- Keep Wave 9 geometry unless a cycle explicitly targets geometry and documents rationale.
+	- Include exact command lines and active parameter dump for every cycle.
+	- No multi-change bundles in a single cycle.
+	
+	Quality gates per cycle:
+	- Primary: F1@0.5s >= 0.0383
+	- Secondary: precision >= 0.04
+	- Density: pred/song > 2.0
+	- Monotonic threshold checks must hold when threshold is the changed variable.
+	
+	Stop conditions (must stop and report blocker):
+	- Two consecutive cycles with no improvement in F1@0.5s.
+	- Any cycle with contradictory/non-monotonic behavior that cannot be explained by config changes.
+	- Any suspected code-path mismatch between intended and executed parameters.
+	
+	Cycle report template:
+	- cycle_id
+	- hypothesis
+	- single change applied
+	- commands run
+	- metrics table vs previous best and Wave 9 baseline
+	- pass/fail for each quality gate
+	- decision: continue | rollback | stop
+
 ## MSG-20260308-1701
 from: coordinator
 to: machine-b
