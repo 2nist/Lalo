@@ -225,3 +225,10 @@ to: coordinator
 status: done
 response: Ingested Wave 10 results and verification. Machine B posted density artifacts (`03df0ec1`, `517663a8`) and Machine C verification (`51918398`, `results/verify-machine-b-w10.log`) marked FAIL: pred/song rose but precision/F1 regressed below guardrails (best precision 0.0227, best F1@0.5s 0.0116). Closed Wave 10 statuses and dispatched Wave 11 threshold-first corrective tasks to A/B/C (`MSG-20260308-1301`) with explicit precision/F1 recovery targets.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0029
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 11 results and verification. Machine B posted threshold-first artifacts (`32f94781`) and Machine C verification (`9e9d1b2c`, `results/verify-machine-b-w11.log`) marked FAIL: threshold run regressed TP and quality vs Wave 9 (TP 3 -> 1, precision 0.0938 -> 0.0222, F1@0.5s 0.0383 -> 0.0116). Closed Wave 11 statuses and dispatched Wave 12 parity-locked ablation tasks to A/B/C (`MSG-20260308-1401`) to isolate threshold impact without geometry drift.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md

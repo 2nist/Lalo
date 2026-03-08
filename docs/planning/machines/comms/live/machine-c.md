@@ -203,7 +203,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `51918398` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 11 verification pass. Validate Machine B threshold-first corrective run and confirm whether precision/F1 recover while maintaining pred/song > 2.0.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN and confirm full benchmark artifact presence.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `9e9d1b2c` (`MSG-20260308-1303`). Verdict: FAIL. Wave 11 regressed from Wave 9 on TP (3 -> 1), precision (0.0938 -> 0.0222), and F1@0.5s (0.0383 -> 0.0116).
+
+## MSG-20260308-1401
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 12 verification pass. Validate Machine B parity-locked A/B ablation and confirm whether threshold-only change helps when geometry is fixed at Wave 9 values.
+artifacts: docs/planning/machines/comms/machine-c.md, results/verify-machine-b-w12.log
+notes: Analysis-only verification. Confirm config lock (nms_gap=8.0, min_section=4.0, beat_snap=2.0, same weights) and report PASS/FAIL deltas for Run A (`prob=0.50`) and Run B (`prob=0.25`).
