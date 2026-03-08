@@ -381,3 +381,75 @@ The wave9 note references commit `94124ab` as the run source, but `94124ab` only
 4. Confirm `weights` field inside JSON shows ≥ 9 keys
 
 Machine C cannot validate claimed metrics without the committed JSON artifact.
+## MSG-20260308-1103 — Machine C: Wave9 Verification
+
+**FROM**: machine-c  **TO**: coordination, machine-b  **RE**: MSG-20260308-1101
+
+### Verdict: PASS
+
+*(supersedes earlier FAIL/UNVERIFIABLE pending posted at `00aa4fb`)*
+
+### Verified Artifact
+
+- `544e62a` — `results/sections-machine-b-wave9.json` present in branch tree ✓
+- `benchmark_date`: 2026-03-08 10:05 ✓
+
+### Metrics — 16-song shared set (W8 vs W9)
+
+| Metric | Wave8 | Wave9 | delta |
+|--------|-------|-------|-------|
+| F1@0.5s mean | 0.0270 | 0.0383 | +0.0114 (+42%) |
+| F1@3.0s mean | 0.1267 | 0.1338 | +0.0071 |
+| mean_pred/song | 1.938 | 2.000 | +0.062 |
+| precision | 0.0645 | 0.0938 | +0.0292 |
+| recall | 0.0156 | 0.0234 | +0.0078 |
+| TP | 2 | 3 | +1 |
+| FP | 29 | 29 | +0 |
+| FN | 126 | 125 | -1 |
+
+### Pass Criteria Check
+
+| Criterion | Required | Wave9 | Result |
+|-----------|----------|-------|--------|
+| weights key count | ≥ 9 | 9 | ✓ |
+| non-zero new features | ≥ 4 | 6 | ✓ |
+| F1@0.5s mean | ≥ 0.035 | 0.0383 | ✓ |
+| pred/song increase | > 1.938 | 2.000 | ✓ |
+| precision | ≥ 0.04 | 0.0938 | ✓ |
+
+### Weight Details
+
+Non-zero weights (6/9):
+```
+  repetition_break: 0.2528
+  rms_energy: 0.2227
+  onset_density: 0.1488
+  spec_contrast: 0.1465
+  chroma_change: 0.1210
+  flux_peak: 0.1081
+```
+Zero weights: ['cadence_score', 'chord_novelty', 'duration_prior']
+
+### Per-song Notable Movers
+- 0005_again: F1@.5 0.0000→0.1818 (+0.1818) | F1@3 0.0000→0.1818 (+0.1818) | pred 1→2
+- 0027_blackened: F1@.5 0.0000→0.0000 (+0.0000) | F1@3 0.1538→0.0000 (-0.1538) | pred 3→2
+- 0035_boyfriend: F1@.5 0.1818→0.1818 (+0.0000) | F1@3 0.1818→0.3636 (+0.1818) | pred 2→2
+- 0038_bringmetolife: F1@.5 0.0000→0.0000 (+0.0000) | F1@3 0.0000→0.1538 (+0.1538) | pred 1→2
+- 0039_bulletproof: F1@.5 0.0000→0.0000 (+0.0000) | F1@3 0.2500→0.0000 (-0.2500) | pred 2→2
+
+F1@0.5s song distribution: improved=1 unchanged=15 regressed=0
+
+### Analysis
+
+The full 9-feature weight mapping is now active and exercised. The 4 previously-dropped features carry significant non-zero importances (`rms_energy`=0.2227, `repetition_break`=0.2528, `onset_density`=0.1488, `spec_contrast`=0.1465). This drives the improvement.
+
+F1@0.5s crosses the 0.035 threshold for the first time (+41% over Wave8). However:
+- Improvement is concentrated in 1 song (`0005_again` gained a new exact-hit boundary)
+- 2 songs regressed at F1@3.0s (`0027_blackened`, `0039_bulletproof`) — prediction density shift moved boundaries away from some references
+- Mean pred/song increased 1.938→2.000, still 4× below mean_ref/song=8.0
+
+### Top Remaining Blocker
+
+**Under-prediction**: mean_pred=2.00 vs mean_ref=8.0 (4.0× gap). The model still suppresses too many candidate boundaries. XGBoost probability threshold reduction or training data expansion are the next levers.
+
+Also: detector still runs on only 16/30 songs — full-corpus benchmark needed.
