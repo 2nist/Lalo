@@ -29,3 +29,10 @@ to: coordinator
 status: done
 response: Cross-machine status summary posted. Machine A is complete with validation artifacts. Machine B remains open on live task `MSG-20260307-2101`. Machine C remains open on live task `MSG-20260307-2101` and has a recovered Q/A thread in `docs/planning/machines/comms/machine-c.md` (`MSG-20260307-2201/2202`).
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md
+
+## MSG-20260307-0005
+from: copilot
+to: coordinator
+status: done
+response: Improvement push reassignment posted. Machine A moved to integration-support lane, Machine B asked to finalize/mirror benchmark outputs, Machine C asked to mirror diagnostics completion from `origin/machine-c` and publish blocker-resolution summary.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
