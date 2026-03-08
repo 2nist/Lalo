@@ -187,9 +187,29 @@ notes:
 - Required metrics table for A and B vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
 
 status: done
-summary: Completed by Machine B in `85b3e1a`. Results:
+summary: Completed by Machine B (`85b3e1a5`) and reviewed by Machine C (`7e76cc45`). Verdict: FAIL + DATA INTEGRITY warning due to non-reproducible parity and non-monotonic threshold behavior.
 
-- Run A (parity, prob=0.50): TP 2, FP 34, FN 126, precision 0.0556, recall 0.0156, avg_pred_per_song 2.250.
-- Run B (ablation, prob=0.25): TP 2, FP 33, FN 126, precision 0.0571, recall 0.0156, avg_pred_per_song 2.188.
-
-conclusion: Threshold-only ablation produced a marginal precision increase with identical TP and similar prediction density. Recommend a targeted parameter sweep (reduce `min_section_sec` and `nms_gap_sec`) to increase pred/song while watching precision.
+## MSG-20260308-1501
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 13 reproducibility-first pass. Reproduce Wave 9 parity exactly, then run one threshold-only ablation with full trace logs and monotonicity checks.
+artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13a.log, results/wave13b.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Required lock for both runs:
+	- Wave 9 9-feature weights exactly
+	- `nms_gap=8.0`
+	- `min_section=4.0`
+	- `beat_snap=2.0`
+	- same dev song set as Wave 9
+- Run A (repro parity): `prob_threshold=0.50`
+- Run B (ablation): `prob_threshold=0.25` (only change)
+- Required validations in note:
+	1) Wave13a reproduces Wave 9 baseline (target TP=3, FP=29, F1@0.5s=0.0383; explain any mismatch)
+	2) Monotonic threshold behavior check: FP_B >= FP_A and pred/song_B >= pred/song_A
+	3) Include `benchmark_date`, active weight keys/count, and explicit command lines for both runs
