@@ -280,7 +280,7 @@ summary: Wave 11 artifacts landed in `origin/machine-b/worker-wave1` commit `32f
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 12 parity-locked ablation pass. Re-run with Wave 9 geometry fixed, then perform one threshold-only ablation to isolate threshold effect without geometry drift.
 artifacts: results/sections-machine-b-wave12a.json, results/sections-machine-b-wave12b.json, results/machine-b-wave12-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -293,3 +293,11 @@ notes: |
 	Run B (ablation): `prob_threshold=0.25` with all other settings identical
 	Required metrics table for A and B vs Wave 9 baseline: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
 	Goal: remove confound from prior Wave 11 geometry mismatch and confirm whether threshold-only change helps or hurts.
+
+status: done
+summary: Completed by Machine B in `85b3e1a`. Results:
+
+	- Run A (parity, prob=0.50): TP 2, FP 34, FN 126, precision 0.0556, recall 0.0156, avg_pred_per_song 2.250.
+	- Run B (ablation, prob=0.25): TP 2, FP 33, FN 126, precision 0.0571, recall 0.0156, avg_pred_per_song 2.188.
+
+	Conclusion: Threshold-only ablation produced a marginal precision increase with identical TP and similar prediction density. Recommend a targeted parameter sweep (reduce `min_section_sec` and `nms_gap_sec`) to increase pred/song while watching precision.
