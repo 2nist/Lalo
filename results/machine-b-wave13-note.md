@@ -1,0 +1,90 @@
+# Machine B Wave 13 Note
+
+benchmark_date: 2026-03-08T15:33:22.106602Z
+
+wave9_target: {"tp": 3, "fp": 29, "f1_0.5_mean": 0.0383}
+
+## wave13a
+
+prob_threshold: 0.5
+
+TP: 2
+
+FP: 34
+
+FN: 126
+
+Precision: 0.0556
+
+Recall: 0.0156
+
+Avg predictions per song: 2.25
+
+log: results/wave13_wave13a.log
+
+
+## wave13b
+
+prob_threshold: 0.25
+
+TP: 2
+
+FP: 33
+
+FN: 126
+
+Precision: 0.0571
+
+Recall: 0.0156
+
+Avg predictions per song: 2.188
+
+log: results/wave13_wave13b.log
+
+
+## Validations
+
+- wave13a_reproduces_wave9: False
+
+- monotonic_fp: False
+
+- monotonic_pred: False
+
+
+## Active weights and keys
+
+{
+  "importances": [
+    0.10811493545770645,
+    0.0,
+    0.0,
+    0.25281184911727905,
+    0.0,
+    0.12096718698740005,
+    0.14654359221458435,
+    0.1488496959209442,
+    0.22271274030208588
+  ],
+  "weights": {
+    "flux_peak": 0.1081,
+    "chord_novelty": 0.0,
+    "cadence_score": 0.0,
+    "repetition_break": 0.2528,
+    "duration_prior": 0.0,
+    "chroma_change": 0.121,
+    "spec_contrast": 0.1465,
+    "onset_density": 0.1488,
+    "rms_energy": 0.2227
+  },
+  "keys": [
+    "flux_peak",
+    "chord_novelty",
+    "cadence_score",
+    "repetition_break",
+    "duration_prior",
+    "chroma_change",
+    "spec_contrast",
+    "onset_density",
+    "rms_energy"
+  ]
+}

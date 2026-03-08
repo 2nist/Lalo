@@ -1,0 +1,28 @@
+Wrote results/sections-machine-b-wave13a.json and results/wave13_wave13a.log
+Wrote results/sections-machine-b-wave13b.json and results/wave13_wave13b.log
+Wrote results/machine-b-wave13-note.md
+{
+  "summary": {
+    "wave13a": {
+      "tp": 2,
+      "fp": 34,
+      "fn": 126,
+      "precision": 0.0556,
+      "recall": 0.0156,
+      "avg_pred_per_song": 2.25
+    },
+    "wave13b": {
+      "tp": 2,
+      "fp": 33,
+      "fn": 126,
+      "precision": 0.0571,
+      "recall": 0.0156,
+      "avg_pred_per_song": 2.188
+    }
+  },
+  "validations": {
+    "wave13a_reproduces_wave9": false,
+    "monotonic_fp": false,
+    "monotonic_pred": false
+  }
+}
