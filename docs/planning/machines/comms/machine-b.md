@@ -58,3 +58,20 @@ notes:
 
 status: done
 summary: Follow-up resolved by Machine B push `2fa5a123`.
+
+## MSG-20260308-0602
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Visibility retry. Execute Wave 4b candidate-generator recall pass from live `MSG-20260308-0601` and acknowledge receipt here first.
+artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout coordination/wave-1`
+	3) `git pull --ff-only origin coordination/wave-1`
+- Ack format:
+	- status: in-progress
+	- ack: received MSG-20260308-0601/0602
+	- eta: <estimate>

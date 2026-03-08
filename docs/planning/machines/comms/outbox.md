@@ -134,3 +134,10 @@ to: coordinator
 status: done
 response: Reprioritized Wave 4 based on Machine B recommendation to improve candidate generation for recall before further tuning. Dispatched Wave 4b across all lanes: Machine B candidate-generator recall pass (`MSG-20260308-0601`), Machine C verification (`MSG-20260308-0601`), and Machine A integration gate (`MSG-20260308-0601`).
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0016
+from: copilot
+to: coordinator
+status: done
+response: Re-broadcasted Machine B Wave 4b instruction due to visibility issue. Posted `MSG-20260308-0602` in three places: live machine-b channel, machine-b inbox, and shared inbox. Added explicit pull steps and required immediate ack (`status: in-progress` + ETA).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, docs/planning/machines/comms/inbox.md
