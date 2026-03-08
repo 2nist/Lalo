@@ -107,7 +107,19 @@ summary: Superseded by Wave 4b candidate-generator recall verification lane.
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 4b verification pass. Validate Machine B candidate-generator recall output and confirm recall gain vs baseline without destabilizing precision.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL plus one highest-priority risk.
+
+status: done
+summary: Completed by Machine C (`15a0eb04`). Verification: precision stable and model CV improved, but recall gain is FAIL (unchanged); top risk is feature-weight alignment bug.
+
+## MSG-20260308-0701
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 5 verification pass. Validate Machine B alignment-fix output and confirm whether non-zero informative weights are actually used and whether recall changes vs Wave 4b baseline.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL and top remaining blocker.
