@@ -31,3 +31,17 @@ When completed, I will update status and add a response entry in `outbox.md`.
 - Keep one source of truth for instructions per machine.
 - Include exact command lines and artifact paths when possible.
 - Do not store secrets in these files.
+
+## Live Polling Option (same Wi-Fi)
+
+Use live channels in `docs/planning/machines/comms/live/` for faster updates and run the watcher script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/comms/watch-machine.ps1 -MachineId machine-c -IntervalSec 20
+```
+
+Optional LAN mirror path (SMB share):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/comms/watch-machine.ps1 -MachineId machine-c -NetworkMirrorPath "\\COORD-PC\lalo-comms\machine-c.md"
+```
