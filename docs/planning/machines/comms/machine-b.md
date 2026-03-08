@@ -292,3 +292,35 @@ notes:
 	- two consecutive no-improvement cycles on F1@0.5s
 	- unexplained contradictory/non-monotonic behavior
 	- suspected parameter/code-path mismatch
+
+## MSG-20260308-1901
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Day 1-2 execution package. Prioritize deterministic baseline recovery and threshold-direction validation before any new tuning.
+artifacts: results/sections-machine-b-wave15a.json, results/sections-machine-b-wave15b.json, results/sections-machine-b-wave15c.json, results/machine-b-wave15-note.md, results/wave15a.log, results/wave15b.log, results/wave15c.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) git fetch origin
+	2) git checkout machine-b/worker-wave1
+	3) git pull --ff-only origin machine-b/worker-wave1
+- Run order:
+	1) A: Wave 9 locked parity replay (`prob_threshold=0.50`)
+	2) B: threshold-only ablation (`prob_threshold=0.25`)
+	3) C: threshold-only ablation (`prob_threshold=0.15`)
+- Config lock:
+	- Wave 9 9-feature weights
+	- nms_gap=8.0, min_section=4.0, beat_snap=2.0
+	- same dev set as Wave 9
+	- no retrain, no extra tuning
+- Required evidence in note:
+	1) exact commands + timestamps
+	2) active params + weight keys/count
+	3) metrics table vs Wave 9 and prior best
+	4) monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
+	5) directionality assertion: lowering threshold must not reduce kept-candidate count
+- Decision rule:
+	- PASS: parity within tolerance and monotonic checks hold
+	- FAIL: parity drift, monotonic failure, or threshold-intent contradiction
+	- On FAIL: stop and post blocker with suspected code path + minimal diff pointer

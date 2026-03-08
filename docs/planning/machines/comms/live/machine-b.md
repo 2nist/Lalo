@@ -400,3 +400,37 @@ notes: |
 	3) metric table (F1@0.5s, precision, recall, TP/FP/FN, pred/song)
 	4) self-check assertions (parity + monotonic threshold behavior)
 	Mark blockers immediately if assertions fail.
+
+## MSG-20260308-1901
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Day 1-2 execution package. Prioritize deterministic baseline recovery and threshold-direction validation before any new tuning.
+artifacts: results/sections-machine-b-wave15a.json, results/sections-machine-b-wave15b.json, results/sections-machine-b-wave15c.json, results/machine-b-wave15-note.md, results/wave15a.log, results/wave15b.log, results/wave15c.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Objective:
+	- Convert current fail pattern into a reproducible pass/fail signal that can support merge decisions.
+
+	Run order:
+	1) Baseline parity replay (A): Wave 9 locked config with `prob_threshold=0.50`.
+	2) Threshold ablation (B): same config, `prob_threshold=0.25` only.
+	3) Threshold ablation (C): same config, `prob_threshold=0.15` only.
+
+	Required config lock:
+	- Keep Wave 9 9-feature weights active.
+	- Keep geometry fixed: `nms_gap=8.0`, `min_section=4.0`, `beat_snap=2.0`.
+	- Same dev set as Wave 9.
+	- No model retrain and no extra tuning in this wave.
+
+	Required evidence in `machine-b-wave15-note.md`:
+	1) Exact commands and benchmark timestamps for A/B/C.
+	2) Active parameter dump and active weight key count/list.
+	3) Metrics table vs Wave 9 and vs prior best: F1@0.5s, F1@3.0s, precision, recall, TP/FP/FN, pred/song.
+	4) Monotonic checks: `FP_C >= FP_B >= FP_A` and `pred/song_C >= pred/song_B >= pred/song_A`.
+	5) Directionality assertion: lowering threshold must not reduce kept-candidate count.
+
+	Decision rule:
+	- PASS if parity is within tolerance of Wave 9 and monotonic checks hold.
+	- FAIL if parity drifts materially, monotonic checks fail, or behavior contradicts threshold intent.
+	- If FAIL, stop and post blocker with suspected code path and minimal diff pointer.

@@ -253,3 +253,10 @@ to: coordinator
 status: done
 response: Switched execution model to single-machine mode per request. Machine B is now the sole active lane for implementation + benchmark + self-verification; Machine A and Machine C lanes are paused/standby to reduce coordination overhead.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0033
+from: copilot
+to: coordinator
+status: done
+response: Posted a concrete Day 1-2 execution package for Machine B (`MSG-20260308-1901`) to convert current failures into deterministic pass/fail evidence. Dispatch requires locked Wave 9 parity replay plus two threshold-only ablations (0.50/0.25/0.15), explicit monotonic and threshold-direction assertions, and a stop-on-fail blocker report if checks contradict intended behavior.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
