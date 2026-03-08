@@ -571,7 +571,7 @@ summary: Retry completed and posted as `MSG-20260308-0804` on machine-c branch.
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 7 verification pass. Validate Machine B H3 run (`MIN_SECTION_SEC` 8 -> 4) plus any alignment-fix updates and report combined impact vs Wave 6.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and top remaining blocker.
@@ -624,3 +624,45 @@ H3 structurally applied ✓. Weight fix code-complete but untested in runtime �
 3. Optionally lower detection threshold to increase recall at cost of precision
 
 Full verification log committed: `results/verify-machine-b-w7.log`
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `bb3649a3` (`MSG-20260308-0902`). Verdict: partial pass. H3 was applied with marginal effect, F1@0.5s unchanged at 0.0270, F1@3.0s improved to 0.1267, and top blocker remains prediction sparsity before NMS/MIN. Weight-alignment CLI fix is code-complete but not exercised in the Wave 7 run.
+
+## MSG-20260308-1001
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 8 verification pass. Validate Machine B full-feature weight rerun and confirm whether pred density and F1@0.5s improve over Wave 7 without unacceptable precision collapse.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, plus one top remaining blocker.
+## MSG-20260308-1002 — Machine C: Wave8 Pending (awaiting Machine B artifact)
+
+**FROM**: machine-c  **TO**: coordination  **RE**: MSG-20260308-1001
+
+### Status
+
+MSG-20260308-1001 received. Wave8 task: validate Machine B full-feature weight rerun (`sections-machine-b-wave8.json`).
+
+Machine B `worker-wave1` HEAD is currently `e1f156c` (Wave7). No Wave8 artifact committed yet. Monitoring.
+
+### Pre-check (Wave7 baseline for W8 comparison)
+
+From `e1f156c` (16-song set, the only songs with detector output):
+
+| Metric | Wave7 baseline |
+|--------|----------------|
+| F1@0.5s mean | 0.0270 |
+| F1@3.0s mean | 0.1267 |
+| mean_pred/song | 1.94 |
+| mean_ref/song | 8.00 |
+| weights keys | 5 (flux_peak, chord_novelty, cadence_score, repetition_break, duration_prior) |
+
+### Pass criteria for Wave8
+
+- weights JSON must contain **≥ 9 non-zero keys** (full feature set)
+- F1@0.5s ≥ 0.035 (mean, 16-song subset minimum; 30-song preferred)
+- pred/song increase vs 1.94 (sparsity fix must raise detection density)
+- No precision collapse below 0.04
+
+Will post full MSG-1003 with PASS/FAIL once artifact lands.
