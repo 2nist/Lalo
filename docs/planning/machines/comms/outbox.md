@@ -78,3 +78,10 @@ to: coordinator
 status: done
 response: Machine A Wave 3 gate is now closed after ingesting new Machine B commit `75a6ca78` (XGBoost artifact refresh with non-zero reference-boundary evidence). Final Machine A recommendation: `merge-with-guardrail` to proceed while requiring explicit parser-fix traceability note before treating supervised retuning outcomes as fully validated.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/machine-a.md
+
+## MSG-20260308-0008
+from: copilot
+to: coordinator
+status: done
+response: Post-decision execution dispatch published. Machine B received a guardrail-close task to provide parser-fix traceability (commit hash + touched files + provenance note), and Machine C received a quick verification task to confirm non-zero boundary behavior and H2/H3 confidence after latest B artifact refresh.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md

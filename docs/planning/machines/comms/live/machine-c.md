@@ -75,3 +75,12 @@ status: open
 request: Stay in support mode. Validate Machine B parser-fix branch once available and confirm whether H2/H3 gains persist after H4 is fixed.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: No new modeling work yet; this is verification support for B's parser-first lane.
+
+## MSG-20260308-0401
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Run quick verification against latest Machine B XGBoost artifact and post a short consistency check: non-zero reference boundaries observed and any change in H2/H3 hypothesis confidence.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Keep this as analysis-only validation. Do not retune models or alter defaults.
