@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 3.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 45,
+      "fn": 127,
+      "precision": 0.0217,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.875
+    },
+    {
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 3.0,
+      "beat_snap_sec": 1.0,
+      "tp": 1,
+      "fp": 43,
+      "fn": 127,
+      "precision": 0.0227,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.75
+    },
+    {
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 2.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 48,
+      "fn": 127,
+      "precision": 0.0204,
+      "recall": 0.0078,
+      "avg_pred_per_song": 3.062
+    },
+    {
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 2.0,
+      "beat_snap_sec": 1.0,
+      "tp": 1,
+      "fp": 46,
+      "fn": 127,
+      "precision": 0.0213,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.938
+    },
+    {
+      "nms_gap_sec": 4.0,
+      "min_section_sec": 3.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 63,
+      "fn": 127,
+      "precision": 0.0156,
+      "recall": 0.0078,
+      "avg_pred_per_song": 4.0
+    },
+    {
+      "nms_gap_sec": 4.0,
+      "min_section_sec": 3.0,
+      "beat_snap_sec": 1.0,
+      "tp": 1,
+      "fp": 63,
+      "fn": 127,
+      "precision": 0.0156,
+      "recall": 0.0078,
+      "avg_pred_per_song": 4.0
+    },
+    {
+      "nms_gap_sec": 4.0,
+      "min_section_sec": 2.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 69,
+      "fn": 127,
+      "precision": 0.0143,
+      "recall": 0.0078,
+      "avg_pred_per_song": 4.375
+    },
+    {
+      "nms_gap_sec": 4.0,
+      "min_section_sec": 2.0,
+      "beat_snap_sec": 1.0,
+      "tp": 1,
+      "fp": 68,
+      "fn": 127,
+      "precision": 0.0145,
+      "recall": 0.0078,
+      "avg_pred_per_song": 4.312
+    }
+  ]
+}
