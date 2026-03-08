@@ -242,3 +242,20 @@ metrics_delta: |
 artifacts_generated:
 	- results/sections-machine-b-wave8.json
 	- results/machine-b-wave8-note.md
+
+## MSG-20260308-1101
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
+artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+This is the canonical active instruction for Machine B.
+Required evidence in note:
+- commit_hash: <hash>
+- weights_key_count: <n> (must be >= 9)
+- weights_keys: <list>
+- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
+- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+Pass floor target: improve F1@0.5s above 0.0270 and increase pred/song above 1.94.
