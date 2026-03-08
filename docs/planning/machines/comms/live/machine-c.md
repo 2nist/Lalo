@@ -39,3 +39,12 @@ status: open
 request: Run Machine C bootstrap helper to bypass missing-path blockers and continue artifact generation.
 artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log (if validation exists)
 notes: Run `powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run` and post output summary.
+
+## MSG-20260307-2401
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Mirror diagnostics completion from your branch into comms and attach concise blocker-resolution summary.
+artifacts: docs/planning/machines/comms/machine-c.md, results/sections-machine-c.json, results/bench-machine-c.log
+notes: Branch `origin/machine-c` shows `machine-c: diagnostics lane complete`; this step is to publish final comms status and any skipped validation rationale.
