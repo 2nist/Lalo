@@ -326,15 +326,15 @@ summary: Wave 13 artifacts landed in `origin/machine-b/worker-wave1` commits `75
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
-artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
+artifacts: scripts/analysis/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14.run.log, results/wave14_wave14a.log, results/wave14_wave14b.log, results/wave14_wave14c.log, docs/planning/machines/comms/machine-b.md
 notes: |
 	Single code fix scope:
 	- threshold filter must keep candidates with `score >= prob_threshold`
 	- no geometry/model tuning in this wave
 	Locked config for all runs:
-	- Wave 9 weights, nms_gap=8.0, min_section=4.0, beat_snap=2.0, same dev set
+	- Wave 9 weights, nms_gap=8.0, min_section=4.0, beat_snap=0.0, same dev set
 	Run A: `prob_threshold=0.50` (parity)
 	Run B: `prob_threshold=0.25` (ablation)
 	Run C: `prob_threshold=0.15` (monotonic trend check)
