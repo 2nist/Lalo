@@ -90,3 +90,12 @@ notes: Keep this as analysis-only validation. Do not retune models or alter defa
 
 status: done
 summary: Verification posted by Machine C (`MSG-20260308-0402` on branch). Key outcomes: ref=0 count is 0/30 (PASS), XGBoost CV mean F1=0.380 (non-zero), H2 confidence increased, H3 remains medium and supported.
+
+## MSG-20260308-0501
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 4 verification pass. Validate Machine B H2/H3 tuning output once posted and confirm whether recall improves without breaking boundary sanity.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with concise rationale and top risk note.

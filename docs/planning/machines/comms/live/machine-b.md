@@ -17,10 +17,13 @@ notes: <constraints>
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Execute Machine B lane using the explicit runbook, then post done-status with benchmark artifacts and decision.
 artifacts: results/sections-machine-b.json, results/bench-machine-b.log, docs/planning/machines/comms/machine-b.md
 notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for machine-b.
+
+status: done
+summary: Superseded by later completed waves (`MSG-20260308-0301` and guardrail closure tasks).
 
 ## MSG-20260307-2401
 from: coordinator
@@ -35,10 +38,13 @@ notes: Your branch already has progress (`origin/machine-b/wave-1` latest commit
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Run Wave 2 benchmark refinement. Produce one additional benchmark artifact with a clearly documented hypothesis and compare against previous output.
 artifacts: results/sections-machine-b-wave2.json, results/machine-b-wave2-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep algorithm pinned to heuristic. Do not change runtime backend defaults.
+
+status: done
+summary: Completed through Wave 2 and later updates (`MSG-20260308-0301`) with additional XGBoost and label-tolerance artifacts.
 
 ## MSG-20260308-0201
 from: coordinator
@@ -104,3 +110,12 @@ notes: |
 
 status: done
 summary: Follow-up satisfied by Machine B push `2fa5a123` with explicit traceability report artifact.
+
+## MSG-20260308-0501
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 4 focused improvement pass. Run parameter experiment for H2/H3 (NMS 16->8 and MIN 8->4), benchmark against current baseline, and publish delta summary.
+artifacts: results/sections-machine-b-wave4.json, results/machine-b-wave4-note.md, docs/planning/machines/comms/machine-b.md
+notes: Keep algorithm pinned to heuristic. Do not modify runtime backends. Include before/after table for F1@0.5s, F1@3.0s, and mean predicted boundaries per song.
