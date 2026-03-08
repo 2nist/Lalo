@@ -225,7 +225,7 @@ summary: Wave 10 processed with branch artifacts (`03df0ec1`, `517663a8`) and Ma
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 11 threshold-first corrective pass. Keep Wave 9 9-feature weights and run one controlled probability-threshold tuning run, then publish a full benchmark artifact.
 artifacts: results/sections-machine-b-wave11.json, results/machine-b-wave11-note.md, docs/planning/machines/comms/machine-b.md
 notes:
@@ -242,3 +242,27 @@ notes:
 	- pred/song > 2.0
 	- precision >= 0.04
 	- F1@0.5s >= 0.0383
+
+status: done
+summary: Completed by Machine B in `32f94781` and verified FAIL by Machine C (`9e9d1b2c`): threshold run at 0.25 reduced quality vs Wave 9 (TP 3 -> 1, precision 0.0938 -> 0.0222, F1@0.5s 0.0383 -> 0.0116).
+
+## MSG-20260308-1401
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 12 parity-locked ablation pass. Re-run with Wave 9 geometry fixed, then perform one threshold-only ablation to isolate threshold effect without geometry drift.
+artifacts: results/sections-machine-b-wave12a.json, results/sections-machine-b-wave12b.json, results/machine-b-wave12-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Config lock (both runs):
+	- keep Wave 9 9-feature weights
+	- `nms_gap=8.0`
+	- `min_section=4.0`
+	- `beat_snap=2.0`
+- Run A (parity replay): `prob_threshold=0.50`
+- Run B (ablation): `prob_threshold=0.25` (only change)
+- Required metrics table for A and B vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.

@@ -263,7 +263,7 @@ summary: Wave 10 artifacts landed in `origin/machine-b/worker-wave1` commits `03
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 11 threshold-first corrective pass. Keep Wave 9 9-feature weights and run one controlled probability-threshold tuning run, then publish a full benchmark artifact.
 artifacts: results/sections-machine-b-wave11.json, results/machine-b-wave11-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -272,3 +272,24 @@ notes: |
 	Keep geometry at Wave 9 baseline while testing threshold effect.
 	Required metrics vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
 	Acceptance target: pred/song > 2.0, precision >= 0.04, and F1@0.5s >= 0.0383.
+
+status: done
+summary: Wave 11 artifacts landed in `origin/machine-b/worker-wave1` commit `32f94781`. Outcome FAIL after verification: F1@0.5s 0.0116, precision 0.0222, TP 1, FP 44, pred/song 2.812.
+
+## MSG-20260308-1401
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 12 parity-locked ablation pass. Re-run with Wave 9 geometry fixed, then perform one threshold-only ablation to isolate threshold effect without geometry drift.
+artifacts: results/sections-machine-b-wave12a.json, results/sections-machine-b-wave12b.json, results/machine-b-wave12-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+	Required config lock:
+	- keep weights at Wave 9 9-feature set
+	- nms_gap=8.0
+	- min_section=4.0
+	- beat_snap=2.0
+	Run A (parity replay): `prob_threshold=0.50` (Wave 9 parity)
+	Run B (ablation): `prob_threshold=0.25` with all other settings identical
+	Required metrics table for A and B vs Wave 9 baseline: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
+	Goal: remove confound from prior Wave 11 geometry mismatch and confirm whether threshold-only change helps or hurts.
