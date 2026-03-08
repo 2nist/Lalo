@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "prob_threshold": 0.05,
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 4.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 44,
+      "fn": 127,
+      "precision": 0.0222,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.812
+    },
+    {
+      "prob_threshold": 0.1,
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 4.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 44,
+      "fn": 127,
+      "precision": 0.0222,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.812
+    },
+    {
+      "prob_threshold": 0.15,
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 4.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 44,
+      "fn": 127,
+      "precision": 0.0222,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.812
+    },
+    {
+      "prob_threshold": 0.25,
+      "nms_gap_sec": 6.0,
+      "min_section_sec": 4.0,
+      "beat_snap_sec": 2.0,
+      "tp": 1,
+      "fp": 44,
+      "fn": 127,
+      "precision": 0.0222,
+      "recall": 0.0078,
+      "avg_pred_per_song": 2.812
+    }
+  ]
+}
