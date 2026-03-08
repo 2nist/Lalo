@@ -21,3 +21,18 @@ powershell -ExecutionPolicy Bypass -File scripts/comms/watch-machine.ps1 -Machin
 ```
 
 When `-NetworkMirrorPath` is set, the watcher copies that file into the repo live channel before each poll.
+
+## Machine C bootstrap helper
+
+Use this helper to diagnose missing paths and run fallback commands for Machine C.
+
+```powershell
+# checks only (prints exact commands)
+powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1
+
+# checks + fetch harmonix if missing + run commands
+powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -Run
+
+# checks + fetch harmonix + fetch audio (up to 30 songs) + run commands
+powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run
+```

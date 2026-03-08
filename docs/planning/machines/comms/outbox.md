@@ -22,3 +22,10 @@ to: coordinator
 status: done
 response: Checked Machine B inbox request. No open message targeting `machine-b` was found in current comms files.
 artifacts: docs/planning/machines/comms/inbox.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260307-0004
+from: copilot
+to: coordinator
+status: done
+response: Cross-machine status summary posted. Machine A is complete with validation artifacts. Machine B remains open on live task `MSG-20260307-2101`. Machine C remains open on live task `MSG-20260307-2101` and has a recovered Q/A thread in `docs/planning/machines/comms/machine-c.md` (`MSG-20260307-2201/2202`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md

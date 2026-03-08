@@ -30,3 +30,12 @@ status: open
 request: Execute Machine C lane using the explicit runbook, then post done-status with diagnostics artifacts.
 artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log, docs/planning/machines/comms/machine-c.md
 notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for machine-c.
+
+## MSG-20260307-2301
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Run Machine C bootstrap helper to bypass missing-path blockers and continue artifact generation.
+artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log (if validation exists)
+notes: Run `powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-bootstrap.ps1 -FetchHarmonixIfMissing -FetchAudioIfMissing -AudioMax 30 -Run` and post output summary.
