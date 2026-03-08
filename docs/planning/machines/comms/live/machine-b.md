@@ -26,10 +26,15 @@ notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for mach
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Mirror your completed branch output into comms with final decision and exact artifact paths; include benchmark attribution changes summary.
-artifacts: docs/planning/machines/comms/machine-b.md, results/sections-machine-b.json, results/machine-b-delta-note.md
-notes: Your branch already has progress (`origin/machine-b/worker-wave1` latest commit). This is a finalize-and-report step.
+artifacts:
+	- docs/planning/machines/comms/machine-b.md
+	- results/sections-machine-b.json
+	- results/machine-b-delta-note.md
+notes: |
+	- Branch `machine-b/worker-wave1` contains the artifacts listed in `results/machine-b-delta-note.md`.
+	- See the delta note for a short attribution summary and recommended next steps (improve candidate generator, then full-dataset eval).
 
 ## MSG-20260307-2130
 from: machine-b

@@ -20,9 +20,14 @@ from: copilot
 to: coordinator
 priority: normal
 status: done
-request: Checked for Machine B question in inbox channels.
-artifacts: docs/planning/machines/comms/inbox.md, docs/planning/machines/comms/machine-b.md
-notes: No open Machine B question found yet in comms files at check time.
+request: Mirror your completed branch output into comms with final decision and exact artifact paths; include benchmark attribution changes summary.
+artifacts:
+	- docs/planning/machines/comms/machine-b.md
+	- results/sections-machine-b.json
+	- results/machine-b-delta-note.md
+notes: |
+	- Branch `machine-b/worker-wave1` contains the artifacts listed in `results/machine-b-delta-note.md`.
+	- The delta note summarizes experiments, artifacts, and recommendations for next steps.
 
 ## MSG-20260307-2130
 from: machine-b
