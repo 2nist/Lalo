@@ -1,0 +1,27 @@
+=== Machine C Wave11 Verification Log ===
+Date: 2026-03-08
+MSG: MSG-20260308-1301 -> MSG-20260308-1303
+
+Machine B commit: 32f9478
+Artifacts in commit:
+  results/sections-machine-b-wave11.json  PRESENT
+  results/machine-b-wave11-note.md        PRESENT
+  scripts/tools/run_wave11.py             PRESENT
+
+Config: prob_threshold=0.25, nms_gap=6.0, min_section=4.0, beat_snap=2.0
+
+Wave 9 baseline:  F1@0.5s=0.0383  prec=0.0938  rec=0.0234  TP=3  FP=29  FN=125  pred/song=2.000
+Wave 11 result:   F1@0.5s=0.0116  prec=0.0222  rec=0.0078  TP=1  FP=44  FN=127  pred/song=2.812
+
+Pass criteria check:
+  pred/song > 2.0:       2.812   PASS (mechanical)
+  precision >= 0.04:     0.0222  FAIL
+  F1@0.5s >= 0.0383:     0.0116  FAIL
+
+VERDICT: FAIL
+
+Key finding: Lowering prob_threshold 0.5->0.25 REDUCED TP 3->1 (+15 FP net).
+Marginal candidates (p=0.25-0.50) are 0 TP / 15 FP.
+Threshold hypothesis falsified.
+Geometry mismatch: Wave11 used nms_gap=6.0 vs Wave9 nms_gap=8.0.
+Root blocker: XGBoost feature discriminability, not probability threshold.
