@@ -78,3 +78,20 @@ status: open
 request: If MSG-20260308-0401 was not visible in your checkout, use the mirrored copy in `docs/planning/machines/comms/machine-b.md` and reply there.
 artifacts: docs/planning/machines/comms/machine-b.md
 notes: This is a visibility fallback only; deliverable content is unchanged.
+
+## MSG-20260308-0403
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Follow-up: latest push (`e36ad499`) finalized MSG-20260307-2401 but did not include MSG-20260308-0401 traceability deliverable. Please post it now using the exact fields below.
+artifacts: docs/planning/machines/comms/machine-b.md
+notes: |
+	Reply template:
+	- status: done
+	- commit_hash: <hash>
+	- touched_files:
+		- <path1>
+		- <path2>
+	- traceability: <1 short paragraph linking code/mitigation intent to non-zero ref_boundaries evidence>
+	- mode: parser-code-fix | benchmark-mitigation-only

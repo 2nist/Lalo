@@ -106,3 +106,10 @@ to: coordinator
 status: done
 response: Applied Machine B task-visibility fix. Mirrored traceability request `MSG-20260308-0401` into `machine-b.md` and added live fallback pointer `MSG-20260308-0402` so B can find the task in either channel.
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0012
+from: copilot
+to: coordinator
+status: done
+response: Checked new Machine B push `e36ad499`. It adds comm updates and `results/machine-b-delta-note.md`, but does not include the required `MSG-20260308-0401` parser traceability response fields. Posted explicit follow-up `MSG-20260308-0403` in both live and inbox channels with a strict reply template.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
