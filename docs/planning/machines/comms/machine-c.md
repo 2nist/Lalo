@@ -232,3 +232,23 @@ details: |
 artifacts:
 - results/verify-machine-b-w3.log
 - tmp/verify_machine_b_w3.py
+## MSG-20260308-0040
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 4b (task MSG-20260308-0601)
+status: done
+summary: Verified Machine B candidate-generator recall. Recall UNCHANGED, model quality UP, TOP RISK weight alignment bug.
+details: |
+  CHECK1 FAIL  Recall unchanged: pred/song=1.12 vs ref=8.00 (86% suppression, NMS not changed).
+  CHECK2 STBL  Precision stable at 0.0556. No regression.
+  CHECK3 PASS  XGBoost CV F1=0.4505 (was 0.380). Model quality improved.
+  CHECK4 FAIL  Weight alignment bug: 9 importances but 5 weight keys;
+               4 informative features (indices 0,5,6,7) silently dropped.
+               flux_peak=1.0 collapse. Must fix before deploying NMS/MIN.
+  CHECK5 UNCH  NMS=16s still suppresses 86%. Oracle ceiling +0.1368 persists.
+  TOP RISK: Weight extraction alignment bug will waste XGBoost contribution
+            when H2+H3 (NMS/MIN) changes finally land.
+artifacts:
+- results/verify-machine-b-w4b.log
+- tmp/verify_machine_b_w4b.py

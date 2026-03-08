@@ -1,0 +1,54 @@
+================================================================
+WAVE 4b VERIFICATION — Machine B candidate-generator recall
+================================================================
+
+[CHECK 1] Recall gain vs baseline (commit 75a6ca7 → c45bfce)
+  Baseline  : pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
+  Current   : pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
+  Delta     : recall +0.0000  F1 +0.0000
+  STATUS: FAIL — no recall improvement observed
+
+[CHECK 2] Precision stability
+  Baseline precision: 0.0556
+  Current  precision: 0.0556  (delta +0.0000)
+  TP/FP/FN: 1/17/127
+  STATUS: STABLE
+
+[CHECK 3] XGBoost hyperparam improvement
+  Best params: {'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 50}
+  CV F1 (hyperparam best): 0.4505
+  CV F1 (prior label-tol=3.0): 0.3800  (from commit 75a6ca7)
+  CV gain: +0.0705
+  STATUS: PASS — model quality improved (CV F1 0.4505)
+
+[CHECK 4] Feature weight alignment / collapse risk
+  Importances array length : 9  (non-zero: 5)
+  Weight keys in dict      : 5  (non-zero: 1)
+  Weights derived: {'flux_peak': 1.0}
+  Alignment: MISMATCH — 9 importances vs 5 weight keys
+  RISK: 5 non-zero importances but only 1 non-zero weight(s)
+    Index positions with signal: [0, 5, 6, 7, 8]
+    These features may not be mapped to recognized weight keys.
+    Weight extraction likely dropped 4 informative feature(s).
+  STATUS: FAIL — weight collapse / alignment bug
+
+[CHECK 5] Candidate-generator suppression (NMS/MIN unchanged)
+  pred/song = 1.12  vs  ref/song = 8.00
+  Suppression rate: 86%
+  Oracle ceiling (NMS=8s): F1@0.5s = 0.9590 (+0.1368 vs current)
+  NMS_DISTANCE_SEC and MIN_SECTION_SEC parameters not changed in this commit.
+  STATUS: UNCHANGED — candidate-generator recall bottleneck is NMS/MIN, not XGBoost weights.
+
+================================================================
+SUMMARY
+================================================================
+  Recall gain     : NO
+  Precision stable: YES
+  CV F1 improved  : YES (0.380 → 0.4505)
+  TOP RISK        : Weight alignment bug — 5 informative features
+                    but flux_peak=1.0 collapse discards 4 of them.
+                    When NMS/MIN are reduced (H2+H3), the weighted scorer must
+                    correctly use all informative features or recall will plateau.
+  VERDICT: Machine B candidate-generator recall NOT YET IMPROVED.
+           XGBoost model quality improved (CV F1=0.4505). Fix weight extraction
+           alignment before deploying NMS/MIN changes.

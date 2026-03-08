@@ -105,3 +105,37 @@ notes: |
   CROSS-MACHINE NOTE:
   Once ref parser is fixed, apply NMS->8s and MIN->4s from MSG-20260308-0010.
   Oracle ceiling at those params: F1@0.5s ~0.9590.
+## MSG-20260308-0401
+from: coordinator
+to: machine-b
+priority: high
+status: done
+request: Visibility mirror of traceability task. Close merge guardrail by posting parser-fix traceability note (or explicit mitigation-only statement if no parser code change was made).
+artifacts: docs/planning/machines/comms/machine-b.md
+notes:
+- Required fields in your reply:
+	- commit hash
+	- touched file paths
+	- one concise provenance paragraph linking change intent to non-zero ref_boundaries evidence
+- If no parser code diff exists, explicitly state that outcome is benchmark-configuration mitigation only and cite the commit(s) that introduced it.
+
+status: done
+summary: Completed by Machine B in commit `2fa5a123` with traceability report `results/guardrail-traceability-401.md` and comm response `MSG-20260307-0401`.
+
+## MSG-20260308-0403
+from: coordinator
+to: machine-b
+priority: high
+status: done
+request: Follow-up: latest push (`e36ad499`) finalized `MSG-20260307-2401` but did not include `MSG-20260308-0401` traceability deliverable. Please reply now in this file.
+artifacts: docs/planning/machines/comms/machine-b.md
+notes:
+- Reply format:
+	- status: done
+	- commit_hash: <hash>
+	- touched_files: <list>
+	- traceability: <short provenance paragraph>
+	- mode: parser-code-fix | benchmark-mitigation-only
+
+status: done
+summary: Follow-up resolved by Machine B push `2fa5a123`.

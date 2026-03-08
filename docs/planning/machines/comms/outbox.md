@@ -85,3 +85,52 @@ to: coordinator
 status: done
 response: Post-decision execution dispatch published. Machine B received a guardrail-close task to provide parser-fix traceability (commit hash + touched files + provenance note), and Machine C received a quick verification task to confirm non-zero boundary behavior and H2/H3 confidence after latest B artifact refresh.
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0009
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine B results intake. New worker commits landed (`93aecd13`, `c45bfce6`, `eb5349dc`) with updated artifacts and comms mirror. Wave 3 result lane is now mirrored as done in coordination live channel. Remaining open item is guardrail traceability request `MSG-20260308-0401` (explicit parser-fix code-diff provenance note).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0010
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine C push intake. New commit `27c7276a` delivered Wave 3 verification artifacts (`results/verify-machine-b-w3.log`, `tmp/verify_machine_b_w3.py`) and comm updates. Verification result is PASS: non-zero ref boundaries (0/30 ref=0), XGBoost CV mean F1=0.380, and H2/H3 confidence assessment posted. Mirrored Machine C `MSG-20260308-0301` and `MSG-20260308-0401` as done in coordination live channel.
+artifacts: docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md
+
+## MSG-20260308-0011
+from: copilot
+to: coordinator
+status: done
+response: Applied Machine B task-visibility fix. Mirrored traceability request `MSG-20260308-0401` into `machine-b.md` and added live fallback pointer `MSG-20260308-0402` so B can find the task in either channel.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0012
+from: copilot
+to: coordinator
+status: done
+response: Checked new Machine B push `e36ad499`. It adds comm updates and `results/machine-b-delta-note.md`, but does not include the required `MSG-20260308-0401` parser traceability response fields. Posted explicit follow-up `MSG-20260308-0403` in both live and inbox channels with a strict reply template.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0013
+from: copilot
+to: coordinator
+status: done
+response: Guardrail push verified complete. Machine B commit `2fa5a123` provides the requested traceability package (`results/guardrail-traceability-401.md`) and comm response (worker-branch `MSG-20260307-0401`). Coordination tasks `MSG-20260308-0401/0402/0403` are now marked done in live + inbox channels.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, results/guardrail-traceability-401.md
+
+## MSG-20260308-0014
+from: copilot
+to: coordinator
+status: done
+response: Performed another full pass and dispatched Wave 4. Cleaned stale open statuses in Machine B live channel (`MSG-20260307-2101`, `MSG-20260308-0101`), then posted new coordinated tasks: Machine B H2/H3 tuning run (`MSG-20260308-0501`), Machine C verification support (`MSG-20260308-0501`), and Machine A integration gate tracking (`MSG-20260308-0501`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0015
+from: copilot
+to: coordinator
+status: done
+response: Reprioritized Wave 4 based on Machine B recommendation to improve candidate generation for recall before further tuning. Dispatched Wave 4b across all lanes: Machine B candidate-generator recall pass (`MSG-20260308-0601`), Machine C verification (`MSG-20260308-0601`), and Machine A integration gate (`MSG-20260308-0601`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md

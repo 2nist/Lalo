@@ -230,6 +230,8 @@ notes: |
      (0039_bulletproof: Fixed F1=0.444 -- should be first to show TP>0).
 
   Will post verification results immediately on new machine-b commit.
+status: done
+summary: Support-mode verification completed on `origin/machine-c` commit `27c7276a`. Machine C validated non-zero reference boundaries and confirmed H2/H3 confidence persistence after Machine B label-tolerance update.
 
 ## MSG-20260308-0401
 from: coordinator
@@ -251,8 +253,7 @@ artifacts:
 - tmp/verify_machine_b_w3.py
 notes: |
   VERIFICATION COMPLETE -- Machine B label-tol=3.0 (commits 75a6ca7/93aecd1)
-  ==========================================================================
-
+  ===================================================================
   CHECK 1 -- Non-zero reference boundaries: PASS
     ref=0 count: 0/30 songs (was: 30/30 before fix).
     mean_ref = 9.30 (matches Harmonix corpus mean exactly).
@@ -284,3 +285,67 @@ notes: |
   RECOMMENDATION: H2 (NMS_DISTANCE_SEC 16->8) is the single highest-ROI change.
     Expected F1 gain: +0.1368 (oracle-confirmed). Zero audio dependency to verify.
 
+=======
+status: done
+summary: Verification posted by Machine C (`MSG-20260308-0402` on branch). Key outcomes: ref=0 count is 0/30 (PASS), XGBoost CV mean F1=0.380 (non-zero), H2 confidence increased, H3 remains medium and supported.
+
+## MSG-20260308-0501
+from: coordinator
+to: machine-c
+priority: normal
+status: done
+request: Wave 4 verification pass. Validate Machine B H2/H3 tuning output once posted and confirm whether recall improves without breaking boundary sanity.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with concise rationale and top risk note.
+
+status: done
+summary: Superseded by Wave 4b candidate-generator recall verification lane.
+
+## MSG-20260308-0601
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 4b verification pass. Validate Machine B candidate-generator recall output and confirm recall gain vs baseline without destabilizing precision.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL plus one highest-priority risk.
+## MSG-20260308-0602
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 4b verification of Machine B candidate-generator recall (commit c45bfce). Full log at results/verify-machine-b-w4b.log.
+artifacts:
+- results/verify-machine-b-w4b.log
+- tmp/verify_machine_b_w4b.py
+notes: |
+  VERIFICATION: Wave 4b candidate-generator recall (Machine B commit c45bfce)
+  ==========================================================================
+
+  CHECK 1 -- Recall gain vs baseline: FAIL (no improvement yet)
+    Baseline (75a6ca7): pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
+    Current (c45bfce):  pred/song=1.12  ref/song=8.00  Recall=0.0078  F1=0.0137
+    Delta: recall=+0.0000  F1=+0.0000
+    NMS_DISTANCE_SEC and MIN_SECTION_SEC unchanged. Candidate count unchanged.
+
+  CHECK 2 -- Precision stability: STABLE
+    Precision held at 0.0556 (TP=1 FP=17 FN=127). No regression.
+
+  CHECK 3 -- XGBoost model quality: IMPROVED
+    Best params: {n_estimators:50, max_depth:3, lr:0.1}
+    CV F1: 0.4505 (was 0.3800, +0.0705). Model quality up, not yet deployed.
+
+  CHECK 4 -- TOP RISK: Weight alignment bug (FAIL)
+    Importances array: 9 values, 5 non-zero (indices 0,5,6,7,8).
+    Weight dict: 5 keys, only flux_peak=1.0 non-zero.
+    4 informative features discarded in extraction step.
+    When NMS/MIN are reduced (H2+H3), the scorer must use all 5 non-zero
+    features or recall gain will be partial. Fix before deploying NMS changes.
+
+  CHECK 5 -- Suppression: UNCHANGED
+    86% suppression (pred=1.12 vs ref=8.00). Oracle ceiling NMS=8s: +0.1368.
+    Candidate-generator recall gain DEPENDS ON H2 (NMS reduction), not XGBoost.
+
+  VERDICT: PASS on model quality. FAIL on recall gain (work not yet deployed).
+  TOP RISK: Weight extraction drops 4/5 informative features -- fix alignment
+  before applying NMS/MIN changes or XGBoost contribution will be wasted.
