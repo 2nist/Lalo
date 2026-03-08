@@ -69,3 +69,12 @@ status: open
 request: Close merge guardrail with parser-fix traceability note. Publish exact code diff reference for H4 fix (or explicit statement that latest improvement is benchmark-configuration mitigation only).
 artifacts: docs/planning/machines/comms/machine-b.md
 notes: Include commit hash, touched file paths, and one concise provenance paragraph linking fix intent to observed non-zero ref_boundary evidence.
+
+## MSG-20260308-0402
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: If MSG-20260308-0401 was not visible in your checkout, use the mirrored copy in `docs/planning/machines/comms/machine-b.md` and reply there.
+artifacts: docs/planning/machines/comms/machine-b.md
+notes: This is a visibility fallback only; deliverable content is unchanged.
