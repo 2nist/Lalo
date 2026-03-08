@@ -1,0 +1,37 @@
+Wrote results/sections-machine-b-wave14a.json and results/wave14_wave14a.log
+Wrote results/sections-machine-b-wave14b.json and results/wave14_wave14b.log
+Wrote results/sections-machine-b-wave14c.json and results/wave14_wave14c.log
+Wrote results/machine-b-wave14-note.md
+{
+  "summary": {
+    "wave14a": {
+      "tp": 2,
+      "fp": 34,
+      "fn": 126,
+      "precision": 0.0556,
+      "recall": 0.0156,
+      "avg_pred_per_song": 2.25
+    },
+    "wave14b": {
+      "tp": 2,
+      "fp": 33,
+      "fn": 126,
+      "precision": 0.0571,
+      "recall": 0.0156,
+      "avg_pred_per_song": 2.188
+    },
+    "wave14c": {
+      "tp": 2,
+      "fp": 33,
+      "fn": 126,
+      "precision": 0.0571,
+      "recall": 0.0156,
+      "avg_pred_per_song": 2.188
+    }
+  },
+  "validations": {
+    "wave14a_parity_match": false,
+    "monotonic_fp": false,
+    "monotonic_pred": false
+  }
+}

@@ -1,0 +1,18 @@
+Run: wave14a prob_threshold=0.5 nms_gap=8.0 min_section=4.0 beat_snap=2.0 
+
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0003_6foot7foot_sections.txt", "tp": 0, "fp": 2, "fn": 11, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0005_again_sections.txt", "tp": 0, "fp": 2, "fn": 9, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0009_americanmusic_sections.txt", "tp": 0, "fp": 2, "fn": 8, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0012_aroundtheworld_sections.txt", "tp": 0, "fp": 3, "fn": 7, "pred_boundaries": 3, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0014_babaoriley_sections.txt", "tp": 0, "fp": 2, "fn": 6, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0017_badromance_sections.txt", "tp": 0, "fp": 2, "fn": 7, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0018_bassdownlow_sections.txt", "tp": 1, "fp": 1, "fn": 4, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0021_better_sections.txt", "tp": 0, "fp": 2, "fn": 9, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0026_blackandyellow_sections.txt", "tp": 0, "fp": 2, "fn": 6, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0027_blackened_sections.txt", "tp": 0, "fp": 3, "fn": 10, "pred_boundaries": 3, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0032_boomboompow_sections.txt", "tp": 0, "fp": 0, "fn": 9, "pred_boundaries": 0, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0035_boyfriend_sections.txt", "tp": 0, "fp": 3, "fn": 9, "pred_boundaries": 3, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0036_breakingthegirl_sections.txt", "tp": 0, "fp": 3, "fn": 10, "pred_boundaries": 3, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0037_breakyourheart_sections.txt", "tp": 0, "fp": 2, "fn": 5, "pred_boundaries": 2, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0038_bringmetolife_sections.txt", "tp": 1, "fp": 2, "fn": 10, "pred_boundaries": 3, "prob_threshold": 0.5}
+{"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0039_bulletproof_sections.txt", "tp": 0, "fp": 3, "fn": 6, "pred_boundaries": 3, "prob_threshold": 0.5}
