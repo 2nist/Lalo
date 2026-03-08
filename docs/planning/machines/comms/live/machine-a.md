@@ -116,7 +116,19 @@ summary: Wave 6 gate closed from B/C evidence. Decision: `merge-with-guardrail` 
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 7 integration gate. Track Machine B H3 + alignment pass and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 7 evidence lands.
+
+status: done
+summary: Wave 7 gate closed from B/C evidence. Decision: `hold-for-more-data` because F1@0.5s remained unchanged (0.0270), H3 impact was marginal, and the alignment fix was not exercised in runtime despite code-level CLI support.
+
+## MSG-20260308-1001
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 8 integration gate. Track Machine B full-feature weight rerun and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 8 evidence lands. Call out whether prediction sparsity improved (pred/song) and whether F1@0.5s crosses 0.035.

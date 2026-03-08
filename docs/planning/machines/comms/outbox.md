@@ -190,3 +190,10 @@ to: coordinator
 status: done
 response: Checked and ingested latest Machine C comm (`acf91504`). Wave 6 re-verification is now complete with conditional PASS: NMS 16->8 confirmed effective (recall +100%, F1@0.5s +51%, precision stable). Closed Wave 6 gate as `merge-with-guardrail` and dispatched Wave 7 tasks: Machine B H3 + alignment pass (`MSG-20260308-0901`), Machine C Wave 7 verification (`MSG-20260308-0901`), and Machine A Wave 7 integration gate (`MSG-20260308-0901`).
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0024
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 7 results from worker branches and advanced coordination state. Machine B commit `e1f156c3` is marked done (H3 applied; F1@3.0s improved), Machine C verification commit `bb3649a3` is marked done (partial pass; sparsity remains bottleneck), and Machine A Wave 7 gate is closed as `hold-for-more-data` due to unchanged F1@0.5s and unexercised alignment fix. Dispatched Wave 8 tasks across all lanes focused on full-feature weight execution and sparsity recovery (`MSG-20260308-1001` for A/B/C).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md

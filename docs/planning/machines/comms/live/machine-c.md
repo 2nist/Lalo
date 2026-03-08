@@ -155,7 +155,19 @@ summary: Retry completed and posted as `MSG-20260308-0804` on machine-c branch.
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 7 verification pass. Validate Machine B H3 run (`MIN_SECTION_SEC` 8 -> 4) plus any alignment-fix updates and report combined impact vs Wave 6.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and top remaining blocker.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `bb3649a3` (`MSG-20260308-0902`). Verdict: partial pass. H3 was applied with marginal effect, F1@0.5s unchanged at 0.0270, F1@3.0s improved to 0.1267, and top blocker remains prediction sparsity before NMS/MIN. Weight-alignment CLI fix is code-complete but not exercised in the Wave 7 run.
+
+## MSG-20260308-1001
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 8 verification pass. Validate Machine B full-feature weight rerun and confirm whether pred density and F1@0.5s improve over Wave 7 without unacceptable precision collapse.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, plus one top remaining blocker.

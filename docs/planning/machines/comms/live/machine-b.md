@@ -183,7 +183,19 @@ summary: Completed by Machine B in `origin/machine-b/worker-wave1` commit `e9593
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 7 combined pass. Apply H3 change (`MIN_SECTION_SEC` 8 -> 4) and include alignment-fix update if available, then rerun pinned heuristic benchmark and publish delta summary.
 artifacts: results/sections-machine-b-wave7.json, results/machine-b-wave7-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, pred/song, TP/FP/FN, precision, recall, plus non-zero weight count if alignment fix is included.
+
+status: done
+summary: Completed by Machine B in `origin/machine-b/worker-wave1` commit `e1f156c3`. Wave 7 delivered H3 (`MIN_SECTION_SEC` 8 -> 4) and CLI exposure for additional weight keys. Reported metrics vs Wave 6: F1@0.5s unchanged at 0.0270, F1@3.0s improved 0.1069 -> 0.1267.
+
+## MSG-20260308-1001
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 8 sparsity-first pass. Retrain/re-export weights with full feature mapping (all intended keys), run pinned heuristic benchmark with explicit non-default weight flags enabled, and publish delta vs Wave 7.
+artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
+notes: Keep algorithm pinned to heuristic. Include: 1) non-zero weight key count, 2) full key list, 3) F1@0.5s/F1@3.0s, 4) pred/song, TP/FP/FN, precision, recall. If you also test one threshold setting, label it clearly as a separate sub-run.
