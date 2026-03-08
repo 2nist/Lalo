@@ -484,6 +484,8 @@ def detect_sections(
     prob_threshold: float = 0.0,
     random_seed: Optional[int] = None,
     trace_path: Optional[Path] = None,
+    cand_prominence: Optional[float] = None,
+    cand_sub_prominence: Optional[float] = None,
 ) -> Dict:
     """Run the section detector.
 
@@ -534,7 +536,9 @@ def detect_sections(
     beat_times, downbeat_times = _detect_beats(y, sr)
 
     frames, times, flux_scores = _generate_candidates(
-        flux, sr, hop, min_sec=max(2.0, nms_gap_sec / 2)
+        flux, sr, hop, min_sec=max(2.0, nms_gap_sec / 2),
+        prominence=(cand_prominence if cand_prominence is not None else 0.18),
+        sub_prominence=(cand_sub_prominence if cand_sub_prominence is not None else 0.3),
     )
 
     if len(times) == 0:
