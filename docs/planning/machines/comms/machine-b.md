@@ -203,7 +203,7 @@ summary: Completed by Machine B with Wave 9 artifact and metrics package (`544e6
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
 artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
 notes:
@@ -211,6 +211,31 @@ notes:
 	1) `git fetch origin`
 	2) `git checkout machine-b/worker-wave1`
 	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Required metrics vs Wave 9:
+	- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+- Acceptance target:
+	- pred/song > 2.0
+	- precision >= 0.04
+	- F1@0.5s >= 0.0383
+
+status: done
+summary: Wave 10 processed with branch artifacts (`03df0ec1`, `517663a8`) and Machine C fail verification (`51918398`).
+
+## MSG-20260308-1301
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 11 threshold-first corrective pass. Keep Wave 9 9-feature weights and run one controlled probability-threshold tuning run, then publish a full benchmark artifact.
+artifacts: results/sections-machine-b-wave11.json, results/machine-b-wave11-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Scope:
+	- one threshold-focused change (for example: `--prob_threshold 0.25`)
+	- keep Wave 9 geometry and 9-feature weights
 - Required metrics vs Wave 9:
 	- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
 - Acceptance target:

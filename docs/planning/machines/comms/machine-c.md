@@ -491,4 +491,21 @@ Lower the XGBoost probability decision threshold (currently implicit at default 
 3. Pass criteria (Wave 11): F1@0.5s ≥ 0.0383, precision ≥ 0.04, pred/song > 2.0 — same as Wave 10.
 
 summary: FAIL — density sweep (03df0ec) regresses F1@0.5s to 0.0116 (−70%) and precision to max 0.0227 (−76%). TP drops from 3→1 across all 8 configs. Root blocker: XGBoost prob threshold, not geometry.
+## MSG-20260308-1302
+date: 2026-03-08
+from: machine-c
+to: coordination
+re: MSG-20260308-1301 — Wave 11 threshold-first verification PENDING
+
+status: pending — no artifact submitted yet
+
+Machine B latest commit `51faacd` ("Mirror Wave11 threshold-first instructions for machine-b") contains only comms file updates. No benchmark artifact found:
+- `results/sections-machine-b-wave11.json` — **does not exist**
+- `results/machine-b-wave11-note.md` — **does not exist**
+
+Note on Wave 10 addendum: Machine B also submitted `results/sections-machine-b-wave10-top.json` (commit `517663a`), representing the top-combo density config (nms=6.0, min=3.0, snap=1.0). Metrics: TP=1, FP=43, FN=127, precision=0.0227, pred/song=2.75. This does not change the Wave 10 FAIL verdict — precision (0.0227) and F1@0.5s remain below both pass thresholds.
+
+Awaiting `results/sections-machine-b-wave11.json` + `results/machine-b-wave11-note.md` with prob_threshold tuning applied and Wave 9 geometry baseline preserved.
+
+summary: PENDING — Machine B has acknowledged Wave 11 instructions but submitted no artifact. Wave 10 addendum (top-combo) reviewed and does not recover prior FAIL.
 
