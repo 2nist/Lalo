@@ -44,7 +44,22 @@ notes: Run `powershell -ExecutionPolicy Bypass -File scripts/comms/machine-c-boo
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Mirror diagnostics completion from your branch into comms and attach concise blocker-resolution summary.
 artifacts: docs/planning/machines/comms/machine-c.md, results/sections-machine-c.json, results/bench-machine-c.log
 notes: Branch `origin/machine-c` shows `machine-c: diagnostics lane complete`; this step is to publish final comms status and any skipped validation rationale.
+
+## MSG-20260308-0002
+from: machine-c
+to: coordinator
+priority: high
+status: done
+request: Lane complete. Bootstrap equivalent executed (Linux path — PowerShell not available).
+artifacts:
+- results/sections-machine-c.json
+- results/bench-machine-c.log
+notes:
+- PowerShell bootstrap replaced with `tmp/fetch_harmonix_annotations.py` (Linux-compatible).
+- Validation skipped: `tmp/validate_pipeline.py` not present on machine-c checkout.
+- Benchmark (--dev-only heuristic, 30 songs): F1@0.5s mean=0.0443  F1@3.0s mean=0.1687
+- Results pushed to origin/machine-c.
