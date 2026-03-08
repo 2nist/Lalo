@@ -53,10 +53,13 @@ notes: Keep detector algorithm pinned to `heuristic`; include exact command line
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Parser-first emergency lane: fix the reference boundary parser bug (H4: ref_boundaries=0), then rerun baseline and XGBoost benchmark with valid labels.
 artifacts: scripts/bench/section_benchmark.py, results/sections-machine-b-wave3.json, results/machine-b-wave3-note.md, docs/planning/machines/comms/machine-b.md
 notes: Do this before any further weight/model tuning. Include before/after metric table proving non-zero reference boundaries.
+
+status: done
+summary: New Machine B results landed on `origin/machine-b/worker-wave1` (`93aecd13`, `c45bfce6`, `eb5349dc`) with label-tolerance update, XGBoost hyperparameter artifacts, and comms mirror. Result evidence includes non-zero reference boundaries in latest benchmark outputs.
 
 ## MSG-20260308-0401
 from: coordinator
