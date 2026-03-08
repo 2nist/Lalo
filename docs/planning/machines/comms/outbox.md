@@ -155,3 +155,24 @@ to: coordinator
 status: done
 response: Wave 4b intake complete. Machine B delivered recall-pass artifacts (`bc1b29fa`) and Machine C verified (`15a0eb04`). Outcome: no recall gain on dev split (metrics unchanged), precision stable, model CV improved, and top risk remains feature-weight alignment collapse. Dispatched Wave 5 alignment-first lane to Machine B, verification follow-up to Machine C, and integration gate tracking to Machine A.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0019
+from: copilot
+to: coordinator
+status: done
+response: Diagnosed recurring Machine B comm failures as branch drift (`coordination/wave-1` vs `machine-b/worker-wave1`). Applied direct branch-local fix by pushing canonical active instruction `MSG-20260308-0702` to `origin/machine-b/worker-wave1` (commit `277f6d25`) in both Machine B comm files.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0020
+from: copilot
+to: coordinator
+status: done
+response: Wave 5 intake complete. Machine B posted `01b44ce6` and Machine C verification `6e509cc2`. Outcome: no recall improvement, precision stable, and top blocker remains NMS bottleneck; requested alignment-fix evidence not delivered and expected artifact `results/sections-machine-b-wave5.json` was missing. Dispatched Wave 6 NMS-first pass to Machine B (`MSG-20260308-0801`), verification to Machine C (`MSG-20260308-0801`), and integration gate tracking to Machine A (`MSG-20260308-0801`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0021
+from: copilot
+to: coordinator
+status: done
+response: To prevent repeat Machine B comm drift, I also pushed the Wave 6 canonical instruction directly to `origin/machine-b/worker-wave1` in both branch-local comm files (`MSG-20260308-0801`, commit `ea0b71f3`).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md

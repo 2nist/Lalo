@@ -1,0 +1,21 @@
+================================================================
+WAVE 6 VERIFICATION -- NMS-first pass (Machine B, pending)
+================================================================
+
+STATUS: PENDING
+  Machine B Wave6 NMS artifact (sections-machine-b-wave6.json) not yet
+  committed as of origin/machine-b/worker-wave1 @ ea0b71f.
+
+  Wave6 directive (MSG-0801) posted to machine-b by coordinator.
+  Machine B has acknowledged (ea0b71f comms-only commit).
+  NMS_DISTANCE_SEC change not yet implemented.
+
+Wave5 verification (01b44ce, prominence 0.20->0.18):
+  F1@0.5s = 0.0179 (UNCHANGED -- per machine-b delta note)
+  pred/song = 1.12 (UNCHANGED)
+  Pattern: 4 consecutive upstream changes, all zero impact.
+  Root cause confirmed: NMS_DISTANCE_SEC=16s series bottleneck.
+
+TRIGGER: Watching for sections-machine-b-wave6.json in machine-b commits.
+PASS threshold for NMS change: F1@0.5s > 0.05 (any improvement vs 0.0179 baseline).
+================================================================

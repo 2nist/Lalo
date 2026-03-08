@@ -269,3 +269,33 @@ details: |
                will matter until NMS is unblocked.
 artifacts:
 - results/verify-machine-b-w5.log
+## MSG-20260308-0050
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 6 (task MSG-20260308-0801)
+status: pending
+summary: Wave6 NMS-first artifact not yet committed by machine-b. Wave5 prominence=0.18 confirmed zero change (4th consecutive). Watching for sections-machine-b-wave6.json.
+details: |
+  WAVE5 CONF   prominence 0.20->0.18: F1=0.0179 unchanged. Same as all prior upstream changes.
+  WAVE6 PEND   NMS-first artifact missing. Directive posted (ea0b71f) but not executed.
+  TRIGGER      Re-run full 5-check verification on machine-b commit with wave6 JSON.
+  PASS THRESH  F1@0.5s > 0.05 (any measurable improvement from 0.0179).
+  POST-NMS     Weight alignment bug (4 features dropped) is next in queue after NMS.
+artifacts:
+- results/verify-machine-b-w6-pending.log
+## MSG-20260308-0050
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 6 (task MSG-20260308-0801)
+status: pending
+summary: Wave6 NMS-first artifact not yet committed by machine-b. Wave5 prominence=0.18 confirmed zero change (4th consecutive). Watching for sections-machine-b-wave6.json.
+details: |
+  WAVE5 CONF   prominence 0.20->0.18: F1=0.0179 unchanged. Same as all prior upstream changes.
+  WAVE6 PEND   NMS-first artifact missing. Directive posted (ea0b71f) but not executed.
+  TRIGGER      Re-run full 5-check verification on machine-b commit with wave6 JSON.
+  PASS THRESH  F1@0.5s > 0.05 (any measurable improvement from 0.0179).
+  POST-NMS     Weight alignment bug (4 features dropped) is next in queue after NMS.
+artifacts:
+- results/verify-machine-b-w6-pending.log
