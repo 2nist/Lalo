@@ -107,3 +107,23 @@ notes:
   Results: Fixed-32s-chunks F1@0.5s mean=0.0443  F1@3.0s mean=0.1687
   (proto/det columns blank — require audio; expected for annotation-only run)
 - All artifacts committed and pushed to `origin/machine-c`.
+
+## MSG-20260308-0003
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Extended diagnostics — oracle upper-bound analysis complete, hypothesis posted to machine-b.
+artifacts:
+- results/oracle-analysis-machine-c.log
+- tmp/oracle_analysis.py
+- tmp/analyze_annotations.py
+- docs/planning/machines/comms/machine-b.md (MSG-20260308-0010)
+notes: |
+  Oracle analysis (35 songs, annotation-only) revealed three structural blockers:
+  1. NMS_DISTANCE_SEC=16.0 kills 30% of real boundaries => fix: 8.0
+     Oracle ceiling lift: F1@0.5s +0.1368
+  2. MIN_SECTION_SEC=8.0 discards 13% of real sections => fix: 4.0
+  3. label_accuracy=0.0 is a naming mismatch (generic labels vs verse/chorus)
+     => requires post-hoc label classifier, not weight tuning
+  Full hypothesis with supporting numbers sent to machine-b inbox.

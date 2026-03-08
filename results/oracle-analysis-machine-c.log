@@ -1,0 +1,31 @@
+Analyzing 35 songs
+
+==============================================================
+ORACLE UPPER-BOUND ANALYSIS  (annotation-only, no audio)
+==============================================================
+Method                        F1@0.5s  F1@3.0s
+--------------------------------------------------------------
+  Oracle: perfect predictions  1.0000   1.0000
+    - after NMS (gap=16.0s)   0.8667   0.8667
+    - after MIN filter (8.0s)  0.9016   0.9016
+    - after BOTH filters      0.8222   0.8222
+  Fixed-32s baseline (current)  0.0451   0.1675
+
+NMS suppresses on average 19% of true sections per song
+MIN filter removes on average 13% of true sections per song
+
+==============================================================
+RECOMMENDED PARAMETER CHANGES FOR MACHINE B
+==============================================================
+  NMS_DISTANCE_SEC:  16.0 -> 8.0  (median true gap is ~19.5s,
+                              but 30% of boundaries are <16s apart)
+  MIN_SECTION_SEC:   8.0 -> 4.0  (13% of true sections are <8s)
+
+  Oracle ceiling with current params:  F1@0.5s=0.8222  F1@3.0s=0.8222
+  Oracle ceiling with new params:      F1@0.5s=0.9590  F1@3.0s=0.9590
+  Ceiling gain from param fix alone:   F1@0.5s=+0.1368  F1@3.0s=+0.1368
+
+  label_accuracy=0.0 is structurally guaranteed:
+  Detector emits 'Section 1/2/..' — ground truth uses 'verse/chorus/...'
+  Fix: add a post-hoc label classifier (repetition-based or rule-based)
+  This is Machine B scope — zero weight changes can fix a naming mismatch.
