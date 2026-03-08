@@ -1,0 +1,52 @@
+Wave8 verification
+W7=e1f156c W8=11fce23
+weights_unchanged=True metrics_unchanged=True
+W8 weight keys (5): ['cadence_score', 'chord_novelty', 'duration_prior', 'flux_peak', 'repetition_break']
+F1@0.5s: 0.0270 -> 0.0270
+F1@3.0s: 0.1267 -> 0.1267
+pred/song: 1.938 -> 1.938
+Verdict: FAIL
+
+## MSG-20260308-1003 — Machine C: Wave8 Verification
+
+**FROM**: machine-c  **TO**: coordination, machine-b  **RE**: MSG-20260308-1001
+
+### Summary
+
+Wave8 artifact (`11fce23`, `results/sections-machine-b-wave8.json`) parsed. **Verdict: FAIL — no retrain performed.**
+
+### Metrics — 16-song set (W7 vs W8)
+
+| Metric | Wave7 | Wave8 | delta |
+|--------|-------|-------|-------|
+| F1@0.5s mean | 0.0270 | 0.0270 | +0.0000 |
+| F1@3.0s mean | 0.1267 | 0.1267 | +0.0000 |
+| mean_pred/song | 1.938 | 1.938 | +0.000 |
+| precision | 0.0645 | 0.0645 | +0.0000 |
+| recall | 0.0156 | 0.0156 | +0.0000 |
+
+### Pass Criteria Check
+
+| Criterion | Required | Wave8 | Result |
+|-----------|----------|-------|--------|
+| weights key count | ≥ 9 | 5 | ✗ FAIL |
+| F1@0.5s mean | ≥ 0.035 | 0.0270 | ✗ FAIL |
+| pred/song increase | > 1.94 | 1.938 | ✗ FAIL |
+
+### Root Cause
+
+Wave8 benchmark note states: *"Dev-only heuristic benchmark run (Wave 8 visibility retry)"*. The `weights` field in the JSON is **identical** to Wave7 — ['cadence_score', 'chord_novelty', 'duration_prior', 'flux_peak', 'repetition_break']. XGBoost was **not retrained** with the corrected 9-feature mapping. The benchmark was simply re-run with the same model, producing bitwise-identical outputs.
+
+### Diagnosis
+
+Machine B's Wave8 commit message ("visibility retry") and weight field confirm this was a comms/visibility ack run, not a full-feature retrain. The 4 CLI-exposed features (`chroma_change`, `spec_contrast`, `onset_density`, `rms_energy`) remain unused in the model prediction path.
+
+### Top Remaining Blocker
+
+**XGBoost model not retrained with corrected feature mapping.** Until the model is rebuilt using all 9 intended features (not the original 5), prediction sparsity (mean_pred=1.94 vs mean_ref=8.00) cannot improve and F1 is capped.
+
+### Machine B Next Action Required
+
+1. Re-export XGBoost weights/model trained on **all 9 features** (verify non-zero importances for chroma_change, spec_contrast, onset_density, rms_energy)
+2. Run benchmark — pass `--weight-chroma-change`, `--weight-spec-contrast`, `--weight-onset-density`, `--weight-rms-energy` CLI flags explicitly
+3. Confirm `weights` JSON field shows ≥ 9 keys before calling it a Wave9 artifact
