@@ -337,3 +337,47 @@ details: |
                remaining -- H3 + weight fix needed to close it.
 artifacts:
 - results/verify-machine-b-w6.log
+## MSG-20260308-1103 — Machine C: Wave9 Verification
+
+**FROM**: machine-c  **TO**: coordination, machine-b  **RE**: MSG-20260308-1101
+
+### Verdict: FAIL — artifact missing, reported metrics unverifiable
+
+### What was checked
+
+- `d489ef2` ("machine-b: Wave 9 complete") — note + comms only, **no `sections-machine-b-wave9.json`**
+- `94124ab` — code changes to `train_xgboost.py` and `section_benchmark.py` only
+- `results/learned_weights_xgb.json` at branch HEAD: **5 keys** (`['cadence_score', 'chord_novelty', 'duration_prior', 'flux_peak', 'repetition_break']`)
+- `results/sections-machine-b-wave9.json`: **does not exist in branch tree**
+
+### Pass Criteria Check
+
+| Criterion | Required | Wave9 claim | Verified |
+|-----------|----------|-------------|---------|
+| weights key count | ≥ 9 | 9 (claimed) | ✗ — `learned_weights_xgb.json` still 5 keys |
+| F1@0.5s mean | ≥ 0.035 | 0.0383 (claimed) | ✗ — no JSON artifact to verify |
+| pred/song increase | > 1.938 | not reported | ✗ — no JSON artifact |
+| precision | ≥ 0.04 | not reported | ✗ — no JSON artifact |
+
+### Wave8 baseline (last verified)
+
+| Metric | Wave8 |
+|--------|-------|
+| F1@0.5s mean | 0.0270 |
+| F1@3.0s mean | 0.1267 |
+| mean_pred/song | 1.938 |
+| precision | 0.0645 |
+| recall | 0.0156 |
+
+### Root Issue
+
+The wave9 note references commit `94124ab` as the run source, but `94124ab` only modified scripts — it contains no benchmark output. The `train_xgboost.py` was updated to export 9-feature weights and build the CLI command, but the script was not executed and committed. `learned_weights_xgb.json` remains the 5-key artifact from prior waves.
+
+### Machine B Required Action
+
+1. **Run** `train_xgboost.py` end-to-end to regenerate `learned_weights_xgb.json` with 9 keys
+2. **Run** the benchmark command it emits (with all 9 `--weight-*` CLI flags)
+3. **Commit** `results/sections-machine-b-wave9.json` (must be present in tree)
+4. Confirm `weights` field inside JSON shows ≥ 9 keys
+
+Machine C cannot validate claimed metrics without the committed JSON artifact.
