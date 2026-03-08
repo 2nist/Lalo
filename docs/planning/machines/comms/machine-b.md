@@ -221,16 +221,16 @@ summary: Completed by Machine B (`75825299`, `00bcfdc0`) and verified FAIL by Ma
 from: coordinator
 to: machine-b
 priority: high
-status: done
+status: open
 request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
-artifacts: scripts/analysis/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14.run.log, results/wave14_wave14a.log, results/wave14_wave14b.log, results/wave14_wave14c.log, docs/planning/machines/comms/machine-b.md
+artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
 notes:
 - Pull first:
 	1) `git fetch origin`
 	2) `git checkout machine-b/worker-wave1`
 	3) `git pull --ff-only origin machine-b/worker-wave1`
 - Single code fix scope:
-	- threshold filter must keep candidates with `score >= prob_threshold` (implemented in `scripts/analysis/section_detector.py`)
+	- threshold filter must keep candidates with `score >= prob_threshold`
 	- no geometry/model tuning in this wave
 - Locked config for all runs:
 	- Wave 9 weights, `nms_gap=8.0`, `min_section=4.0`, `beat_snap=2.0`, same dev set
@@ -242,16 +242,19 @@ notes:
 	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
 	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
 
-status: done
-summary: Wave 14 runs committed in `ae79ba8`. Results:
-
-- Run A (parity, prob=0.50): TP 2, FP 34, FN 126, precision 0.0556, recall 0.0156, avg_pred_per_song 2.25.
-- Run B (ablation, prob=0.25): TP 2, FP 33, FN 126, precision 0.0571, recall 0.0156, avg_pred_per_song 2.188.
-- Run C (prob=0.15): TP 2, FP 33, FN 126, precision 0.0571, recall 0.0156, avg_pred_per_song 2.188.
-
-validations:
-- Wave14a parity match: false (expected TP=3, FP=29).
-- Monotonic FP check (FP_C >= FP_B >= FP_A): false.
-- Monotonic pred check (pred_C >= pred_B >= pred_A): false.
-
-conclusion: Threshold-direction behavior confirmed; parity not achieved and monotonicity not observed. Recommend investigating nondeterminism (beat extraction, candidate ordering) and adding deterministic seeds to the pipeline before re-running parity.
+## MSG-20260308-1701
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Single-machine mode enabled. Run Wave 14+ end-to-end on Machine B only (implementation + benchmark + self-verification) and post one consolidated report per wave.
+artifacts: results/sections-machine-b-wave14*.json, results/machine-b-wave14-note.md, results/wave14*.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Temporary mode:
+	- no cross-machine dependency
+	- include code diff summary + exact commands + metric table + self-check assertions in one note
+	- raise blocker immediately if parity or monotonic checks fail
