@@ -1,0 +1,56 @@
+# Machine-C Wave7 Verification Log
+# 2026-03-08T13:13:57Z
+
+## Sources
+  W6 commit : e95937e  (results/sections-machine-b-wave6.json)
+  W7 commit : e1f156c  (results/sections-machine-b-wave7.json)
+
+## Dataset Coverage
+  W6 detector songs : 16/30
+  W7 detector songs : 16/30
+  Shared songs      : 16 (identical sets — comparison valid)
+  Songs missing detector in W7: 14
+
+## Aggregate Metrics (16-song shared set)
+  Metric          W6        W7        delta
+  F1@0.5s mean  : 0.0270    0.0270    +0.0000
+  F1@3.0s mean  : 0.1069    0.1267    +0.0198
+  mean_pred/song: 1.812     1.938     +0.125
+  mean_ref/song : 8.000  (unchanged)
+  pred:ref ratio: 1:4.1  (under-prediction gap)
+
+## F1@0.5s Song Distribution
+  improved  : 0
+  unchanged : 16
+  regressed : 0
+
+## Observations from MIN_SECTION_SEC 8→4 (H3)
+  Songs gaining new pred boundary: 2
+    0009_americanmusic: pred 2 -> 3
+    0027_blackened: pred 2 -> 3
+  H3 effect: MARGINAL — filter rarely binding when detector emits ~1.9 candidates/song
+
+## F1@3.0s Notable Movers
+  0009_americanmusic: 0.2000 -> 0.3636 (+0.1636)
+  0027_blackened: 0.0000 -> 0.1538 (+0.1538)
+
+## Weight Alignment Check
+  W6 weights keys (5): ['cadence_score', 'chord_novelty', 'duration_prior', 'flux_peak', 'repetition_break']
+  W7 weights keys (5): ['cadence_score', 'chord_novelty', 'duration_prior', 'flux_peak', 'repetition_break']
+  New keys in W7  : none
+  -> CLI flag added but W7 benchmark run WITHOUT new weights (same 5-key dict)
+  -> Feature alignment fix NOT yet exercised — XGBoost retrain needed
+
+## Root Cause Update (post-H2/H3)
+  mean_pred/song = 1.94  vs  mean_ref/song = 8.00
+  Under-prediction ratio: 4.1x — binding constraint is now
+  XGBoost detection threshold (too few candidates reach NMS in the first place).
+  NMS (H2) and MIN (H3) filters are no longer the primary bottleneck.
+
+## Verdict
+  H3 (MIN_SECTION_SEC 8->4) : APPLIED — effect marginal (2 songs gained 1 pred)
+  Weight alignment CLI fix   : STRUCTURAL ONLY — not tested in this run
+  Recommended next action    : XGBoost retrain with corrected feature mapping
+  then run full 30-song benchmark to verify pred density increase
+
+  PASS criteria: F1@0.5s >= 0.035 on full 30-song run after retrain

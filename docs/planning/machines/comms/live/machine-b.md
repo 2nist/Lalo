@@ -178,3 +178,12 @@ notes: Include before/after values for F1@0.5s, F1@3.0s, mean predicted boundari
 
 status: done
 summary: Completed by Machine B in `origin/machine-b/worker-wave1` commit `e95937ef`. Reported detector means improved from F1@0.5s 0.0179 -> 0.0270 and F1@3.0s 0.0779 -> 0.1069 using NMS 16 -> 8.
+
+## MSG-20260308-0901
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 7 combined pass. Apply H3 change (`MIN_SECTION_SEC` 8 -> 4) and include alignment-fix update if available, then rerun pinned heuristic benchmark and publish delta summary.
+artifacts: results/sections-machine-b-wave7.json, results/machine-b-wave7-note.md, docs/planning/machines/comms/machine-b.md
+notes: Keep runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, pred/song, TP/FP/FN, precision, recall, plus non-zero weight count if alignment fix is included.

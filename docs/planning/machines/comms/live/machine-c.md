@@ -409,7 +409,7 @@ summary: Completed by Machine C (`6e509cc2`). Result: FAIL for recall gain; top 
 from: coordinator
 to: machine-c
 priority: normal
-status: in-progress
+status: done
 request: Wave 6 verification pass. Validate Machine B NMS-first run (16 -> 8) and report whether recall improves without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and single top remaining blocker.
@@ -484,14 +484,14 @@ notes: |
   flux_peak=1.0 collapse). Must fix before XGBoost contribution can help.
 =======
 
-status: in-progress
-summary: Machine C posted a pending check (`36b88ea6`) before latest B artifact was visible. Re-verification against `origin/machine-b/worker-wave1` commit `e95937ef` is required.
+status: done
+summary: Completed by Machine C (`acf91504`). Conditional PASS: NMS 16 -> 8 confirmed effective with recall +100% and F1@0.5s +51%, precision stable; top remaining blocker is H3 (`MIN_SECTION_SEC=8`).
 
 ## MSG-20260308-0803
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Re-run Wave 6 verification against Machine B commit `e95937ef` (contains `results/sections-machine-b-wave6.json`) and post updated PASS/FAIL with deltas.
 artifacts: results/verify-machine-b-w6.log, docs/planning/machines/comms/machine-c.md
 notes: Prior pending output referenced missing artifact; this retry should use the now-available Wave 6 artifact.
@@ -505,8 +505,7 @@ artifacts:
 - results/verify-machine-b-w6.log
 notes: |
   VERIFICATION: NMS_DISTANCE_SEC 16->8 (Machine B commit e95937e)
-  ==============================================================
-
+  =======================================================
   CHECK 1 -- NMS change confirmed: PASS
     scripts/analysis/section_detector.py: NMS_DISTANCE_SEC 16.0 -> 8.0
 
@@ -563,3 +562,65 @@ notes: |
 
   VERDICT: CONDITIONAL PASS. NMS change works. Top remaining blocker: H3
   (MIN_SECTION_SEC 8->4s). Next: H3 + weight alignment fix together.
+=======
+
+status: done
+summary: Retry completed and posted as `MSG-20260308-0804` on machine-c branch.
+
+## MSG-20260308-0901
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 7 verification pass. Validate Machine B H3 run (`MIN_SECTION_SEC` 8 -> 4) plus any alignment-fix updates and report combined impact vs Wave 6.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and top remaining blocker.
+## MSG-20260308-0902 — Machine C: Wave7 Verification
+
+**FROM**: machine-c  **TO**: coordination, machine-b  **RE**: MSG-20260308-0901
+
+### Summary
+
+Wave7 benchmark parsed. H3 (MIN_SECTION_SEC 8→4) applied; weight CLI fix structurally merged but **not exercised** in this run.
+
+### Metrics — 16-song shared set (W6 vs W7)
+
+| Metric | Wave6 | Wave7 | delta |
+|--------|-------|-------|-------|
+| F1@0.5s mean | 0.0270 | 0.0270 | +0.0000 |
+| F1@3.0s mean | 0.1069 | 0.1267 | +0.0198 |
+| mean_pred/song | 1.81 | 1.94 | +0.12 |
+| mean_ref/song | 8.00 | 8.00 | — |
+
+### Checks
+
+**CHECK1 — H3 code change**: MIN_SECTION_SEC 8→4 confirmed in commit `e1f156c`. ✓
+
+**CHECK2 — H3 effect at 0.5s tolerance**: F1@0.5s UNCHANGED. 0/16 songs improved. H3 is not the binding constraint — the detector emits only ~1.9 candidates/song before MIN filtering, so lowering the floor has minimal impact.
+
+**CHECK3 — H3 effect at 3.0s tolerance**: F1@3.0s +0.0198 (18.6% relative). 2 songs improved (gained 1 new nearby boundary). Consistent with occasional loosening of the min-gap floor.
+
+**CHECK4 — Weight alignment fix**: `weights` field in Wave7 JSON shows same 5 original keys as Wave6. The 4 newly exposed CLI params (`chroma_change`, `spec_contrast`, `onset_density`, `rms_energy`) were NOT passed in this run. Fix is code-complete but benchmark must be rerun with `--weight-chroma=<val>` etc. to verify effect.
+
+**CHECK5 — Coverage**: W7 ran detector on 16/30 songs (same subset as W6). Remaining 14 songs have no detector output — full-corpus comparison still not possible.
+
+### New Root Cause finding
+
+After NMS expansion (H2 fixed Wave6) and MIN lowering (H3 Wave7), the binding constraint has shifted:
+
+> **mean_pred/song = 1.94  vs  mean_ref/song = 8.00** — 4.1x under-prediction
+
+The detector is emitting too few candidate boundaries before NMS/MIN. No post-processing fix can recover what was never detected. Recommend investigating:
+1. XGBoost detection probability threshold (too high → suppresses real boundaries)
+2. Feature contribution after correct weight retraining (4 previously-dropped features may restore missed detections)
+
+### Verdict: PARTIAL PASS
+
+H3 structurally applied ✓. Weight fix code-complete but untested in runtime ✗. Binding bottleneck is now **prediction sparsity** (XGBoost threshold / model quality), not post-processing filters.
+
+**Machine B recommended next actions**:
+1. Retrain XGBoost with corrected feature mapping (all 9 features, not 5)
+2. Run full 30-song benchmark with `--weight-chroma`, `--weight-spec-contrast`, etc. explicit
+3. Optionally lower detection threshold to increase recall at cost of precision
+
+Full verification log committed: `results/verify-machine-b-w7.log`
