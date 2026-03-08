@@ -422,7 +422,8 @@ def _nms_by_score(
     """Greedy NMS: keep highest-scoring with minimum gap between kept."""
     if len(candidate_times) == 0:
         return np.array([], dtype=bool)
-    order = np.argsort(-scores)
+    # Deterministic ordering: primary = descending score, tie-break = ascending index
+    order = np.lexsort((np.arange(len(scores)), -scores))
     kept = np.zeros(len(candidate_times), dtype=bool)
     kept_times: List[float] = []
     for idx in order:
@@ -481,6 +482,8 @@ def detect_sections(
     beat_snap_sec: float = 2.0,
     algorithm: str = "msaf_scluster",
     prob_threshold: float = 0.0,
+    random_seed: Optional[int] = None,
+    trace_path: Optional[Path] = None,
 ) -> Dict:
     """Run the section detector.
 
@@ -493,6 +496,13 @@ def detect_sections(
       "msaf_olda"    — MSAF OLDA
     """
     requested_algorithm = algorithm
+
+    # Deterministic seed (helps reproduce candidate ordering / tie-breaks)
+    if random_seed is not None:
+        try:
+            np.random.seed(int(random_seed))
+        except Exception:
+            pass
 
     # ── MSAF dispatch ─────────────────────────────────────────────────────
     if algorithm == "auto":
@@ -692,6 +702,19 @@ def detect_sections(
             "reason": _reason_string(feats, weights) if is_kept else "",
         })
 
+    # Optional trace dump for debugging / parity analysis
+    if trace_path is not None:
+        try:
+            tp = Path(trace_path)
+            tp.parent.mkdir(parents=True, exist_ok=True)
+            with tp.open("w", encoding="utf-8") as fh:
+                json.dump({
+                    "meta": {"seed": int(random_seed) if random_seed is not None else None},
+                    "candidates": candidates,
+                }, fh, indent=2)
+        except Exception:
+            pass
+
     boundary_times = [0.0] + sorted(final) + [song_dur]
     sections = []
     for idx in range(len(boundary_times) - 1):
@@ -875,6 +898,14 @@ def main() -> None:
         help="Weight for rms_energy feature",
     )
     ap.add_argument(
+        "--random-seed", type=int, default=None,
+        help="Optional RNG seed to make candidate ordering deterministic",
+    )
+    ap.add_argument(
+        "--trace-path", default=None,
+        help="Optional path to write candidate trace JSON for debugging",
+    )
+    ap.add_argument(
         "--prob-threshold", type=float, default=0.0,
         help="Score threshold (0-1). Candidates below this are suppressed before NMS",
     )
@@ -911,6 +942,8 @@ def main() -> None:
         beat_snap_sec=args.beat_snap_sec,
         algorithm=args.algorithm,
         prob_threshold=args.prob_threshold,
+        random_seed=args.random_seed,
+        trace_path=Path(args.trace_path) if args.trace_path else None,
     )
 
     sec_path = out_dir / f"{slug}.sections.json"
