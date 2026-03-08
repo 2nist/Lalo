@@ -22,7 +22,7 @@ request: Execute Machine B lane using the explicit runbook, then post done-statu
 artifacts: results/sections-machine-b.json, results/bench-machine-b.log, docs/planning/machines/comms/machine-b.md
 notes: Follow docs/planning/machines/comms/live/RUNBOOK.md sections 1-6 for machine-b.
 
-## MSG-20260307-2401
+## MSG-20260307-2403
 from: coordinator
 to: machine-b
 priority: high
