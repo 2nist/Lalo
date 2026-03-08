@@ -35,7 +35,10 @@ notes: This lane should avoid changing detector defaults; focus on integrating v
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 2 integration gate. Build a merge-readiness checklist and verify that integrated B/C outputs have no obvious regressions before merge to coordination/main.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Focus on integration quality gate and risk notes; do not retune detector defaults.
+
+status: done
+summary: Integration gate completed with conditional-pass. B artifact is structurally valid and benchmark-pinned; C artifact lacks `summary.detector` and needs one follow-up output or explicit diagnostics-only acceptance before full close.
