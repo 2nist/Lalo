@@ -131,7 +131,19 @@ summary: Completed by Machine C (`6e509cc2`). Result: FAIL for recall gain; top 
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: in-progress
 request: Wave 6 verification pass. Validate Machine B NMS-first run (16 -> 8) and report whether recall improves without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and single top remaining blocker.
+
+status: in-progress
+summary: Machine C posted a pending check (`36b88ea6`) before latest B artifact was visible. Re-verification against `origin/machine-b/worker-wave1` commit `e95937ef` is required.
+
+## MSG-20260308-0803
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Re-run Wave 6 verification against Machine B commit `e95937ef` (contains `results/sections-machine-b-wave6.json`) and post updated PASS/FAIL with deltas.
+artifacts: results/verify-machine-b-w6.log, docs/planning/machines/comms/machine-c.md
+notes: Prior pending output referenced missing artifact; this retry should use the now-available Wave 6 artifact.

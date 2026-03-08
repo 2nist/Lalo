@@ -1,4 +1,4 @@
-# Live Channel: Machine B
+ Live Channel: Machine B
 
 ## Template
 
@@ -171,7 +171,10 @@ summary: Wave 5 response received (`01b44ce6`) but acceptance criteria not met: 
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 6 NMS-first bottleneck pass. Reduce `NMS_DISTANCE_SEC` from 16 -> 8 (H2), rerun pinned heuristic benchmark, and publish full delta table. Do not mix in additional parameter changes.
 artifacts: results/sections-machine-b-wave6.json, results/machine-b-wave6-note.md, docs/planning/machines/comms/machine-b.md
 notes: Include before/after values for F1@0.5s, F1@3.0s, mean predicted boundaries/song, TP/FP/FN, precision, and recall.
+
+status: done
+summary: Completed by Machine B in `origin/machine-b/worker-wave1` commit `e95937ef`. Reported detector means improved from F1@0.5s 0.0179 -> 0.0270 and F1@3.0s 0.0779 -> 0.1069 using NMS 16 -> 8.
