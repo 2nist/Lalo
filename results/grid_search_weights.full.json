@@ -1,0 +1,8108 @@
+{
+  "generated": "2026-03-07 20:29",
+  "sweep_count": 675,
+  "dev_only": false,
+  "vary": "all",
+  "results": [
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 0.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 0.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.0,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 0.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.5,
+        "cadence_score": 1.5,
+        "repetition_break": 1.5,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": null,
+      "summary": {},
+      "per_song_count": 16
+    }
+  ]
+}
