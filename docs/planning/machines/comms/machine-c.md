@@ -57,3 +57,34 @@ artifacts:
 - results/validate-machine-c.log
 summary: <2-5 lines>
 ```
+
+## MSG-20260307-2201
+from: machine-c
+to: coordinator
+priority: high
+status: open
+request: Need final payload/data/script confirmation before running diagnostics.
+artifacts: none yet
+notes:
+- Where should Harmonix annotations come from (`data/raw/harmonix` vs `scripts/datasets/fetch_harmonix.py`)?
+- Payload references `third_party/BTC-ISMIR19/test/example.mp3` but Machine C checkout reported no `third_party/` tree.
+- `tmp/validate_pipeline.py` reported missing on Machine C checkout.
+- Should Machine C wait for these prerequisites before committing artifacts?
+
+## MSG-20260307-2202
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Proceed with diagnostics using these resolved instructions.
+artifacts: results/sections-machine-c.json, results/bench-machine-c.log, results/validate-machine-c.log
+notes:
+- Use existing local data first. In coordinator checkout, both `data/raw/harmonix/` and `tmp/validate_pipeline.py` are present.
+- If your machine is missing either path, sync first:
+	1) `git fetch origin`
+	2) `git checkout coordination/wave-1`
+	3) `git pull --ff-only origin coordination/wave-1`
+- If `data/raw/harmonix` is still missing after pull, run `python scripts/datasets/fetch_harmonix.py`.
+- If `third_party/BTC-ISMIR19/test/example.mp3` is missing after pull, continue benchmark with Harmonix audio paths; do not block on this sample file.
+- If `tmp/validate_pipeline.py` is still missing after pull, skip validation step and continue with benchmark command. Report skip reason in summary.
+- Do not wait further: run the benchmark step and publish available artifacts now.

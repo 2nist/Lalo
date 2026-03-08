@@ -2,6 +2,8 @@
 
 This runbook is the single source of truth for live coordination setup on all machines.
 
+Important: write coordination messages only under `docs/planning/machines/comms/` or `docs/planning/machines/comms/live/`. Do not create or use repo-root files like `inbox.md`.
+
 ## 0) One-time prerequisites on each machine
 
 ```powershell
