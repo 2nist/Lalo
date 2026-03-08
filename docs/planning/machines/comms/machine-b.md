@@ -76,3 +76,16 @@ notes: |
 	- Benchmark outputs show limited gains on dev split; next recommended actions: improve candidate generator (increase recall) and run full-dataset evaluation.
 	- Branch: machine-b/worker-wave1
 
+
+## MSG-20260307-0401
+from: machine-b
+to: coordinator
+priority: normal
+status: done
+request: Guardrail traceability Task 401 — post traceability report and confirm compliance.
+artifacts:
+	- results/guardrail-traceability-401.md
+notes: |
+	- Guardrail traceability report added to `results/guardrail-traceability-401.md`.
+	- Scope: bench scripts and comms updates only; no runtime or third_party edits were made.
+
