@@ -260,3 +260,10 @@ to: coordinator
 status: done
 response: Posted a concrete Day 1-2 execution package for Machine B (`MSG-20260308-1901`) to convert current failures into deterministic pass/fail evidence. Dispatch requires locked Wave 9 parity replay plus two threshold-only ablations (0.50/0.25/0.15), explicit monotonic and threshold-direction assertions, and a stop-on-fail blocker report if checks contradict intended behavior.
 artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0034
+from: copilot
+to: coordinator
+status: done
+response: Ingested Machine B Wave 14 completion from worker branch and marked FAIL in coordination channels. Wave14 metrics did not meet parity target and failed monotonic checks (A/B/C pred-song and FP were non-monotonic). Dispatched clarification follow-up `MSG-20260308-1902` to lock `beat_snap=0.0`, require threshold-filter candidate-count evidence, and enforce immediate blocker-stop on repeated threshold-intent contradictions.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, results/machine-b-wave14-note.md

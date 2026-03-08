@@ -326,7 +326,7 @@ summary: Wave 13 artifacts landed in `origin/machine-b/worker-wave1` commits `75
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
 artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -342,6 +342,9 @@ notes: |
 	1) Wave14a parity target vs Wave 9 (TP=3, FP=29, F1@0.5s=0.0383) with explanation for any mismatch
 	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
 	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
+
+status: done
+summary: Wave 14 artifacts landed in `origin/machine-b/worker-wave1` (`de0a7908`, `8eb9ff1e`, `c2550812`) and are marked FAIL. Reported outcomes: wave14a TP=2/FP=34/pred-song=2.25, wave14b TP=2/FP=33/pred-song=2.188, wave14c TP=2/FP=33/pred-song=2.188. Parity target not met and monotonic checks failed (`monotonic_fp=false`, `monotonic_pred=false`).
 
 ## MSG-20260308-1801
 from: coordinator
@@ -434,3 +437,24 @@ notes: |
 	- PASS if parity is within tolerance of Wave 9 and monotonic checks hold.
 	- FAIL if parity drifts materially, monotonic checks fail, or behavior contradicts threshold intent.
 	- If FAIL, stop and post blocker with suspected code path and minimal diff pointer.
+
+## MSG-20260308-1902
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 15 lock clarification and execution nudge. Use Wave 14 parity baseline conventions to avoid config drift, then execute A/B/C and report blocker or pass.
+artifacts: results/sections-machine-b-wave15a.json, results/sections-machine-b-wave15b.json, results/sections-machine-b-wave15c.json, results/machine-b-wave15-note.md, results/wave15a.log, results/wave15b.log, results/wave15c.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Clarifications (override ambiguities):
+	- Keep `beat_snap=0.0` for Wave 15 A/B/C to match current detector parity path.
+	- Keep Wave 9 weights and geometry lock: `nms_gap=8.0`, `min_section=4.0`.
+	- No retrain, no weight edits, no extra tuning.
+
+	Mandatory evidence additions:
+	1) include kept-candidate counts before/after threshold filter for A/B/C
+	2) include one-line pointer to threshold comparator code path used at runtime
+	3) include explicit monotonic assertions for both FP and pred/song
+
+	Stop rule:
+	- If A/B/C still violate monotonic behavior or threshold intent, stop immediately and file blocker with minimal diff pointer instead of running extra cycles.

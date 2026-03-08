@@ -221,7 +221,7 @@ summary: Completed by Machine B (`75825299`, `00bcfdc0`) and verified FAIL by Ma
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 14 threshold-direction fix + confirmation reruns. Apply one code fix for `--prob_threshold` direction, then rerun parity/ablation checks with logs.
 artifacts: scripts/pipeline/section_detector.py, results/sections-machine-b-wave14a.json, results/sections-machine-b-wave14b.json, results/sections-machine-b-wave14c.json, results/machine-b-wave14-note.md, results/wave14a.log, results/wave14b.log, results/wave14c.log, docs/planning/machines/comms/machine-b.md
 notes:
@@ -241,6 +241,9 @@ notes:
 	1) Wave14a parity target vs Wave 9 (TP=3, FP=29, F1@0.5s=0.0383) with explanation for any mismatch
 	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
 	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
+
+status: done
+summary: Completed on `origin/machine-b/worker-wave1` with FAIL outcome. Reported metrics: wave14a TP=2 FP=34 pred/song=2.25; wave14b TP=2 FP=33 pred/song=2.188; wave14c TP=2 FP=33 pred/song=2.188. Parity target not met and monotonic checks failed.
 
 ## MSG-20260308-1701
 from: coordinator
@@ -324,3 +327,26 @@ notes:
 	- PASS: parity within tolerance and monotonic checks hold
 	- FAIL: parity drift, monotonic failure, or threshold-intent contradiction
 	- On FAIL: stop and post blocker with suspected code path + minimal diff pointer
+
+## MSG-20260308-1902
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 15 lock clarification and execution nudge. Use Wave 14 parity conventions to avoid config drift, then execute A/B/C and report blocker or pass.
+artifacts: results/sections-machine-b-wave15a.json, results/sections-machine-b-wave15b.json, results/sections-machine-b-wave15c.json, results/machine-b-wave15-note.md, results/wave15a.log, results/wave15b.log, results/wave15c.log, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) git fetch origin
+	2) git checkout machine-b/worker-wave1
+	3) git pull --ff-only origin machine-b/worker-wave1
+- Clarifications (override ambiguities):
+	- beat_snap=0.0 for Wave 15 A/B/C
+	- keep Wave 9 weights and geometry lock: nms_gap=8.0, min_section=4.0
+	- no retrain, no weight edits, no extra tuning
+- Mandatory evidence additions:
+	1) kept-candidate counts before/after threshold filter for A/B/C
+	2) one-line pointer to threshold comparator code path used at runtime
+	3) explicit monotonic assertions for both FP and pred/song
+- Stop rule:
+	- if A/B/C still violate monotonic behavior or threshold intent, stop immediately and file blocker with minimal diff pointer
