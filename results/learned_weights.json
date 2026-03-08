@@ -1,0 +1,17 @@
+{
+  "coefs": [
+    0.20853469220545756,
+    0.0,
+    0.0,
+    -1.4437606398823064,
+    -0.04416360107186082
+  ],
+  "intercept": -0.0066475871553428635,
+  "weights": {
+    "flux_peak": 1.0,
+    "chord_novelty": 0.0,
+    "cadence_score": 0.0,
+    "repetition_break": 0.0,
+    "duration_prior": 0.0
+  }
+}
