@@ -232,3 +232,10 @@ to: coordinator
 status: done
 response: Ingested Wave 11 results and verification. Machine B posted threshold-first artifacts (`32f94781`) and Machine C verification (`9e9d1b2c`, `results/verify-machine-b-w11.log`) marked FAIL: threshold run regressed TP and quality vs Wave 9 (TP 3 -> 1, precision 0.0938 -> 0.0222, F1@0.5s 0.0383 -> 0.0116). Closed Wave 11 statuses and dispatched Wave 12 parity-locked ablation tasks to A/B/C (`MSG-20260308-1401`) to isolate threshold impact without geometry drift.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0030
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 12 parity/ablation results and verification. Machine B posted artifacts (`85b3e1a5`) and Machine C verification (`7e76cc45`) marked FAIL + DATA INTEGRITY warning: both runs remained below F1 guardrail (0.0244/0.0245 vs 0.0383 baseline), parity run did not reproduce Wave 9 TP/FP, and threshold monotonicity checks were violated. Closed Wave 12 statuses and dispatched Wave 13 reproducibility-first tasks to A/B/C (`MSG-20260308-1501`) with explicit parity and monotonic validation requirements.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md

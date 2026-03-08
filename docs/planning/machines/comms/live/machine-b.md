@@ -280,7 +280,7 @@ summary: Wave 11 artifacts landed in `origin/machine-b/worker-wave1` commit `32f
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 12 parity-locked ablation pass. Re-run with Wave 9 geometry fixed, then perform one threshold-only ablation to isolate threshold effect without geometry drift.
 artifacts: results/sections-machine-b-wave12a.json, results/sections-machine-b-wave12b.json, results/machine-b-wave12-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -293,3 +293,28 @@ notes: |
 	Run B (ablation): `prob_threshold=0.25` with all other settings identical
 	Required metrics table for A and B vs Wave 9 baseline: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
 	Goal: remove confound from prior Wave 11 geometry mismatch and confirm whether threshold-only change helps or hurts.
+
+status: done
+summary: Wave 12 artifacts landed in `origin/machine-b/worker-wave1` commit `85b3e1a5` and comm update `b870e520`. Verification verdict from Machine C is FAIL + DATA INTEGRITY warning: Wave12a F1@0.5s 0.0244, Wave12b 0.0245, with non-reproducible parity and non-monotonic threshold behavior flagged.
+
+## MSG-20260308-1501
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 13 reproducibility-first pass. Reproduce Wave 9 parity exactly, then run one threshold-only ablation with full trace logs and monotonicity checks.
+artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13a.log, results/wave13b.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Required lock for both runs:
+	- Wave 9 9-feature weights exactly
+	- nms_gap=8.0
+	- min_section=4.0
+	- beat_snap=2.0
+	- same dev song set as Wave 9
+	Run A (repro parity): `prob_threshold=0.50`
+	Run B (ablation): `prob_threshold=0.25` with all other settings identical
+	Required validations in note:
+	1) Wave13a reproduces Wave 9 baseline (target TP=3, FP=29, F1@0.5s=0.0383; explain any mismatch)
+	2) Monotonic threshold behavior check: FP_B >= FP_A and pred/song_B >= pred/song_A
+	3) Include `benchmark_date`, active weight keys/count, and explicit command lines for both runs
+	Do not tune geometry or model in Wave 13.
