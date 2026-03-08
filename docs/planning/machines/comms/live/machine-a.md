@@ -56,7 +56,10 @@ notes: Decide one of: merge-now | merge-with-guardrail | hold-for-more-data. Inc
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: in-progress
 request: Own Wave 3 integration gate tracking. Track Machine B parser-fix lane completion and prepare final merge recommendation once B publishes non-zero-boundary metrics.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Gate remains conditional until parser-fix evidence lands.
+
+status: in-progress
+summary: Wave 3 gate tracking started. Latest Machine B worker commit remains Wave 2 (`d75a6e6d`) and no Wave 3 artifacts are present yet, so recommendation is still hold-for-more-data until parser-fix proof lands.
