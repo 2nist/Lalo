@@ -258,8 +258,8 @@ def _run_detector(
     chords: Optional[List[Dict]],
     weights: Dict,
     algorithm: str,
-) -> Optional[List[Dict]]:
-    """Run section_detector.detect_sections; convert to benchmark format."""
+) -> Optional[Dict]:
+    """Run section detector and return benchmark sections plus detector metadata."""
     try:
         from scripts.analysis.section_detector import detect_sections
         result = detect_sections(
@@ -269,7 +269,7 @@ def _run_detector(
             beat_snap_sec=0,
             algorithm=algorithm,
         )
-        sections = []
+        sections: List[Dict] = []
         for s in result.get("sections", []):
             start_s = s["start_ms"] / 1000.0
             dur_s = s["duration_ms"] / 1000.0
@@ -278,7 +278,10 @@ def _run_detector(
                 "end_s": start_s + dur_s,
                 "label": s.get("label", "Section"),
             })
-        return sections
+        return {
+            "sections": sections,
+            "meta": result.get("meta", {}),
+        }
     except Exception as exc:
         print(f"    detector error: {exc}")
         return None
@@ -432,13 +435,16 @@ def run_benchmark(
         }
 
         if has_audio:
-            det_pred = _run_detector(
+            det_result = _run_detector(
                 audio_path,
                 chords=None,
                 weights=weights,
                 algorithm=algorithm,
             )
-            if det_pred is not None:
+            if det_result is not None:
+                det_pred = det_result["sections"]
+                det_meta = det_result.get("meta", {})
+                effective_algorithm = det_meta.get("algorithm", "unknown")
                 entry["detector"] = {
                     str(tol): _boundary_f1(ref_sections, det_pred, tol)
                     for tol in tolerances
@@ -447,7 +453,11 @@ def run_benchmark(
                     _label_accuracy(ref_sections, det_pred)
                 )
                 entry["detector"]["pred_sections"] = len(det_pred)
-                entry["detector"]["algorithm"] = algorithm
+                entry["detector"]["requested_algorithm"] = algorithm
+                entry["detector"]["effective_algorithm"] = effective_algorithm
+                entry["detector"]["fallback_used"] = (
+                    effective_algorithm != algorithm
+                )
 
                 # Oracle beat snap — diagnostic: replace madmom with ground-truth beats
                 if oracle_beats_dir is not None:
@@ -525,6 +535,20 @@ def _summarise(results: List[Dict], tolerances: Tuple[float, ...]) -> Dict:
         if method_f1:
             summary[method] = method_f1
     return summary
+
+
+def _algorithm_counts(results: List[Dict]) -> Dict[str, int]:
+    """Count effective detector backends used across evaluated songs."""
+    counts: Dict[str, int] = {}
+    for row in results:
+        detector = row.get("detector")
+        if not isinstance(detector, dict):
+            continue
+        algo = detector.get("effective_algorithm")
+        if not algo:
+            continue
+        counts[str(algo)] = counts.get(str(algo), 0) + 1
+    return dict(sorted(counts.items()))
 
 
 def main() -> None:
@@ -624,11 +648,13 @@ def main() -> None:
         algorithm=args.algorithm,
     )
     summary = _summarise(results, tolerances)
+    effective_algorithms = _algorithm_counts(results)
 
     output = {
         "benchmark_date": time.strftime("%Y-%m-%d %H:%M"),
         "songs_evaluated": len(results),
         "algorithm": args.algorithm,
+        "effective_algorithms": effective_algorithms,
         "weights": weights,
         "summary": summary,
         "per_song": results,
