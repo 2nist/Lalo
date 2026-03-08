@@ -1,0 +1,8 @@
+{
+  "machine_id": "machine-c",
+  "song_slug": "third_party/BTC-ISMIR19/test/example.mp3",
+  "audio_relative_path": "third_party/BTC-ISMIR19/test/example.mp3",
+  "backend": "reference",
+  "algorithm": "heuristic",
+  "notes": "Owned BTC runtime not available on coordination runner; use reference backend. If dataset lives elsewhere, update audio_relative_path accordingly."
+}
