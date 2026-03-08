@@ -480,6 +480,7 @@ def detect_sections(
     nms_gap_sec: float = NMS_DISTANCE_SEC,
     beat_snap_sec: float = 2.0,
     algorithm: str = "msaf_scluster",
+    prob_threshold: float = 0.0,
 ) -> Dict:
     """Run the section detector.
 
@@ -637,7 +638,13 @@ def detect_sections(
         + weights.get("rms_energy", 0.0) * rms_energy
     )
 
-    kept_mask = _nms_by_score(times, scores, min_gap_sec=nms_gap_sec)
+    # Apply an optional probability/score threshold before NMS so callers
+    # can run a threshold-first corrective pass (Wave 11).
+    scores_filtered = np.array(scores)
+    if prob_threshold and prob_threshold > 0.0:
+        scores_filtered = np.where(scores >= prob_threshold, scores, -1e6)
+
+    kept_mask = _nms_by_score(times, scores_filtered, min_gap_sec=nms_gap_sec)
 
     kept_sorted = sorted(float(t) for t in times[kept_mask])
     final: List[float] = []
@@ -867,6 +874,10 @@ def main() -> None:
         default=DEFAULT_WEIGHTS.get("rms_energy", 0.0),
         help="Weight for rms_energy feature",
     )
+    ap.add_argument(
+        "--prob-threshold", type=float, default=0.0,
+        help="Score threshold (0-1). Candidates below this are suppressed before NMS",
+    )
     args = ap.parse_args()
 
     audio_path = Path(args.audio)
@@ -899,6 +910,7 @@ def main() -> None:
         max_section_sec=args.max_section_sec,
         beat_snap_sec=args.beat_snap_sec,
         algorithm=args.algorithm,
+        prob_threshold=args.prob_threshold,
     )
 
     sec_path = out_dir / f"{slug}.sections.json"
