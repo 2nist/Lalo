@@ -8,4 +8,6 @@ Workflow:
 3. Worker appends completion notes and sets `status: done` when finished.
 4. Final state is still mirrored back to the main comms files under docs/planning/machines/comms/.
 
+See detailed setup and run steps in `docs/planning/machines/comms/live/RUNBOOK.md`.
+
 Do not store secrets in these files.
