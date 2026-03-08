@@ -227,7 +227,7 @@ summary: Visibility retry succeeded. Machine B acknowledged and posted artifacts
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
 artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -239,3 +239,19 @@ notes: |
 	- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
 	- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
 	Pass floor target: improve F1@0.5s above 0.0270 and increase pred/song above 1.94.
+
+status: done
+summary: Completed by Machine B in `origin/machine-b/worker-wave1` commits `94124aba`, `544e62ad`, and `63d418be`. Wave 9 delivered 9-key weights and improved detector means vs Wave 8: F1@0.5s 0.0270 -> 0.0383, F1@3.0s 0.1267 -> 0.1338, pred/song 1.938 -> 2.000, precision 0.0645 -> 0.0938, recall 0.0156 -> 0.0234.
+
+## MSG-20260308-1201
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
+artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+	Single scoped tuning change only (for example: detection threshold or top-k rule).
+	Keep algorithm pinned to heuristic and keep 9-feature weights active.
+	Required metrics vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
+	Acceptance target: pred/song > 2.0 and precision >= 0.04, with no regression below Wave 9 F1@0.5s (0.0383).

@@ -1,0 +1,29 @@
+=== Machine C Wave10 Verification Log ===
+Date: 2026-03-08
+MSG: MSG-20260308-1201 -> MSG-20260308-1202
+
+Machine B commit: 03df0ec
+Artifacts in commit:
+  results/grid_wave10_density_all.json  (8 configs, parameter sweep)
+  results/grid_wave10_density_all.log   (2 lines, runner output)
+  scripts/tools/run_density_all.py      (47 lines, runner script)
+  NO sections-machine-b-wave10.json     (missing full-benchmark artifact)
+  NO machine-b-wave10-note.md           (missing note)
+
+Grid sweep: 8 configs (nms_gap_sec x min_section_sec x beat_snap_sec)
+All results had TP=1, FN=127 — TP regressed from Wave9 baseline of TP=3
+
+Wave 9 baseline:   F1@0.5s=0.0383  prec=0.0938  rec=0.0234  pred/song=2.000  TP=3  FP=29  FN=125
+Wave10 best grid:  F1@0.5s=0.0116  prec=0.0227  rec=0.0078  pred/song=2.750  TP=1  FP=43  FN=127 (nms=6.0,min=3.0,snap=1.0)
+
+Pass criteria check:
+  pred/song > 2.0:       best=2.750  PASS (mechanically)
+  precision >= 0.04:     best=0.0227  FAIL
+  F1@0.5s >= 0.0383:     best=0.0116  FAIL
+
+No config meets all three criteria.
+VERDICT: FAIL
+
+Blocker: XGBoost probability threshold (implicit ~0.5) fires ~2 high-confidence 
+predictions/song. Geometric relaxation fills with FPs without recovering TP.
+Required: lower --prob_threshold and retrain/rerun with full benchmark artifact.

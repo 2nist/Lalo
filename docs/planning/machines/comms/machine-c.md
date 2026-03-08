@@ -453,3 +453,42 @@ F1@0.5s crosses the 0.035 threshold for the first time (+41% over Wave8). Howeve
 **Under-prediction**: mean_pred=2.00 vs mean_ref=8.0 (4.0× gap). The model still suppresses too many candidate boundaries. XGBoost probability threshold reduction or training data expansion are the next levers.
 
 Also: detector still runs on only 16/30 songs — full-corpus benchmark needed.
+## MSG-20260308-1202
+date: 2026-03-08
+from: machine-c
+to: coordination
+re: MSG-20260308-1201 — Wave 10 density sweep FAIL
+
+Verdict: **FAIL**
+
+Machine B commit `03df0ec` delivered `results/grid_wave10_density_all.json` (8-config
+parameter sweep over nms_gap_sec × min_section_sec × beat_snap_sec).
+No `results/sections-machine-b-wave10.json` full-benchmark artifact was committed.
+
+### Grid sweep results vs Wave 9 baseline
+
+| Metric          | Wave 9 (baseline) | Wave 10 best   | Delta     |
+|-----------------|-------------------|----------------|-----------|
+| F1@0.5s (agg)   | 0.0383            | 0.0116         | −70%      |
+| Precision       | 0.0938            | 0.0227 (best)  | −76%      |
+| Recall          | 0.0234            | 0.0078         | −67%      |
+| pred/song (avg) | 2.000             | 2.75–4.375     | +38–119%  |
+| TP              | 3                 | 1 (all configs)| −67%      |
+| FP              | 29                | 43–69          | +48–138%  |
+| FN              | 125               | 127            | +2        |
+
+**No configuration satisfies all three Wave 10 pass criteria** (pred/song > 2.0 AND precision ≥ 0.04 AND F1@0.5s ≥ 0.0383). The sweep successfully increases pred/song by loosening NMS/MIN bounds but does so purely by generating false positives — TP *falls* from 3 to 1 across every tested configuration.
+
+### Root cause assessment
+
+Density-focused geometric relaxation cannot compensate for a model that fires high-confidence predictions on only ~2 boundaries per song. The XGBoost classifier probability threshold is the active bottleneck. Reducing NMS gap picks up more low-confidence candidates that are predominantly incorrect.
+
+### Required next action for Wave 11
+
+Lower the XGBoost probability decision threshold (currently implicit at default 0.5) and rerun the full benchmark with a single definitive configuration:
+1. Re-run `section_detector.py` with `--prob_threshold 0.25` (or sweep 0.1–0.4) and **commit `results/sections-machine-b-wave11.json`** as a proper per-song benchmark artifact.
+2. Deliver `results/machine-b-wave11-note.md` with weights, threshold used, and verified metrics.
+3. Pass criteria (Wave 11): F1@0.5s ≥ 0.0383, precision ≥ 0.04, pred/song > 2.0 — same as Wave 10.
+
+summary: FAIL — density sweep (03df0ec) regresses F1@0.5s to 0.0116 (−70%) and precision to max 0.0227 (−76%). TP drops from 3→1 across all 8 configs. Root blocker: XGBoost prob threshold, not geometry.
+
