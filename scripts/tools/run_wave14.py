@@ -23,6 +23,8 @@ weights = learned.get('weights') if isinstance(learned, dict) and learned.get('w
 nms=8.0
 min_sec=4.0
 beat=0.0
+# Promoted downbeat confidence threshold (chosen from sweep)
+downbeat_confidence=0.4
 
 runs = [
     {'name':'wave14a','prob_threshold':0.50},
@@ -43,7 +45,7 @@ for r in runs:
     for p in with_audio:
         audio=Path(p['audio'])
         ref=_parse_harmonix_sections(Path(p['sections_file']))
-        res=detect_sections(audio,chords=None,weights=weights,min_section_sec=min_sec,nms_gap_sec=nms,beat_snap_sec=beat,algorithm='heuristic',prob_threshold=prob_threshold)
+        res=detect_sections(audio,chords=None,weights=weights,min_section_sec=min_sec,nms_gap_sec=nms,beat_snap_sec=beat,algorithm='heuristic',prob_threshold=prob_threshold,downbeat_confidence_thresh=downbeat_confidence)
         det_raw=res.get('sections',[])
         det=[]
         for s in det_raw:

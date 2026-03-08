@@ -381,8 +381,35 @@ notes: |
 	
 	Cycle report template:
 	- cycle_id
+
+## MSG-20260308-1900
+from: machine-b
+to: coordinator
+priority: medium
+status: done
+request: Wave 14 re-run using best grid-search weights, produce artifacts and validation summary.
+artifacts: results/sections-machine-b-wave14_best_a.json, results/sections-machine-b-wave14_best_b.json, results/sections-machine-b-wave14_best_c.json, results/machine-b-wave14-best-note.md, results/wave14.best.run.log
+notes: |
+	- Best grid-search weights used: `results/grid_search_weights.best.json`
+	- Run A (prob=0.50): TP 3, FP 32, FN 125, precision 0.0857, recall 0.0234, avg_pred_per_song 2.188
+	- Run B (prob=0.25): TP 3, FP 30, FN 125, precision 0.0909, recall 0.0234, avg_pred_per_song 2.062
+	- Run C (prob=0.15): TP 3, FP 30, FN 125, precision 0.0909, recall 0.0234, avg_pred_per_song 2.062
+	- Validation: parity TP restored (3) for all runs; precision improved slightly for B/C; monotonic checks hold.
+	- Artifacts committed to branch `machine-b/worker-wave1`.
 	- hypothesis
 	- single change applied
+
+## MSG-20260308-2001
+from: machine-b
+to: coordinator
+priority: normal
+status: done
+request: Promote chosen `downbeat_confidence_thresh` into Wave runners and comms.
+artifacts: scripts/tools/run_wave14.py, scripts/tools/run_wave14_trace.py, scripts/tools/run_wave14_best.py, scripts/tools/run_wave11.py, docs/planning/machines/comms/live/machine-b.md
+notes: |
+	- Chosen `downbeat_confidence_thresh`: 0.4 (selected from sweep results in `results/wave14_downbeat_sweep_summary.json`).
+	- Runners updated: `scripts/tools/run_wave14.py`, `scripts/tools/run_wave14_trace.py`, `scripts/tools/run_wave14_best.py`, `scripts/tools/run_wave11.py` now set `downbeat_confidence=0.4` and pass `downbeat_confidence_thresh` to `detect_sections()`.
+	- No metric regression observed in sweep (TP unchanged). Promotion documents the chosen default for subsequent waves.
 	- commands run
 	- metrics table vs previous best and Wave 9 baseline
 	- pass/fail for each quality gate

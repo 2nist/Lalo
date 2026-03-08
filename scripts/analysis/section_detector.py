@@ -482,6 +482,7 @@ def detect_sections(
     beat_snap_sec: float = 0.0,
     algorithm: str = "msaf_scluster",
     prob_threshold: float = 0.0,
+    downbeat_confidence_thresh: float = 0.0,
     random_seed: Optional[int] = None,
     trace_path: Optional[Path] = None,
     cand_prominence: Optional[float] = None,
@@ -667,12 +668,57 @@ def detect_sections(
         if t - prev >= min_section_sec:
             final.append(t)
 
-    if beat_snap_sec > 0 and len(downbeat_times):
-        final = _snap_to_beats(
-            final, downbeat_times, beat_times, tolerance_sec=beat_snap_sec
-        )
+    if beat_snap_sec > 0 and (len(downbeat_times) or len(beat_times)):
+        # Conditional beat-snapping: only snap to a downbeat when the
+        # downbeat's local onset-strength confidence exceeds
+        # `downbeat_confidence_thresh`. If `downbeat_confidence_thresh` is
+        # 0.0 or `onset_env` is unavailable, fall back to the original
+        # snapping behaviour (prefer downbeats, then beats).
+        db_conf_map = None
+        if downbeat_confidence_thresh > 0.0 and onset_env is not None:
+            try:
+                db_frames = librosa.time_to_frames(downbeat_times, sr=sr, hop_length=hop)
+                max_onset = float(onset_env.max()) if onset_env is not None and onset_env.size else 0.0
+                db_conf_map = {}
+                for db_t, f in zip(downbeat_times, db_frames):
+                    lo = max(0, int(f) - 2)
+                    hi = min(len(onset_env) - 1, int(f) + 2)
+                    val = float(np.mean(onset_env[lo:hi + 1])) if max_onset > 0 else 0.0
+                    norm = val / max_onset if max_onset > 0 else 0.0
+                    db_conf_map[round(float(db_t), 6)] = norm
+            except Exception:
+                db_conf_map = None
+
+        snapped = []
+        for t in final:
+            best_t, best_d = t, beat_snap_sec + 1.0
+            chosen = None
+            # Try downbeats first (preferred) but only if confidence is high enough
+            if len(downbeat_times):
+                dists = np.abs(downbeat_times - t)
+                idx = int(np.argmin(dists))
+                if dists[idx] <= beat_snap_sec:
+                    db_t = float(downbeat_times[idx])
+                    db_ok = True
+                    if db_conf_map is not None:
+                        conf = db_conf_map.get(round(db_t, 6), 0.0)
+                        db_ok = conf >= float(downbeat_confidence_thresh)
+                    if db_ok:
+                        best_t, best_d = db_t, float(dists[idx])
+                        chosen = best_t
+            # If we didn't accept a downbeat, consider regular beats
+            if chosen is None and len(beat_times):
+                dists = np.abs(beat_times - t)
+                idx = int(np.argmin(dists))
+                if dists[idx] <= beat_snap_sec and dists[idx] < best_d:
+                    best_t = float(beat_times[idx])
+                    chosen = best_t
+            # If neither matched, keep original t
+            snapped.append(chosen if chosen is not None else float(t))
+
+        # Deduplicate and enforce min_section_sec
         deduped: List[float] = []
-        for t in sorted(final):
+        for t in sorted(snapped):
             prev = deduped[-1] if deduped else 0.0
             if t - prev >= min_section_sec:
                 deduped.append(t)
