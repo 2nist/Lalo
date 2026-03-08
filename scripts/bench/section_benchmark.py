@@ -268,6 +268,7 @@ def _run_detector(
             weights=weights,
             beat_snap_sec=0,
             algorithm=algorithm,
+            downbeat_confidence_thresh=0.0,
         )
         # Normalize sections into benchmark format but retain detector metadata
         sections = []

@@ -11,10 +11,25 @@
     0.22271274030208588
   ],
   "weights": {
-    "flux_peak": 0.2995,
+    "flux_peak": 0.1081,
     "chord_novelty": 0.0,
     "cadence_score": 0.0,
-    "repetition_break": 0.7005,
-    "duration_prior": 0.0
-  }
+    "repetition_break": 0.2528,
+    "duration_prior": 0.0,
+    "chroma_change": 0.121,
+    "spec_contrast": 0.1465,
+    "onset_density": 0.1488,
+    "rms_energy": 0.2227
+  },
+  "keys": [
+    "flux_peak",
+    "chord_novelty",
+    "cadence_score",
+    "repetition_break",
+    "duration_prior",
+    "chroma_change",
+    "spec_contrast",
+    "onset_density",
+    "rms_energy"
+  ]
 }

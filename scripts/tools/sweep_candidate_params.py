@@ -34,7 +34,7 @@ for p in proms:
         for pa in with_audio:
             audio=Path(pa['audio'])
             ref=_parse_harmonix_sections(Path(pa['sections_file']))
-            res=detect_sections(audio,chords=None,weights=weights,min_section_sec=min_sec,nms_gap_sec=nms,beat_snap_sec=beat,algorithm='heuristic',prob_threshold=0.25,random_seed=42,cand_prominence=p,cand_sub_prominence=s)
+            res=detect_sections(audio,chords=None,weights=weights,min_section_sec=min_sec,nms_gap_sec=nms,beat_snap_sec=beat,algorithm='heuristic',prob_threshold=0.25,random_seed=42,cand_prominence=p,cand_sub_prominence=s,downbeat_confidence_thresh=0.0)
             det_raw=res.get('sections',[])
             det=[]
             for ss in det_raw:

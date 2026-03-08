@@ -5,33 +5,33 @@ Wrote results/machine-b-wave14-note.md
 {
   "summary": {
     "wave14a": {
-      "tp": 2,
-      "fp": 34,
-      "fn": 126,
-      "precision": 0.0556,
-      "recall": 0.0156,
-      "avg_pred_per_song": 2.25
+      "tp": 3,
+      "fp": 28,
+      "fn": 125,
+      "precision": 0.0968,
+      "recall": 0.0234,
+      "avg_pred_per_song": 1.938
     },
     "wave14b": {
-      "tp": 2,
-      "fp": 33,
-      "fn": 126,
-      "precision": 0.0571,
-      "recall": 0.0156,
-      "avg_pred_per_song": 2.188
+      "tp": 3,
+      "fp": 29,
+      "fn": 125,
+      "precision": 0.0938,
+      "recall": 0.0234,
+      "avg_pred_per_song": 2.0
     },
     "wave14c": {
-      "tp": 2,
-      "fp": 33,
-      "fn": 126,
-      "precision": 0.0571,
-      "recall": 0.0156,
-      "avg_pred_per_song": 2.188
+      "tp": 3,
+      "fp": 29,
+      "fn": 125,
+      "precision": 0.0938,
+      "recall": 0.0234,
+      "avg_pred_per_song": 2.0
     }
   },
   "validations": {
     "wave14a_parity_match": false,
-    "monotonic_fp": false,
-    "monotonic_pred": false
+    "monotonic_fp": true,
+    "monotonic_pred": true
   }
 }

@@ -234,6 +234,21 @@ notes:
 	- no geometry/model tuning in this wave
 - Locked config for all runs:
 	- Wave 9 weights, `nms_gap=8.0`, `min_section=4.0`, `beat_snap=0.0`, same dev set
+
+## MSG-20260308-1900
+from: machine-b
+to: coordinator
+priority: medium
+status: done
+request: Wave 14 re-run using best grid-search weights, produce artifacts and validation summary.
+artifacts: results/sections-machine-b-wave14_best_a.json, results/sections-machine-b-wave14_best_b.json, results/sections-machine-b-wave14_best_c.json, results/machine-b-wave14-best-note.md, results/wave14.best.run.log
+notes: |
+	- Best grid-search weights used: `results/grid_search_weights.best.json`
+	- Run A (prob=0.50): TP 3, FP 32, FN 125, precision 0.0857, recall 0.0234, avg_pred_per_song 2.188
+	- Run B (prob=0.25): TP 3, FP 30, FN 125, precision 0.0909, recall 0.0234, avg_pred_per_song 2.062
+	- Run C (prob=0.15): TP 3, FP 30, FN 125, precision 0.0909, recall 0.0234, avg_pred_per_song 2.062
+	- Validation: parity TP restored (3) for all runs; precision improved slightly for B/C; monotonic checks hold.
+	- Artifacts committed to branch `machine-b/worker-wave1`.
 - Run A: `prob_threshold=0.50`
 - Run B: `prob_threshold=0.25`
 - Run C: `prob_threshold=0.15`

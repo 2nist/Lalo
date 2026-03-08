@@ -1,22 +1,22 @@
 # Machine B Wave 14 Note
 
-benchmark_date: 2026-03-08T16:13:01.444233Z
+benchmark_date: 2026-03-08T22:03:19.346174Z
 
 ## wave14a
 
 prob_threshold: 0.5
 
-TP: 2
+TP: 3
 
-FP: 34
+FP: 28
 
-FN: 126
+FN: 125
 
-Precision: 0.0556
+Precision: 0.0968
 
-Recall: 0.0156
+Recall: 0.0234
 
-Avg predictions per song: 2.25
+Avg predictions per song: 1.938
 
 log: results/wave14_wave14a.log
 
@@ -25,17 +25,17 @@ log: results/wave14_wave14a.log
 
 prob_threshold: 0.25
 
-TP: 2
+TP: 3
 
-FP: 33
+FP: 29
 
-FN: 126
+FN: 125
 
-Precision: 0.0571
+Precision: 0.0938
 
-Recall: 0.0156
+Recall: 0.0234
 
-Avg predictions per song: 2.188
+Avg predictions per song: 2.0
 
 log: results/wave14_wave14b.log
 
@@ -44,17 +44,17 @@ log: results/wave14_wave14b.log
 
 prob_threshold: 0.15
 
-TP: 2
+TP: 3
 
-FP: 33
+FP: 29
 
-FN: 126
+FN: 125
 
-Precision: 0.0571
+Precision: 0.0938
 
-Recall: 0.0156
+Recall: 0.0234
 
-Avg predictions per song: 2.188
+Avg predictions per song: 2.0
 
 log: results/wave14_wave14c.log
 
@@ -63,9 +63,9 @@ log: results/wave14_wave14c.log
 
 - wave14a_parity_match: False
 
-- monotonic_fp: False
+- monotonic_fp: True
 
-- monotonic_pred: False
+- monotonic_pred: True
 
 
 ## Active weights

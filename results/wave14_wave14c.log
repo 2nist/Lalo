@@ -1,4 +1,4 @@
-Run: wave14c prob_threshold=0.15 nms_gap=8.0 min_section=4.0 beat_snap=2.0 
+Run: wave14c prob_threshold=0.15 nms_gap=8.0 min_section=4.0 beat_snap=2.0 seed=42
 
 {"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0003_6foot7foot_sections.txt", "tp": 0, "fp": 2, "fn": 11, "pred_boundaries": 2, "prob_threshold": 0.15}
 {"song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0005_again_sections.txt", "tp": 0, "fp": 2, "fn": 9, "pred_boundaries": 2, "prob_threshold": 0.15}

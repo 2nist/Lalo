@@ -4,11 +4,11 @@
   "min_section_sec": 4.0,
   "beat_snap_sec": 2.0,
   "tp": 2,
-  "fp": 34,
+  "fp": 33,
   "fn": 126,
-  "precision": 0.0556,
+  "precision": 0.0571,
   "recall": 0.0156,
-  "avg_pred_per_song": 2.25,
+  "avg_pred_per_song": 2.188,
   "per_song": [
     {
       "song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0003_6foot7foot_sections.txt",
@@ -34,9 +34,9 @@
     {
       "song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0012_aroundtheworld_sections.txt",
       "tp": 0,
-      "fp": 3,
+      "fp": 2,
       "fn": 7,
-      "pred_boundaries": 3
+      "pred_boundaries": 2
     },
     {
       "song": "/Users/Matthew/lalomachine2/Lalo/data/raw/harmonix/0014_babaoriley_sections.txt",
