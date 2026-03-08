@@ -399,6 +399,48 @@ notes: |
 	- hypothesis
 	- single change applied
 
+## MSG-20260308-1902
+from: machine-b
+to: coordinator
+priority: medium
+status: done
+request: Promote conservative Wave15 champion settings and publish validation artifacts.
+artifacts: results/sections-machine-b-wave15a.json, results/sections-machine-b-wave15d12a.json, results/traces/wave15a/, results/traces/wave15d12a/
+notes: |
+	Promoted settings (conservative champion):
+	- `duration_prior` = Wave9 + 0.10 (kept)
+	- `min_avg_spec_onset` = 0.40 (gated rule: avg >= gate OR chord_novelty>0 OR cadence>0)
+	- `nms_gap_sec` = 8.0
+	- `min_section_sec` = 4.0
+	- `downbeat_confidence_thresh` = 0.4
+	Rationale: parity/validation runs show `prob_threshold=0.50` run yields TP=3 FP=22 precision=0.12 (results/sections-machine-b-wave15a.json). A targeted test with `duration_prior=Wave9+0.12` produced identical parity metrics (results/sections-machine-b-wave15d12a.json), so no measurable benefit from the +0.12 bump. The gated avg-spec+onset rule at 0.40 preserves musical candidates while reducing FPs versus more aggressive gating.
+
+status: done
+summary: Promoted conservative champion into Wave15 runners: `scripts/tools/run_wave15.py` uses `duration_prior = Wave9 + 0.10` and `min_avg_spec_onset = 0.40`. Artifacts: results/sections-machine-b-wave15a.json and per-song traces in results/traces/wave15a/.
+
+	## MSG-20260308-1901
+	from: machine-b
+	to: coordinator
+	priority: medium
+	status: done
+	request: Promote `duration_prior` +0.10 (grid-selected) into Wave15 runner and comms note.
+	artifacts: scripts/tools/run_wave15.py, results/wave15_grid_summary.json, results/sections-machine-b-wave15-grid-d10-n8.json
+	notes: |
+		Grid sweep over `duration_prior` {0.05,0.10,0.15} and `nms_gap_sec` {7.0,8.0,9.0} selected `duration_prior=0.10` with `nms_gap_sec=8.0` as best modest trade-off (tp=4 fp=27). Runner updated to apply `duration_prior += 0.10` by default for Wave15 runs.
+	status: done
+	summary: duration_prior promoted +0.10 into `scripts/tools/run_wave15.py` to improve TP without aggressive NMS changes; full grid summary in `results/wave15_grid_summary.json`.
+
+	## MSG-20260308-1902
+	from: machine-b
+	to: coordinator
+	priority: medium
+	status: done
+	request: Add conservative avg spectral+onset gate `min_avg_spec_onset=0.40` to Wave15 runner to reduce false positives.
+	artifacts: scripts/tools/run_wave15.py, results/wave15_joint_grid_summary.json, results/sections-machine-b-wave15-joint-d10-g40.json
+	notes: Grid sweep found `min_avg_spec_onset=0.40` with `duration_prior` in [0.10..0.14] reduced FP (~27->22) while keeping TP=3 for many combos. Runner updated to apply `min_avg_spec_onset=0.40` for Wave15 runs.
+	status: done
+	summary: Conservative gate added to `scripts/tools/run_wave15.py`; full joint-grid summary in `results/wave15_joint_grid_summary.json`.
+
 ## MSG-20260308-2001
 from: machine-b
 to: coordinator
