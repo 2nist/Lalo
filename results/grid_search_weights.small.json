@@ -1,0 +1,708 @@
+{
+  "generated": "2026-03-07 20:27",
+  "sweep_count": 25,
+  "dev_only": true,
+  "vary": "flux_duration",
+  "results": [
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 0.75,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.0,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.25,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.064,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.0779,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 0.75
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.0779,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.0
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.0779,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.25
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.0779,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    },
+    {
+      "weights": {
+        "flux_peak": 1.5,
+        "chord_novelty": 1.0,
+        "cadence_score": 1.0,
+        "repetition_break": 1.0,
+        "duration_prior": 1.5
+      },
+      "mean_f1_0.5": 0.0179,
+      "summary": {
+        "F1@0.5s": {
+          "mean": 0.0179,
+          "median": 0.0,
+          "n": 16
+        },
+        "F1@3.0s": {
+          "mean": 0.0779,
+          "median": 0.0,
+          "n": 16
+        },
+        "label_accuracy": {
+          "mean": 0.0,
+          "median": 0.0,
+          "n": 16
+        }
+      },
+      "per_song_count": 16
+    }
+  ]
+}
