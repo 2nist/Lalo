@@ -1,0 +1,277 @@
+commit e1f156c3445f30592c9355d714f38f0f861daabb
+Author: 2nist <CANYONUKE@GMAIL.COM>
+Date:   Sun Mar 8 09:07:29 2026 -0400
+
+    Wave7: MIN_SECTION_SEC 8->4 and expose feature weight CLI args; run dev-only benchmark, add delta note
+
+diff --git a/scripts/analysis/section_detector.py b/scripts/analysis/section_detector.py
+index ce091b8..32dc09c 100644
+--- a/scripts/analysis/section_detector.py
++++ b/scripts/analysis/section_detector.py
+@@ -56,7 +56,7 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
+     "rms_energy": 0.05,
+ }
+ 
+-MIN_SECTION_SEC = 8.0
++MIN_SECTION_SEC = 4.0
+ MAX_SECTION_SEC = 90.0
+ NMS_DISTANCE_SEC = 8.0
+ SSM_BAR_BEATS = 2
+@@ -847,6 +847,26 @@ def main() -> None:
+         "--weight-duration", type=float,
+         default=DEFAULT_WEIGHTS["duration_prior"],
+     )
++    ap.add_argument(
++        "--weight-chroma", type=float,
++        default=DEFAULT_WEIGHTS.get("chroma_change", 0.0),
++        help="Weight for chroma_change feature",
++    )
++    ap.add_argument(
++        "--weight-spec-contrast", type=float,
++        default=DEFAULT_WEIGHTS.get("spec_contrast", 0.0),
++        help="Weight for spec_contrast feature",
++    )
++    ap.add_argument(
++        "--weight-onset-density", type=float,
++        default=DEFAULT_WEIGHTS.get("onset_density", 0.0),
++        help="Weight for onset_density feature",
++    )
++    ap.add_argument(
++        "--weight-rms", type=float,
++        default=DEFAULT_WEIGHTS.get("rms_energy", 0.0),
++        help="Weight for rms_energy feature",
++    )
+     args = ap.parse_args()
+ 
+     audio_path = Path(args.audio)
+@@ -865,6 +885,10 @@ def main() -> None:
+         "cadence_score": args.weight_cadence,
+         "repetition_break": args.weight_repetition,
+         "duration_prior": args.weight_duration,
++        "chroma_change": args.weight_chroma,
++        "spec_contrast": args.weight_spec_contrast,
++        "onset_density": args.weight_onset_density,
++        "rms_energy": args.weight_rms,
+     }
+ 
+     result = detect_sections(
+
+commit e95937ef55f8960276591b3df4f9bbd1fcfce52a
+Author: 2nist <CANYONUKE@GMAIL.COM>
+Date:   Sat Mar 7 23:00:33 2026 -0500
+
+    Wave6: reduce NMS_DISTANCE_SEC to 8.0, run dev-only benchmark, add delta note
+
+diff --git a/scripts/analysis/section_detector.py b/scripts/analysis/section_detector.py
+index 4cb9436..ce091b8 100644
+--- a/scripts/analysis/section_detector.py
++++ b/scripts/analysis/section_detector.py
+@@ -58,7 +58,7 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
+ 
+ MIN_SECTION_SEC = 8.0
+ MAX_SECTION_SEC = 90.0
+-NMS_DISTANCE_SEC = 16.0
++NMS_DISTANCE_SEC = 8.0
+ SSM_BAR_BEATS = 2
+ SSM_WINDOW_BARS = 8
+ 
+
+commit 01b44ce60aad2d7ad527c04f71723f657914cb71
+Author: 2nist <CANYONUKE@GMAIL.COM>
+Date:   Sat Mar 7 22:53:27 2026 -0500
+
+    Wave5: lower prominence default to 0.18, run dev-only benchmark, add delta note
+
+diff --git a/scripts/analysis/section_detector.py b/scripts/analysis/section_detector.py
+index 435ba3c..4cb9436 100644
+--- a/scripts/analysis/section_detector.py
++++ b/scripts/analysis/section_detector.py
+@@ -384,7 +384,7 @@ def _generate_candidates(
+     sr: int,
+     hop: int,
+     min_sec: float = NMS_DISTANCE_SEC,
+-    prominence: float = 0.2,
++    prominence: float = 0.18,
+     sub_prominence: float = 0.3,
+ ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+     """Return (frames, times, normalised_flux_scores) for all candidates.
+
+commit 8a1765e4972b59d23fc167993cdf82f479180d6f
+Author: 2nist <CANYONUKE@GMAIL.COM>
+Date:   Sat Mar 7 22:41:20 2026 -0500
+
+    Wave4b: lower sub_prominence default to 0.3 to increase candidate recall
+
+diff --git a/scripts/analysis/section_detector.py b/scripts/analysis/section_detector.py
+index d15c576..435ba3c 100644
+--- a/scripts/analysis/section_detector.py
++++ b/scripts/analysis/section_detector.py
+@@ -385,7 +385,7 @@ def _generate_candidates(
+     hop: int,
+     min_sec: float = NMS_DISTANCE_SEC,
+     prominence: float = 0.2,
+-    sub_prominence: float = 0.4,
++    sub_prominence: float = 0.3,
+ ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+     """Return (frames, times, normalised_flux_scores) for all candidates.
+ 
+
+commit 33c7ac1a9f85f59f66f02d161c99125f2f22d531
+Author: 2nist <CANYONUKE@GMAIL.COM>
+Date:   Sat Mar 7 21:38:21 2026 -0500
+
+    Add richer candidate features (chroma, contrast, onset density, rms) and dev run
+
+diff --git a/scripts/analysis/section_detector.py b/scripts/analysis/section_detector.py
+index 823ba13..d15c576 100644
+--- a/scripts/analysis/section_detector.py
++++ b/scripts/analysis/section_detector.py
+@@ -49,6 +49,11 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
+     "cadence_score":     0.0588,
+     "repetition_break":  0.0588,
+     "duration_prior":    0.4118,
++    # Additional candidate features (small defaults)
++    "chroma_change": 0.05,
++    "spec_contrast": 0.05,
++    "onset_density": 0.05,
++    "rms_energy": 0.05,
+ }
+ 
+ MIN_SECTION_SEC = 8.0
+@@ -90,6 +95,43 @@ def _load_and_flux(
+     return y, flux, log_S, sr
+ 
+ 
++def _compute_additional_frame_features(y: np.ndarray, sr: int, hop: int, n_fft: int = 2048):
++    """Compute frame-level features used for richer candidate descriptors.
++
++    Returns a dict with keys: chroma (12 x T), spec_contrast (n_bands x T), onset_env (T,), rms (T,)
++    """
++    # chroma
++    try:
++        chroma = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=hop, n_fft=n_fft)
++    except Exception:
++        chroma = None
++
++    # spectral contrast
++    try:
++        spec_contrast = librosa.feature.spectral_contrast(y=y, sr=sr, hop_length=hop, n_fft=n_fft)
++    except Exception:
++        spec_contrast = None
++
++    # onset envelope
++    try:
++        onset_env = librosa.onset.onset_strength(y=y, sr=sr, hop_length=hop)
++    except Exception:
++        onset_env = None
++
++    # rms
++    try:
++        rms = librosa.feature.rms(y=y, hop_length=hop)[0]
++    except Exception:
++        rms = None
++
++    return {
++        "chroma": chroma,
++        "spec_contrast": spec_contrast,
++        "onset_env": onset_env,
++        "rms": rms,
++    }
++
++
+ def _smooth(x: np.ndarray, win: int = 7) -> np.ndarray:
+     if win <= 1:
+         return x
+@@ -518,12 +560,81 @@ def detect_sections(
+         min_sec=min_section_sec, max_sec=max_section_sec,
+     )
+ 
++    # Additional frame-level derived features
++    frame_feats = _compute_additional_frame_features(y, sr, hop)
++    chroma = frame_feats.get("chroma")
++    spec_contrast = frame_feats.get("spec_contrast")
++    onset_env = frame_feats.get("onset_env")
++    rms = frame_feats.get("rms")
++
++    # Compute per-candidate derived features
++    n = len(times)
++    chroma_change = np.zeros(n)
++    spec_contrast_val = np.zeros(n)
++    onset_density = np.zeros(n)
++    rms_energy = np.zeros(n)
++
++    # helper to map time -> frame index
++    def _time_to_frame(t):
++        return int(librosa.time_to_frames(t, sr=sr, hop_length=hop))
++
++    for i, t in enumerate(times):
++        fidx = _time_to_frame(t)
++        # chroma change: L2 difference to 4 frames prior (approx 0.13s at hop=512 sr=16k)
++        if chroma is not None and fidx >= 4 and fidx < chroma.shape[1]:
++            cnow = chroma[:, fidx]
++            cprev = chroma[:, max(0, fidx - 4)]
++            chroma_change[i] = float(np.linalg.norm(cnow - cprev))
++        else:
++            chroma_change[i] = 0.0
++
++        # spectral contrast: mean across bands at frame
++        if spec_contrast is not None and fidx < spec_contrast.shape[1]:
++            spec_contrast_val[i] = float(np.mean(spec_contrast[:, fidx]))
++        else:
++            spec_contrast_val[i] = 0.0
++
++        # onset density: count onsets in +/- 2.0s window using onset_env peaks
++        if onset_env is not None:
++            # convert window to frames
++            w = int(round(2.0 * sr / hop))
++            lo = max(0, fidx - w)
++            hi = min(len(onset_env) - 1, fidx + w)
++            # simple density: sum onset_env in window normalized
++            onset_density[i] = float(np.sum(onset_env[lo:hi + 1]) / (hi - lo + 1 + 1e-8))
++        else:
++            onset_density[i] = 0.0
++
++        # rms energy at frame
++        if rms is not None and fidx < len(rms):
++            rms_energy[i] = float(rms[fidx])
++        else:
++            rms_energy[i] = 0.0
++
++    # normalize some derived features to 0-1 range for stability
++    def _norm(x):
++        if x.size == 0:
++            return x
++        mn, mx = float(x.min()), float(x.max())
++        if mx <= mn:
++            return np.zeros_like(x)
++        return (x - mn) / (mx - mn)
++
++    chroma_change = _norm(chroma_change)
++    spec_contrast_val = _norm(spec_contrast_val)
++    onset_density = _norm(onset_density)
++    rms_energy = _norm(rms_energy)
++
+     scores = (
+         weights["flux_peak"] * flux_scores
+         + weights["chord_novelty"] * chord_novelty
+         + weights["cadence_score"] * cadence
+         + weights["repetition_break"] * rep_break
+         + weights["duration_prior"] * dur_prior
++        + weights.get("chroma_change", 0.0) * chroma_change
++        + weights.get("spec_contrast", 0.0) * spec_contrast_val
++        + weights.get("onset_density", 0.0) * onset_density
++        + weights.get("rms_energy", 0.0) * rms_energy
+     )
+ 
+     kept_mask = _nms_by_score(times, scores, min_gap_sec=nms_gap_sec)
+@@ -556,6 +667,10 @@ def detect_sections(
+             "cadence_score": round(float(cadence[i]), 4),
+             "repetition_break": round(float(rep_break[i]), 4),
+             "duration_prior": round(float(dur_prior[i]), 4),
++            "chroma_change": round(float(chroma_change[i]), 4),
++            "spec_contrast": round(float(spec_contrast_val[i]), 4),
++            "onset_density": round(float(onset_density[i]), 4),
++            "rms_energy": round(float(rms_energy[i]), 4),
+         }
+         is_kept = round(float(t), 4) in final_set
+         candidates.append({
