@@ -53,7 +53,7 @@ notes: Branch `origin/machine-c` shows `machine-c: diagnostics lane complete`; t
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Run Wave 2 diagnostics-only lane (non-audio-dependent). Summarize top 5 failure patterns from `results/bench-machine-c.log` and map each to a testable benchmark hypothesis for Machine B.
 artifacts: results/machine-c-failure-taxonomy.md, docs/planning/machines/comms/machine-c.md
 notes: No model/backend/default changes in this lane. This is analysis + hypothesis packaging only.
@@ -62,7 +62,16 @@ notes: No model/backend/default changes in this lane. This is analysis + hypothe
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Finalize Wave 2 diagnostics handoff by syncing your completion commit into coordination-visible comms and highlighting the top 2 hypotheses Machine B should test first.
 artifacts: docs/planning/machines/comms/machine-c.md, docs/planning/machines/comms/live/machine-c.md, results/machine-c-failure-taxonomy.md
 notes: Your branch shows completion (`origin/machine-c` latest commit). This step is a sync + prioritization handoff.
+
+## MSG-20260308-0301
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Stay in support mode. Validate Machine B parser-fix branch once available and confirm whether H2/H3 gains persist after H4 is fixed.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: No new modeling work yet; this is verification support for B's parser-first lane.

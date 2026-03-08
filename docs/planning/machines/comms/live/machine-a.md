@@ -47,7 +47,16 @@ summary: Integration gate completed with conditional-pass. B artifact is structu
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 2b integration review: evaluate new Machine B XGBoost artifacts together with Machine C failure taxonomy handoff, then publish merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Decide one of: merge-now | merge-with-guardrail | hold-for-more-data. Include rationale and risk list.
+
+## MSG-20260308-0301
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 3 integration gate tracking. Track Machine B parser-fix lane completion and prepare final merge recommendation once B publishes non-zero-boundary metrics.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Gate remains conditional until parser-fix evidence lands.
