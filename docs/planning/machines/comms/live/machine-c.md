@@ -227,7 +227,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `7e76cc45` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 13 verification pass. Validate Machine B reproducibility-first parity/ablation reruns and explicitly check baseline reproducibility plus threshold monotonicity.
 artifacts: docs/planning/machines/comms/machine-c.md, results/verify-machine-b-w13.log
 notes: Analysis-only verification. Confirm Wave13a parity vs Wave 9 and validate monotonic checks (FP_B >= FP_A, pred/song_B >= pred/song_A) with PASS/FAIL plus deltas.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `fd3e551b` (`MSG-20260308-1502`). Verdict: FAIL. Root cause isolated as inverted threshold filter direction in section detector logic.
+
+## MSG-20260308-1601
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 14 verification pass. Validate Machine B threshold-direction fix and confirm parity + monotonic behavior across 0.50/0.25/0.15 runs.
+artifacts: docs/planning/machines/comms/machine-c.md, results/verify-machine-b-w14.log
+notes: Analysis-only verification. Confirm code-level threshold direction fix is reflected in behavior and report PASS/FAIL deltas vs Wave 9 and across A/B/C runs.
