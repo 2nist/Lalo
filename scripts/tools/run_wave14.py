@@ -22,7 +22,7 @@ weights = learned.get('weights') if isinstance(learned, dict) and learned.get('w
 
 nms=8.0
 min_sec=4.0
-beat=2.0
+beat=0.0
 
 runs = [
     {'name':'wave14a','prob_threshold':0.50},
