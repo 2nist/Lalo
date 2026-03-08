@@ -199,3 +199,20 @@ status: open
 request: Wave 8 sparsity-first pass. Retrain/re-export weights with full feature mapping (all intended keys), run pinned heuristic benchmark with explicit non-default weight flags enabled, and publish delta vs Wave 7.
 artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
 notes: Keep algorithm pinned to heuristic. Include: 1) non-zero weight key count, 2) full key list, 3) F1@0.5s/F1@3.0s, 4) pred/song, TP/FP/FN, precision, recall. If you also test one threshold setting, label it clearly as a separate sub-run.
+
+## MSG-20260308-1002
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 8 visibility retry. If `MSG-20260308-1001` is not visible in your checkout, execute this mirrored copy now and post immediate ack before running.
+artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+	Pull steps first:
+	1) git fetch origin
+	2) git checkout machine-b/worker-wave1
+	3) git pull --ff-only origin machine-b/worker-wave1
+	Ack format now:
+	- status: in-progress
+	- ack: received MSG-20260308-1001/1002
+	- eta: <estimate>

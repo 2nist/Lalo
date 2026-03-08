@@ -197,3 +197,10 @@ to: coordinator
 status: done
 response: Ingested Wave 7 results from worker branches and advanced coordination state. Machine B commit `e1f156c3` is marked done (H3 applied; F1@3.0s improved), Machine C verification commit `bb3649a3` is marked done (partial pass; sparsity remains bottleneck), and Machine A Wave 7 gate is closed as `hold-for-more-data` due to unchanged F1@0.5s and unexercised alignment fix. Dispatched Wave 8 tasks across all lanes focused on full-feature weight execution and sparsity recovery (`MSG-20260308-1001` for A/B/C).
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0025
+from: copilot
+to: coordinator
+status: done
+response: Re-broadcasted Wave 8 instructions to Machine B due to branch visibility gap. Posted mirrored `MSG-20260308-1002` in both Machine B channels (live + inbox) with explicit pull steps and immediate ack format, and prepared direct branch-local sync to `machine-b/worker-wave1`.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
