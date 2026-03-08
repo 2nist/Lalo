@@ -236,3 +236,22 @@ notes:
 		- F1@3.0s: 0.1267 -> 0.1338 (+0.0071)
 	- Aggregated detector totals (0.5s tolerance): TP=3, FP=29, FN=125, precision=0.0938, recall=0.0234, avg_pred_per_song=2.0 (n_audio=16). See `results/machine-b-wave9-note.json` and `results/sections-machine-b-wave9.json` for per-song details.
 
+
+## MSG-20260308-1201
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
+artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+1) git fetch origin
+2) git checkout machine-b/worker-wave1
+3) git pull --ff-only origin machine-b/worker-wave1
+- Required metrics vs Wave 9:
+- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+- Acceptance target:
+- pred/song > 2.0
+- precision >= 0.04
+- F1@0.5s >= 0.0383
