@@ -42,3 +42,12 @@ notes: Focus on integration quality gate and risk notes; do not retune detector 
 
 status: done
 summary: Integration gate completed with conditional-pass. B artifact is structurally valid and benchmark-pinned; C artifact lacks `summary.detector` and needs one follow-up output or explicit diagnostics-only acceptance before full close.
+
+## MSG-20260308-0201
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 2b integration review: evaluate new Machine B XGBoost artifacts together with Machine C failure taxonomy handoff, then publish merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Decide one of: merge-now | merge-with-guardrail | hold-for-more-data. Include rationale and risk list.

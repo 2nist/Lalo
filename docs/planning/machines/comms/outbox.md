@@ -44,6 +44,13 @@ status: done
 response: Machine A Wave 2 integration gate completed with conditional-pass. Integration commit chain is valid and B/C artifacts parse cleanly, but Machine C benchmark artifact currently reports only `summary.fixed_chunks` (no `summary.detector`), so one follow-up C output or diagnostics-only acceptance is needed before final close.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/live/machine-a.md, results/sections-machine-b.json, results/sections-machine-c.json
 
+## MSG-20260308-0003
+from: copilot
+to: coordinator
+status: done
+response: Refreshed instructions posted for all machines based on new upstream progress. Machine B received explicit XGBoost follow-through + benchmark delta task, Machine C received sync/prioritization handoff task after its new taxonomy completion commit, and Machine A received Wave 2b integration review ownership.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
 ## MSG-20260307-0005
 from: copilot
 to: coordinator

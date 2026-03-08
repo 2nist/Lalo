@@ -57,3 +57,12 @@ status: open
 request: Run Wave 2 diagnostics-only lane (non-audio-dependent). Summarize top 5 failure patterns from `results/bench-machine-c.log` and map each to a testable benchmark hypothesis for Machine B.
 artifacts: results/machine-c-failure-taxonomy.md, docs/planning/machines/comms/machine-c.md
 notes: No model/backend/default changes in this lane. This is analysis + hypothesis packaging only.
+
+## MSG-20260308-0201
+from: coordinator
+to: machine-c
+priority: high
+status: open
+request: Finalize Wave 2 diagnostics handoff by syncing your completion commit into coordination-visible comms and highlighting the top 2 hypotheses Machine B should test first.
+artifacts: docs/planning/machines/comms/machine-c.md, docs/planning/machines/comms/live/machine-c.md, results/machine-c-failure-taxonomy.md
+notes: Your branch shows completion (`origin/machine-c` latest commit). This step is a sync + prioritization handoff.
