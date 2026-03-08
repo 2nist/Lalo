@@ -1,0 +1,121 @@
+Audio: C:\Users\CraftAuto-Sales\component test\electron-react-vite-boilerplate\third_party\BTC-ISMIR19\test\example.mp3
+
+=== Running Reference BTC (large_voca=True) ===
+
+=== Running Owned Wrapper (delegates to reference runtime today) ===
+
+Reference BTC: 236 chord segments
+Owned Wrapper: 236 chord segments
+
+                    Reference                          Our Pipeline            
+    #          Time        Chord          Time        Chord  Match
+-------------------------------------------------------------------------------------
+    1             0.00-  2.69            N             0.00-  2.69            N   YES
+    2             2.69-  4.07         F#:7             2.69-  4.07         F#:7   YES
+    3             4.07-  5.37       B:maj7             4.07-  5.37       B:maj7   YES
+    4             5.37-  6.94         F#:7             5.37-  6.94         F#:7   YES
+    5             6.94-  8.15       B:maj7             6.94-  8.15       B:maj7   YES
+    6             8.15-  8.70         F#:7             8.15-  8.70         F#:7   YES
+    7             8.70- 10.00       C#:min             8.70- 10.00       C#:min   YES
+    8            10.00- 12.04           G#            10.00- 12.04           G#   YES
+    9            12.04- 12.87            N            12.04- 12.87            N   YES
+   10            12.87- 13.15      A#:sus4            12.87- 13.15      A#:sus4   YES
+   11            13.15- 14.44      D#:sus4            13.15- 14.44      D#:sus4   YES
+   12            14.44- 16.20           D#            14.44- 16.20           D#   YES
+   13            16.20- 17.59            N            16.20- 17.59            N   YES
+   14            17.59- 19.07           F#            17.59- 19.07           F#   YES
+   15            19.07- 20.65       B:maj7            19.07- 20.65       B:maj7   YES
+   16            20.65- 22.04           F#            20.65- 22.04           F#   YES
+   17            22.04- 23.70       B:maj7            22.04- 23.70       B:maj7   YES
+   18            23.70- 25.09           F#            23.70- 25.09           F#   YES
+   19            25.09- 26.48           G#            25.09- 26.48           G#   YES
+   20            26.48- 26.76       B:maj6            26.48- 26.76       B:maj6   YES
+   21            26.76- 27.41       B:maj7            26.76- 27.41       B:maj7   YES
+   22            27.41- 27.59       B:maj6            27.41- 27.59       B:maj6   YES
+   23            27.59- 27.78       B:sus2            27.59- 27.78       B:sus2   YES
+   24            27.78- 29.63      A#:min7            27.78- 29.63      A#:min7   YES
+   25            29.63- 31.02           F#            29.63- 31.02           F#   YES
+   26            31.02- 32.69       B:maj7            31.02- 32.69       B:maj7   YES
+   27            32.69- 33.89           F#            32.69- 33.89           F#   YES
+   28            33.89- 33.98      G#:min7            33.89- 33.98      G#:min7   YES
+   29            33.98- 35.74       B:maj7            33.98- 35.74       B:maj7   YES
+   30            35.74- 35.83      C#:maj6            35.74- 35.83      C#:maj6   YES
+   31            35.83- 37.13           C#            35.83- 37.13           C#   YES
+   32            37.13- 38.52           G#            37.13- 38.52           G#   YES
+   33            38.52- 38.61       B:sus2            38.52- 38.61       B:sus2   YES
+   34            38.61- 39.44       B:maj7            38.61- 39.44       B:maj7   YES
+   35            39.44- 40.00       B:sus2            39.44- 40.00       B:sus2   YES
+   36            40.00- 41.67      A#:min7            40.00- 41.67      A#:min7   YES
+   37            41.67- 43.15           F#            41.67- 43.15           F#   YES
+   38            43.15- 44.72       B:maj7            43.15- 44.72       B:maj7   YES
+   39            44.72- 46.02           F#            44.72- 46.02           F#   YES
+   40            46.02- 47.59       B:maj7            46.02- 47.59       B:maj7   YES
+
+Direct segment match: 40/40 (100.0%)
+
+--- Owned Wrapper vs Reference BTC (mir_eval) ---
+          root: 1.0000
+        thirds: 1.0000
+        triads: 1.0000
+      sevenths: 1.0000
+        majmin: 1.0000
+         mirex: 1.0000
+
+=== Running Future Owned Runtime ===
+
+Reference BTC: 236 chord segments
+Future Owned Runtime: 236 chord segments
+
+                    Reference                          Our Pipeline            
+    #          Time        Chord          Time        Chord  Match
+-------------------------------------------------------------------------------------
+    1             0.00-  2.69            N             0.00-  2.69            N   YES
+    2             2.69-  4.07         F#:7             2.69-  4.07         F#:7   YES
+    3             4.07-  5.37       B:maj7             4.07-  5.37       B:maj7   YES
+    4             5.37-  6.94         F#:7             5.37-  6.94         F#:7   YES
+    5             6.94-  8.15       B:maj7             6.94-  8.15       B:maj7   YES
+    6             8.15-  8.70         F#:7             8.15-  8.70         F#:7   YES
+    7             8.70- 10.00       C#:min             8.70- 10.00       C#:min   YES
+    8            10.00- 12.04           G#            10.00- 12.04           G#   YES
+    9            12.04- 12.87            N            12.04- 12.87            N   YES
+   10            12.87- 13.15      A#:sus4            12.87- 13.15      A#:sus4   YES
+   11            13.15- 14.44      D#:sus4            13.15- 14.44      D#:sus4   YES
+   12            14.44- 16.20           D#            14.44- 16.20           D#   YES
+   13            16.20- 17.59            N            16.20- 17.59            N   YES
+   14            17.59- 19.07           F#            17.59- 19.07           F#   YES
+   15            19.07- 20.65       B:maj7            19.07- 20.65       B:maj7   YES
+   16            20.65- 22.04           F#            20.65- 22.04           F#   YES
+   17            22.04- 23.70       B:maj7            22.04- 23.70       B:maj7   YES
+   18            23.70- 25.09           F#            23.70- 25.09           F#   YES
+   19            25.09- 26.48           G#            25.09- 26.48           G#   YES
+   20            26.48- 26.76       B:maj6            26.48- 26.76       B:maj6   YES
+   21            26.76- 27.41       B:maj7            26.76- 27.41       B:maj7   YES
+   22            27.41- 27.59       B:maj6            27.41- 27.59       B:maj6   YES
+   23            27.59- 27.78       B:sus2            27.59- 27.78       B:sus2   YES
+   24            27.78- 29.63      A#:min7            27.78- 29.63      A#:min7   YES
+   25            29.63- 31.02           F#            29.63- 31.02           F#   YES
+   26            31.02- 32.69       B:maj7            31.02- 32.69       B:maj7   YES
+   27            32.69- 33.89           F#            32.69- 33.89           F#   YES
+   28            33.89- 33.98      G#:min7            33.89- 33.98      G#:min7   YES
+   29            33.98- 35.74       B:maj7            33.98- 35.74       B:maj7   YES
+   30            35.74- 35.83      C#:maj6            35.74- 35.83      C#:maj6   YES
+   31            35.83- 37.13           C#            35.83- 37.13           C#   YES
+   32            37.13- 38.52           G#            37.13- 38.52           G#   YES
+   33            38.52- 38.61       B:sus2            38.52- 38.61       B:sus2   YES
+   34            38.61- 39.44       B:maj7            38.61- 39.44       B:maj7   YES
+   35            39.44- 40.00       B:sus2            39.44- 40.00       B:sus2   YES
+   36            40.00- 41.67      A#:min7            40.00- 41.67      A#:min7   YES
+   37            41.67- 43.15           F#            41.67- 43.15           F#   YES
+   38            43.15- 44.72       B:maj7            43.15- 44.72       B:maj7   YES
+   39            44.72- 46.02           F#            44.72- 46.02           F#   YES
+   40            46.02- 47.59       B:maj7            46.02- 47.59       B:maj7   YES
+
+Direct segment match: 40/40 (100.0%)
+
+--- Future Owned Runtime vs Reference BTC (mir_eval) ---
+          root: 1.0000
+        thirds: 1.0000
+        triads: 1.0000
+      sevenths: 1.0000
+        majmin: 1.0000
+         mirex: 1.0000
