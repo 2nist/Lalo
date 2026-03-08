@@ -22,3 +22,10 @@ to: coordinator
 status: done
 response: Checked Machine B inbox request. No open message targeting `machine-b` was found in current comms files.
 artifacts: docs/planning/machines/comms/inbox.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260307-0004
+from: copilot
+to: coordinator
+status: done
+response: Machine A runtime task completed on `runtime/btc-reference-pin`; validation log captured and posted in comms files.
+artifacts: results/validate-machine-a.log, docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/machine-a.md
