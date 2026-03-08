@@ -1,0 +1,66 @@
+Found 30 Harmonix songs (16 with audio)
+
+Running section detection benchmark on 30 songs (algorithm=heuristic)...
+  #                ID  Audio  Ref  Det@0.5  Proto@0.5  Fixed@0.5   Time
+-----------------------------------------------------------------------
+  1       0001_12step     no    9        -          -      0.167    0.0s
+    prototype error: No module named 'scripts.experiments'
+  2   0003_6foot7foot    yes   12      0.0          -      0.000    4.0s
+  3          0004_abc     no    9        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+  4        0005_again    yes   10      0.0          -      0.000    0.1s
+  5  0006_aint2proud2beg     no    8        -          -      0.167    0.0s
+  6      0008_america     no   12        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+  7  0009_americanmusic    yes    9      0.0          -      0.000    0.1s
+  8  0010_andjusticeforall     no   14        -          -      0.000    0.0s
+  9  0011_areyouexperienced     no   10        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 10  0012_aroundtheworld    yes    8      0.0          -      0.000    0.1s
+ 11  0013_athingaboutyou     no    9        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 12   0014_babaoriley    yes    7      0.0          -      0.000    0.1s
+ 13  0015_babygotback     no    9        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 14   0017_badromance    yes    8      0.0          -      0.000    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 15  0018_bassdownlow    yes    6   0.2857          -      0.000    0.1s
+ 16  0020_becauseofyou     no   10        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 17       0021_better    yes   10      0.0          -      0.111    0.1s
+ 18  0022_betteroffalone     no    9        -          -      0.167    0.0s
+ 19  0023_bewareoftheboys     no   11        -          -      0.000    0.0s
+ 20  0024_billionaire     no    9        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 21  0026_blackandyellow    yes    7      0.0          -      0.182    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 22    0027_blackened    yes   11      0.0          -      0.091    0.1s
+ 23   0028_blackmagic     no    8        -          -      0.000    0.0s
+ 24    0030_bodymovin     no    8        -          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 25  0032_boomboompow    yes   10      0.0          -      0.000    0.0s
+    prototype error: No module named 'scripts.experiments'
+ 26    0035_boyfriend    yes   10      0.0          -      0.000    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 27  0036_breakingthegirl    yes   11      0.0          -      0.000    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 28  0037_breakyourheart    yes    6      0.0          -      0.000    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 29  0038_bringmetolife    yes   12      0.0          -      0.000    0.1s
+    prototype error: No module named 'scripts.experiments'
+ 30  0039_bulletproof    yes    7      0.0          -      0.444    0.2s
+
+============================================================
+SECTION DETECTION BENCHMARK RESULTS
+============================================================
+
+Section Detector (new):
+  F1@0.5s: mean=0.0179  median=0.0000  n=16
+  F1@3.0s: mean=0.0779  median=0.0000  n=16
+  label_accuracy: mean=0.0000  median=0.0000  n=16
+
+Fixed 32s Chunks (naive):
+  F1@0.5s: mean=0.0443  median=0.0000  n=30
+  F1@3.0s: mean=0.1687  median=0.1603  n=30
+
+Wrote: results/sections-machine-b.json
