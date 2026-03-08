@@ -234,5 +234,5 @@ notes:
 	- metrics_delta vs Wave 8 (dev-only):
 		- F1@0.5s: 0.0270 -> 0.0383 (+0.0113)
 		- F1@3.0s: 0.1267 -> 0.1338 (+0.0071)
-		- For full TP/FP/FN, pred/song, precision and recall per the requirement, see `results/machine-b-wave9-note.md` and `results/sections-machine-b-wave9.json` (per-song details included).
+	- Aggregated detector totals (0.5s tolerance): TP=3, FP=29, FN=125, precision=0.0938, recall=0.0234, avg_pred_per_song=2.0 (n_audio=16). See `results/machine-b-wave9-note.json` and `results/sections-machine-b-wave9.json` for per-song details.
 

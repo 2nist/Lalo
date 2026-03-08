@@ -20,6 +20,15 @@
     "F1@0.5s": 0.0113,
     "F1@3.0s": 0.0071
   },
+  "aggregates": {
+    "tp": 3,
+    "fp": 29,
+    "fn": 125,
+    "precision": 0.0938,
+    "recall": 0.0234,
+    "avg_pred_per_song": 2.0,
+    "count_audio": 16
+  },
   "artifacts": [
     "results/sections-machine-b-wave9.json",
     "results/section_bench.learned_weights_xgb.json",
