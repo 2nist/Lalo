@@ -1,0 +1,29 @@
+# Wave 9 Note
+
+- Commit: 94124ab
+- Weights key count: 9
+- Weights keys: ["flux_peak", "chord_novelty", "cadence_score", "repetition_break", "duration_prior", "chroma_change", "spec_contrast", "onset_density", "rms_energy"]
+- Feature importance excerpt:
+  - chroma_change: 0.12096718698740005
+  - spec_contrast: 0.14654359221458435
+  - onset_density: 0.1488496959209442
+  - rms_energy: 0.22271274030208588
+
+- Metrics (Wave 8, dev-only):
+  - F1@0.5s mean = 0.0270
+  - F1@3.0s mean = 0.1267
+
+- Metrics (Wave 9, dev-only):
+  - F1@0.5s mean = 0.0383
+  - F1@3.0s mean = 0.1338
+
+- Delta vs Wave 8:
+  - F1@0.5s: +0.0113
+  - F1@3.0s: +0.0071
+
+Artifacts produced:
+- results/sections-machine-b-wave9.json
+- results/sections-machine-b-wave9.log
+- results/section_bench.learned_weights_xgb.json
+- results/xgb_feature_importances.json
+- results/learned_weights_xgb.json

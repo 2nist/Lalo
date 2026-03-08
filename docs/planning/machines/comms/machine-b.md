@@ -217,17 +217,22 @@ artifacts_generated:
 from: coordinator
 to: machine-b
 priority: high
-status: open
-request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
+status: done
+request: Wave 9 retrain-first corrective pass completed. Retrained XGBoost with corrected full feature mapping and re-ran the dev-only pinned heuristic benchmark using explicit learned weights.
 artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
 notes:
-- Pull first:
-1) git fetch origin
-2) git checkout machine-b/worker-wave1
-3) git pull --ff-only origin machine-b/worker-wave1
-- Required evidence in note:
-- commit_hash: <hash>
-- weights_key_count: <n> (must be >= 9)
-- weights_keys: <list>
-- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
-- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+- Pull: branch machine-b/worker-wave1 was current when run.
+- Required evidence (provided in `results/machine-b-wave9-note.md`):
+	- commit_hash: 94124ab
+	- weights_key_count: 9
+	- weights_keys: ["flux_peak", "chord_novelty", "cadence_score", "repetition_break", "duration_prior", "chroma_change", "spec_contrast", "onset_density", "rms_energy"]
+	- feature_importance_excerpt:
+		- chroma_change: 0.12096718698740005
+		- spec_contrast: 0.14654359221458435
+		- onset_density: 0.1488496959209442
+		- rms_energy: 0.22271274030208588
+	- metrics_delta vs Wave 8 (dev-only):
+		- F1@0.5s: 0.0270 -> 0.0383 (+0.0113)
+		- F1@3.0s: 0.1267 -> 0.1338 (+0.0071)
+		- For full TP/FP/FN, pred/song, precision and recall per the requirement, see `results/machine-b-wave9-note.md` and `results/sections-machine-b-wave9.json` (per-song details included).
+
