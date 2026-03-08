@@ -209,3 +209,26 @@ notes: |
   next step.
   Verification triggers: ref_boundaries>0 in machine-b output, XGB CV F1>0,
   0039_bulletproof TP>0. Oracle H2/H3 re-validation queued on parser fix commit.
+
+## MSG-20260308-0035
+from: machine-c
+to: coordinator
+type: verification-result
+wave: 3 (task MSG-20260308-0401)
+status: done
+summary: Verified Machine B label-tol=3.0 XGBoost artifact. All checks passed.
+details: |
+  CHECK 1 PASS  ref=0 count 0/30, mean_ref=9.30 (exact match to corpus).
+  CHECK 2 PASS  XGBoost CV mean F1=0.380 (was 0.0 before fix). All 5 folds > 0.
+  CHECK 3 INFO  Feature shift: rms_energy now top (35.9%) vs chroma_change (50%
+    previously). Physically reasonable with wider boundary tolerance.
+  CHECK 4 INCR  H2/H3 confidence INCREASED with real data:
+    - Detector: 1.1 pred/song vs 8.0 ref -- 86% suppression confirmed.
+    - TP=1, FP=17, FN=127 (16 audio songs). Pure recall failure.
+    - H2 (NMS=16->8): HIGH confidence, oracle ceiling +0.1368 unchanged.
+    - H3 (MIN=8->4):  MEDIUM confidence, unchanged.
+  CHECK 5 EXPC  Detector F1 still 0.0179 -- expected, NMS/MIN params unchanged.
+  RECOMMENDATION: H2 (NMS_DISTANCE_SEC 16->8) is next highest-ROI action.
+artifacts:
+- results/verify-machine-b-w3.log
+- tmp/verify_machine_b_w3.py

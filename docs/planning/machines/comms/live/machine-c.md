@@ -227,6 +227,60 @@ notes: |
      (n=30 songs, expected total ~280). Delta from 327 (35-song corpus) is OK.
   3. Verify XGBoost CV folds show non-zero F1 — confirms training data improved.
   4. Cross-check top-1 machine-b song by F1 against our known easy songs
-     (0039_bulletproof: Fixed F1=0.444 — should be first to show TP>0).
+     (0039_bulletproof: Fixed F1=0.444 -- should be first to show TP>0).
 
   Will post verification results immediately on new machine-b commit.
+
+## MSG-20260308-0401
+from: coordinator
+to: machine-c
+priority: normal
+status: done
+request: Run quick verification against latest Machine B XGBoost artifact and post a short consistency check: non-zero reference boundaries observed and any change in H2/H3 hypothesis confidence.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Keep this as analysis-only validation. Do not retune models or alter defaults.
+
+## MSG-20260308-0402
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 3 verification of Machine B label-tol=3.0 XGBoost artifact (commits 75a6ca7 + 93aecd1). Full log at results/verify-machine-b-w3.log.
+artifacts:
+- results/verify-machine-b-w3.log
+- tmp/verify_machine_b_w3.py
+notes: |
+  VERIFICATION COMPLETE -- Machine B label-tol=3.0 (commits 75a6ca7/93aecd1)
+  ==========================================================================
+
+  CHECK 1 -- Non-zero reference boundaries: PASS
+    ref=0 count: 0/30 songs (was: 30/30 before fix).
+    mean_ref = 9.30 (matches Harmonix corpus mean exactly).
+    label-tol=3.0 resolved the training data quality problem.
+
+  CHECK 2 -- XGBoost CV non-zero: PASS (MAJOR IMPROVEMENT)
+    Fold F1: 0.533, 0.400, 0.500, 0.267, 0.200 -- mean F1 = 0.380
+    Prior run (no label-tol): all folds F1=0.0.
+    XGBoost now generalizes. Model is viable.
+
+  CHECK 3 -- Feature importance shift noted (informational)
+    New (tol=3s): rms_energy=35.9%, flux_peak=18.4%, onset_density=14.9%
+    Prior (tol=0): chroma_change=50.4% dominant.
+    Shift to energy/flux envelope is physically reasonable at 3s tolerance.
+
+  CHECK 4 -- H2/H3 hypothesis confidence: INCREASED
+    Detector produces mean 1.1 boundaries/song vs 8.0 reference (86% suppression).
+    TP=1, FP=17, FN=127 across 16 audio songs -- pure recall failure.
+    0039_bulletproof sanity: ref=6, pred=1, TP=0 confirms NMS/MIN crushing recall.
+    H2 (NMS=16->8s) confidence: HIGH (increased -- now measurable vs real ref,
+      86% suppression directly observed).
+    H3 (MIN=8->4s) confidence: MEDIUM (unchanged -- annotation evidence holds).
+    Oracle ceiling with NMS=8s: F1@0.5s=0.9590 (+0.1368). Unchanged.
+
+  CHECK 5 -- Benchmark detector F1: 0.0179 (unchanged from before fix)
+    label-tol improves training labels but scoring still uses tight 0.5s tolerance.
+    Expected behavior. Detector performance will only change when NMS/MIN params change.
+
+  RECOMMENDATION: H2 (NMS_DISTANCE_SEC 16->8) is the single highest-ROI change.
+    Expected F1 gain: +0.1368 (oracle-confirmed). Zero audio dependency to verify.
+

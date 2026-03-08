@@ -57,3 +57,12 @@ status: open
 request: Parser-first emergency lane: fix the reference boundary parser bug (H4: ref_boundaries=0), then rerun baseline and XGBoost benchmark with valid labels.
 artifacts: scripts/bench/section_benchmark.py, results/sections-machine-b-wave3.json, results/machine-b-wave3-note.md, docs/planning/machines/comms/machine-b.md
 notes: Do this before any further weight/model tuning. Include before/after metric table proving non-zero reference boundaries.
+
+## MSG-20260308-0401
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Close merge guardrail with parser-fix traceability note. Publish exact code diff reference for H4 fix (or explicit statement that latest improvement is benchmark-configuration mitigation only).
+artifacts: docs/planning/machines/comms/machine-b.md
+notes: Include commit hash, touched file paths, and one concise provenance paragraph linking fix intent to observed non-zero ref_boundary evidence.
