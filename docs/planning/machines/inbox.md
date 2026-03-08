@@ -1,3 +1,14 @@
+Answers (added by worker):
+1. Preferred interpreter: 3.11
+2. Conda availability: yes
+3. Build toolchain (Xcode/Homebrew) available: yes
+4. Permission to install into repo-local venv or create env: yes
+5. CI option acceptable for full runs: yes
+Notes:
+- A local Miniconda was installed at `./miniconda3` and a Conda env `lalo311` (Python 3.11) was created to obtain prebuilt `llvmlite`/`numba` and build `madmom`.
+- For reproducible benchmark runs use the Conda env python: `./miniconda3/envs/lalo311/bin/python scripts/bench/section_benchmark.py --dev-only --algorithm heuristic --out results/sections-machine-b.json`.
+
+Proceeding to run the pinned heuristic benchmark and push artifacts as instructed.
 ## Inbox — Machine B compatibility questions
 
 Context:
