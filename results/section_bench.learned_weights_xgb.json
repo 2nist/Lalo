@@ -1,23 +1,23 @@
 {
-  "benchmark_date": "2026-03-07 21:52",
+  "benchmark_date": "2026-03-08 09:09",
   "songs_evaluated": 30,
   "algorithm": "heuristic",
   "weights": {
-    "flux_peak": 0.736,
+    "flux_peak": 0.2995,
     "chord_novelty": 0.0,
     "cadence_score": 0.0,
-    "repetition_break": 0.264,
+    "repetition_break": 0.7005,
     "duration_prior": 0.0
   },
   "summary": {
     "detector": {
       "F1@0.5s": {
-        "mean": 0.0179,
+        "mean": 0.0227,
         "median": 0.0,
         "n": 16
       },
       "F1@3.0s": {
-        "mean": 0.0779,
+        "mean": 0.1007,
         "median": 0.0,
         "n": 16
       },
@@ -100,26 +100,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 11,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 11,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 1,
-          "fp": 0,
+          "fp": 1,
           "fn": 10,
-          "precision": 1.0,
+          "precision": 0.5,
           "recall": 0.0909,
-          "f1": 0.1667,
+          "f1": 0.1538,
           "ref_boundaries": 11,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -127,14 +127,14 @@
           "duration_s": 29.98,
           "beat_count": 82,
           "downbeat_count": 21,
-          "candidate_count": 8,
+          "candidate_count": 15,
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -144,7 +144,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 4.8
+      "time_s": 3.9
     },
     {
       "id": "0004_abc",
@@ -232,14 +232,14 @@
           "duration_s": 29.98,
           "beat_count": 57,
           "downbeat_count": 15,
-          "candidate_count": 5,
+          "candidate_count": 9,
           "kept_count": 1,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -338,27 +338,27 @@
       },
       "detector": {
         "0.5": {
-          "tp": 0,
-          "fp": 1,
-          "fn": 8,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "tp": 1,
+          "fp": 2,
+          "fn": 7,
+          "precision": 0.3333,
+          "recall": 0.125,
+          "f1": 0.1818,
           "ref_boundaries": 8,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "3.0": {
-          "tp": 1,
-          "fp": 0,
-          "fn": 7,
-          "precision": 1.0,
-          "recall": 0.125,
-          "f1": 0.2222,
+          "tp": 2,
+          "fp": 1,
+          "fn": 6,
+          "precision": 0.6667,
+          "recall": 0.25,
+          "f1": 0.3636,
           "ref_boundaries": 8,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 4,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -366,14 +366,14 @@
           "duration_s": 29.98,
           "beat_count": 65,
           "downbeat_count": 17,
-          "candidate_count": 6,
-          "kept_count": 1,
+          "candidate_count": 11,
+          "kept_count": 3,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -383,7 +383,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.4
+      "time_s": 0.3
     },
     {
       "id": "0010_andjusticeforall",
@@ -473,26 +473,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 7,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 7,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 7,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 7,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -500,14 +500,14 @@
           "duration_s": 29.98,
           "beat_count": 59,
           "downbeat_count": 15,
-          "candidate_count": 7,
-          "kept_count": 2,
+          "candidate_count": 14,
+          "kept_count": 3,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -578,26 +578,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 6,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 6,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -605,14 +605,14 @@
           "duration_s": 29.98,
           "beat_count": 58,
           "downbeat_count": 15,
-          "candidate_count": 6,
-          "kept_count": 1,
+          "candidate_count": 11,
+          "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -622,7 +622,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.4
+      "time_s": 0.3
     },
     {
       "id": "0015_babygotback",
@@ -692,12 +692,12 @@
           "pred_boundaries": 2
         },
         "3.0": {
-          "tp": 0,
-          "fp": 2,
-          "fn": 7,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "tp": 1,
+          "fp": 1,
+          "fn": 6,
+          "precision": 0.5,
+          "recall": 0.1429,
+          "f1": 0.2222,
           "ref_boundaries": 7,
           "pred_boundaries": 2
         },
@@ -710,14 +710,14 @@
           "duration_s": 29.98,
           "beat_count": 47,
           "downbeat_count": 12,
-          "candidate_count": 5,
+          "candidate_count": 11,
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -758,22 +758,22 @@
       },
       "detector": {
         "0.5": {
-          "tp": 1,
-          "fp": 1,
-          "fn": 4,
-          "precision": 0.5,
-          "recall": 0.2,
-          "f1": 0.2857,
+          "tp": 0,
+          "fp": 2,
+          "fn": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
           "ref_boundaries": 5,
           "pred_boundaries": 2
         },
         "3.0": {
-          "tp": 1,
-          "fp": 1,
-          "fn": 4,
-          "precision": 0.5,
-          "recall": 0.2,
-          "f1": 0.2857,
+          "tp": 0,
+          "fp": 2,
+          "fn": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
           "ref_boundaries": 5,
           "pred_boundaries": 2
         },
@@ -786,14 +786,14 @@
           "duration_s": 29.98,
           "beat_count": 37,
           "downbeat_count": 10,
-          "candidate_count": 6,
+          "candidate_count": 10,
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -803,7 +803,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.5
+      "time_s": 0.3
     },
     {
       "id": "0020_becauseofyou",
@@ -864,26 +864,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 3,
           "fn": 9,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 9,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 3,
           "fn": 9,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 9,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 4,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -891,14 +891,14 @@
           "duration_s": 29.98,
           "beat_count": 65,
           "downbeat_count": 17,
-          "candidate_count": 6,
-          "kept_count": 1,
+          "candidate_count": 12,
+          "kept_count": 3,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -908,7 +908,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.4
+      "time_s": 0.3
     },
     {
       "id": "0022_betteroffalone",
@@ -1027,26 +1027,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 6,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 6,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1054,14 +1054,14 @@
           "duration_s": 29.98,
           "beat_count": 40,
           "downbeat_count": 10,
-          "candidate_count": 5,
-          "kept_count": 1,
+          "candidate_count": 11,
+          "kept_count": 3,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1103,26 +1103,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 3,
           "fn": 10,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 10,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "3.0": {
-          "tp": 0,
-          "fp": 1,
-          "fn": 10,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "tp": 1,
+          "fp": 2,
+          "fn": 9,
+          "precision": 0.3333,
+          "recall": 0.1,
+          "f1": 0.1538,
           "ref_boundaries": 10,
-          "pred_boundaries": 1
+          "pred_boundaries": 3
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 4,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1130,14 +1130,14 @@
           "duration_s": 29.98,
           "beat_count": 59,
           "downbeat_count": 15,
-          "candidate_count": 6,
-          "kept_count": 1,
+          "candidate_count": 12,
+          "kept_count": 3,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1264,14 +1264,14 @@
           "duration_s": 6.59,
           "beat_count": 11,
           "downbeat_count": 3,
-          "candidate_count": 1,
+          "candidate_count": 3,
           "kept_count": 0,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1312,27 +1312,27 @@
       },
       "detector": {
         "0.5": {
-          "tp": 0,
+          "tp": 1,
           "fp": 1,
-          "fn": 9,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "fn": 8,
+          "precision": 0.5,
+          "recall": 0.1111,
+          "f1": 0.1818,
           "ref_boundaries": 9,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
-          "tp": 0,
+          "tp": 1,
           "fp": 1,
-          "fn": 9,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "fn": 8,
+          "precision": 0.5,
+          "recall": 0.1111,
+          "f1": 0.1818,
           "ref_boundaries": 9,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1340,14 +1340,14 @@
           "duration_s": 29.98,
           "beat_count": 47,
           "downbeat_count": 12,
-          "candidate_count": 7,
-          "kept_count": 1,
+          "candidate_count": 13,
+          "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1357,7 +1357,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.4
+      "time_s": 0.3
     },
     {
       "id": "0036_breakingthegirl",
@@ -1389,26 +1389,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 10,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 10,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 10,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 10,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1416,14 +1416,14 @@
           "duration_s": 29.98,
           "beat_count": 40,
           "downbeat_count": 10,
-          "candidate_count": 7,
+          "candidate_count": 14,
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1433,7 +1433,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.4
+      "time_s": 0.3
     },
     {
       "id": "0037_breakyourheart",
@@ -1474,12 +1474,12 @@
           "pred_boundaries": 2
         },
         "3.0": {
-          "tp": 2,
-          "fp": 0,
-          "fn": 3,
-          "precision": 1.0,
-          "recall": 0.4,
-          "f1": 0.5714,
+          "tp": 1,
+          "fp": 1,
+          "fn": 4,
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.2857,
           "ref_boundaries": 5,
           "pred_boundaries": 2
         },
@@ -1492,14 +1492,14 @@
           "duration_s": 29.98,
           "beat_count": 58,
           "downbeat_count": 15,
-          "candidate_count": 7,
+          "candidate_count": 13,
           "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1509,7 +1509,7 @@
         },
         "candidates_recorded": true
       },
-      "time_s": 0.5
+      "time_s": 0.3
     },
     {
       "id": "0038_bringmetolife",
@@ -1541,26 +1541,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 11,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 11,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 11,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 11,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1568,14 +1568,14 @@
           "duration_s": 29.98,
           "beat_count": 83,
           "downbeat_count": 21,
-          "candidate_count": 7,
-          "kept_count": 1,
+          "candidate_count": 9,
+          "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,
@@ -1617,26 +1617,26 @@
       "detector": {
         "0.5": {
           "tp": 0,
-          "fp": 1,
+          "fp": 2,
           "fn": 6,
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "3.0": {
-          "tp": 0,
+          "tp": 1,
           "fp": 1,
-          "fn": 6,
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
+          "fn": 5,
+          "precision": 0.5,
+          "recall": 0.1667,
+          "f1": 0.25,
           "ref_boundaries": 6,
-          "pred_boundaries": 1
+          "pred_boundaries": 2
         },
         "label_accuracy": 0.0,
-        "pred_sections": 2,
+        "pred_sections": 3,
         "algorithm": "heuristic",
         "meta": {
           "algorithm": "heuristic",
@@ -1644,14 +1644,14 @@
           "duration_s": 29.98,
           "beat_count": 59,
           "downbeat_count": 15,
-          "candidate_count": 6,
-          "kept_count": 1,
+          "candidate_count": 11,
+          "kept_count": 2,
           "beat_snap_sec": 0,
           "weights_used": {
-            "flux_peak": 0.736,
+            "flux_peak": 0.2995,
             "chord_novelty": 0.0,
             "cadence_score": 0.0,
-            "repetition_break": 0.264,
+            "repetition_break": 0.7005,
             "duration_prior": 0.0,
             "chroma_change": 0.05,
             "spec_contrast": 0.05,

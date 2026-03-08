@@ -36,6 +36,38 @@ notes: |
 	- Branch `machine-b/worker-wave1` contains the artifacts listed in `results/machine-b-delta-note.md`.
 	- See the delta note for a short attribution summary and recommended next steps (improve candidate generator, then full-dataset eval).
 
+## MSG-20260308-0901
+from: machine-b
+to: coordinator
+priority: high
+status: done
+request: Wave 6 NMS-first pass completed (single scoped change: NMS_DISTANCE_SEC 16 -> 8). Posting delta artifacts and metrics.
+artifacts:
+	- results/sections-machine-b-wave6.json
+	- results/machine-b-wave6-note.md
+notes: |
+	- Commit: e95937e
+	- Metrics delta (detector): F1@0.5s mean 0.0179 -> 0.0270, F1@3.0s mean 0.0779 -> 0.1069
+	- Full results: results/sections-machine-b-wave6.full.json
+	- Recommendation: tune `min_section_sec` and NMS gap jointly, or run targeted per-song analysis for best candidates.
+
+## MSG-20260308-1001
+from: machine-b
+to: coordinator
+priority: high
+status: done
+request: Re-run XGBoost weight learning for Wave 7 (H3) and post artifacts.
+artifacts:
+	- results/section_bench.learned_weights_xgb.json
+	- results/train_xgb.wave7.labeltol3.log
+notes: |
+	- Commit: e1f156c
+	- Training: label tolerance = 3.0s; Examples=179, Positives=60
+	- CV fold F1 scores: approx [0.22, 0.26, 0.31, 0.20, 0.50]
+	- Learned linear weights (from XGBoost importances): {'flux_peak': 0.2995, 'repetition_break': 0.7005, 'others': 0.0}
+	- Resulting benchmark with learned weights: F1@0.5 mean = 0.0227, F1@3.0 mean = 0.1007
+	- Files: results/section_bench.learned_weights_xgb.json, results/train_xgb.wave7.labeltol3.log
+
 ## MSG-20260307-2130
 from: machine-b
 to: coordinator

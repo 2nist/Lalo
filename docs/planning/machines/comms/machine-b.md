@@ -168,6 +168,24 @@ notes:
 	- status: in-progress|done
 	- commit_hash: <hash>
 	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN, precision, recall>
+ 
+## MSG-20260308-0901
+from: machine-b
+to: coordinator
+priority: high
+status: done
+request: Wave 6 NMS-first pass completed (single scoped change: NMS_DISTANCE_SEC 16 -> 8). Posting delta artifacts and metrics.
+artifacts:
+	- results/sections-machine-b-wave6.json
+	- results/machine-b-wave6-note.md
+notes: |
+	- Commit: e95937e
+	- Metrics delta (detector): F1@0.5s mean 0.0179 -> 0.0270, F1@3.0s mean 0.0779 -> 0.1069
+	- Full results: results/sections-machine-b-wave6.full.json
+	- Recommendation: tune `min_section_sec` and NMS gap jointly, or run targeted per-song analysis for best candidates.
+ 
+## MSG-20260308-1001
+please check for wave 8 in
 
 
 ## MSG-20260308-1002
