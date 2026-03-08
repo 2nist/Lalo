@@ -215,7 +215,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `9e9d1b2c` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 12 verification pass. Validate Machine B parity-locked A/B ablation and confirm whether threshold-only change helps when geometry is fixed at Wave 9 values.
 artifacts: docs/planning/machines/comms/machine-c.md, results/verify-machine-b-w12.log
 notes: Analysis-only verification. Confirm config lock (nms_gap=8.0, min_section=4.0, beat_snap=2.0, same weights) and report PASS/FAIL deltas for Run A (`prob=0.50`) and Run B (`prob=0.25`).
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `7e76cc45` (`MSG-20260308-1402`). Verdict: FAIL + DATA INTEGRITY warning. Both Wave12 runs failed F1 guardrail and reported non-reproducible/non-monotonic behavior.
+
+## MSG-20260308-1501
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 13 verification pass. Validate Machine B reproducibility-first parity/ablation reruns and explicitly check baseline reproducibility plus threshold monotonicity.
+artifacts: docs/planning/machines/comms/machine-c.md, results/verify-machine-b-w13.log
+notes: Analysis-only verification. Confirm Wave13a parity vs Wave 9 and validate monotonic checks (FP_B >= FP_A, pred/song_B >= pred/song_A) with PASS/FAIL plus deltas.
