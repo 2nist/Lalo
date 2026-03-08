@@ -65,25 +65,31 @@ summary: New Machine B results landed on `origin/machine-b/worker-wave1` (`93aec
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Close merge guardrail with parser-fix traceability note. Publish exact code diff reference for H4 fix (or explicit statement that latest improvement is benchmark-configuration mitigation only).
 artifacts: docs/planning/machines/comms/machine-b.md
 notes: Include commit hash, touched file paths, and one concise provenance paragraph linking fix intent to observed non-zero ref_boundary evidence.
+
+status: done
+summary: Guardrail deliverable received in Machine B commit `2fa5a123` via `results/guardrail-traceability-401.md` and comm reply (`MSG-20260307-0401` on worker branch). Response includes touched files, compliance scope, and mitigation-mode provenance.
 
 ## MSG-20260308-0402
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: If MSG-20260308-0401 was not visible in your checkout, use the mirrored copy in `docs/planning/machines/comms/machine-b.md` and reply there.
 artifacts: docs/planning/machines/comms/machine-b.md
 notes: This is a visibility fallback only; deliverable content is unchanged.
+
+status: done
+summary: Fallback no longer needed after Machine B posted guardrail response.
 
 ## MSG-20260308-0403
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Follow-up: latest push (`e36ad499`) finalized MSG-20260307-2401 but did not include MSG-20260308-0401 traceability deliverable. Please post it now using the exact fields below.
 artifacts: docs/planning/machines/comms/machine-b.md
 notes: |
@@ -95,3 +101,6 @@ notes: |
 		- <path2>
 	- traceability: <1 short paragraph linking code/mitigation intent to non-zero ref_boundaries evidence>
 	- mode: parser-code-fix | benchmark-mitigation-only
+
+status: done
+summary: Follow-up satisfied by Machine B push `2fa5a123` with explicit traceability report artifact.
