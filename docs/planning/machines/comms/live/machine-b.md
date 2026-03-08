@@ -247,7 +247,7 @@ summary: Completed by Machine B in `origin/machine-b/worker-wave1` commits `9412
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
 artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
 notes: |
@@ -255,3 +255,20 @@ notes: |
 	Keep algorithm pinned to heuristic and keep 9-feature weights active.
 	Required metrics vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
 	Acceptance target: pred/song > 2.0 and precision >= 0.04, with no regression below Wave 9 F1@0.5s (0.0383).
+
+status: done
+summary: Wave 10 artifacts landed in `origin/machine-b/worker-wave1` commits `03df0ec1` (density sweep) and `517663a8` (top-combo benchmark). Machine C verification marked FAIL: density rose but precision/F1 regressed below guardrails.
+
+## MSG-20260308-1301
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 11 threshold-first corrective pass. Keep Wave 9 9-feature weights and run one controlled probability-threshold tuning run, then publish a full benchmark artifact.
+artifacts: results/sections-machine-b-wave11.json, results/machine-b-wave11-note.md, docs/planning/machines/comms/machine-b.md
+notes: |
+	This replaces Wave 10 density sweep as active task.
+	Use one threshold-focused change (for example: `--prob_threshold 0.25`; optional micro-sweep 0.20/0.25/0.30 allowed if summarized in note).
+	Keep geometry at Wave 9 baseline while testing threshold effect.
+	Required metrics vs Wave 9: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN.
+	Acceptance target: pred/song > 2.0, precision >= 0.04, and F1@0.5s >= 0.0383.

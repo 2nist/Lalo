@@ -152,7 +152,19 @@ summary: Wave 9 gate closed from B/C evidence. Decision: `merge-with-guardrail` 
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 10 integration gate. Track Machine B density-focused tuning pass and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 10 evidence lands. Call out whether pred/song improves meaningfully beyond 2.0 while precision stays >= 0.04.
+
+status: done
+summary: Wave 10 gate closed from B/C evidence. Decision: `hold-for-more-data` because density sweep increased pred/song but failed precision/F1 guardrails (best precision 0.0227; best F1@0.5s 0.0116, below Wave 9 baseline 0.0383).
+
+## MSG-20260308-1301
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 11 integration gate. Track Machine B probability-threshold corrective run and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 11 evidence lands. Evaluate whether threshold tuning restores precision >= 0.04 while keeping F1@0.5s >= 0.0383 and pred/song > 2.0.

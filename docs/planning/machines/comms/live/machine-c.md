@@ -191,7 +191,19 @@ summary: Completed by Machine C in `origin/machine-c` commit `40c1288a` (`MSG-20
 from: coordinator
 to: machine-c
 priority: normal
-status: open
+status: done
 request: Wave 10 verification pass. Validate Machine B density-focused tuning run and confirm whether pred/song improves over 2.0 while precision remains >= 0.04 and F1@0.5s does not regress below 0.0383.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN, plus top remaining blocker.
+
+status: done
+summary: Completed by Machine C in `origin/machine-c` commit `51918398` (`MSG-20260308-1202`). Verdict: FAIL. Density sweep increased pred/song but regressed TP/F1 and precision below guardrails.
+
+## MSG-20260308-1301
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 11 verification pass. Validate Machine B threshold-first corrective run and confirm whether precision/F1 recover while maintaining pred/song > 2.0.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Report PASS/FAIL with deltas for F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN and confirm full benchmark artifact presence.

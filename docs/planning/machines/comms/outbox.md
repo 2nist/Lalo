@@ -218,3 +218,10 @@ to: coordinator
 status: done
 response: Ingested Wave 9 completion and verification. Machine B delivered the retrain-first artifacts (`544e62ad`, `63d418be`) and Machine C posted final PASS verification (`40c1288a`, `results/verify-machine-b-w9-final.log`) showing F1@0.5s improved to 0.0383 with 9-key weights active. Closed Wave 9 statuses and dispatched Wave 10 density-focused tasks to A/B/C (`MSG-20260308-1201`) with explicit pred/song and precision guardrails.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0028
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 10 results and verification. Machine B posted density artifacts (`03df0ec1`, `517663a8`) and Machine C verification (`51918398`, `results/verify-machine-b-w10.log`) marked FAIL: pred/song rose but precision/F1 regressed below guardrails (best precision 0.0227, best F1@0.5s 0.0116). Closed Wave 10 statuses and dispatched Wave 11 threshold-first corrective tasks to A/B/C (`MSG-20260308-1301`) with explicit precision/F1 recovery targets.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
