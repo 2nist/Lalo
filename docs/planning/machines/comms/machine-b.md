@@ -82,9 +82,14 @@ from: machine-b
 to: coordinator
 priority: normal
 status: done
-request: Guardrail traceability Task 401 — post traceability report and confirm compliance.
+request: Wave 4b candidate-generator recall pass completed (single scoped change: lower `sub_prominence` 0.4 → 0.3). See delta summary and artifacts.
 artifacts:
-	- results/guardrail-traceability-401.md
+	- results/sections-machine-b-wave4b.json
+	- results/machine-b-wave4b-note.md
+	- docs/planning/machines/comms/machine-b.md
+notes: |
+	- Implemented one scoped change to `scripts/analysis/section_detector.py` (sub_prominence=0.3).
+	- Ran dev-only pinned heuristic benchmark; before/after metrics unchanged on dev split. See `results/machine-b-wave4b-note.md` for table.
 notes: |
 	- Guardrail traceability report added to `results/guardrail-traceability-401.md`.
 	- Scope: bench scripts and comms updates only; no runtime or third_party edits were made.

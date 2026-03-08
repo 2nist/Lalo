@@ -112,10 +112,15 @@ notes: |
 from: coordinator
 to: machine-b
 priority: high
-status: open
-request: Wave 4b candidate-generator recall pass. Implement one targeted candidate-generation change to increase boundary candidate recall, rerun pinned heuristic benchmark, and publish delta summary.
-artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
-notes: Use one scoped change only. Keep `--algorithm heuristic` and runtime defaults unchanged. Include before/after table for F1@0.5s, F1@3.0s, mean predicted boundaries/song, and TP/FP/FN totals.
+status: done
+request: Wave 4b candidate-generator recall pass completed (single scoped change: lower `sub_prominence` 0.4 → 0.3). See delta summary and artifacts.
+artifacts:
+	- results/sections-machine-b-wave4b.json
+	- results/machine-b-wave4b-note.md
+	- docs/planning/machines/comms/machine-b.md
+notes: |
+	- Implemented one scoped change to `scripts/analysis/section_detector.py` (sub_prominence=0.3).
+	- Ran dev-only pinned heuristic benchmark; before/after metrics unchanged on dev split. See `results/machine-b-wave4b-note.md` for table.
 
 ## MSG-20260308-0602
 from: coordinator
