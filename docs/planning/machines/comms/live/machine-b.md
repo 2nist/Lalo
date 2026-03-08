@@ -152,9 +152,22 @@ artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.m
 notes: |
 	Treat this as the current source-of-truth task even if older messages conflict.
 	Required reply block:
-	- status: in-progress|done
-	- commit_hash: <hash>
-	- nonzero_weights_before: <n>
-	- nonzero_weights_after: <n>
-	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
+		- status: in-progress|done
+		- commit_hash: <hash>
+		- nonzero_weights_before: <n>
+		- nonzero_weights_after: <n>
+		- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
+
+## MSG-20260308-1200
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Execute Wave 5 candidate-generator pass (follow-up to Wave 4b). Implement a single scoped candidate-generator change, run the dev-only pinned benchmark, and post delta artifacts.
+artifacts:
+	- results/sections-machine-b-wave5.json
+	- results/machine-b-wave5-note.md
+notes: |
+	- Scope: one targeted change to `scripts/analysis/section_detector.py` to increase candidate recall (change TBD), then run `scripts/bench/section_benchmark.py --dev-only --algorithm heuristic` and publish results.
+	- Pull and ack before running (see MSG-20260308-0602 for pull steps).
 

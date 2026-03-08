@@ -131,14 +131,27 @@ from: coordinator
 to: machine-b
 priority: high
 status: open
-request: Canonical active instruction (branch-local). Execute Wave 5 alignment-first pass now: fix feature-weight alignment so informative XGBoost features are preserved, rerun pinned heuristic benchmark, and post delta summary.
+request: Canonical active instruction (branch-local). Execute Wave 5 alignment-first pass now: fix feature-weight alignment so informative XGBoost features are preserved (not collapsed to `flux_peak`), rerun pinned heuristic benchmark, and post delta summary.
 artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.md, docs/planning/machines/comms/machine-b.md
-notes:
-- This is the current source-of-truth task in machine-b branch.
-- Required reply block:
-	- status: in-progress|done
-	- commit_hash: <hash>
-	- nonzero_weights_before: <n>
-	- nonzero_weights_after: <n>
-	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
+notes: |
+	Treat this as the current source-of-truth task even if older messages conflict.
+	Required reply block:
+		- status: in-progress|done
+		- commit_hash: <hash>
+		- nonzero_weights_before: <n>
+		- nonzero_weights_after: <n>
+		- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
+
+## MSG-20260308-1200
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Execute Wave 5 candidate-generator pass (follow-up to Wave 4b). Implement a single scoped candidate-generator change, run the dev-only pinned benchmark, and post delta artifacts.
+artifacts:
+	- results/sections-machine-b-wave5.json
+	- results/machine-b-wave5-note.md
+notes: |
+	- Scope: one targeted change to `scripts/analysis/section_detector.py` to increase candidate recall (change TBD), then run `scripts/bench/section_benchmark.py --dev-only --algorithm heuristic` and publish results.
+	- Pull and ack before running (see MSG-20260308-0602 for pull steps).
 

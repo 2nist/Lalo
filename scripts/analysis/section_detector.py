@@ -384,7 +384,7 @@ def _generate_candidates(
     sr: int,
     hop: int,
     min_sec: float = NMS_DISTANCE_SEC,
-    prominence: float = 0.2,
+    prominence: float = 0.18,
     sub_prominence: float = 0.3,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Return (frames, times, normalised_flux_scores) for all candidates.
