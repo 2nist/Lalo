@@ -200,7 +200,19 @@ summary: Wave 13 gate closed from B/C evidence. Decision: `hold-for-more-data` b
 from: coordinator
 to: machine-a
 priority: high
-status: open
+status: done
 request: Own Wave 14 integration gate. Track Machine B threshold-direction bugfix reruns and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 14 evidence lands. Require parity reproduction and monotonic threshold behavior before accepting quality gains.
+
+status: done
+summary: Paused due to single-machine execution mode. Integration gate ownership is temporarily centralized in Machine B lane to reduce coordination overhead.
+
+## MSG-20260308-1701
+from: coordinator
+to: machine-a
+priority: normal
+status: done
+request: Enter standby mode while Wave 14+ runs as a single-machine lane on Machine B.
+artifacts: docs/planning/machines/comms/outbox.md
+notes: Resume integration-gate role when coordinator exits single-machine mode.

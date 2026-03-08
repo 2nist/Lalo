@@ -246,3 +246,10 @@ to: coordinator
 status: done
 response: Ingested Wave 13 parity/ablation results and verification. Machine B posted artifacts (`75825299`, `00bcfdc0`) and Machine C verification (`fd3e551b`) marked FAIL with root-cause diagnosis: `--prob_threshold` filter appears inverted (upper-bound behavior). Closed Wave 13 statuses and dispatched Wave 14 threshold-direction fix tasks to A/B/C (`MSG-20260308-1601`) with parity/monotonic confirmation runs (0.50/0.25/0.15) and required logs.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0032
+from: copilot
+to: coordinator
+status: done
+response: Switched execution model to single-machine mode per request. Machine B is now the sole active lane for implementation + benchmark + self-verification; Machine A and Machine C lanes are paused/standby to reduce coordination overhead.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md

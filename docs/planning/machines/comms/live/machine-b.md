@@ -342,3 +342,19 @@ notes: |
 	1) Wave14a parity target vs Wave 9 (TP=3, FP=29, F1@0.5s=0.0383) with explanation for any mismatch
 	2) Monotonic checks: FP_C >= FP_B >= FP_A and pred/song_C >= pred/song_B >= pred/song_A
 	3) Include explicit command lines, benchmark timestamp, and active weight keys/count
+
+## MSG-20260308-1701
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Single-machine mode enabled. Run Wave 14+ end-to-end on Machine B only (implementation + benchmark + self-verification) and post one consolidated report per wave.
+artifacts: results/sections-machine-b-wave14*.json, results/machine-b-wave14-note.md, results/wave14*.log, docs/planning/machines/comms/machine-b.md
+notes: |
+	Temporary operating mode: no cross-machine dependency.
+	For each wave, include in one note:
+	1) code diff summary
+	2) exact commands executed
+	3) metric table (F1@0.5s, precision, recall, TP/FP/FN, pred/song)
+	4) self-check assertions (parity + monotonic threshold behavior)
+	Mark blockers immediately if assertions fail.
