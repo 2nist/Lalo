@@ -104,10 +104,19 @@ summary: Wave 5 gate reviewed from B/C artifacts. Decision: `hold-for-more-data`
 from: coordinator
 to: machine-a
 priority: high
-status: in-progress
+status: done
 request: Own Wave 6 integration gate. Track Machine B NMS-first pass and Machine C verification, then publish updated merge recommendation.
 artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
 notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 6 evidence lands.
 
-status: in-progress
-summary: Machine B Wave 6 artifact landed (`e95937ef`) with improved F1 means; awaiting refreshed Machine C verification against this exact commit before final gate decision.
+status: done
+summary: Wave 6 gate closed from B/C evidence. Decision: `merge-with-guardrail` (conditional pass) because NMS 16 -> 8 improved recall/F1 with stable precision, but absolute F1 remains low and H3 + alignment remain open.
+
+## MSG-20260308-0901
+from: coordinator
+to: machine-a
+priority: high
+status: open
+request: Own Wave 7 integration gate. Track Machine B H3 + alignment pass and Machine C verification, then publish updated merge recommendation.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/outbox.md
+notes: Use `merge-now | merge-with-guardrail | hold-for-more-data` after Wave 7 evidence lands.

@@ -131,19 +131,31 @@ summary: Completed by Machine C (`6e509cc2`). Result: FAIL for recall gain; top 
 from: coordinator
 to: machine-c
 priority: normal
-status: in-progress
+status: done
 request: Wave 6 verification pass. Validate Machine B NMS-first run (16 -> 8) and report whether recall improves without unacceptable precision collapse.
 artifacts: docs/planning/machines/comms/machine-c.md
 notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and single top remaining blocker.
 
-status: in-progress
-summary: Machine C posted a pending check (`36b88ea6`) before latest B artifact was visible. Re-verification against `origin/machine-b/worker-wave1` commit `e95937ef` is required.
+status: done
+summary: Completed by Machine C (`acf91504`). Conditional PASS: NMS 16 -> 8 confirmed effective with recall +100% and F1@0.5s +51%, precision stable; top remaining blocker is H3 (`MIN_SECTION_SEC=8`).
 
 ## MSG-20260308-0803
 from: coordinator
 to: machine-c
 priority: high
-status: open
+status: done
 request: Re-run Wave 6 verification against Machine B commit `e95937ef` (contains `results/sections-machine-b-wave6.json`) and post updated PASS/FAIL with deltas.
 artifacts: results/verify-machine-b-w6.log, docs/planning/machines/comms/machine-c.md
 notes: Prior pending output referenced missing artifact; this retry should use the now-available Wave 6 artifact.
+
+status: done
+summary: Retry completed and posted as `MSG-20260308-0804` on machine-c branch.
+
+## MSG-20260308-0901
+from: coordinator
+to: machine-c
+priority: normal
+status: open
+request: Wave 7 verification pass. Validate Machine B H3 run (`MIN_SECTION_SEC` 8 -> 4) plus any alignment-fix updates and report combined impact vs Wave 6.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: Analysis-only validation. Include PASS/FAIL, metric deltas, and top remaining blocker.

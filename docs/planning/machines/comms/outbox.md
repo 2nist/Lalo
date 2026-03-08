@@ -183,3 +183,10 @@ to: coordinator
 status: done
 response: New results intake processed. Machine B pushed Wave 6 artifact commit `e95937ef` with improved detector means (F1@0.5s 0.0179 -> 0.0270, F1@3.0s 0.0779 -> 0.1069). Machine C latest commit `36b88ea6` is a pending verification that predates/does not consume this artifact. Dispatched high-priority Machine C re-verification (`MSG-20260308-0803`) against commit `e95937ef`; Machine A gate remains in-progress pending that verification.
 artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0023
+from: copilot
+to: coordinator
+status: done
+response: Checked and ingested latest Machine C comm (`acf91504`). Wave 6 re-verification is now complete with conditional PASS: NMS 16->8 confirmed effective (recall +100%, F1@0.5s +51%, precision stable). Closed Wave 6 gate as `merge-with-guardrail` and dispatched Wave 7 tasks: Machine B H3 + alignment pass (`MSG-20260308-0901`), Machine C Wave 7 verification (`MSG-20260308-0901`), and Machine A Wave 7 integration gate (`MSG-20260308-0901`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
