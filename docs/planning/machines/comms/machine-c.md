@@ -193,3 +193,19 @@ notes: |
   Once H4 is fixed, these importances suggest chroma-based boundary detection
   has strong signal — worth re-running XGBoost with valid labels.
   TOP 2 for Machine B: H4 (ref parser fix) then H2 (NMS 16→8s, +0.1368 F1).
+
+## MSG-20260308-0030
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 3 support mode active. Verification criteria set for machine-b parser-fix.
+artifacts:
+- docs/planning/machines/comms/live/machine-c.md (MSG-20260308-0302)
+notes: |
+  Machine B's own wave2 note confirms H4: "95 candidates, 5 positives (severe
+  class imbalance)" — direct result of ref_boundaries=0. Flux-only XGBoost
+  weights produced no change (F1=0.0179 unchanged). Parser fix is the agreed
+  next step.
+  Verification triggers: ref_boundaries>0 in machine-b output, XGB CV F1>0,
+  0039_bulletproof TP>0. Oracle H2/H3 re-validation queued on parser fix commit.

@@ -44,7 +44,16 @@ notes: Keep algorithm pinned to heuristic. Do not change runtime backend default
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Execute XGBoost follow-through lane and publish reproducible benchmark comparison.
 artifacts: results/learned_weights_xgb.json, results/section_bench.learned_weights_xgb.json, results/xgb_feature_importances.json, results/machine-b-xgb-summary.md, docs/planning/machines/comms/machine-b.md
 notes: Keep detector algorithm pinned to `heuristic`; include exact command lines and a baseline-vs-xgb delta summary.
+
+## MSG-20260308-0301
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Parser-first emergency lane: fix the reference boundary parser bug (H4: ref_boundaries=0), then rerun baseline and XGBoost benchmark with valid labels.
+artifacts: scripts/bench/section_benchmark.py, results/sections-machine-b-wave3.json, results/machine-b-wave3-note.md, docs/planning/machines/comms/machine-b.md
+notes: Do this before any further weight/model tuning. Include before/after metric table proving non-zero reference boundaries.

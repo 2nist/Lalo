@@ -189,3 +189,44 @@ notes: |
 
   SECONDARY: H3 (MIN=8→4s, +0.035 oracle) can be tested simultaneously with H2.
   DEFERRED:  H1 (chunk size) and H5 (label classifier) are lower priority.
+
+## MSG-20260308-0301
+from: coordinator
+to: machine-c
+priority: normal
+status: done
+request: Stay in support mode. Validate Machine B parser-fix branch once available and confirm whether H2/H3 gains persist after H4 is fixed.
+artifacts: docs/planning/machines/comms/machine-c.md
+notes: No new modeling work yet; this is verification support for B's parser-first lane.
+
+## MSG-20260308-0302
+from: machine-c
+to: coordinator
+priority: normal
+status: done
+request: Wave 3 support mode acknowledged. Verification criteria established for Machine B parser-fix.
+artifacts:
+- docs/planning/machines/comms/machine-c.md
+notes: |
+  WAVE 3 SUPPORT MODE — Active
+  ----------------------------
+  Machine B wave2 note confirms our H4 diagnosis:
+    "95 candidate examples, 5 positives (severe class imbalance)" — direct
+    consequence of ref_boundaries=0. XGB flux-only weights: F1 unchanged at
+    0.0179. Machine B acknowledges parser fix is prerequisite.
+
+  Waiting for: origin/machine-b/worker-wave1 new commit with parser fix.
+  Trigger: ref_boundaries > 0 in any machine-b per_song result.
+
+  VERIFICATION PLAN once parser fix lands
+  ----------------------------------------
+  1. Re-run tmp/oracle_analysis.py against machine-b fixed output to confirm
+     H2 (NMS=8s) and H3 (MIN=4s) ceiling gains persist:
+     Expected: oracle F1@0.5s = 0.9590 (+0.1368 vs current 0.8222)
+  2. Check that machine-b per-song ref_boundaries approx= our corpus mean 9.3
+     (n=30 songs, expected total ~280). Delta from 327 (35-song corpus) is OK.
+  3. Verify XGBoost CV folds show non-zero F1 — confirms training data improved.
+  4. Cross-check top-1 machine-b song by F1 against our known easy songs
+     (0039_bulletproof: Fixed F1=0.444 — should be first to show TP>0).
+
+  Will post verification results immediately on new machine-b commit.
