@@ -193,9 +193,9 @@ summary: Completed by Machine B (`85b3e1a5`) and reviewed by Machine C (`7e76cc4
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 13 reproducibility-first pass. Reproduce Wave 9 parity exactly, then run one threshold-only ablation with full trace logs and monotonicity checks.
-artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13a.log, results/wave13b.log, docs/planning/machines/comms/machine-b.md
+artifacts: results/sections-machine-b-wave13a.json, results/sections-machine-b-wave13b.json, results/machine-b-wave13-note.md, results/wave13.run.log, results/wave13_wave13a.log, results/wave13_wave13b.log, docs/planning/machines/comms/machine-b.md
 notes:
 - Pull first:
 	1) `git fetch origin`
@@ -213,3 +213,16 @@ notes:
 	1) Wave13a reproduces Wave 9 baseline (target TP=3, FP=29, F1@0.5s=0.0383; explain any mismatch)
 	2) Monotonic threshold behavior check: FP_B >= FP_A and pred/song_B >= pred/song_A
 	3) Include `benchmark_date`, active weight keys/count, and explicit command lines for both runs
+
+status: done
+summary: Wave 13 runs committed in `7582529`. Results:
+
+- Run A (repro parity, prob=0.50): TP 2, FP 34, FN 126, precision 0.0556, recall 0.0156, avg_pred_per_song 2.25.
+- Run B (ablation, prob=0.25): TP 2, FP 33, FN 126, precision 0.0571, recall 0.0156, avg_pred_per_song 2.188.
+
+validations:
+- Wave13a reproduces Wave9: false (expected TP=3, FP=29, F1@0.5s approx 0.0383).
+- Monotonic FP check (FP_B >= FP_A): false (33 >= 34 -> false).
+- Monotonic pred check (pred_B >= pred_A): false (2.188 >= 2.25 -> false).
+
+conclusion: Repro parity not achieved; ablation did not show monotonic threshold behavior. Recommend investigating nondeterminism sources (candidate ordering, beat tracking variability, or feature extraction timing) and then re-running a parity replay with deterministic seeds and full trace of intermediate candidate scores.
