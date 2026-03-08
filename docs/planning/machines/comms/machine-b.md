@@ -155,3 +155,17 @@ notes: |
 	- Scope: one targeted change to `scripts/analysis/section_detector.py` to increase candidate recall (change TBD), then run `scripts/bench/section_benchmark.py --dev-only --algorithm heuristic` and publish results.
 	- Pull and ack before running (see MSG-20260308-0602 for pull steps).
 
+## MSG-20260308-0801
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Canonical active instruction (branch-local). Wave 6 NMS-first pass: reduce NMS_DISTANCE_SEC from 16 -> 8, rerun pinned heuristic benchmark, and post delta summary.
+artifacts: results/sections-machine-b-wave6.json, results/machine-b-wave6-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- This is the current source-of-truth task in machine-b branch.
+- Required reply block:
+	- status: in-progress|done
+	- commit_hash: <hash>
+	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN, precision, recall>
+
