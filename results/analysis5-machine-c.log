@@ -1,0 +1,80 @@
+Rows read: 30
+
+=== MACHINE-B DETECTOR AGGREGATE ===
+Songs total          : 30
+Songs with audio     : 16
+Songs without audio  : 14
+Total ref boundaries : 0
+Total pred boundaries: 19
+Total TP             : 0
+Total FP             : 19
+Total FN             : 0
+
+Micro Precision      : 0.0000
+Micro Recall         : 0.0000
+Micro F1             : 0.0000
+
+=== CRITICAL FINDING ===
+Songs with ref_boundaries=0 : 30 / 30
+=> Machine-B reference boundary loading is BROKEN for ALL songs.
+=> Every TP=0, FN=0 — ground-truth is never loaded.
+=> All predicted boundaries are scored as FP (pure hallucination metric).
+
+=== MACHINE-B DETECTOR (audio songs, n=16) ===
+Mean predicted boundaries per song : 1.19
+Median                             : 1.0
+Max                                : 2
+Min                                : 0
+Songs producing 0 predictions      : 1
+Songs producing ≥1 prediction      : 15
+
+FP boundary times (n=19):
+  Mean time : 20.92s
+  Median    : 24.42s
+  Min       : 8.42s
+  Max       : 28.93s
+
+  Time distribution of FP boundaries:
+    0-10s   :   3 ███
+    10-20s  :   4 ████
+    20-30s  :  12 ████████████
+    30-40s  :   0 
+    40-50s  :   0 
+    50s+    :   0 
+
+=== OUR HARMONIX CORPUS GROUND TRUTH (n=35 songs) ===
+Mean ref boundaries per song : 9.34
+Median                       : 9.0
+Min / Max                    : 6 / 14
+Expected machine-b total ref : 327
+Actual machine-b total ref   : 0
+=> Reference parse gap       : 327 boundaries never loaded
+
+=== ANALYSIS 5 CONCLUSIONS ===
+
+1. PRECISION vs RECALL failure mode:
+   Machine-B's detector CANNOT be evaluated on recall at all — ref_boundaries=0
+   for all songs means the benchmark never counts FN. F1=0 is entirely due to
+   precision failure (all predictions are FP) combined with the reference parse bug.
+
+2. DETECTOR OUTPUT CHARACTERISATION:
+   The audio detector does fire (~1-2 boundaries per song on audio tracks) but
+   since ref=0 the scoring counts every hit as FP. Once reference loading is
+   fixed, some of these will convert to TP.
+
+3. FP TIMING CLUSTER:
+   FP boundaries concentrate in the 20-30s window, suggesting the detector is
+   reliably picking up a real structural change (likely verse→chorus) but the
+   reference parser isn't loading the ground truth to confirm it.
+
+4. SHARED ROOT CAUSE with Machine-C blocker #3:
+   Both machines have label/boundary parse failures. Our oracle analysis showed
+   label_accuracy=0.0 (name mismatch); Machine-B shows ref_boundaries=0 (boundary
+   count mismatch). Likely same mis-specification of which column or which file
+   format is the reference.
+
+5. RECOMMENDATION TO MACHINE-B:
+   Fix reference boundary parser — check section file path resolution and column
+   parsing. Once ref>0, the detector's boundary positions (20-30s cluster) suggest
+   it has real signal; NMS/MIN tuning can then be evaluated properly.
+

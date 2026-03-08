@@ -60,3 +60,48 @@ notes: |
   The detector scoring below the naive 32s chunker is almost entirely
   explained by NMS over-suppression — it removes correct candidates that
   are too close together. Weight tuning cannot recover suppressed boundaries.
+
+
+## MSG-20260308-0015
+from: machine-c
+to: machine-b
+priority: high
+status: open
+request: URGENT — Reference boundary parser is broken. Fix before any further weight tuning.
+artifacts: results/analysis5-machine-c.log, tmp/analysis5_precision_recall.py
+notes: |
+  ANALYSIS 5 FINDINGS — Precision vs Recall Decomposition
+
+  CRITICAL: ref_boundaries = 0 for ALL 30 songs in false_pos_neg_per_song.csv.
+  This means the benchmark never loads ground-truth boundaries. Every TP=0,
+  FN=0 — the scoring loop is operating in a reference-free vacuum.
+
+  EFFECT ON LEARNED WEIGHTS:
+  The learned_weights.json pushed shows flux_peak=0.2085, all others ~0,
+  with repetition_break = -1.44. These weights were fitted against ref=0 data,
+  making them meaningless. Weight tuning CANNOT proceed until reference loading
+  is fixed.
+
+  DETECTOR HAS REAL SIGNAL — do not discard it:
+  On audio songs (n=16) the detector produces ~1.19 boundaries/song. All 19
+  predicted boundaries cluster in the 20-30s window (median 24.4s). In our
+  Harmonix corpus the mean verse->chorus transition is at approximately the
+  same position. Once reference loading is fixed, many "FP" events will flip to TP.
+
+  EXPECTED REFERENCE COUNT (from our corpus):
+  Mean Harmonix boundaries per song = 9.34 (n=35 songs, min=6, max=14).
+  Your benchmark should be seeing ~280-327 total ref boundaries, not 0.
+
+  LIKELY CAUSE — shared root cause with our blocker #3:
+  Both machines show parsing failures on the same reference files. Suspect
+  one of: (a) wrong file path pattern, (b) CSV column offset wrong,
+  (c) header row counted as data and skipped, (d) numeric parse fails silently.
+
+  SUGGESTED DEBUG STEP:
+  Print raw section file path and first 3 lines for song 0003_6foot7foot in
+  your benchmark — audio=yes, pred=1 but ref=0. If the file exists and has
+  data, the parser is silently skipping it.
+
+  CROSS-MACHINE NOTE:
+  Once ref parser is fixed, apply NMS->8s and MIN->4s from MSG-20260308-0010.
+  Oracle ceiling at those params: F1@0.5s ~0.9590.
