@@ -607,6 +607,10 @@ def main() -> None:
     p.add_argument("--weight-cadence", type=float, default=0.15)
     p.add_argument("--weight-repetition", type=float, default=0.15)
     p.add_argument("--weight-duration", type=float, default=0.05)
+    p.add_argument("--weight-chroma", type=float, default=0.0)
+    p.add_argument("--weight-spec-contrast", type=float, default=0.0)
+    p.add_argument("--weight-onset-density", type=float, default=0.0)
+    p.add_argument("--weight-rms", type=float, default=0.0)
     args = p.parse_args()
 
     weights = {
@@ -615,6 +619,10 @@ def main() -> None:
         "cadence_score": args.weight_cadence,
         "repetition_break": args.weight_repetition,
         "duration_prior": args.weight_duration,
+        "chroma_change": args.weight_chroma,
+        "spec_contrast": args.weight_spec_contrast,
+        "onset_density": args.weight_onset_density,
+        "rms_energy": args.weight_rms,
     }
 
     harmonix_dir = Path(args.harmonix_dir)

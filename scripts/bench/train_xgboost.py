@@ -134,17 +134,21 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
     Path("results/xgb_feature_importances.json").write_text(json.dumps({"keys": keys, "importances": importances, "cv_scores": cv_scores}, indent=2))
 
-    # derive linear weights for the original five signals from importances
-    learned = normalize_importances_to_weights(importances, keys[:5])
-    Path("results/learned_weights_xgb.json").write_text(json.dumps({"importances": importances, "weights": learned}, indent=2))
+    # derive linear weights for all keys from importances
+    learned = normalize_importances_to_weights(importances, keys)
+    Path("results/learned_weights_xgb.json").write_text(json.dumps({"importances": importances, "weights": learned, "keys": keys}, indent=2))
     print("Learned weights (from XGBoost importances):", learned)
 
     # run benchmark with these weights
+    # build benchmark command passing explicit weights for all features
     cmd = (
         f"./miniconda3/envs/lalo311/bin/python scripts/bench/section_benchmark.py --dev-only --algorithm heuristic "
-        f"--weight-flux {learned['flux_peak']} --weight-chord {learned['chord_novelty']} "
-        f"--weight-cadence {learned['cadence_score']} --weight-repetition {learned['repetition_break']} "
-        f"--weight-duration {learned['duration_prior']} --out results/section_bench.learned_weights_xgb.json"
+        f"--weight-flux {learned.get('flux_peak', 0.0)} --weight-chord {learned.get('chord_novelty', 0.0)} "
+        f"--weight-cadence {learned.get('cadence_score', 0.0)} --weight-repetition {learned.get('repetition_break', 0.0)} "
+        f"--weight-duration {learned.get('duration_prior', 0.0)} "
+        f"--weight-chroma {learned.get('chroma_change', 0.0)} --weight-spec-contrast {learned.get('spec_contrast', 0.0)} "
+        f"--weight-onset-density {learned.get('onset_density', 0.0)} --weight-rms {learned.get('rms_energy', 0.0)} "
+        f"--out results/section_bench.learned_weights_xgb.json"
     )
     print("Running benchmark with XGB-derived weights...")
     import subprocess
