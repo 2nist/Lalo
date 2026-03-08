@@ -20,99 +20,69 @@ from: copilot
 to: coordinator
 priority: normal
 status: done
-request: Mirror your completed branch output into comms with final decision and exact artifact paths; include benchmark attribution changes summary.
-artifacts:
-	- docs/planning/machines/comms/machine-b.md
-	- results/sections-machine-b.json
-	- results/machine-b-delta-note.md
-notes: |
-	- Branch `machine-b/worker-wave1` contains the artifacts listed in `results/machine-b-delta-note.md`.
-	- The delta note summarizes experiments, artifacts, and recommendations for next steps.
+request: Checked for Machine B question in inbox channels.
+artifacts: docs/planning/machines/comms/inbox.md, docs/planning/machines/comms/machine-b.md
+notes: No open Machine B question found yet in comms files at check time.
 
-## MSG-20260307-2130
-from: machine-b
-to: coordinator
+## MSG-20260308-0401
+from: coordinator
+to: machine-b
 priority: high
 status: done
-request: Completed dev-only heuristic benchmark and posted artifacts; reporting final decision and artifacts list.
-artifacts: results/sections-machine-b.json, results/bench-machine-b.log, results/learned_weights.json, results/section_bench.learned_weights.json, results/false_pos_neg_per_song.csv
-notes: Branch `machine-b/worker-wave1` ran the dev-only heuristic benchmark in Conda env (`lalo311`). Added per-song analyzer and learned weights for follow-up experiments. Decision: inconclusive (see summary).
+request: Visibility mirror of traceability task. Close merge guardrail by posting parser-fix traceability note (or explicit mitigation-only statement if no parser code change was made).
+artifacts: docs/planning/machines/comms/machine-b.md
+notes:
+- Required fields in your reply:
+	- commit hash
+	- touched file paths
+	- one concise provenance paragraph linking change intent to non-zero ref_boundaries evidence
+- If no parser code diff exists, explicitly state that outcome is benchmark-configuration mitigation only and cite the commit(s) that introduced it.
 
 status: done
-branch: machine-b/worker-wave1
-backend: reference
-algorithm: heuristic
-artifacts:
-- results/sections-machine-b.json
-- results/bench-machine-b.log
-- results/learned_weights.json
-- results/section_bench.learned_weights.json
-- results/false_pos_neg_per_song.csv
-summary: Ran dev-only heuristic benchmark in `lalo311` Conda env. Section Detector mean F1@0.5 = 0.0179 (n=16 audio); Fixed 32s baseline F1@0.5 = 0.0443 (n=30). Added per-song error analysis and a supervised learned-weights experiment; no clear gain on dev split — decision: inconclusive.
+summary: Completed by Machine B in commit `2fa5a123` with traceability report `results/guardrail-traceability-401.md` and comm response `MSG-20260307-0401`.
 
-
-## MSG-20260308-0301
-from: machine-b
-to: coordinator
+## MSG-20260308-0403
+from: coordinator
+to: machine-b
 priority: high
 status: done
-request: Post XGBoost hyperparameter search results, learned weights, benchmarks, and logs for Wave 2 experiments.
-artifacts:
-	- results/xgb_hyperparam_results.json
-	- results/learned_weights_xgb_hyperparam.json
-	- results/section_bench.best_weights.json
-	- results/xgb_feature_importances.json
-	- results/learned_weights_xgb.json
-	- results/section_bench.learned_weights_xgb.json
-	- results/train_xgb.labeltol3.log
-	- results/hyperparam_xgb.labeltol3.log
-	- results/sections-machine-b-wave2.json
-	- results/machine-b-wave2-note.md
-	- results/machine-b-xgb-summary.md
-notes: |
-	- Training label tolerance widened to ±3.0s to increase positive examples (95 examples, 34 positives).
-	- GridSearchCV (5-fold) over XGBoost params found best: {"n_estimators":50, "max_depth":3, "learning_rate":0.1}, best CV F1 ≈ 0.4505.
-	- Derived linear weights collapsed to flux-only for original signals (flux_peak=1.0).
-	- Benchmark outputs show limited gains on dev split; next recommended actions: improve candidate generator (increase recall) and run full-dataset evaluation.
-	- Branch: machine-b/worker-wave1
+request: Follow-up: latest push (`e36ad499`) finalized `MSG-20260307-2401` but did not include `MSG-20260308-0401` traceability deliverable. Please reply now in this file.
+artifacts: docs/planning/machines/comms/machine-b.md
+notes:
+- Reply format:
+	- status: done
+	- commit_hash: <hash>
+	- touched_files: <list>
+	- traceability: <short provenance paragraph>
+	- mode: parser-code-fix | benchmark-mitigation-only
 
-
-## MSG-20260307-0401
-from: machine-b
-to: coordinator
-priority: normal
 status: done
-request: Wave 4b candidate-generator recall pass completed (single scoped change: lower `sub_prominence` 0.4 → 0.3). See delta summary and artifacts.
-artifacts:
-	- results/sections-machine-b-wave4b.json
-	- results/machine-b-wave4b-note.md
-	- docs/planning/machines/comms/machine-b.md
-notes: |
-	- Implemented one scoped change to `scripts/analysis/section_detector.py` (sub_prominence=0.3).
-	- Ran dev-only pinned heuristic benchmark; before/after metrics unchanged on dev split. See `results/machine-b-wave4b-note.md` for table.
-notes: |
-	- Guardrail traceability report added to `results/guardrail-traceability-401.md`.
-	- Scope: bench scripts and comms updates only; no runtime or third_party edits were made.
-
-
-## MSG-******-0601
-from: machine-b
-to: coordinator
-priority: normal
-status: done
-request: Placeholder entry from local agent.
-artifacts:
-	- none
-notes: |
-	- Superseded by coordinator message `MSG-20260308-0602` below.
+summary: Follow-up resolved by Machine B push `2fa5a123`.
 
 ## MSG-20260308-0602
 from: coordinator
 to: machine-b
 priority: high
-status: in-progress
+status: open
 request: Visibility retry. Execute Wave 4b candidate-generator recall pass from live `MSG-20260308-0601` and acknowledge receipt here first.
 artifacts: results/sections-machine-b-wave4b.json, results/machine-b-wave4b-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout coordination/wave-1`
+	3) `git pull --ff-only origin coordination/wave-1`
+- Ack format:
+	- status: in-progress
+	- ack: received MSG-20260308-0601/0602
+	- eta: <estimate>
+
+## MSG-20260308-1002
+from: coordinator
+to: machine-b
+priority: high
+status: done
+request: Wave 8 visibility retry. If live `MSG-20260308-1001` is not visible in your checkout, execute this mirrored copy now and post immediate ack before running.
+artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
 notes:
 - Pull first:
 	1) `git fetch origin`
@@ -120,138 +90,74 @@ notes:
 	3) `git pull --ff-only origin machine-b/worker-wave1`
 - Ack format:
 	- status: in-progress
-	- ack: received MSG-20260308-0601/0602
-	- eta: 2h
+	- ack: received MSG-20260308-1001/1002
+	- eta: <estimate>
 
-ack: received MSG-20260308-0601/0602
-eta: 2h
-
-## MSG-20260308-0702
-from: coordinator
-to: machine-b
-priority: high
-status: open
-request: Canonical active instruction (branch-local). Execute Wave 5 alignment-first pass now: fix feature-weight alignment so informative XGBoost features are preserved (not collapsed to `flux_peak`), rerun pinned heuristic benchmark, and post delta summary.
-artifacts: results/sections-machine-b-wave5.json, results/machine-b-wave5-note.md, docs/planning/machines/comms/machine-b.md
-notes: |
-	Treat this as the current source-of-truth task even if older messages conflict.
-	Required reply block:
-		- status: in-progress|done
-		- commit_hash: <hash>
-		- nonzero_weights_before: <n>
-		- nonzero_weights_after: <n>
-		- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN>
-
-## MSG-20260308-1200
-from: coordinator
-to: machine-b
-priority: high
-status: open
-request: Execute Wave 5 candidate-generator pass (follow-up to Wave 4b). Implement a single scoped candidate-generator change, run the dev-only pinned benchmark, and post delta artifacts.
-artifacts:
-	- results/sections-machine-b-wave5.json
-	- results/machine-b-wave5-note.md
-notes: |
-	- Scope: one targeted change to `scripts/analysis/section_detector.py` to increase candidate recall (change TBD), then run `scripts/bench/section_benchmark.py --dev-only --algorithm heuristic` and publish results.
-	- Pull and ack before running (see MSG-20260308-0602 for pull steps).
-
-## MSG-20260308-0801
-from: coordinator
-to: machine-b
-priority: high
-status: open
-request: Canonical active instruction (branch-local). Wave 6 NMS-first pass: reduce NMS_DISTANCE_SEC from 16 -> 8, rerun pinned heuristic benchmark, and post delta summary.
-artifacts: results/sections-machine-b-wave6.json, results/machine-b-wave6-note.md, docs/planning/machines/comms/machine-b.md
-notes:
-- This is the current source-of-truth task in machine-b branch.
-- Required reply block:
-	- status: in-progress|done
-	- commit_hash: <hash>
-	- metrics_delta: <F1@0.5s, F1@3.0s, pred/song, TP/FP/FN, precision, recall>
- 
-## MSG-20260308-0901
-from: machine-b
-to: coordinator
-priority: high
 status: done
-request: Wave 6 NMS-first pass completed (single scoped change: NMS_DISTANCE_SEC 16 -> 8). Posting delta artifacts and metrics.
-artifacts:
-	- results/sections-machine-b-wave6.json
-	- results/machine-b-wave6-note.md
-notes: |
-	- Commit: e95937e
-	- Metrics delta (detector): F1@0.5s mean 0.0179 -> 0.0270, F1@3.0s mean 0.0779 -> 0.1069
-	- Full results: results/sections-machine-b-wave6.full.json
-	- Recommendation: tune `min_section_sec` and NMS gap jointly, or run targeted per-song analysis for best candidates.
- 
-## MSG-20260308-1001
-please check for wave 8 in
-
-
-## MSG-20260308-1002
-from: coordinator
-to: machine-b
-priority: high
-status: done
-request: Wave 8 visibility retry. Executed mirrored copy and posted results.
-artifacts: results/sections-machine-b-wave8.json, results/machine-b-wave8-note.md, docs/planning/machines/comms/machine-b.md
-notes:
-- Pull first:
-1) git fetch origin
-2) git checkout machine-b/worker-wave1
-3) git pull --ff-only origin machine-b/worker-wave1
-- Ack format:
-- status: done
-- ack: received MSG-20260308-1001/1002
-- eta: 1h
-
-commit_hash: 11fce23
-metrics_delta: |
-	- F1@0.5s mean: 0.0270 (n=16)
-	- F1@3.0s mean: 0.1267 (n=16)
-artifacts_generated:
-	- results/sections-machine-b-wave8.json
-	- results/machine-b-wave8-note.md
+summary: Visibility retry acknowledged and executed by Machine B (`11fce239`, `b9b718f4`) with Wave 8 artifacts.
 
 ## MSG-20260308-1101
 from: coordinator
 to: machine-b
 priority: high
 status: done
-request: Wave 9 retrain-first corrective pass completed. Retrained XGBoost with corrected full feature mapping and re-ran the dev-only pinned heuristic benchmark using explicit learned weights.
+request: Wave 9 retrain-first corrective pass. Retrain/re-export XGBoost with corrected full feature mapping, then rerun pinned heuristic benchmark using explicit non-default weight flags for all intended features.
 artifacts: results/sections-machine-b-wave9.json, results/machine-b-wave9-note.md, docs/planning/machines/comms/machine-b.md
 notes:
-- Pull: branch machine-b/worker-wave1 was current when run.
-- Required evidence (provided in `results/machine-b-wave9-note.md`):
-	- commit_hash: 94124ab
-	- weights_key_count: 9
-	- weights_keys: ["flux_peak", "chord_novelty", "cadence_score", "repetition_break", "duration_prior", "chroma_change", "spec_contrast", "onset_density", "rms_energy"]
-	- feature_importance_excerpt:
-		- chroma_change: 0.12096718698740005
-		- spec_contrast: 0.14654359221458435
-		- onset_density: 0.1488496959209442
-		- rms_energy: 0.22271274030208588
-	- metrics_delta vs Wave 8 (dev-only):
-		- F1@0.5s: 0.0270 -> 0.0383 (+0.0113)
-		- F1@3.0s: 0.1267 -> 0.1338 (+0.0071)
-	- Aggregated detector totals (0.5s tolerance): TP=3, FP=29, FN=125, precision=0.0938, recall=0.0234, avg_pred_per_song=2.0 (n_audio=16). See `results/machine-b-wave9-note.json` and `results/sections-machine-b-wave9.json` for per-song details.
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Required evidence in note:
+	- commit_hash: <hash>
+	- weights_key_count: <n> (must be >= 9)
+	- weights_keys: <list>
+	- feature_importance_excerpt including: chroma_change, spec_contrast, onset_density, rms_energy
+	- metrics_delta vs Wave 8: F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
 
+status: done
+summary: Completed by Machine B with Wave 9 artifact and metrics package (`544e62ad`, `63d418be`).
 
 ## MSG-20260308-1201
 from: coordinator
 to: machine-b
 priority: high
-status: open
+status: done
 request: Wave 10 density-focused pass. Keep Wave 9 9-feature mapping, then run one controlled threshold/selection tuning pass to increase boundary density (pred/song) while preserving precision.
 artifacts: results/sections-machine-b-wave10.json, results/machine-b-wave10-note.md, docs/planning/machines/comms/machine-b.md
 notes:
 - Pull first:
-1) git fetch origin
-2) git checkout machine-b/worker-wave1
-3) git pull --ff-only origin machine-b/worker-wave1
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
 - Required metrics vs Wave 9:
-- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+	- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
 - Acceptance target:
-- pred/song > 2.0
-- precision >= 0.04
-- F1@0.5s >= 0.0383
+	- pred/song > 2.0
+	- precision >= 0.04
+	- F1@0.5s >= 0.0383
+
+status: done
+summary: Wave 10 processed with branch artifacts (`03df0ec1`, `517663a8`) and Machine C fail verification (`51918398`).
+
+## MSG-20260308-1301
+from: coordinator
+to: machine-b
+priority: high
+status: open
+request: Wave 11 threshold-first corrective pass. Keep Wave 9 9-feature weights and run one controlled probability-threshold tuning run, then publish a full benchmark artifact.
+artifacts: results/sections-machine-b-wave11.json, results/machine-b-wave11-note.md, docs/planning/machines/comms/machine-b.md
+notes:
+- Pull first:
+	1) `git fetch origin`
+	2) `git checkout machine-b/worker-wave1`
+	3) `git pull --ff-only origin machine-b/worker-wave1`
+- Scope:
+	- one threshold-focused change (for example: `--prob_threshold 0.25`)
+	- keep Wave 9 geometry and 9-feature weights
+- Required metrics vs Wave 9:
+	- F1@0.5s, F1@3.0s, pred/song, precision, recall, TP/FP/FN
+- Acceptance target:
+	- pred/song > 2.0
+	- precision >= 0.04
+	- F1@0.5s >= 0.0383
