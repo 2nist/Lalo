@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+import json
+from pathlib import Path
+import sys
+from datetime import datetime
+ROOT=Path('.').resolve()
+sys.path.insert(0,str(ROOT))
+from scripts.analysis.section_detector import detect_sections
+from scripts.bench.section_benchmark import _load_harmonix_pairs, _boundary_f1, HARMONIX_DIR, AUDIO_DIR, _parse_harmonix_sections
+
+# Load Wave9 audio list
+wave9 = json.load(open('results/sections-machine-b-wave9.json'))
+wave9_per = wave9.get('per_song', [])
+wave9_audio_list = [p.get('audio') for p in wave9_per if p.get('audio')]
+
+pairs = _load_harmonix_pairs(HARMONIX_DIR, AUDIO_DIR, max_songs=300)
+pair_map = {p.get('audio'): p for p in pairs if p.get('audio')}
+with_audio = [pair_map[a] for a in wave9_audio_list if a in pair_map]
+
+# Load best weights from full grid search
+best = json.load(open('results/grid_search_weights.best.json'))
+weights = best.get('weights')
+
+nms=8.0
+min_sec=4.0
+beat=0.0
+# Promoted downbeat confidence threshold (chosen from sweep)
+downbeat_confidence=0.4
+
+runs = [
+    {'name':'wave14_best_a','prob_threshold':0.50},
+    {'name':'wave14_best_b','prob_threshold':0.25},
+    {'name':'wave14_best_c','prob_threshold':0.15},
+]
+
+Path('results').mkdir(parents=True,exist_ok=True)
+all_out = {}
+for r in runs:
+    prob_threshold=r['prob_threshold']
+    tot_tp=tot_fp=tot_fn=0
+    tot_preds=0
+    count=0
+    per_song=[]
+    lines=[]
+    lines.append(f"Run: {r['name']} prob_threshold={prob_threshold} nms_gap={nms} min_section={min_sec} beat_snap={beat} \n")
+    for p in with_audio:
+        audio=Path(p['audio'])
+        ref=_parse_harmonix_sections(Path(p['sections_file']))
+        res=detect_sections(audio,chords=None,weights=weights,min_section_sec=min_sec,nms_gap_sec=nms,beat_snap_sec=beat,algorithm='heuristic',prob_threshold=prob_threshold,random_seed=42,downbeat_confidence_thresh=downbeat_confidence)
+        det_raw=res.get('sections',[])
+        det=[]
+        for s in det_raw:
+            if 'start_ms' in s and 'duration_ms' in s:
+                start_s=float(s['start_ms'])/1000.0
+                end_s=start_s+float(s['duration_ms'])/1000.0
+                det.append({'start_s':start_s,'end_s':end_s,'label':s.get('label','')})
+        b=_boundary_f1(ref,det,0.5)
+        tot_tp+=b['tp']; tot_fp+=b['fp']; tot_fn+=b['fn']; tot_preds+=b.get('pred_boundaries',0); count+=1
+        per_song.append({'song':p.get('song_id') or p.get('sections_file'), 'tp':b['tp'],'fp':b['fp'],'fn':b['fn'],'pred_boundaries':b.get('pred_boundaries',0)})
+        lines.append(json.dumps({'song':p.get('song_id') or p.get('sections_file'),'tp':b['tp'],'fp':b['fp'],'fn':b['fn'],'pred_boundaries':b.get('pred_boundaries',0),'prob_threshold':prob_threshold}))
+
+    precision=round(tot_tp/(tot_tp+tot_fp),4) if (tot_tp+tot_fp)>0 else 0.0
+    recall=round(tot_tp/(tot_tp+tot_fn),4) if (tot_tp+tot_fn)>0 else 0.0
+    avg_pred=round(tot_preds/count,3) if count>0 else 0.0
+    out={'prob_threshold':prob_threshold,'nms_gap_sec':nms,'min_section_sec':min_sec,'beat_snap_sec':beat,'tp':tot_tp,'fp':tot_fp,'fn':tot_fn,'precision':precision,'recall':recall,'avg_pred_per_song':avg_pred,'per_song':per_song}
+    fname = f'results/sections-machine-b-{r["name"]}.json'
+    Path(fname).write_text(json.dumps(out,indent=2))
+    logname = f'results/wave14_{r["name"]}.log'
+    Path(logname).write_text('\n'.join(lines))
+    all_out[r['name']]=out
+    print('Wrote',fname,'and',logname)
+
+# Validations
+vals = {}
+a = all_out.get('wave14_best_a')
+b = all_out.get('wave14_best_b')
+c = all_out.get('wave14_best_c')
+wave9_target = {'tp':3,'fp':29}
+
+if a:
+    vals['wave14_best_a_parity_match'] = (a['tp']==wave9_target['tp'] and a['fp']==wave9_target['fp'])
+if a and b and c:
+    vals['monotonic_fp'] = (c['fp'] >= b['fp'] >= a['fp'])
+    vals['monotonic_pred'] = (c['avg_pred_per_song'] >= b['avg_pred_per_song'] >= a['avg_pred_per_song'])
+
+note = []
+note.append('# Machine B Wave 14 Best Weights Note\n')
+note.append(f'benchmark_date: {datetime.utcnow().isoformat()}Z\n')
+for name,data in all_out.items():
+    note.append(f'## {name}\n')
+    note.append(f'prob_threshold: {data["prob_threshold"]}\n')
+    note.append(f'TP: {data["tp"]}\n')
+    note.append(f'FP: {data["fp"]}\n')
+    note.append(f'FN: {data["fn"]}\n')
+    note.append(f'Precision: {data["precision"]}\n')
+    note.append(f'Recall: {data["recall"]}\n')
+    note.append(f'Avg predictions per song: {data["avg_pred_per_song"]}\n')
+    note.append(f'log: results/wave14_{name}.log\n\n')
+
+note.append('## Validations\n')
+for k,v in vals.items():
+    note.append(f'- {k}: {v}\n')
+
+note.append('\n## Best weights\n')
+note.append(json.dumps(weights,indent=2))
+Path('results/machine-b-wave14-best-note.md').write_text('\n'.join(note))
+print('Wrote results/machine-b-wave14-best-note.md')

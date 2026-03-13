@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* LALO token layer */
+  --surface-0:  #1c1610;
+  --surface-1:  #22180f;
+  --surface-2:  #c8a97e;
+  --surface-3:  #dfc99a;
+  --surface-edge: #a8854e;
+
+  --paper-0:    #f5edd8;
+  --paper-1:    #ede0c4;
+  --paper-2:    #dfd0b0;
+  --paper-edge: #c4b090;
+
+  --ink-primary:   #715d3f;
+  --ink-secondary: rgba(112, 85, 45, 0.62);
+  --ink-ghost:     rgba(107, 88, 58, 0.32);
+  --ink-dark:      #e8dcc8;
+
+  --strong:    #4a7c52;
+  --medium:    #c4822a;
+  --weak:      #7a6e5a;
+  --dissonant: #b84830;
+  --borrowed:  #5a6e82;
+  --same:      #7a8a6a;
+
+  --accent:    #c4822a;
+  --accent-warm: #d4603a;
+
+  --font-display:  'Special Elite', 'Courier Prime', monospace;
+  --font-mono:     'DM Mono', monospace;
+  --font-reading:  'Courier Prime', monospace;
+
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e7dcc2;
+  background-color: var(--surface-1);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  body {
+    @apply min-h-screen;
+    margin: 0;
+    background: var(--surface-1);
+    color: #e7dcc2;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08' fill='black'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  #root {
+    @apply w-full;
+  }
+
+  ::selection {
+    background: rgba(196, 130, 42, 0.35);
+    color: #f8f4e8;
+  }
+}
+
+@layer components {
+  /* Warm kraft card */
+  .panel {
+    @apply border shadow-lg rounded-xl;
+    border-color: var(--surface-edge);
+    background: var(--surface-2);
+    color: var(--ink-primary);
+  }
+
+  /* Paper feel for lighter sections */
+  .panel-paper {
+    @apply border shadow-md rounded-xl;
+    background: var(--paper-1);
+    border-color: var(--paper-edge);
+    color: var(--ink-dark);
+  }
+
+  /* Tape accent for headers */
+  .tape {
+    position: relative;
+    isolation: isolate;
+  }
+  .tape::before {
+    content: '';
+    position: absolute;
+    left: -8px; top: 4px;
+    width: 68px; height: 16px;
+    background: rgba(196,130,42,0.16);
+    border: 1px solid rgba(196,130,42,0.35);
+    transform: rotate(-3deg);
+    mix-blend-mode: multiply;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.45);
+    z-index: -1;
+  }
+
+  /* Small pill / label */
+  .pill {
+    @apply inline-flex items-center gap-1 px-2 py-[3px] rounded-full text-[11px] font-semibold;
+    border: 1px solid rgba(196,130,42,0.35);
+    background: rgba(196,130,42,0.15);
+    color: var(--accent);
+  }
+
+  /* Buttons matching the ochre accent */
+  .btn-amber {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 font-semibold transition rounded-xl;
+    background: linear-gradient(135deg, #c4822a, #d4603a);
+    color: #1c1610;
+    box-shadow: 0 10px 24px -14px rgba(0,0,0,0.6);
+  }
+  .btn-amber:hover { filter: brightness(1.05); }
+  .btn-amber:active { transform: translateY(1px); }
+
+  /* DIY tilt utility */
+  .tilt-odd  { transform: rotate(-0.3deg); }
+  .tilt-even { transform: rotate(0.25deg); }
+}
+
+@layer utilities {
+  .grain-bg {
+    background-image: var(--tw-gradient-from), var(--tw-gradient-to), var(--tw-gradient-stops);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.6) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15));
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+}

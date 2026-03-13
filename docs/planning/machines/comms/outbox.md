@@ -1,0 +1,269 @@
+# Outbox
+
+Copilot posts execution updates and replies here.
+
+## MSG-20260307-0001
+from: copilot
+to: coordinator
+status: done
+response: Inbox protocol is ready. Say "check inbox" anytime and I will read `docs/planning/machines/comms/inbox.md`, execute what is feasible, and write results here.
+artifacts: docs/planning/machines/comms/README.md
+
+## MSG-20260307-0002
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine C inbox. No machine-specific message exists yet and no open message in `inbox.md` targets `machine-c`.
+artifacts: docs/planning/machines/comms/inbox.md
+
+## MSG-20260307-0003
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine B inbox request. No open message targeting `machine-b` was found in current comms files.
+artifacts: docs/planning/machines/comms/inbox.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260307-0004
+from: copilot
+to: coordinator
+status: done
+response: Cross-machine status summary posted. Machine A is complete with validation artifacts. Machine B remains open on live task `MSG-20260307-2101`. Machine C remains open on live task `MSG-20260307-2101` and has a recovered Q/A thread in `docs/planning/machines/comms/machine-c.md` (`MSG-20260307-2201/2202`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md
+
+## MSG-20260308-0001
+from: copilot
+to: coordinator
+status: done
+response: Wave 2 dispatch posted to keep all machines active with non-overlapping work. Machine A now owns integration gate checklist, Machine B owns benchmark refinement artifact, and Machine C owns diagnostics-only failure taxonomy for Machine B hypotheses.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0002
+from: copilot
+to: coordinator
+status: done
+response: Machine A Wave 2 integration gate completed with conditional-pass. Integration commit chain is valid and B/C artifacts parse cleanly, but Machine C benchmark artifact currently reports only `summary.fixed_chunks` (no `summary.detector`), so one follow-up C output or diagnostics-only acceptance is needed before final close.
+artifacts: docs/planning/machines/comms/machine-a.md, docs/planning/machines/comms/live/machine-a.md, results/sections-machine-b.json, results/sections-machine-c.json
+
+## MSG-20260308-0003
+from: copilot
+to: coordinator
+status: done
+response: Refreshed instructions posted for all machines based on new upstream progress. Machine B received explicit XGBoost follow-through + benchmark delta task, Machine C received sync/prioritization handoff task after its new taxonomy completion commit, and Machine A received Wave 2b integration review ownership.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0004
+from: copilot
+to: coordinator
+status: done
+response: Results intake applied. Machine C Wave 2 tasks were mirrored as done based on `origin/machine-c` completion commits, Machine B XGBoost lane marked done based on latest worker commit artifacts, and new Wave 3 instruction dispatch posted: parser-fix-first for Machine B (H4), integration tracking for Machine A, and verification support mode for Machine C.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260307-0005
+from: copilot
+to: coordinator
+status: done
+response: Improvement push reassignment posted. Machine A moved to integration-support lane, Machine B asked to finalize/mirror benchmark outputs, Machine C asked to mirror diagnostics completion from `origin/machine-c` and publish blocker-resolution summary.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0006
+from: copilot
+to: coordinator
+status: done
+response: Machine A Wave 3 integration gate tracking is now in-progress with an interim `hold-for-more-data` recommendation. Checked `origin/machine-b/worker-wave1`: latest commit remains Wave 2 (`d75a6e6d`) and required parser-fix artifacts (`results/sections-machine-b-wave3.json`, `results/machine-b-wave3-note.md`) are not present yet.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/machine-a.md
+
+## MSG-20260308-0007
+from: copilot
+to: coordinator
+status: done
+response: Machine A Wave 3 gate is now closed after ingesting new Machine B commit `75a6ca78` (XGBoost artifact refresh with non-zero reference-boundary evidence). Final Machine A recommendation: `merge-with-guardrail` to proceed while requiring explicit parser-fix traceability note before treating supervised retuning outcomes as fully validated.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/machine-a.md
+
+## MSG-20260308-0008
+from: copilot
+to: coordinator
+status: done
+response: Post-decision execution dispatch published. Machine B received a guardrail-close task to provide parser-fix traceability (commit hash + touched files + provenance note), and Machine C received a quick verification task to confirm non-zero boundary behavior and H2/H3 confidence after latest B artifact refresh.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0009
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine B results intake. New worker commits landed (`93aecd13`, `c45bfce6`, `eb5349dc`) with updated artifacts and comms mirror. Wave 3 result lane is now mirrored as done in coordination live channel. Remaining open item is guardrail traceability request `MSG-20260308-0401` (explicit parser-fix code-diff provenance note).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0010
+from: copilot
+to: coordinator
+status: done
+response: Checked Machine C push intake. New commit `27c7276a` delivered Wave 3 verification artifacts (`results/verify-machine-b-w3.log`, `tmp/verify_machine_b_w3.py`) and comm updates. Verification result is PASS: non-zero ref boundaries (0/30 ref=0), XGBoost CV mean F1=0.380, and H2/H3 confidence assessment posted. Mirrored Machine C `MSG-20260308-0301` and `MSG-20260308-0401` as done in coordination live channel.
+artifacts: docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-c.md
+
+## MSG-20260308-0011
+from: copilot
+to: coordinator
+status: done
+response: Applied Machine B task-visibility fix. Mirrored traceability request `MSG-20260308-0401` into `machine-b.md` and added live fallback pointer `MSG-20260308-0402` so B can find the task in either channel.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0012
+from: copilot
+to: coordinator
+status: done
+response: Checked new Machine B push `e36ad499`. It adds comm updates and `results/machine-b-delta-note.md`, but does not include the required `MSG-20260308-0401` parser traceability response fields. Posted explicit follow-up `MSG-20260308-0403` in both live and inbox channels with a strict reply template.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0013
+from: copilot
+to: coordinator
+status: done
+response: Guardrail push verified complete. Machine B commit `2fa5a123` provides the requested traceability package (`results/guardrail-traceability-401.md`) and comm response (worker-branch `MSG-20260307-0401`). Coordination tasks `MSG-20260308-0401/0402/0403` are now marked done in live + inbox channels.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, results/guardrail-traceability-401.md
+
+## MSG-20260308-0014
+from: copilot
+to: coordinator
+status: done
+response: Performed another full pass and dispatched Wave 4. Cleaned stale open statuses in Machine B live channel (`MSG-20260307-2101`, `MSG-20260308-0101`), then posted new coordinated tasks: Machine B H2/H3 tuning run (`MSG-20260308-0501`), Machine C verification support (`MSG-20260308-0501`), and Machine A integration gate tracking (`MSG-20260308-0501`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0015
+from: copilot
+to: coordinator
+status: done
+response: Reprioritized Wave 4 based on Machine B recommendation to improve candidate generation for recall before further tuning. Dispatched Wave 4b across all lanes: Machine B candidate-generator recall pass (`MSG-20260308-0601`), Machine C verification (`MSG-20260308-0601`), and Machine A integration gate (`MSG-20260308-0601`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0016
+from: copilot
+to: coordinator
+status: done
+response: Re-broadcasted Machine B Wave 4b instruction due to visibility issue. Posted `MSG-20260308-0602` in three places: live machine-b channel, machine-b inbox, and shared inbox. Added explicit pull steps and required immediate ack (`status: in-progress` + ETA).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, docs/planning/machines/comms/inbox.md
+
+## MSG-20260308-0017
+from: copilot
+to: coordinator
+status: done
+response: Machine B still could not see coordination-branch comms, so I pushed the Wave 4b instruction directly to `origin/machine-b/worker-wave1` (commit `bc998e27`). Replaced placeholder `MSG-******-0601` with explicit coordinator `MSG-20260308-0601/0602` in both branch-local files: live machine-b channel and machine-b inbox.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0018
+from: copilot
+to: coordinator
+status: done
+response: Wave 4b intake complete. Machine B delivered recall-pass artifacts (`bc1b29fa`) and Machine C verified (`15a0eb04`). Outcome: no recall gain on dev split (metrics unchanged), precision stable, model CV improved, and top risk remains feature-weight alignment collapse. Dispatched Wave 5 alignment-first lane to Machine B, verification follow-up to Machine C, and integration gate tracking to Machine A.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0019
+from: copilot
+to: coordinator
+status: done
+response: Diagnosed recurring Machine B comm failures as branch drift (`coordination/wave-1` vs `machine-b/worker-wave1`). Applied direct branch-local fix by pushing canonical active instruction `MSG-20260308-0702` to `origin/machine-b/worker-wave1` (commit `277f6d25`) in both Machine B comm files.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0020
+from: copilot
+to: coordinator
+status: done
+response: Wave 5 intake complete. Machine B posted `01b44ce6` and Machine C verification `6e509cc2`. Outcome: no recall improvement, precision stable, and top blocker remains NMS bottleneck; requested alignment-fix evidence not delivered and expected artifact `results/sections-machine-b-wave5.json` was missing. Dispatched Wave 6 NMS-first pass to Machine B (`MSG-20260308-0801`), verification to Machine C (`MSG-20260308-0801`), and integration gate tracking to Machine A (`MSG-20260308-0801`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0021
+from: copilot
+to: coordinator
+status: done
+response: To prevent repeat Machine B comm drift, I also pushed the Wave 6 canonical instruction directly to `origin/machine-b/worker-wave1` in both branch-local comm files (`MSG-20260308-0801`, commit `ea0b71f3`).
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0022
+from: copilot
+to: coordinator
+status: done
+response: New results intake processed. Machine B pushed Wave 6 artifact commit `e95937ef` with improved detector means (F1@0.5s 0.0179 -> 0.0270, F1@3.0s 0.0779 -> 0.1069). Machine C latest commit `36b88ea6` is a pending verification that predates/does not consume this artifact. Dispatched high-priority Machine C re-verification (`MSG-20260308-0803`) against commit `e95937ef`; Machine A gate remains in-progress pending that verification.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0023
+from: copilot
+to: coordinator
+status: done
+response: Checked and ingested latest Machine C comm (`acf91504`). Wave 6 re-verification is now complete with conditional PASS: NMS 16->8 confirmed effective (recall +100%, F1@0.5s +51%, precision stable). Closed Wave 6 gate as `merge-with-guardrail` and dispatched Wave 7 tasks: Machine B H3 + alignment pass (`MSG-20260308-0901`), Machine C Wave 7 verification (`MSG-20260308-0901`), and Machine A Wave 7 integration gate (`MSG-20260308-0901`).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0024
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 7 results from worker branches and advanced coordination state. Machine B commit `e1f156c3` is marked done (H3 applied; F1@3.0s improved), Machine C verification commit `bb3649a3` is marked done (partial pass; sparsity remains bottleneck), and Machine A Wave 7 gate is closed as `hold-for-more-data` due to unchanged F1@0.5s and unexercised alignment fix. Dispatched Wave 8 tasks across all lanes focused on full-feature weight execution and sparsity recovery (`MSG-20260308-1001` for A/B/C).
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md
+
+## MSG-20260308-0025
+from: copilot
+to: coordinator
+status: done
+response: Re-broadcasted Wave 8 instructions to Machine B due to branch visibility gap. Posted mirrored `MSG-20260308-1002` in both Machine B channels (live + inbox) with explicit pull steps and immediate ack format, and prepared direct branch-local sync to `machine-b/worker-wave1`.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0026
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 8 reports and closed the cycle. Machine B posted Wave 8 artifacts (`11fce239`) and completion comm (`b9b718f4`) but did not execute retrain/full-feature mapping; Machine C verification (`69ddce93`) marked Wave 8 FAIL with unchanged 5-key weights and unchanged metrics. Closed Wave 8 statuses in live channels and dispatched Wave 9 retrain-first corrective tasks to A/B/C (`MSG-20260308-1101`) with explicit evidence requirements.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0027
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 9 completion and verification. Machine B delivered the retrain-first artifacts (`544e62ad`, `63d418be`) and Machine C posted final PASS verification (`40c1288a`, `results/verify-machine-b-w9-final.log`) showing F1@0.5s improved to 0.0383 with 9-key weights active. Closed Wave 9 statuses and dispatched Wave 10 density-focused tasks to A/B/C (`MSG-20260308-1201`) with explicit pred/song and precision guardrails.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0028
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 10 results and verification. Machine B posted density artifacts (`03df0ec1`, `517663a8`) and Machine C verification (`51918398`, `results/verify-machine-b-w10.log`) marked FAIL: pred/song rose but precision/F1 regressed below guardrails (best precision 0.0227, best F1@0.5s 0.0116). Closed Wave 10 statuses and dispatched Wave 11 threshold-first corrective tasks to A/B/C (`MSG-20260308-1301`) with explicit precision/F1 recovery targets.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0029
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 11 results and verification. Machine B posted threshold-first artifacts (`32f94781`) and Machine C verification (`9e9d1b2c`, `results/verify-machine-b-w11.log`) marked FAIL: threshold run regressed TP and quality vs Wave 9 (TP 3 -> 1, precision 0.0938 -> 0.0222, F1@0.5s 0.0383 -> 0.0116). Closed Wave 11 statuses and dispatched Wave 12 parity-locked ablation tasks to A/B/C (`MSG-20260308-1401`) to isolate threshold impact without geometry drift.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0030
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 12 parity/ablation results and verification. Machine B posted artifacts (`85b3e1a5`) and Machine C verification (`7e76cc45`) marked FAIL + DATA INTEGRITY warning: both runs remained below F1 guardrail (0.0244/0.0245 vs 0.0383 baseline), parity run did not reproduce Wave 9 TP/FP, and threshold monotonicity checks were violated. Closed Wave 12 statuses and dispatched Wave 13 reproducibility-first tasks to A/B/C (`MSG-20260308-1501`) with explicit parity and monotonic validation requirements.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0031
+from: copilot
+to: coordinator
+status: done
+response: Ingested Wave 13 parity/ablation results and verification. Machine B posted artifacts (`75825299`, `00bcfdc0`) and Machine C verification (`fd3e551b`) marked FAIL with root-cause diagnosis: `--prob_threshold` filter appears inverted (upper-bound behavior). Closed Wave 13 statuses and dispatched Wave 14 threshold-direction fix tasks to A/B/C (`MSG-20260308-1601`) with parity/monotonic confirmation runs (0.50/0.25/0.15) and required logs.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0032
+from: copilot
+to: coordinator
+status: done
+response: Switched execution model to single-machine mode per request. Machine B is now the sole active lane for implementation + benchmark + self-verification; Machine A and Machine C lanes are paused/standby to reduce coordination overhead.
+artifacts: docs/planning/machines/comms/live/machine-a.md, docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/live/machine-c.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0033
+from: copilot
+to: coordinator
+status: done
+response: Posted a concrete Day 1-2 execution package for Machine B (`MSG-20260308-1901`) to convert current failures into deterministic pass/fail evidence. Dispatch requires locked Wave 9 parity replay plus two threshold-only ablations (0.50/0.25/0.15), explicit monotonic and threshold-direction assertions, and a stop-on-fail blocker report if checks contradict intended behavior.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md
+
+## MSG-20260308-0034
+from: copilot
+to: coordinator
+status: done
+response: Ingested Machine B Wave 14 completion from worker branch and marked FAIL in coordination channels. Wave14 metrics did not meet parity target and failed monotonic checks (A/B/C pred-song and FP were non-monotonic). Dispatched clarification follow-up `MSG-20260308-1902` to lock `beat_snap=0.0`, require threshold-filter candidate-count evidence, and enforce immediate blocker-stop on repeated threshold-intent contradictions.
+artifacts: docs/planning/machines/comms/live/machine-b.md, docs/planning/machines/comms/machine-b.md, results/machine-b-wave14-note.md

@@ -1,0 +1,14 @@
+{
+  "machine_id": "machine-b",
+  "lane": "section-benchmarking",
+  "song_slug": "third_party/BTC-ISMIR19/test/example.mp3",
+  "audio_relative_path": "third_party/BTC-ISMIR19/test/example.mp3",
+  "backend": "reference",
+  "algorithm": "heuristic",
+  "benchmark_command": "python scripts/bench/section_benchmark.py --dev-only --algorithm heuristic --out results/sections-machine-b.json",
+  "artifacts": [
+    "results/sections-machine-b.json",
+    "results/bench-machine-b.log"
+  ],
+  "notes": "Use heuristic algorithm for reproducible section benchmarking. Backend reference is the active consistency anchor on coordination runner."
+}
