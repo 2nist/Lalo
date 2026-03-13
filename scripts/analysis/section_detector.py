@@ -30,11 +30,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import joblib
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import librosa
 import numpy as np
+import warnings
 from scipy.signal import find_peaks
 
 
@@ -49,18 +51,37 @@ DEFAULT_WEIGHTS: Dict[str, float] = {
     "cadence_score":     0.0588,
     "repetition_break":  0.0588,
     "duration_prior":    0.4118,
+    "msaf_vote":         0.15,
+    "chord_ngram_rep":   0.0,
     # Additional candidate features (small defaults)
     "chroma_change": 0.05,
     "spec_contrast": 0.05,
     "onset_density": 0.05,
     "rms_energy": 0.05,
 }
+    # Default NMS strategy: 'score' (greedy by score) or 'time' (left-to-right time order)
+NMS_STRATEGY = 'time'
 
 MIN_SECTION_SEC = 4.0
 MAX_SECTION_SEC = 90.0
 NMS_DISTANCE_SEC = 8.0
 SSM_BAR_BEATS = 2
 SSM_WINDOW_BARS = 8
+SCORER_MODEL_PATH = Path("data/training/scorer_gbt.pkl")
+_SCORER_CACHE: Dict[str, Optional[Any]] = {}
+SCORER_FEATURE_ORDER = (
+    "flux_peak",
+    "chord_novelty",
+    "cadence_score",
+    "repetition_break",
+    "duration_prior",
+    "chroma_change",
+    "spec_contrast",
+    "onset_density",
+    "rms_energy",
+    "msaf_vote",
+    "chord_ngram_rep",
+)
 
 _SEMITONES = {
     "C": 0, "C#": 1, "Db": 1, "D": 2, "D#": 3, "Eb": 3,
@@ -102,7 +123,13 @@ def _compute_additional_frame_features(y: np.ndarray, sr: int, hop: int, n_fft: 
     """
     # chroma
     try:
-        chroma = librosa.feature.chroma_stft(y=y, sr=sr, hop_length=hop, n_fft=n_fft)
+        chroma = librosa.feature.chroma_stft(
+            y=y,
+            sr=sr,
+            hop_length=hop,
+            n_fft=n_fft,
+            tuning=0.0,
+        )
     except Exception:
         chroma = None
 
@@ -189,11 +216,22 @@ def _detect_beats(
     except Exception:
         pass
 
-    tempo, beat_frames = librosa.beat.beat_track(
-        y=y, sr=sr, hop_length=512, units="frames"
+    except Exception:
+        pass
+
+    warnings.warn(
+        "madmom beat tracker unavailable; using uniform fallback beats",
+        category=UserWarning,
+        stacklevel=2,
     )
-    beats = librosa.frames_to_time(beat_frames, sr=sr, hop_length=512)
-    downbeats = beats[::4] if len(beats) >= 4 else beats[:1]
+    duration = len(y) / sr if sr else 0.0
+    if duration <= 0.0:
+        return np.array([]), np.array([])
+    beat_interval = 0.5
+    beats = np.arange(0.0, duration, beat_interval)
+    if beats.size == 0:
+        beats = np.array([0.0])
+    downbeats = beats[::4] if beats.size >= 4 else beats[:1]
     return beats, downbeats
 
 
@@ -309,8 +347,75 @@ def _build_ssm(
         return np.eye(n), np.array(group_times[:n])
 
     G = np.stack(groups)
-    G_norm = G / (np.linalg.norm(G, axis=1, keepdims=True) + 1e-8)
-    return G_norm @ G_norm.T, np.array(group_times)
+    try:
+        import librosa.segment as lseg
+
+        R = lseg.recurrence_matrix(
+            G.T,
+            metric="cosine",
+            mode="affinity",
+            sparse=False,
+            sym=True,
+        )
+        R = lseg.path_enhance(R, n=9)
+    except Exception:
+        G_norm = G / (np.linalg.norm(G, axis=1, keepdims=True) + 1e-8)
+        R = G_norm @ G_norm.T
+    return R, np.array(group_times)
+
+
+def _msaf_boundary_votes(
+    audio_path: Path,
+    candidate_times: np.ndarray,
+    tolerance_sec: float = 4.0,
+    msaf_algo: str = "scluster",
+) -> np.ndarray:
+    """Return MSaf boundary proximity votes for candidate times."""
+    votes = np.zeros(len(candidate_times))
+    if len(candidate_times) == 0:
+        return votes
+    try:
+        import msaf
+        import warnings
+
+        warnings.filterwarnings("ignore")
+        results = msaf.process(
+            str(audio_path),
+            boundaries_id=msaf_algo,
+            feature="pcp",
+            labels_id=None,
+            annot_beats=False,
+        )
+        msaf_times = np.array([float(t) for t in results[0]], dtype=float)
+        if msaf_times.size == 0:
+            return votes
+        for i, ct in enumerate(candidate_times):
+            if np.min(np.abs(msaf_times - ct)) <= tolerance_sec:
+                votes[i] = 1.0
+    except Exception:
+        pass
+    return votes
+
+
+def _load_scorer_model(
+    path: Path = SCORER_MODEL_PATH,
+) -> Tuple[Optional[Any], str]:
+    """Lazy-load the gradient-boosted scorer and cache the result."""
+    key = str(path)
+    if key in _SCORER_CACHE:
+        model = _SCORER_CACHE[key]
+        status = "loaded" if model is not None else "missing"
+        return model, status
+    if not path.exists():
+        _SCORER_CACHE[key] = None
+        return None, "missing"
+    try:
+        model = joblib.load(str(path))
+    except Exception:
+        _SCORER_CACHE[key] = None
+        return None, "load_error"
+    _SCORER_CACHE[key] = model
+    return model, "loaded"
 
 
 def _checkerboard_novelty(ssm: np.ndarray, kernel_size: int = 8) -> np.ndarray:
@@ -346,6 +451,44 @@ def _repetition_break_at_candidates(
         idx = int(np.argmin(np.abs(ssm_times - t)))
         scores[i] = float(curve[idx])
     return scores
+
+
+def _chord_ngram_rep_at_candidates(
+    candidate_times: np.ndarray,
+    chords: List[Dict],
+    n: int = 4,
+) -> np.ndarray:
+    """Lightweight chord n-gram repetition signal.
+
+    For each candidate, find the n-chord sequence ending at or before the
+    candidate time and count how many identical sequences appear elsewhere
+    in the song. Normalize to 0-1 by dividing by max repeats (>=1).
+    """
+    if not chords or len(chords) < 2:
+        return np.zeros(len(candidate_times))
+    # Build list of chord labels with start times
+    chord_times = [float(c.get("start", c.get("time", 0))) for c in chords]
+    chord_labels = [c.get("chord") for c in chords]
+
+    # Build n-gram map: tuple(labels) -> list of start indices
+    ngrams = {}
+    for i in range(0, len(chord_labels) - n + 1):
+        key = tuple(chord_labels[i : i + n])
+        ngrams.setdefault(key, []).append(i)
+
+    reps = np.zeros(len(candidate_times))
+    for i, t in enumerate(candidate_times):
+        # find chord index at or just before t
+        idx = max(0, max([j for j, ct in enumerate(chord_times) if ct <= t], default=0))
+        start = max(0, idx - n + 1)
+        key = tuple(chord_labels[start : start + n])
+        locs = ngrams.get(key, [])
+        count = len(locs) if locs else 0
+        # If the same sequence occurs at least twice (repeat), count as signal
+        reps[i] = float(max(0, count - 1))
+    if reps.max() <= 0:
+        return np.zeros_like(reps)
+    return reps / float(reps.max())
 
 
 # ---------------------------------------------------------------------------
@@ -434,6 +577,29 @@ def _nms_by_score(
     return kept
 
 
+def _nms_time_first(candidate_times: np.ndarray, min_gap_sec: float = NMS_DISTANCE_SEC) -> np.ndarray:
+    """Left-to-right time-ordered NMS: keep first candidate then skip within gap."""
+    if len(candidate_times) == 0:
+        return np.array([], dtype=bool)
+    order = np.argsort(candidate_times)
+    kept = np.zeros(len(candidate_times), dtype=bool)
+    kept_times: List[float] = []
+    for idx in order:
+        t = float(candidate_times[idx])
+        if all(abs(t - k) >= min_gap_sec for k in kept_times):
+            kept[idx] = True
+            kept_times.append(t)
+    return kept
+
+
+def _apply_nms(candidate_times: np.ndarray, scores: np.ndarray, min_gap_sec: float = NMS_DISTANCE_SEC, strategy: str = NMS_STRATEGY) -> np.ndarray:
+    """Dispatch NMS according to strategy. Keeps API consistent with previous _nms_by_score."""
+    if strategy == 'time':
+        return _nms_time_first(candidate_times, min_gap_sec=min_gap_sec)
+    # default/backwards-compatible
+    return _nms_by_score(candidate_times, scores, min_gap_sec=min_gap_sec)
+
+
 def _snap_to_beats(
     times: List[float],
     downbeats: np.ndarray,
@@ -487,6 +653,7 @@ def detect_sections(
     trace_path: Optional[Path] = None,
     cand_prominence: Optional[float] = None,
     cand_sub_prominence: Optional[float] = None,
+    lyrics: Optional[List[Dict]] = None,
 ) -> Dict:
     """Run the section detector.
 
@@ -499,6 +666,14 @@ def detect_sections(
       "msaf_olda"    — MSAF OLDA
     """
     requested_algorithm = algorithm
+    use_scorer = False
+    scorer_status = "disabled"
+    scorer_model: Optional[Any] = None
+    if requested_algorithm == "scored":
+        scorer_model, scorer_status = _load_scorer_model()
+        use_scorer = scorer_model is not None
+        if not use_scorer:
+            algorithm = "heuristic"
 
     # Deterministic seed (helps reproduce candidate ordering / tie-breaks)
     if random_seed is not None:
@@ -536,11 +711,64 @@ def detect_sections(
 
     beat_times, downbeat_times = _detect_beats(y, sr)
 
-    frames, times, flux_scores = _generate_candidates(
+    # Build SSM early so we can propose SSM-based peaks as candidates
+    ssm, ssm_times = _build_ssm(
+        log_S, beat_times, sr, hop, beats_per_vector=SSM_BAR_BEATS
+    )
+
+    # Initial flux-based candidates (primary + secondary peaks)
+    frames_flux, times_flux, flux_scores_flux = _generate_candidates(
         flux, sr, hop, min_sec=max(2.0, nms_gap_sec / 2),
         prominence=(cand_prominence if cand_prominence is not None else 0.18),
         sub_prominence=(cand_sub_prominence if cand_sub_prominence is not None else 0.3),
     )
+
+    # SSM checkerboard novelty peaks -> candidate times
+    ssm_novelty = _checkerboard_novelty(ssm) if ssm is not None else np.array([])
+    ssm_peak_times = np.array([])
+    try:
+        if ssm_novelty.size:
+            sp, _ = find_peaks(ssm_novelty, height=0.2, distance=1)
+            if sp.size:
+                ssm_peak_times = ssm_times[sp]
+    except Exception:
+        ssm_peak_times = np.array([])
+
+    # Chord-change times: any chord start where label differs from previous
+    chord_change_times = np.array([])
+    try:
+        if chords:
+            times_list = []
+            prev_label = None
+            for c in chords:
+                t = float(c.get("start", c.get("time", 0)))
+                lab = c.get("chord")
+                if prev_label is None or lab != prev_label:
+                    times_list.append(t)
+                prev_label = lab
+            if times_list:
+                chord_change_times = np.array(times_list, dtype=float)
+    except Exception:
+        chord_change_times = np.array([])
+
+    # Union candidate times: flux peaks ∪ SSM peaks ∪ chord-change times
+    all_times = np.unique(
+        np.concatenate([times_flux, ssm_peak_times, chord_change_times])
+    )
+    # Convert to frames for sampling
+    frames = librosa.time_to_frames(all_times, sr=sr, hop_length=hop)
+
+    # Sample smoothed flux for these union candidates and normalise
+    flux_s = _smooth(flux, win=7)
+    vals = flux_s[frames.clip(0, len(flux_s) - 1)] if frames.size else np.array([])
+    if vals.size:
+        mn, mx = float(vals.min()), float(vals.max())
+        flux_scores = (vals - mn) / (mx - mn + 1e-8)
+    else:
+        flux_scores = np.zeros(len(all_times))
+
+    # Replace times variable used downstream with unioned times
+    times = all_times
 
     if len(times) == 0:
         return {
@@ -567,10 +795,9 @@ def detect_sections(
     cadence = _cadence_score_at_candidates(
         times, chords or [], lookback_sec=4.0
     )
-    ssm, ssm_times = _build_ssm(
-        log_S, beat_times, sr, hop, beats_per_vector=SSM_BAR_BEATS
-    )
     rep_break = _repetition_break_at_candidates(times, ssm, ssm_times)
+    chord_ngram_rep = _chord_ngram_rep_at_candidates(times, chords or [], n=4)
+    msaf_vote = _msaf_boundary_votes(audio_path, times)
     dur_prior = _duration_prior_score(
         times, song_dur,
         min_sec=min_section_sec, max_sec=max_section_sec,
@@ -641,25 +868,106 @@ def detect_sections(
     onset_density = _norm(onset_density)
     rms_energy = _norm(rms_energy)
 
-    scores = (
-        weights["flux_peak"] * flux_scores
-        + weights["chord_novelty"] * chord_novelty
-        + weights["cadence_score"] * cadence
-        + weights["repetition_break"] * rep_break
-        + weights["duration_prior"] * dur_prior
-        + weights.get("chroma_change", 0.0) * chroma_change
-        + weights.get("spec_contrast", 0.0) * spec_contrast_val
-        + weights.get("onset_density", 0.0) * onset_density
-        + weights.get("rms_energy", 0.0) * rms_energy
+    feature_arrays = {
+        "flux_peak": flux_scores,
+        "chord_novelty": chord_novelty,
+        "cadence_score": cadence,
+        "repetition_break": rep_break,
+        "chord_ngram_rep": chord_ngram_rep,
+        "duration_prior": dur_prior,
+        "chroma_change": chroma_change,
+        "spec_contrast": spec_contrast_val,
+        "onset_density": onset_density,
+        "rms_energy": rms_energy,
+        "msaf_vote": msaf_vote,
+    }
+    feature_matrix = np.column_stack(
+        [feature_arrays[name] for name in SCORER_FEATURE_ORDER]
     )
 
-    # Apply an optional probability/score threshold before NMS so callers
-    # can run a threshold-first corrective pass (Wave 11).
-    scores_filtered = np.array(scores)
-    if prob_threshold and prob_threshold > 0.0:
-        scores_filtered = np.where(scores >= prob_threshold, scores, -1e6)
+    scored_probs: Optional[np.ndarray] = None
+    if requested_algorithm == "scored" and use_scorer and scorer_model is not None:
+        try:
+            scored_probs = scorer_model.predict_proba(feature_matrix)[:, 1].astype(float)
+        except Exception:
+            scored_probs = None
+            use_scorer = False
+            scorer_status = "predict_error"
+    if requested_algorithm == "scored" and use_scorer and scored_probs is not None:
+        scores = scored_probs
+    else:
+        scores = (
+            weights["flux_peak"] * flux_scores
+            + weights["chord_novelty"] * chord_novelty
+            + weights["cadence_score"] * cadence
+            + weights["repetition_break"] * rep_break
+            + weights.get("chord_ngram_rep", 0.0) * chord_ngram_rep
+            + weights["duration_prior"] * dur_prior
+            + weights.get("msaf_vote", 0.0) * msaf_vote
+            + weights.get("chroma_change", 0.0) * chroma_change
+            + weights.get("spec_contrast", 0.0) * spec_contrast_val
+            + weights.get("onset_density", 0.0) * onset_density
+            + weights.get("rms_energy", 0.0) * rms_energy
+        )
 
-    kept_mask = _nms_by_score(times, scores_filtered, min_gap_sec=nms_gap_sec)
+    # Apply an optional probability/score threshold before NMS.
+    # Pre-filter to only candidates at or above threshold so that sub-threshold
+    # candidates cannot "win" NMS slots just because every sub-threshold score
+    # is equal (-1e6 trick would still keep them greedily).
+    if prob_threshold and prob_threshold > 0.0:
+        thresh_mask = scores >= prob_threshold
+        if thresh_mask.any():
+            kept_sub = _apply_nms(times[thresh_mask], scores[thresh_mask], min_gap_sec=nms_gap_sec)
+            kept_mask = np.zeros(len(scores), dtype=bool)
+            sub_indices = np.where(thresh_mask)[0]
+            kept_mask[sub_indices[kept_sub]] = True
+        else:
+            # nothing clears threshold — fall back to unfiltered NMS
+            kept_mask = _apply_nms(times, scores, min_gap_sec=nms_gap_sec)
+    else:
+        kept_mask = _apply_nms(times, scores, min_gap_sec=nms_gap_sec)
+
+    # Lyric gap post-hoc confidence adjustment: if lyrics provided, boost
+    # candidates near lyric gaps and penalize those that fall inside lyric lines.
+    # This operates as an additive adjustment to scores after initial NMS
+    # selection so that beat-snapping / final dedupe can reflect lyric priors.
+    if lyrics:
+        try:
+            # Build lyric intervals
+            lyric_intervals = [
+                (float(l.get("start", l.get("time", 0))), float(l.get("end", l.get("time", 0))))
+                for l in lyrics if l.get("start") is not None and l.get("end") is not None
+            ]
+            lyric_intervals.sort()
+            # gaps: (end_i, start_{i+1}) where gap>0
+            gaps = []
+            for a, b in zip(lyric_intervals, lyric_intervals[1:]):
+                gap_start = a[1]
+                gap_end = b[0]
+                if gap_end - gap_start > 0.05:
+                    gaps.append((gap_start, gap_end))
+
+            # Adjust score for kept candidates only (post-NMS)
+            for i, t in enumerate(times):
+                if not kept_mask[i]:
+                    continue
+                adjusted = 0.0
+                # penalize if inside lyric line
+                inside = any(s <= t <= e for s, e in lyric_intervals)
+                if inside:
+                    adjusted -= 0.1
+                else:
+                    # boost if within ±2s of a gap center
+                    for gs, ge in gaps:
+                        center = (gs + ge) / 2.0
+                        if abs(t - center) <= 2.0:
+                            adjusted += 0.15
+                            break
+                scores[i] = max(0.0, scores[i] + adjusted)
+            # Re-run NMS on adjusted scores to reflect lyric priors
+            kept_mask = _apply_nms(times, scores, min_gap_sec=nms_gap_sec)
+        except Exception:
+            pass
 
     kept_sorted = sorted(float(t) for t in times[kept_mask])
     final: List[float] = []
@@ -733,11 +1041,12 @@ def detect_sections(
             "chord_novelty": round(float(chord_novelty[i]), 4),
             "cadence_score": round(float(cadence[i]), 4),
             "repetition_break": round(float(rep_break[i]), 4),
-            "duration_prior": round(float(dur_prior[i]), 4),
-            "chroma_change": round(float(chroma_change[i]), 4),
-            "spec_contrast": round(float(spec_contrast_val[i]), 4),
-            "onset_density": round(float(onset_density[i]), 4),
-            "rms_energy": round(float(rms_energy[i]), 4),
+        "duration_prior": round(float(dur_prior[i]), 4),
+        "chroma_change": round(float(chroma_change[i]), 4),
+        "spec_contrast": round(float(spec_contrast_val[i]), 4),
+        "onset_density": round(float(onset_density[i]), 4),
+        "rms_energy": round(float(rms_energy[i]), 4),
+        "msaf_vote": round(float(msaf_vote[i]), 4),
         }
         is_kept = round(float(t), 4) in final_set
         candidates.append({
@@ -779,11 +1088,14 @@ def detect_sections(
             "sectionType": "Detected",
         })
 
+    meta_algorithm = "scored" if requested_algorithm == "scored" else "heuristic"
+    scorer_meta_status = scorer_status if requested_algorithm == "scored" else "disabled"
+
     return {
         "sections": sections,
         "candidates": candidates,
         "meta": {
-            "algorithm": "heuristic",
+            "algorithm": meta_algorithm,
             "requested_algorithm": requested_algorithm,
             "duration_s": round(song_dur, 2),
             "beat_count": len(beat_times),
@@ -791,6 +1103,10 @@ def detect_sections(
             "candidate_count": len(candidates),
             "kept_count": len(final),
             "beat_snap_sec": beat_snap_sec,
+            "scorer_model_path": (
+                str(SCORER_MODEL_PATH) if requested_algorithm == "scored" else None
+            ),
+            "scorer_status": scorer_meta_status,
             "weights_used": weights,
         },
     }
@@ -959,6 +1275,10 @@ def main() -> None:
         "--prob-threshold", type=float, default=0.0,
         help="Score threshold (0-1). Candidates below this are suppressed before NMS",
     )
+    ap.add_argument(
+        "--lyrics", default=None,
+        help="Optional JSON file with lyrics [{start:..., end:..., text:...}, ...]",
+    )
     args = ap.parse_args()
 
     audio_path = Path(args.audio)
@@ -970,6 +1290,13 @@ def main() -> None:
     if args.chords:
         raw = json.loads(Path(args.chords).read_text(encoding="utf-8"))
         chords = raw.get("chords", raw) if isinstance(raw, dict) else raw
+
+    lyrics = None
+    if args.lyrics:
+        try:
+            lyrics = json.loads(Path(args.lyrics).read_text(encoding="utf-8"))
+        except Exception:
+            lyrics = None
 
     weights = {
         "flux_peak": args.weight_flux,
@@ -986,6 +1313,7 @@ def main() -> None:
     result = detect_sections(
         audio_path,
         chords=chords,
+        lyrics=lyrics,
         weights=weights,
         min_section_sec=args.min_section_sec,
         max_section_sec=args.max_section_sec,
